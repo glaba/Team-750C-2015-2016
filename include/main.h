@@ -46,6 +46,9 @@
 #include <API.h>
 #include <sensors.h>
 #include <motors.h>
+#include <constants.h>
+#include <macros.h>
+#include <bitwise.h>
 
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
