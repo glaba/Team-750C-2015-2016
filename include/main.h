@@ -43,12 +43,14 @@
 // This prevents multiple inclusion, which isn't bad for this file but is good practice
 #define MAIN_H_
 
+#include <stdint.h>
 #include <API.h>
 #include <sensors.h>
 #include <motors.h>
 #include <constants.h>
 #include <macros.h>
 #include <bitwise.h>
+#include <friendly.h>
 
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus

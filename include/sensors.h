@@ -11,4 +11,8 @@ extern Encoder leftenc;
 #define RIGHT_ENC_BOT 4
 extern Encoder rightenc;
 
+#define TRANSMISSION_POT 1
+#define GEAR_DRIVE 1860
+#define GEAR_LIFT 4095
+
 #endif

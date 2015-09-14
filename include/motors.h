@@ -11,6 +11,6 @@
 #define RIGHT_MOTOR_MID 6
 #define RIGHT_MOTOR_BOT 7
 
-#define TRANSMISSION_SERVO 8
+#define TRANSMISSION_MOTOR 1
 
 #endif

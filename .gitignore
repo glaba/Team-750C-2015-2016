@@ -4,3 +4,8 @@ bin/
 #Ignore .sublime-workspace files (these are user-specific depending on what they have open)
 *.sublime-workspace
 
+#Ignore .swp files (these are left behind when VIM has a file open)
+src/*.swp
+include/*.swp
+*.swp
+

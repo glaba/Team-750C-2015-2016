@@ -61,21 +61,45 @@ void move(int spd, int turn){
     motorSet(RIGHT_MOTOR_MID, -spd + turn);
     motorSet(RIGHT_MOTOR_BOT, spd - turn);
 }
-void transmission(int side){
-    motorSet(TRANSMISSION_SERVO, side);
+
+void transmission(int spd){
+    motorSet(TRANSMISSION_MOTOR, spd);
 }
+
+void transmissionSetPos(void *pos){
+    int pot = (intptr_t) pos;
+    printf("Target: %d\n", pot);
+    if(analogRead(TRANSMISSION_POT) < pot) {
+        while(analogRead(TRANSMISSION_POT) < pot){
+            printf("Current: %d, Target: %d\n", analogRead(TRANSMISSION_POT), pot);
+            motorSet(TRANSMISSION_MOTOR, sign(analogRead(TRANSMISSION_POT)-pot)*50);
+            delay(20);
+        }
+    } else if(analogRead(TRANSMISSION_POT) > pot){
+        while(analogRead(TRANSMISSION_POT) > pot){
+            printf("Current: %d, Target: %d\n", analogRead(TRANSMISSION_POT), pot);
+            motorSet(TRANSMISSION_MOTOR, sign(analogRead(TRANSMISSION_POT)-pot)*50);
+            delay(20);
+        }
+    }
+    printf("Task loop completed.\n");
+    motorSet(TRANSMISSION_MOTOR, 0);
+}
+
+void changeGear(int gear){
+    taskCreate(transmissionSetPos, TASK_DEFAULT_STACK_SIZE, (void *) (intptr_t) gear, TASK_PRIORITY_DEFAULT);
+}
+
 void operatorControl() {
-    int side = 0;
 	while (true) {
         int spd = joystickGetAnalog(1, 3);
         int turn = joystickGetAnalog(1, 1);
         move(spd, turn);
-        if(joystickGetDigital(1, 5, JOY_UP)){
-            side+=10;
-            transmission(side);
-        } else if(joystickGetDigital(1, 5, JOY_DOWN)){
-            side-=10;
-            transmission(side);
+        printf("%d\n", analogRead(TRANSMISSION_POT));
+        if(joystickGetDigital(1, 8, JOY_LEFT)){
+            changeGear(GEAR_LIFT);
+        } else if(joystickGetDigital(1, 8, JOY_RIGHT)){
+            changeGear(GEAR_DRIVE);
         }
 		delay(20);
 	}
