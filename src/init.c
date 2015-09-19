@@ -61,6 +61,7 @@ void initializeIO() {
 Encoder leftenc;
 Encoder rightenc;
 void initialize() {
+    srand(time(NULL));
     leftenc = encoderInit(LEFT_ENC_TOP, LEFT_ENC_BOT, false);
     rightenc = encoderInit(RIGHT_ENC_TOP, RIGHT_ENC_BOT, false);
 }
