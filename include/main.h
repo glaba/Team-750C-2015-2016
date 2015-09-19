@@ -41,20 +41,50 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+/**
+ * C standard library headers
+ */
 #include <stdint.h>
-#include <time.h>
 #include <string.h>
 
+/**
+ * PROS main API header
+ */
 #include <API.h>
 
+/**
+ * Mathematical constant definitions
+ */
 #include <constants.h>
+
+/**
+ * Useful redefinitions to make code more readable
+ */
 #include <friendly.h>
 
+/**
+ * Simple macros for performing common mathematic operations
+ */
 #include <macros.h>
+
+/**
+ * Macros for performing bitwise operations
+ */
 #include <bitwise.h>
 
+/**
+ * Sensor definitions and function declarations
+ */
 #include <sensors.h>
+
+/**
+ * Motor definitions and function declarations
+ */
 #include <motors.h>
+
+/**
+ * LCD definitions and function declarations
+ */
 #include <lcdmsg.h>
 
 // Allow usage of this file in C++ programs

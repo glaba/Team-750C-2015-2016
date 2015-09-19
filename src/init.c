@@ -45,6 +45,16 @@
 void initializeIO() {
 }
 
+/** 
+ * Object representing the encoder on the left side of the drivetrain.
+ */
+Encoder leftenc;
+
+/** 
+ * Object representing the encoder on the right side of the drivetrain.
+ */
+Encoder rightenc;
+
 /*
  * Runs user initialization code. This function will be started in its own task with the default
  * priority and stack size once when the robot is starting up. It is possible that the VEXnet
@@ -58,10 +68,14 @@ void initializeIO() {
  * will not start. An autonomous mode selection menu like the pre_auton() in other environments
  * can be implemented in this task if desired.
  */
-Encoder leftenc;
-Encoder rightenc;
 void initialize() {
-    srand(time(NULL));
+    int seed = powerLevelMain() + powerLevelBackup();
+    for(int i = 0; i < BOARD_NR_ADC_PINS; i++) {
+        seed += analogRead(i);
+    }
+    srand(seed);
+    lcdInit(LCD_PORT);
+    lcdClear(LCD_PORT);
     leftenc = encoderInit(LEFT_ENC_TOP, LEFT_ENC_BOT, false);
     rightenc = encoderInit(RIGHT_ENC_TOP, RIGHT_ENC_BOT, false);
 }
