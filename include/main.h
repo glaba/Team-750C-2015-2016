@@ -42,9 +42,13 @@
 #define MAIN_H_
 
 /**
- * C standard library headers
+ * C standard integer type header
  */
 #include <stdint.h>
+
+/**
+ * C standard string function header
+ */
 #include <string.h>
 
 /**
@@ -63,7 +67,7 @@
 #include <friendly.h>
 
 /**
- * Simple macros for performing common mathematic operations
+ * Simple macros for performing common operations
  */
 #include <macros.h>
 
