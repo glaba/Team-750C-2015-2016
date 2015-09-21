@@ -68,7 +68,7 @@
  * 
  * @return the rounded value
  */
-#define round(x)     (((x) >=0) ?(long)((x)+0.5):(long)((x)-0.5))
+#define round(x) (((x) >=0) ?(long)((x)+0.5):(long)((x)-0.5))
 
 /** 
  * Returns the sign of the input value.
