@@ -12,12 +12,12 @@
 #define UNPRESSED HIGH
 
 /**
- * More readable definition for button pressed/unreleased state.
+ * More readable definition for button unreleased/pressed state.
  */
 #define UNRELEASED LOW
 
 /**
- * More readable definition for button unpressed/released state.
+ * More readable definition for button released/unpressed state.
  */
 #define RELEASED HIGH
 

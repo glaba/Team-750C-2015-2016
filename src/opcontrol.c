@@ -58,6 +58,10 @@ void operatorControl() {
         move(spd, turn);
         if(joystickGetDigital(1, 6, JOY_UP)){
             shoot(127);
+        } else if(joystickGetDigital(1, 6, JOY_DOWN)){
+            shoot(-127);
+        } else {
+            shoot(0);
         }
         printf("%d\n", analogRead(TRANSMISSION_POT));
         if(joystickGetDigital(1, 8, JOY_LEFT)){

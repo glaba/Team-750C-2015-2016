@@ -31,10 +31,22 @@ inline void move(int spd, int turn){
 }
 
 /**
- * Defines motor ports for the shooting mechanism.
+ * Defines motor ports for the nautilus gear shooting mechanism.
  */
-#define SHOOTER_MOTOR_LEFT 8
-#define SHOOTER_MOTOR_RIGHT 9
+#define NAUTILUS_SHOOTER_MOTOR_LEFT 8
+#define NAUTILUS_SHOOTER_MOTOR_RIGHT 9
+
+/**
+ * Defines motor ports for the nautilus gear shooting mechanism.
+ */
+#define CATAPAULT_SHOOTER_MOTOR_TOP 8
+#define CATAPAULT_SHOOTER_MOTOR_MID 10
+#define CATAPAULT_SHOOTER_MOTOR_BOT 9
+
+/**
+ * Sets shooter mechanism to catapault (testing). Delete to revert to nautilus shooter.
+ */
+//#define SHOOTER_CATAPAULT
 
 /** 
  * Shoots balls from the shooter mechanism by setting the shooter motor values.
@@ -42,8 +54,14 @@ inline void move(int spd, int turn){
  * @param spd the speed to set the shooter motors
  */
 inline void shoot(int spd){
-    motorSet(SHOOTER_MOTOR_LEFT, spd);
-    motorSet(SHOOTER_MOTOR_RIGHT, spd);
+#ifdef SHOOTER_CATAPAULT /* Using catapault shooting mechanism. */
+    motorSet(CATAPAULT_SHOOTER_MOTOR_TOP, spd);
+    motorSet(CATAPAULT_SHOOTER_MOTOR_MID, -spd);
+    motorSet(CATAPAULT_SHOOTER_MOTOR_BOT, spd);
+#else /* Using nautilus gear shooting mechanism. */
+    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, -spd);
+    motorSet(NAUTILUS_SHOOTER_MOTOR_RIGHT, -spd);
+#endif /* SHOOTER_CATAPAULT */
 }
 
 /**

@@ -13,7 +13,8 @@ char *lcdmsg[] = {
     "Michael",
     "Donald J. Trump",
     "Nautilus Gears",
-    "Drop and Pop"
+    "Drop and Pop",
+    "More Flip"
 };
 
 /** 
