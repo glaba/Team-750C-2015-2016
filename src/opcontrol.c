@@ -63,6 +63,13 @@ void operatorControl() {
         } else {
             shoot(0);
         }
+        if(joystickGetDigital(1, 5, JOY_UP)){
+            intake(127);
+        } else if(joystickGetDigital(1, 5, JOY_DOWN)){
+            intake(-127);
+        } else {
+            intake(0);
+        }
         printf("%d\n", analogRead(TRANSMISSION_POT));
         if(joystickGetDigital(1, 8, JOY_LEFT)){
             changeGear(GEAR_LIFT);

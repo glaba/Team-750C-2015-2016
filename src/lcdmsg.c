@@ -15,7 +15,9 @@ char *lcdmsg[] = {
     "Nautilus Gears",
     "Drop and Pop",
     "More Flip",
-    "Alfred & Robin"
+    "Alfred & Robin",
+    "Quinnipiac",
+    "Yeah"
 };
 
 /** 
