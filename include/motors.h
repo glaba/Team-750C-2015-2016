@@ -34,7 +34,7 @@ inline void move(int spd, int turn){
  * Defines motor ports for the nautilus gear shooting mechanism.
  */
 #define NAUTILUS_SHOOTER_MOTOR_LEFT 8
-#define NAUTILUS_SHOOTER_MOTOR_RIGHT 9
+#define NAUTILUS_SHOOTER_MOTOR_RIGHT 7
 
 /**
  * Defines motor ports for the catapult shooting mechanism.
