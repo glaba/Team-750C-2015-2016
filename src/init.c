@@ -66,6 +66,7 @@ void initialize() {
     srand(seed);
     lcdInit(LCD_PORT);
     lcdClear(LCD_PORT);
+    formatLCDDisplay(LCD_PORT);
     leftenc = encoderInit(LEFT_ENC_TOP, LEFT_ENC_BOT, false);
     rightenc = encoderInit(RIGHT_ENC_TOP, RIGHT_ENC_BOT, false);
 }

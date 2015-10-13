@@ -17,7 +17,18 @@ char *lcdmsg[] = {
     "More Flip",
     "Alfred & Robin",
     "Quinnipiac",
-    "Yeah"
+    "Yeah",
+    "YEAH",
+    "YEAH!",
+    "Did You Get That",
+    "On Video",
+    "MGNT",
+    "LC/DC",
+    "You Seem Tense",
+    "Root Theta Gears",
+    "Money Shot",
+    "Jaskirat Vig",
+    "Torsionify"
 };
 
 /** 
