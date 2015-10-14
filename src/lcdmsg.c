@@ -28,7 +28,8 @@ char *lcdmsg[] = {
     "Root Theta Gears",
     "Money Shot",
     "Jaskirat Vig",
-    "Torsionify"
+    "Torsionify",
+    "Chortler"
 };
 
 /** 
