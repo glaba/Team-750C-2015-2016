@@ -29,7 +29,11 @@ char *lcdmsg[] = {
     "Money Shot",
     "Jaskirat Vig",
     "Torsionify",
-    "Chortler"
+    "Chortler",
+    "750 Crust",
+    "Crusty Teeth",
+    "Moneyballs",
+    "Ganjaweed"
 };
 
 /** 

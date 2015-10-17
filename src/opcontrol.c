@@ -70,11 +70,14 @@ void operatorControl() {
         } else {
             intake(0);
         }
-        printf("%d\n", analogRead(TRANSMISSION_POT));
         if(joystickGetDigital(1, 8, JOY_LEFT)){
-            changeGear(GEAR_LIFT);
+            transmission(40);
+            /*changeGear(GEAR_LIFT);*/
         } else if(joystickGetDigital(1, 8, JOY_RIGHT)){
-            changeGear(GEAR_DRIVE);
+            transmission(-40);
+            /*changeGear(GEAR_DRIVE);*/
+        } else {
+            transmission(0);
         }
 		delay(20);
 	}

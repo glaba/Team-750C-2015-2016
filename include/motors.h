@@ -22,19 +22,19 @@
  * @param turn the turning speed value
  */
 inline void move(int spd, int turn){
-    motorSet(LEFT_MOTOR_TOP, -spd - turn);
+    motorSet(LEFT_MOTOR_TOP, spd + turn);
     motorSet(LEFT_MOTOR_MID, spd + turn);
-    motorSet(LEFT_MOTOR_BOT, -spd - turn);
-    motorSet(RIGHT_MOTOR_TOP, spd - turn);
+    motorSet(LEFT_MOTOR_BOT, spd + turn);
+    motorSet(RIGHT_MOTOR_TOP, -spd + turn);
     motorSet(RIGHT_MOTOR_MID, -spd + turn);
-    motorSet(RIGHT_MOTOR_BOT, spd - turn);
+    motorSet(RIGHT_MOTOR_BOT, -spd + turn);
 }
 
 /**
  * Defines motor ports for the nautilus gear shooting mechanism.
  */
 #define NAUTILUS_SHOOTER_MOTOR_LEFT 8
-#define NAUTILUS_SHOOTER_MOTOR_RIGHT 7
+#define NAUTILUS_SHOOTER_MOTOR_RIGHT 10
 
 /**
  * Defines motor ports for the catapult shooting mechanism.
@@ -44,7 +44,7 @@ inline void move(int spd, int turn){
 #define CATAPULT_SHOOTER_MOTOR_BOT 8
 
 /**
- * Sets shooter mechanism to catapult (testing). Delete to revert to nautilus shooter.
+ * Sets shooter mechanism to catapult (testing). Comment to revert to nautilus shooter.
  */
 //#define SHOOTER_CATAPULT
 
@@ -67,7 +67,7 @@ inline void shoot(int spd){
 /**
  * Defines motor ports for the intake mechanism.
  */
-#define INTAKE_ROLLER_MOTOR 9
+#define INTAKE_ROLLER_MOTOR 1
 
 /** 
  * Intakes balls using the intake mechanism by setting the intake motor values.
