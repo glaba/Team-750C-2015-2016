@@ -79,6 +79,7 @@ void operatorControl() {
         } else {
             transmission(0);
         }
+
 		delay(20);
 	}
 }
