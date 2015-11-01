@@ -2,83 +2,6 @@
 #define MOTORS_H_
 
 /**
- * Defines motor ports for the left side of the drivetrain.
- */
-#define LEFT_MOTOR_TOP 2
-#define LEFT_MOTOR_MID 3
-#define LEFT_MOTOR_BOT 4
-
-/**
- * Defines motor pots for the right side of the drivetrain.
- */
-#define RIGHT_MOTOR_TOP 5
-#define RIGHT_MOTOR_MID 6
-#define RIGHT_MOTOR_BOT 7
-
-/** 
- * Moves the robot by setting the drive motor values.
- * 
- * @param spd the forward/backward speed value
- * @param turn the turning speed value
- */
-inline void move(int spd, int turn){
-    motorSet(LEFT_MOTOR_TOP, spd + turn);
-    motorSet(LEFT_MOTOR_MID, spd + turn);
-    motorSet(LEFT_MOTOR_BOT, spd + turn);
-    motorSet(RIGHT_MOTOR_TOP, -spd + turn);
-    motorSet(RIGHT_MOTOR_MID, -spd + turn);
-    motorSet(RIGHT_MOTOR_BOT, -spd + turn);
-}
-
-/**
- * Defines motor ports for the nautilus gear shooting mechanism.
- */
-#define NAUTILUS_SHOOTER_MOTOR_LEFT 8
-#define NAUTILUS_SHOOTER_MOTOR_RIGHT 10
-
-/**
- * Defines motor ports for the catapult shooting mechanism.
- */
-#define CATAPULT_SHOOTER_MOTOR_TOP 9
-#define CATAPULT_SHOOTER_MOTOR_MID 10
-#define CATAPULT_SHOOTER_MOTOR_BOT 8
-
-/**
- * Sets shooter mechanism to catapult (testing). Comment to revert to nautilus shooter.
- */
-//#define SHOOTER_CATAPULT
-
-/** 
- * Shoots balls from the shooter mechanism by setting the shooter motor values.
- * 
- * @param spd the speed to set the shooter motors
- */
-inline void shoot(int spd){
-#ifdef SHOOTER_CATAPULT /* Using catapult shooting mechanism. */
-    motorSet(CATAPULT_SHOOTER_MOTOR_TOP, spd);
-    motorSet(CATAPULT_SHOOTER_MOTOR_MID, -spd);
-    motorSet(CATAPULT_SHOOTER_MOTOR_BOT, spd);
-#else /* Using nautilus gear shooting mechanism. */
-    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, -spd);
-    motorSet(NAUTILUS_SHOOTER_MOTOR_RIGHT, -spd);
-#endif /* SHOOTER_CATAPULT */
-}
-
-/**
- * Defines motor ports for the intake mechanism.
- */
-#define INTAKE_ROLLER_MOTOR 1
-
-/** 
- * Intakes balls using the intake mechanism by setting the intake motor values.
- * 
- * @param spd the speed to set the intake motors
- */
-inline void intake(int spd){
-    motorSet(INTAKE_ROLLER_MOTOR, spd);
-}
-
-/**
  * Defines motor port for the transmission to change between driving and lifting
  */
 #define TRANSMISSION_MOTOR 1
@@ -107,6 +30,65 @@ void transmissionSetPos(void *pos);
  */
 inline void changeGear(int gear){
     taskCreate(transmissionSetPos, TASK_DEFAULT_STACK_SIZE, (void *) (intptr_t) gear, TASK_PRIORITY_DEFAULT);
+}
+
+/**
+ * Defines motor ports for the left side of the drivetrain.
+ */
+#define LEFT_MOTOR_TOP 2
+#define LEFT_MOTOR_MID 3
+#define LEFT_MOTOR_BOT 4
+
+/**
+ * Defines motor ports for the right side of the drivetrain.
+ */
+#define RIGHT_MOTOR_TOP 5
+#define RIGHT_MOTOR_MID 6
+#define RIGHT_MOTOR_BOT 7
+
+/** 
+ * Moves the robot by setting the drive motor values.
+ * 
+ * @param spd the forward/backward speed value
+ * @param turn the turning speed value
+ */
+inline void move(int spd, int turn){
+    motorSet(LEFT_MOTOR_TOP, spd + turn);
+    motorSet(LEFT_MOTOR_MID, -spd - turn);
+    motorSet(LEFT_MOTOR_BOT, spd + turn);
+    motorSet(RIGHT_MOTOR_TOP, -spd + turn);
+    motorSet(RIGHT_MOTOR_MID, -spd + turn);
+    motorSet(RIGHT_MOTOR_BOT, -spd + turn);
+}
+
+/**
+ * Defines motor ports for the nautilus gear shooting mechanism.
+ */
+#define NAUTILUS_SHOOTER_MOTOR_LEFT 8
+#define NAUTILUS_SHOOTER_MOTOR_RIGHT 9
+
+/** 
+ * Shoots balls from the shooter mechanism by setting the shooter motor values.
+ * 
+ * @param spd the speed to set the shooter motors
+ */
+inline void shoot(int spd){
+    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, -spd);
+    motorSet(NAUTILUS_SHOOTER_MOTOR_RIGHT, -spd);
+}
+
+/**
+ * Defines motor ports for the intake mechanism.
+ */
+#define INTAKE_ROLLER_MOTOR 10
+
+/** 
+ * Intakes balls using the intake mechanism by setting the intake motor values.
+ * 
+ * @param spd the speed to set the intake motors
+ */
+inline void intake(int spd){
+    motorSet(INTAKE_ROLLER_MOTOR, spd);
 }
 
 #endif
