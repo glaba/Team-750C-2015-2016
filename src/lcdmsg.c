@@ -33,7 +33,6 @@ char *lcdmsg[] = {
     "750 Crust",
     "Crusty Teeth",
     "Moneyballs",
-    "Ganjaweed",
     "dooDAH",
     "Wobbly Pobbly"
 };

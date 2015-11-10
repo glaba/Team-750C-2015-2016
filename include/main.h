@@ -91,6 +91,16 @@
  */
 #include <lcdmsg.h>
 
+/**
+ * Autonomous recorder definitions and function declarations
+ */
+#include <autonrecorder.h>
+
+/**
+ * Operator control definitions and function declarations
+ */
+#include <opcontrol.h>
+
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
 extern "C" {
