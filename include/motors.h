@@ -36,15 +36,13 @@ inline void changeGear(int gear){
  * Defines motor ports for the left side of the drivetrain.
  */
 #define LEFT_MOTOR_TOP 2
-#define LEFT_MOTOR_MID 3
-#define LEFT_MOTOR_BOT 4
+#define LEFT_MOTOR_BOT 3
 
 /**
  * Defines motor ports for the right side of the drivetrain.
  */
-#define RIGHT_MOTOR_TOP 5
-#define RIGHT_MOTOR_MID 6
-#define RIGHT_MOTOR_BOT 7
+#define RIGHT_MOTOR_TOP 4
+#define RIGHT_MOTOR_BOT 5
 
 /** 
  * Moves the robot by setting the drive motor values.
@@ -54,18 +52,16 @@ inline void changeGear(int gear){
  */
 inline void move(int spd, int turn){
     motorSet(LEFT_MOTOR_TOP, spd + turn);
-    motorSet(LEFT_MOTOR_MID, -spd - turn);
     motorSet(LEFT_MOTOR_BOT, spd + turn);
     motorSet(RIGHT_MOTOR_TOP, -spd + turn);
-    motorSet(RIGHT_MOTOR_MID, -spd + turn);
     motorSet(RIGHT_MOTOR_BOT, -spd + turn);
 }
 
 /**
  * Defines motor ports for the nautilus gear shooting mechanism.
  */
-#define NAUTILUS_SHOOTER_MOTOR_LEFT 8
-#define NAUTILUS_SHOOTER_MOTOR_RIGHT 9
+#define NAUTILUS_SHOOTER_MOTOR_LEFT 6
+#define NAUTILUS_SHOOTER_MOTOR_RIGHT 7
 
 /** 
  * Shoots balls from the shooter mechanism by setting the shooter motor values.
@@ -80,7 +76,8 @@ inline void shoot(int spd){
 /**
  * Defines motor ports for the intake mechanism.
  */
-#define INTAKE_ROLLER_MOTOR 10
+#define INTAKE_ROLLER_MOTOR 8
+#define INTAKE_CONVEYOR_MOTOR 9
 
 /** 
  * Intakes balls using the intake mechanism by setting the intake motor values.
@@ -89,6 +86,21 @@ inline void shoot(int spd){
  */
 inline void intake(int spd){
     motorSet(INTAKE_ROLLER_MOTOR, spd);
+    motorSet(INTAKE_CONVEYOR_MOTOR, spd);
+}
+
+/**
+ * Defines motor ports for the shooter angle adjustment motor.
+ */
+#define SHOOTER_ANGLE_MOTOR 10
+
+/** 
+ * Adjusts the shooter's angle by setting the motor.
+ * 
+ * @param spd the speed to set the angle adjustment motor
+ */
+inline void adjust(int spd){
+    motorSet(SHOOTER_ANGLE_MOTOR, spd);
 }
 
 #endif
