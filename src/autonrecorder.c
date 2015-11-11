@@ -252,7 +252,7 @@ void playbackAuton() { //must load autonomous first!
     lcdSetBacklight(LCD_PORT, true);
     int file=0;
     do{
-        FILE* nextFile;
+        FILE* nextFile = NULL;
         lcdPrint(LCD_PORT, 2, "File: %d", file+1);
         char filename[AUTON_FILENAME_MAX_LENGTH];
         if(autonLoaded == MAX_AUTON_SLOTS + 1 && file < PROGSKILL_TIME/AUTON_TIME - 1){

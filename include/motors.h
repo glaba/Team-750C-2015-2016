@@ -60,8 +60,13 @@ inline void move(int spd, int turn){
 /**
  * Defines motor ports for the nautilus gear shooting mechanism.
  */
+#define SHOOTER_HAS_THREE_MOTORS
+
 #define NAUTILUS_SHOOTER_MOTOR_LEFT 6
 #define NAUTILUS_SHOOTER_MOTOR_RIGHT 7
+#ifdef SHOOTER_HAS_THREE_MOTORS
+#define NAUTILUS_SHOOTER_MOTOR_CENTER 10
+#endif
 
 /** 
  * Shoots balls from the shooter mechanism by setting the shooter motor values.
@@ -71,6 +76,9 @@ inline void move(int spd, int turn){
 inline void shoot(int spd){
     motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, -spd);
     motorSet(NAUTILUS_SHOOTER_MOTOR_RIGHT, -spd);
+#ifdef SHOOTER_HAS_THREE_MOTORS
+    motorSet(NAUTILUS_SHOOTER_MOTOR_CENTER, -spd);
+#endif /* SHOOTER_HAS_THREE_MOTORS */
 }
 
 /**
@@ -89,6 +97,7 @@ inline void intake(int spd){
     motorSet(INTAKE_CONVEYOR_MOTOR, spd);
 }
 
+#ifndef SHOOTER_HAS_THREE_MOTORS
 /**
  * Defines motor ports for the shooter angle adjustment motor.
  */
@@ -102,5 +111,6 @@ inline void intake(int spd){
 inline void adjust(int spd){
     motorSet(SHOOTER_ANGLE_MOTOR, spd);
 }
+#endif /* SHOOTER_HAS_THREE_MOTORS */
 
 #endif
