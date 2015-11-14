@@ -1,8 +1,19 @@
 #include "main.h"
 
+/**
+ * Stores the joystick state variables for moving the robot.
+ * Used for recording and playing back autonomous routines.
+ */
 joyState states[AUTON_TIME*JOY_POLL_FREQ];
 
+/**
+ * Slot number of currently loaded autonomous routine.
+ */
 int autonLoaded;
+
+/**
+ * Section number (0-3) of currently loaded programming skills routine.
+ */
 int progSkills;
 
 /** 
@@ -90,7 +101,7 @@ void recordAuton() {
 }
 
 /** 
- * Saves contents of the states array to a file.
+ * Saves contents of the states array to a file in flash memory.
  */
 void saveAuton() {
     printf("Waiting for file selection...\n");

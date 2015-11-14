@@ -35,7 +35,9 @@ char *lcdmsg[] = {
     "Moneyballs",
     "dooDAH",
     "Wobbly Pobbly",
-    "Hallen Key"
+    "Hallen Key",
+    "24 Motors",
+    "Complicate THIS!"
 };
 
 /** 
