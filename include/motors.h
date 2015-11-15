@@ -74,7 +74,7 @@ inline void move(int spd, int turn){
  * @param spd the speed to set the shooter motors
  */
 inline void shoot(int spd){
-    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, -spd);
+    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, spd);
     motorSet(NAUTILUS_SHOOTER_MOTOR_RIGHT, -spd);
 #ifdef SHOOTER_HAS_THREE_MOTORS
     motorSet(NAUTILUS_SHOOTER_MOTOR_CENTER, -spd);

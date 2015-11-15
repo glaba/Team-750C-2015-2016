@@ -36,7 +36,7 @@
 /**
  * Button for confirming selection of an autonomous routine.
  */
-#define AUTON_BUTTON 5
+#define AUTON_BUTTON 2
 
 /**
  * Lower limit of the autonomous routine selector potentiometer.
