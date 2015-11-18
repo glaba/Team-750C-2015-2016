@@ -37,7 +37,11 @@ char *lcdmsg[] = {
     "Wobbly Pobbly",
     "Hallen Key",
     "24 Motors",
-    "Complicate THIS!"
+    "Complicate THIS!",
+    "Meshing",
+    "Shikhar Crustogi",
+    "Neural Network",
+    "easyAuton()"
 };
 
 /** 
