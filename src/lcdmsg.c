@@ -41,7 +41,9 @@ char *lcdmsg[] = {
     "Meshing",
     "Shikhar Crustogi",
     "Neural Network",
-    "easyAuton()"
+    "easyAuton()",
+    "Loctite",
+    "Skin Irritant"
 };
 
 /** 
