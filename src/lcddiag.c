@@ -62,19 +62,19 @@ char* typeString(char *dest){
 
         if(i > 0){
             if(c == UPPER){
-                lcdSetText(LCD_PORT, 2, "DEL    SEL   LWR");
+                lcdSetText(LCD_PORT, 2, "DEL    SEL   abc");
             } else if(c == LOWER) {
-                lcdSetText(LCD_PORT, 2, "DEL    SEL   NMR");
+                lcdSetText(LCD_PORT, 2, "DEL    SEL   123");
             } else { //NUMBER
-                lcdSetText(LCD_PORT, 2, "DEL    SEL   UPR");
+                lcdSetText(LCD_PORT, 2, "DEL    SEL   ABC");
             }
         } else {
             if(c == UPPER){
-                lcdSetText(LCD_PORT, 2, "       SEL   LWR");
+                lcdSetText(LCD_PORT, 2, "       SEL   abc");
             } else if(c == LOWER) {
-                lcdSetText(LCD_PORT, 2, "       SEL   NMR");
+                lcdSetText(LCD_PORT, 2, "       SEL   123");
             } else { //NUMBER
-                lcdSetText(LCD_PORT, 2, "       SEL   UPR");
+                lcdSetText(LCD_PORT, 2, "       SEL   ABC");
             }
         }
 
@@ -266,8 +266,8 @@ void runBattery(FILE *lcdport){
                             afterpoint = powerLevelBackup()%1000;
                             strcat(battdisp, "Bk. Batt: ");
                             break;
-            case BATT_PEXP: beforepoint = powerLevelBackup()/1000;
-                            afterpoint = powerLevelBackup()%1000;
+            case BATT_PEXP: beforepoint = powerLevelExpander()/1000;
+                            afterpoint = powerLevelExpander()%1000;
                             strcat(battdisp, "Ex. Batt: ");
                             break;
         }
@@ -703,7 +703,8 @@ void addMotorGroup(){
     MotorGroup *temp = (MotorGroup*) realloc(groups, sizeof(MotorGroup)*(numgroups+1));
     if(temp == NULL) return;
     groups = temp;
-    memset(&groups[numgroups-1], 0, sizeof(MotorGroup));
+    numgroups++;
+    memset(&groups[numgroups-1], 0, sizeof(groups[numgroups-1]));
     typeString(groups[numgroups-1].name);
     selectMotorGroupMembers(groups[numgroups-1].motor);
 }
@@ -760,6 +761,7 @@ void delMotorGroup(int mtr){
         delay(20);
     } while(!done);
     if(val){
+        memset(&groups[mtr], 0, sizeof(groups[mtr]));
         for(int i = mtr; i < numgroups - 1; i++){
             memcpy(&groups[i], &groups[i+1], sizeof(groups[i]));
         }
