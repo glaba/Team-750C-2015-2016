@@ -69,6 +69,7 @@ void initialize() {
     lcdInit(LCD_PORT);
     lcdClear(LCD_PORT);
     initAutonRecorder();
+    initGroups();
     if(isOnline()){
         loadAuton();
     }

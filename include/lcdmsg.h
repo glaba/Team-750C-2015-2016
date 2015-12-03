@@ -14,7 +14,7 @@
 /**
  * Defines the amount of LCD messages in the master list.
  */
-#define LCD_MESSAGE_COUNT 38
+#define LCD_MESSAGE_COUNT 42
 
 /**
  * Defines the max length for LCD messages.
@@ -39,6 +39,6 @@ void randlcdmsg(FILE *lcdport, int line);
  * 
  * @param lcdport the port the LCD is connected to
  */
-void formatLCDDisplay(FILE *lcdport);
+void screensaver(FILE *lcdport);
 
 #endif

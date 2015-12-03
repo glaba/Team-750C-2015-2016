@@ -96,18 +96,21 @@ void moveRobot(){
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 void operatorControl() {
-    int cycle = 0;
     lcdSetBacklight(LCD_PORT, false);
     while (true) {
         if(isOnline() || progSkills == 0){
-            if(cycle == 0){
-                formatLCDDisplay(LCD_PORT);
+            if(lcdDiagTask == NULL){
+                lcdDiagTask = taskCreate(formatLCDDisplay, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
+            } else if(taskGetState(lcdDiagTask) == TASK_SUSPENDED){
+                taskResume(lcdDiagTask);
             }
             recordJoyInfo();
             if (joystickGetDigital(1, 7, JOY_RIGHT) && !isOnline()) {
+                taskSuspend(lcdDiagTask);
                 recordAuton();
                 saveAuton();
             } else if (joystickGetDigital(1, 7, JOY_LEFT) && !isOnline()) {
+                taskSuspend(lcdDiagTask);
                 loadAuton();
                 playbackAuton();
             }
@@ -122,10 +125,6 @@ void operatorControl() {
             } else if(joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
                 progSkills = 0;
             }
-        }
-        cycle++;
-        if(cycle == 150){
-            cycle=0;
         }
         delay(20);
     }

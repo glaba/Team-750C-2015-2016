@@ -92,6 +92,11 @@
 #include <lcdmsg.h>
 
 /**
+ * LCD diagnostics menu definitions and function declarations
+ */
+#include <lcddiag.h>
+
+/**
  * Autonomous recorder definitions and function declarations
  */
 #include <autonrecorder.h>

@@ -26,12 +26,25 @@ extern Encoder rightenc;
 /**
  * Defines the transmission potentiometer for position determination.
  */
-#define TRANSMISSION_POT 1
+#define TRANSMISSION_POT 2
 
 /**
  * Defines potentiometer values for each transmission gearing.
  */
 #define GEAR_DRIVE 1860
 #define GEAR_LIFT 4095
+
+#define POWER_EXPANDER_STATUS 3
+#define POWER_EXPANDER_VOLTAGE_DIVISOR 70 //Hardware revision A2
+
+inline unsigned int powerLevelExpander(){
+    return analogRead(POWER_EXPANDER_STATUS)*1000/POWER_EXPANDER_VOLTAGE_DIVISOR;
+}
+
+#define NUM_BATTS 3
+
+#define BATT_MAIN 0
+#define BATT_BKUP 1
+#define BATT_PEXP 2
 
 #endif

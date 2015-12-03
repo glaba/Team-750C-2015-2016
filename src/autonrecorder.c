@@ -24,18 +24,29 @@ int progSkills;
 int selectAuton() {
     bool done = false;
     int val;
+    FILE* autonFile;
+    char filename[AUTON_FILENAME_MAX_LENGTH];
     do {
         val = (float) ((float) analogRead(AUTON_POT)/(float) AUTON_POT_HIGH) * (MAX_AUTON_SLOTS+2);
+        snprintf(filename, sizeof(filename)/sizeof(char), "a%d", val);
+        autonFile = fopen(filename, "r");
         if(val == 0) {
             lcdSetText(LCD_PORT, 2, "NONE");
         } else if(val == MAX_AUTON_SLOTS+1) {
             lcdSetText(LCD_PORT, 2, "Prog. Skills");
         } else {
-            lcdPrint(LCD_PORT, 2, "Slot: %d", val);
+            if(autonFile == NULL){
+                lcdPrint(LCD_PORT, 2, "Slot: %d (EMPTY)", val);
+            } else {
+                char name[LCD_MESSAGE_MAX_LENGTH+1];
+                memset(name, 0, sizeof(name));
+                fread(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
+                lcdSetText(LCD_PORT, 2, name);
+            }
         }
         done = (digitalRead(AUTON_BUTTON) == PRESSED);
         delay(20);
-    } while(done == false);
+    } while(!done);
     printf("Selected autonomous: %d\n", val);
     return val;
 }
@@ -115,9 +126,13 @@ void saveAuton() {
         printf("Currently in the middle of a programming skills run.\n");
         autonSlot = MAX_AUTON_SLOTS + 1;
     }
+    char name[LCD_MESSAGE_MAX_LENGTH+1];
+    memset(name, 0, sizeof(name));
     if(autonSlot == 0) {
         printf("Not saving this autonomous!\n");
         return;
+    } else {
+        typeString(name);
     }
     lcdSetText(LCD_PORT, 1, "Saving auton...");
     char filename[AUTON_FILENAME_MAX_LENGTH];
@@ -132,9 +147,10 @@ void saveAuton() {
     }
     printf("Saving to file %s...\n",filename);
     FILE *autonFile = fopen(filename, "w");
+    fwrite(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
     for (int i = 0; i < AUTON_TIME * JOY_POLL_FREQ; i++) {
         printf("Recording state %d to file %s...\n", i, filename);
-        signed char write[5] = {states[i].spd, states[i].turn, states[i].sht, states[i].intk, states[i].trans };
+        signed char write[5] = {states[i].spd, states[i].turn, states[i].sht, states[i].intk, states[i].trans};
         fwrite(write, sizeof(char), sizeof(write) / sizeof(char), autonFile);
         delay(10);
     }
@@ -221,6 +237,9 @@ void loadAuton() {
         }
     } while(done == false);
     fseek(autonFile, 0, SEEK_SET);
+    char name[LCD_MESSAGE_MAX_LENGTH+1];
+    memset(name, 0, sizeof(name));
+    fread(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
     for (int i = 0; i < AUTON_TIME * JOY_POLL_FREQ; i++) {
         printf("Loading state %d from file %s...\n", i, filename);
         char read[5] = {0, 0, 0, 0, 0};

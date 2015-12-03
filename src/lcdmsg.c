@@ -43,7 +43,9 @@ char *lcdmsg[] = {
     "Neural Network",
     "easyAuton()",
     "Loctite",
-    "Skin Irritant"
+    "Skin Irritant",
+    "Akram Sandhu",
+    "itoa() Sucks"
 };
 
 /** 
@@ -71,7 +73,7 @@ void randlcdmsg(FILE *lcdport, int line){
  * 
  * @param lcdport the port the LCD is connected to
  */
-void formatLCDDisplay(FILE *lcdport) {
+void screensaver(FILE *lcdport) {
     lcdSetText(lcdport, 1, LCD_750C_TITLE);
     randlcdmsg(lcdport, 2);
 }
