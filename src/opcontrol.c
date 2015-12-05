@@ -104,17 +104,19 @@ void operatorControl() {
             } else if(taskGetState(lcdDiagTask) == TASK_SUSPENDED){
                 taskResume(lcdDiagTask);
             }
-            recordJoyInfo();
-            if (joystickGetDigital(1, 7, JOY_RIGHT) && !isOnline()) {
-                taskSuspend(lcdDiagTask);
-                recordAuton();
-                saveAuton();
-            } else if (joystickGetDigital(1, 7, JOY_LEFT) && !isOnline()) {
-                taskSuspend(lcdDiagTask);
-                loadAuton();
-                playbackAuton();
+            if(!disableOpControl){
+                recordJoyInfo();
+                if (joystickGetDigital(1, 7, JOY_RIGHT) && !isOnline()) {
+                    taskSuspend(lcdDiagTask);
+                    recordAuton();
+                    saveAuton();
+                } else if (joystickGetDigital(1, 7, JOY_LEFT) && !isOnline()) {
+                    taskSuspend(lcdDiagTask);
+                    loadAuton();
+                    playbackAuton();
+                }
+                moveRobot();
             }
-            moveRobot();
         } else {
             motorStopAll();
             lcdSetText(LCD_PORT, 1, "Press 7R");

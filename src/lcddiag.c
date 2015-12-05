@@ -2,18 +2,19 @@
 
 TaskHandle lcdDiagTask = NULL;
 bool backlight = true;
+bool disableOpControl = false;
 MotorGroup *groups;
 int numgroups;
 
 char menuChoices[LCD_MENU_COUNT][LCD_MESSAGE_MAX_LENGTH+1] = {
-    "Screensaver",
-    "Battery Info",
     "Motor Test",
     "Motor Group Mgmt",
+    "Battery Info",
     "Connection Info",
     "Robot Info",
     "Autonomous Info",
     "Toggle Backlight",
+    "Screensaver",
     "Credits"
 };
 
@@ -30,16 +31,23 @@ char* typeString(char *dest){
     int spacecode = 26;
     int endcode = 27;
     do {
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
         switch(c){
             case UPPER:
             case LOWER: mult = 28; spacecode = 26; endcode = 27; break;
             case NUMBER: mult = 12; spacecode = 10; endcode = 11; break;
         }
         val = (float) ((float) analogRead(AUTON_POT)/(float) AUTON_POT_HIGH) * mult;
+        if(val > endcode){
+            val = endcode;
+        }
         if(val == spacecode){
             dest[i] = ' ';
         } else if(val == endcode) {
-            dest[i] = '^';
+            dest[i] = '~';
         } else {
             switch(c){
                 case UPPER: dest[i] = val + 'A'; break;
@@ -70,20 +78,20 @@ char* typeString(char *dest){
             }
         } else {
             if(c == UPPER){
-                lcdSetText(LCD_PORT, 2, "       SEL   abc");
+                lcdSetText(LCD_PORT, 2, "|      SEL   abc");
             } else if(c == LOWER) {
-                lcdSetText(LCD_PORT, 2, "       SEL   123");
+                lcdSetText(LCD_PORT, 2, "|      SEL   123");
             } else { //NUMBER
-                lcdSetText(LCD_PORT, 2, "       SEL   ABC");
+                lcdSetText(LCD_PORT, 2, "|      SEL   ABC");
             }
         }
 
-        if((lcdButtonPressed(LCD_BTN_CENTER) || digitalRead(AUTON_BUTTON) == PRESSED) && val != endcode){
+        if((centerPressed) && val != endcode){
             i++;
-        } else if(lcdButtonPressed(LCD_BTN_LEFT) && i > 0){
+        } else if(leftPressed && i > 0){
             dest[i] = 0;
             i--;
-        } else if(lcdButtonPressed(LCD_BTN_RIGHT)) {
+        } else if(rightPressed) {
             switch(c){
                 case UPPER: c = LOWER; break;
                 case LOWER: c = NUMBER; break;
@@ -91,9 +99,7 @@ char* typeString(char *dest){
             }
         }
 
-        done = ((digitalRead(AUTON_BUTTON) == PRESSED && val == endcode)
-                || (lcdButtonPressed(LCD_BTN_CENTER) && val == endcode)
-                || i == LCD_MESSAGE_MAX_LENGTH);
+        done = ((centerPressed && val == endcode) || i == LCD_MESSAGE_MAX_LENGTH);
         delay(20);
     } while(!done);
     dest[i] = 0;
@@ -101,7 +107,7 @@ char* typeString(char *dest){
 }
 
 void saveGroups(){
-    FILE* group = fopen("groups", "w");
+    FILE* group = fopen("grp", "w");
     taskPrioritySet(NULL, TASK_PRIORITY_HIGHEST-1);
     lcdSetText(LCD_PORT, 1, "Saving groups...");
     lcdSetText(LCD_PORT, 2, "");
@@ -122,7 +128,7 @@ void saveGroups(){
 }
 
 void loadGroups(){
-    FILE* group = fopen("groups", "r");
+    FILE* group = fopen("grp", "r");
     taskPrioritySet(NULL, TASK_PRIORITY_HIGHEST-1);
     lcdSetText(LCD_PORT, 1, "Loading groups...");
     lcdSetText(LCD_PORT, 2, "");
@@ -150,7 +156,7 @@ void loadGroups(){
 }
 
 void initGroups(){
-    FILE* group = fopen("groups", "r");
+    FILE* group = fopen("grp", "r");
     if(group == NULL){
         numgroups = 6; //LDRIVE, RDRIVE, DRIVE, SHOOT, INTK, TRANS 
         groups = (MotorGroup*) malloc(sizeof(MotorGroup) * numgroups);
@@ -158,6 +164,11 @@ void initGroups(){
             return;
         }
         memset(groups, 0, sizeof(*groups));
+        for(int i = 0; i<numgroups; i++){
+            for(int j = 0; j<=10; j++){
+                groups[i].motor[j] = false;
+            }
+        }
         groups[0].motor[LEFT_MOTOR_TOP] = true;
         groups[0].motor[LEFT_MOTOR_BOT] = true;
         strcpy(groups[0].name, "Left Drive");
@@ -186,9 +197,9 @@ void initGroups(){
         groups[5].motor[TRANSMISSION_MOTOR] = true;
         strcpy(groups[5].name, "Transmission");
 
-        saveGroups();
+        //saveGroups();
     } else {
-        loadGroups();
+        //loadGroups();
     }
 }
 
@@ -209,13 +220,16 @@ int selectMenu() {
     bool done = false;
     int val = 0;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != LCD_MENU_COUNT-1) val++;
-        else if(lcdButtonPressed(LCD_BTN_RIGHT) && val == LCD_MENU_COUNT-1) val = 0;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != 0) val--;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val == 0) val = 0;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != LCD_MENU_COUNT-1) val++;
+        else if(rightPressed && val == LCD_MENU_COUNT-1) val = 0;
+        else if(leftPressed && val != 0) val--;
+        else if(leftPressed && val == 0) val = LCD_MENU_COUNT - 1;
 
         formatMenuNameCenter(LCD_PORT, 1, val);
-        done = lcdButtonPressed(LCD_BTN_CENTER);
         if(val == 0){
             lcdSetText(LCD_PORT, 2, "<      SEL     >");
         } else if(val == LCD_MENU_COUNT-1) {
@@ -224,6 +238,7 @@ int selectMenu() {
             lcdSetText(LCD_PORT, 2, "<      SEL     >");
         }
         delay(20);
+        done = centerPressed;
     } while(!done);
     printf("Selected menu choice: %d\n", val);
     return val;
@@ -232,7 +247,9 @@ int selectMenu() {
 void runScreensaver(FILE *lcdport){
     int cycle = 0;
     do {
-        screensaver(LCD_PORT);
+        if(cycle == 0){
+            screensaver(LCD_PORT);
+        }
         delay(20);
         cycle++;
         if(cycle==150){
@@ -245,10 +262,14 @@ void runBattery(FILE *lcdport){
     bool done = false;
     int val = BATT_MAIN;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != BATT_PEXP) val++;
-        else if(lcdButtonPressed(LCD_BTN_RIGHT) && val == BATT_PEXP) val = BATT_MAIN;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != BATT_MAIN) val--;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val == BATT_MAIN) val = BATT_PEXP;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != BATT_PEXP) val++;
+        else if(rightPressed && val == BATT_PEXP) val = BATT_MAIN;
+        else if(leftPressed && val != BATT_MAIN) val--;
+        else if(leftPressed && val == BATT_MAIN) val = BATT_PEXP;
 
         int beforepoint = 0;
         int afterpoint = 0;
@@ -260,26 +281,23 @@ void runBattery(FILE *lcdport){
         switch(val){
             case BATT_MAIN: beforepoint = powerLevelMain()/1000;
                             afterpoint = powerLevelMain()%1000;
-                            strcat(battdisp, "Mn. Batt: ");
+                            strcat(battdisp, "Mn Batt: ");
                             break;
             case BATT_BKUP: beforepoint = powerLevelBackup()/1000;
                             afterpoint = powerLevelBackup()%1000;
-                            strcat(battdisp, "Bk. Batt: ");
+                            strcat(battdisp, "Bk Batt: ");
                             break;
             case BATT_PEXP: beforepoint = powerLevelExpander()/1000;
                             afterpoint = powerLevelExpander()%1000;
-                            strcat(battdisp, "Ex. Batt: ");
+                            strcat(battdisp, "Ex Batt: ");
                             break;
         }
-        sprintf(temp, "%d", beforepoint);
+        sprintf(temp, "%d.%d V", beforepoint, afterpoint);
         strcat(battdisp, temp);
-        strcat(battdisp, ".");
-        sprintf(temp, "%d", afterpoint);
-        strcat(battdisp, temp);
-        strcat(battdisp, " V");
 
         int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(battdisp))/2;
-        char str[LCD_MESSAGE_MAX_LENGTH+1] = "";
+        char str[LCD_MESSAGE_MAX_LENGTH+1];
+        memset(str, 0, sizeof(str));
         for(int i = 0; i < spaces; i++){
             strcat(str, " ");
         }
@@ -287,10 +305,8 @@ void runBattery(FILE *lcdport){
         for(int i = 0; i < spaces; i++){
             strcat(str, " ");
         }
-
         lcdSetText(LCD_PORT, 1, str);
 
-        done = lcdButtonPressed(LCD_BTN_CENTER);
         if(val == BATT_MAIN){
             lcdSetText(LCD_PORT, 2, "EX     ESC    BK");
         } else if(val == BATT_PEXP) {
@@ -299,6 +315,7 @@ void runBattery(FILE *lcdport){
             lcdSetText(LCD_PORT, 2, "MN     ESC    EX");
         }
         delay(20);
+        done = centerPressed;
     } while(!done);
 }
 
@@ -306,21 +323,25 @@ int selectMotor(FILE *lcdport){
     bool done = false;
     int val = 1;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != 10) val++;
-        else if(lcdButtonPressed(LCD_BTN_RIGHT) && val == 10) val = 0;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != 0) val--;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val == 0) val = 10;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != 10) val++;
+        else if(rightPressed && val == 10) val = 0;
+        else if(leftPressed && val != 0) val--;
+        else if(leftPressed && val == 0) val = 10;
 
         char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
         if(val != 0){
             char temp[LCD_MESSAGE_MAX_LENGTH+1];
             memset(motorstr, 0, sizeof(motorstr));
             memset(temp, 0, sizeof(temp));
-            strcat(motorstr, "Motor: ");
+            strcpy(motorstr, "Motor: ");
             sprintf(temp, "%d", val);
             strcat(motorstr, temp);
         } else {
-            strcat(motorstr, "Cancel");
+            strcpy(motorstr, "Cancel");
         }
 
         int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
@@ -335,7 +356,7 @@ int selectMotor(FILE *lcdport){
 
         lcdSetText(LCD_PORT, 1, str);
 
-        done = lcdButtonPressed(LCD_BTN_CENTER);
+        done = centerPressed;
         if(val == 0){
             lcdSetText(LCD_PORT, 2, "10     SEL     1");
         } else if(val == 1) {
@@ -347,27 +368,33 @@ int selectMotor(FILE *lcdport){
         } else {
             char navstr[LCD_MESSAGE_MAX_LENGTH+1];
             memset(navstr, 0, sizeof(navstr));
-            navstr[0] = (val-1) + '0';
-            strcat(navstr, "      SEL     0");
-            navstr[LCD_MESSAGE_MAX_LENGTH] = (val+1) + '0';
+            sprintf(navstr, "%c      SEL     %c",(val-1) + '0', (val+1) + '0');
+            /*navstr[0] = (val-1) + '0';*/
+            /*strcat(navstr, "      SEL     ");*/
+            /*navstr[LCD_MESSAGE_MAX_LENGTH] = (val+1) + '0';*/
             lcdSetText(LCD_PORT, 2, navstr);
         }
         delay(20);
     } while(!done);
+    printf("Testing motor %d.\n", val);
     return val;
 }
 
 int selectSpd(int mtr) {
     bool done = false;
-    int val;
+    int val=0;
     do {
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        /*bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);*/
+        /*bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);*/
+
         val = (float) ((float) analogRead(AUTON_POT)/(float) AUTON_POT_HIGH) * 254;
         val -= 127;
         char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
         char temp[LCD_MESSAGE_MAX_LENGTH+1];
         memset(motorstr, 0, sizeof(motorstr));
         memset(temp, 0, sizeof(temp));
-        strcat(motorstr, "Motor: ");
+        strcpy(motorstr, "Motor: ");
         sprintf(temp, "%d", mtr);
         strcat(motorstr, temp);
 
@@ -386,9 +413,9 @@ int selectSpd(int mtr) {
         char speedstr[LCD_MESSAGE_MAX_LENGTH+1];
         memset(speedstr, 0, sizeof(speedstr));
         memset(temp, 0, sizeof(temp));
-        strcat(motorstr, "Speed: ");
+        strcpy(speedstr, "Speed: ");
         sprintf(temp, "%d", val);
-        strcat(motorstr, temp);
+        strcat(speedstr, temp);
 
         spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(speedstr))/2;
         strcpy(str, "");
@@ -402,9 +429,10 @@ int selectSpd(int mtr) {
 
         lcdSetText(LCD_PORT, 2, str);
 
-        done = (digitalRead(AUTON_BUTTON) == PRESSED || lcdButtonPressed(LCD_BTN_CENTER));
+        done = (digitalRead(AUTON_BUTTON) == PRESSED || centerPressed);
         delay(20);
     } while(!done);
+    printf("Using speed: %d\n", val);
     return val;
 }
 
@@ -414,14 +442,14 @@ void runIndivMotor(FILE *lcdport){
     if(mtr == 0) return;
     int spd = selectSpd(mtr);
     int val = spd;
+    disableOpControl = true;
     motorStopAll();
-    taskPrioritySet(NULL, TASK_PRIORITY_HIGHEST-1);
     do {
         char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
         char temp[LCD_MESSAGE_MAX_LENGTH+1];
         memset(motorstr, 0, sizeof(motorstr));
         memset(temp, 0, sizeof(temp));
-        strcat(motorstr, "Motor: ");
+        strcpy(motorstr, "Motor: ");
         sprintf(temp, "%d", mtr);
         strcat(motorstr, temp);
 
@@ -440,9 +468,9 @@ void runIndivMotor(FILE *lcdport){
         char speedstr[LCD_MESSAGE_MAX_LENGTH+1];
         memset(speedstr, 0, sizeof(speedstr));
         memset(temp, 0, sizeof(temp));
-        strcat(motorstr, "Speed: ");
+        strcpy(speedstr, "Run Speed: ");
         sprintf(temp, "%d", val);
-        strcat(motorstr, temp);
+        strcat(speedstr, temp);
 
         spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(speedstr))/2;
         strcpy(str, "");
@@ -456,29 +484,33 @@ void runIndivMotor(FILE *lcdport){
 
         lcdSetText(LCD_PORT, 2, str);
 
+        done = lcdAnyButtonPressed();
         motorSet(mtr, val);
 
-        done = lcdAnyButtonPressed();
-        //delay(20);
+        delay(20);
     } while(!done);
-    taskPrioritySet(NULL, TASK_PRIORITY_DEFAULT);
+    disableOpControl = false;
 }
 
 int selectMotorGroup(FILE *lcdport){
     bool done = false;
     int val = 0;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != numgroups-1) val++;
-        else if(lcdButtonPressed(LCD_BTN_RIGHT) && val == numgroups-1) val = -1;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != -1) val--;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val == -1) val = numgroups-1;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != numgroups-1) val++;
+        else if(rightPressed && val == numgroups-1) val = -1;
+        else if(leftPressed && val != -1) val--;
+        else if(leftPressed && val == -1) val = numgroups-1;
 
         char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
         if(val != -1){
             memset(motorstr, 0, sizeof(motorstr));
-            strcat(motorstr, groups[val].name);
+            strcpy(motorstr, groups[val].name);
         } else {
-            strcat(motorstr, "Cancel");
+            strcpy(motorstr, "Cancel");
         }
 
         int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
@@ -493,7 +525,7 @@ int selectMotorGroup(FILE *lcdport){
 
         lcdSetText(LCD_PORT, 1, str);
 
-        done = lcdButtonPressed(LCD_BTN_CENTER);
+        done = centerPressed;
         lcdSetText(LCD_PORT, 2, "<      SEL     >");
         delay(20);
     } while(!done);
@@ -504,13 +536,17 @@ int selectSpdGroup(int mtr) {
     bool done = false;
     int val;
     do {
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        /*bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);*/
+        /*bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);*/
+
         val = (float) ((float) analogRead(AUTON_POT)/(float) AUTON_POT_HIGH) * 254;
         val -= 127;
         char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
         char temp[LCD_MESSAGE_MAX_LENGTH+1];
         memset(motorstr, 0, sizeof(motorstr));
         memset(temp, 0, sizeof(temp));
-        strcat(motorstr, groups[mtr].name);
+        strcpy(motorstr, groups[mtr].name);
 
         int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
         char str[LCD_MESSAGE_MAX_LENGTH+1] = "";
@@ -527,9 +563,9 @@ int selectSpdGroup(int mtr) {
         char speedstr[LCD_MESSAGE_MAX_LENGTH+1];
         memset(speedstr, 0, sizeof(speedstr));
         memset(temp, 0, sizeof(temp));
-        strcat(motorstr, "Speed: ");
+        strcpy(speedstr, "Speed: ");
         sprintf(temp, "%d", val);
-        strcat(motorstr, temp);
+        strcat(speedstr, temp);
 
         spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(speedstr))/2;
         strcpy(str, "");
@@ -543,7 +579,7 @@ int selectSpdGroup(int mtr) {
 
         lcdSetText(LCD_PORT, 2, str);
 
-        done = (digitalRead(AUTON_BUTTON) == PRESSED || lcdButtonPressed(LCD_BTN_CENTER));
+        done = (digitalRead(AUTON_BUTTON) == PRESSED || centerPressed);
         delay(20);
     } while(!done);
     return val;
@@ -555,16 +591,14 @@ void runGroupMotor(FILE *lcdport){
     if(mtr == -1) return;
     int spd = selectSpdGroup(mtr);
     int val = spd;
+    disableOpControl = true;
     motorStopAll();
-    taskPrioritySet(NULL, TASK_PRIORITY_HIGHEST-1);
     do {
         char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
         char temp[LCD_MESSAGE_MAX_LENGTH+1];
         memset(motorstr, 0, sizeof(motorstr));
         memset(temp, 0, sizeof(temp));
-        strcat(motorstr, "Motor: ");
-        sprintf(temp, "%d", mtr);
-        strcat(motorstr, temp);
+        strcpy(motorstr, groups[mtr].name);
 
         int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
         char str[LCD_MESSAGE_MAX_LENGTH+1] = "";
@@ -581,9 +615,9 @@ void runGroupMotor(FILE *lcdport){
         char speedstr[LCD_MESSAGE_MAX_LENGTH+1];
         memset(speedstr, 0, sizeof(speedstr));
         memset(temp, 0, sizeof(temp));
-        strcat(motorstr, "Speed: ");
+        strcat(speedstr, "Run Speed: ");
         sprintf(temp, "%d", val);
-        strcat(motorstr, temp);
+        strcat(speedstr, temp);
 
         spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(speedstr))/2;
         strcpy(str, "");
@@ -604,24 +638,28 @@ void runGroupMotor(FILE *lcdport){
         }
 
         done = lcdAnyButtonPressed();
-        //delay(20);
+        delay(20);
     } while(!done);
-    taskPrioritySet(NULL, TASK_PRIORITY_DEFAULT);
+    disableOpControl = false;
 }
 
 void runMotor(FILE *lcdport){
     bool done = false;
     int val = 0;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != 1) val++;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != 0) val--;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != 1) val++;
+        else if(leftPressed && val != 0) val--;
 
         if(val){
             lcdSetText(lcdport, 1, "Indiv Motor Test");
         } else {
             lcdSetText(lcdport, 1, "Group Motor Test");
         }
-        done = lcdButtonPressed(LCD_BTN_CENTER);
+        done = centerPressed;
         if(val == 0){
             lcdSetText(LCD_PORT, 2, "|      SEL     >");
         } else if(val == 1) {
@@ -640,17 +678,21 @@ bool* selectMotorGroupMembers(bool *motor){
     bool done = false;
     int val = 1;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != 10) val++;
-        else if(lcdButtonPressed(LCD_BTN_RIGHT) && val == 10) val = 0;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != 0) val--;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val == 0) val = 10;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != 10) val++;
+        else if(rightPressed && val == 10) val = 0;
+        else if(leftPressed && val != 0) val--;
+        else if(leftPressed && val == 0) val = 10;
 
         char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
         if(val != 0){
             char temp[LCD_MESSAGE_MAX_LENGTH+1];
             memset(motorstr, 0, sizeof(motorstr));
             memset(temp, 0, sizeof(temp));
-            strcat(motorstr, "Motor ");
+            strcpy(motorstr, "Motor ");
             sprintf(temp, "%d:", val);
             strcat(motorstr, temp);
             if(motor[val]){
@@ -659,10 +701,9 @@ bool* selectMotorGroupMembers(bool *motor){
                 strcat(motorstr, " Off");
             }
         } else {
-            strcat(motorstr, "Confirm");
+            strcpy(motorstr, "Confirm");
         }
-
-        int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
+int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
         char str[LCD_MESSAGE_MAX_LENGTH+1] = "";
         for(int i = 0; i < spaces; i++){
             strcat(str, " ");
@@ -674,8 +715,8 @@ bool* selectMotorGroupMembers(bool *motor){
 
         lcdSetText(LCD_PORT, 1, str);
 
-        done = (lcdButtonPressed(LCD_BTN_CENTER) && val == 0);
-        if(lcdButtonPressed(LCD_BTN_CENTER) && val != 0){
+        done = (centerPressed && val == 0);
+        if(centerPressed && val != 0){
             motor[val] = !motor[val];
         }
         if(val == 0){
@@ -689,9 +730,10 @@ bool* selectMotorGroupMembers(bool *motor){
         } else {
             char navstr[LCD_MESSAGE_MAX_LENGTH+1];
             memset(navstr, 0, sizeof(navstr));
-            navstr[0] = (val-1) + '0';
-            strcat(navstr, "      SEL     0");
-            navstr[LCD_MESSAGE_MAX_LENGTH] = (val+1) + '0';
+            sprintf(navstr, "%c      SEL     %c",(val-1) + '0', (val+1) + '0');
+            /*navstr[0] = (val-1) + '0';*/
+            /*strcat(navstr, "      SEL     ");*/
+            /*navstr[LCD_MESSAGE_MAX_LENGTH] = (val+1) + '0';*/
             lcdSetText(LCD_PORT, 2, navstr);
         }
         delay(20);
@@ -715,15 +757,35 @@ void editMotorGroup(int mtr){
     int val = 0;
     FILE *lcdport = LCD_PORT;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != 1) val++;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != 0) val--;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != 1) val++;
+        else if(leftPressed && val != 0) val--;
+
+        char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
+        memset(motorstr, 0, sizeof(motorstr));
 
         if(val){
-            lcdSetText(lcdport, 1, "Edit Name");
+            strcpy(motorstr, "Edit Name");
         } else {
-            lcdSetText(lcdport, 1, "Edit Motors");
+            strcpy(motorstr, "Edit Motors");
         }
-        done = lcdButtonPressed(LCD_BTN_CENTER);
+
+        int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
+        char str[LCD_MESSAGE_MAX_LENGTH+1] = "";
+        for(int i = 0; i < spaces; i++){
+            strcat(str, " ");
+        }
+        strcat(str, motorstr);
+        for(int i = 0; i < spaces; i++){
+            strcat(str, " ");
+        }
+
+        lcdSetText(lcdport, 1, str);
+
+        done = centerPressed;
         if(val == 0){
             lcdSetText(LCD_PORT, 2, "|      SEL     >");
         } else if(val == 1) {
@@ -744,15 +806,35 @@ void delMotorGroup(int mtr){
     FILE *lcdport = LCD_PORT;
     bool done = false;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != 1) val++;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != 0) val--;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != 1) val++;
+        else if(leftPressed && val != 0) val--;
+
+        char motorstr[LCD_MESSAGE_MAX_LENGTH+1];
+        memset(motorstr, 0, sizeof(motorstr));
 
         if(val){
-            lcdSetText(lcdport, 1, "Delete Forever");
+            strcpy(motorstr, "Delete Forever");
         } else {
-            lcdSetText(lcdport, 1, "Cancel");
+            strcpy(motorstr, "Cancel Delete");
         }
-        done = lcdButtonPressed(LCD_BTN_CENTER);
+
+        int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
+        char str[LCD_MESSAGE_MAX_LENGTH+1] = "";
+        for(int i = 0; i < spaces; i++){
+            strcat(str, " ");
+        }
+        strcat(str, motorstr);
+        for(int i = 0; i < spaces; i++){
+            strcat(str, " ");
+        }
+
+        lcdSetText(lcdport, 1, str);
+
+        done = centerPressed;
         if(val == 0){
             lcdSetText(LCD_PORT, 2, "|      SEL     >");
         } else if(val == 1) {
@@ -773,17 +855,23 @@ void runMotorGroupMgmt(FILE *lcdport){
     bool done = false;
     int val = 0;
     do {
-        if(lcdButtonPressed(LCD_BTN_RIGHT) && val != 2) val++;
-        else if(lcdButtonPressed(LCD_BTN_RIGHT) && val == 2) val = 0;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val != 0) val--;
-        else if(lcdButtonPressed(LCD_BTN_LEFT) && val == 0) val = 2;
+        bool centerPressed = lcdButtonPressed(LCD_BTN_CENTER);
+        bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
+        bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
+
+        if(rightPressed && val != 4) val++;
+        else if(rightPressed && val == 4) val = 0;
+        else if(leftPressed && val != 0) val--;
+        else if(leftPressed && val == 0) val = 4;
 
         switch(val){
             case 0: lcdSetText(lcdport, 1, "Add Motor Group"); break;
             case 1: lcdSetText(lcdport, 1, "Edit Motor Group"); break;
             case 2: lcdSetText(lcdport, 1, "Del Motor Group"); break;
+            case 3: lcdSetText(lcdport, 1, "Save Motor Group"); break;
+            case 4: lcdSetText(lcdport, 1, "Load Motor Group"); break;
         }
-        done = lcdButtonPressed(LCD_BTN_CENTER);
+        done = centerPressed;
         if(val == 0){
             lcdSetText(LCD_PORT, 2, "<      SEL     >");
         } else {
@@ -795,6 +883,8 @@ void runMotorGroupMgmt(FILE *lcdport){
         case 0: addMotorGroup(); break;
         case 1: editMotorGroup(selectMotorGroup(lcdport)); break;
         case 2: delMotorGroup(selectMotorGroup(lcdport)); break;
+        case 3: saveGroups(); break;
+        case 4: loadGroups(); break;
     }
 }
 
@@ -891,13 +981,17 @@ void runAuton(FILE *lcdport){
         if(autonLoaded == -1){
             strcat(strjoy1, "No Auton Loaded");
         } else if(autonLoaded == 0){
-            strcat(strjoy1, "Blank Auton");
+            strcat(strjoy1, "Empty Auton");
         } else {
-            char temp[LCD_MESSAGE_MAX_LENGTH+1];
-            memset(temp, 0, sizeof(temp));
-            strcat(strjoy1, "Auton Slot: ");
-            sprintf(temp, "%d", autonLoaded);
-            strcat(strjoy1, temp);
+            FILE* autonFile;
+            char filename[AUTON_FILENAME_MAX_LENGTH];
+            snprintf(filename, sizeof(filename)/sizeof(char), "a%d", autonLoaded);
+            autonFile = fopen(filename, "r");
+            char name[LCD_MESSAGE_MAX_LENGTH+1];
+            memset(name, 0, sizeof(name));
+            fread(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
+            strcpy(strjoy1, name);
+            fclose(autonFile);
         }
         if(isOnline()){
             strcat(strjoy2, "Recorder Off");

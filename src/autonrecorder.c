@@ -24,17 +24,19 @@ int progSkills;
 int selectAuton() {
     bool done = false;
     int val;
-    FILE* autonFile;
-    char filename[AUTON_FILENAME_MAX_LENGTH];
     do {
         val = (float) ((float) analogRead(AUTON_POT)/(float) AUTON_POT_HIGH) * (MAX_AUTON_SLOTS+2);
-        snprintf(filename, sizeof(filename)/sizeof(char), "a%d", val);
-        autonFile = fopen(filename, "r");
+        if(val > MAX_AUTON_SLOTS+1){
+            val = MAX_AUTON_SLOTS+1;
+        }
         if(val == 0) {
             lcdSetText(LCD_PORT, 2, "NONE");
         } else if(val == MAX_AUTON_SLOTS+1) {
             lcdSetText(LCD_PORT, 2, "Prog. Skills");
         } else {
+            char filename[AUTON_FILENAME_MAX_LENGTH];
+            snprintf(filename, sizeof(filename)/sizeof(char), "a%d", val);
+            FILE* autonFile = fopen(filename, "r");
             if(autonFile == NULL){
                 lcdPrint(LCD_PORT, 2, "Slot: %d (EMPTY)", val);
             } else {
@@ -42,6 +44,7 @@ int selectAuton() {
                 memset(name, 0, sizeof(name));
                 fread(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
                 lcdSetText(LCD_PORT, 2, name);
+                fclose(autonFile);
             }
         }
         done = (digitalRead(AUTON_BUTTON) == PRESSED);
@@ -139,7 +142,8 @@ void saveAuton() {
     if(autonSlot != MAX_AUTON_SLOTS + 1) {
         printf("Not doing programming skills, recording to slot %d.\n",autonSlot);
         snprintf(filename, sizeof(filename)/sizeof(char), "a%d", autonSlot);
-        lcdPrint(LCD_PORT, 2, "Slot: %d", autonSlot);
+        //lcdPrint(LCD_PORT, 2, "Slot: %d", autonSlot);
+        lcdPrint(LCD_PORT, 2, "%s", name);
     } else {
         printf("Doing programming skills, recording to section %d.\n", progSkills);
         snprintf(filename, sizeof(filename)/sizeof(char), "p%d", progSkills);
@@ -147,6 +151,20 @@ void saveAuton() {
     }
     printf("Saving to file %s...\n",filename);
     FILE *autonFile = fopen(filename, "w");
+    if (autonFile == NULL) {
+        printf("Error saving autonomous in file %s!\n", filename);
+        lcdSetText(LCD_PORT, 1, "Error saving!");
+        if(autonSlot != MAX_AUTON_SLOTS + 1){
+            printf("Not doing programming skills, error saving auton in slot %d!\n", autonSlot);
+            lcdSetText(LCD_PORT, 1, "Error saving!");
+            lcdPrint(LCD_PORT, 2,   "Slot: %d", autonSlot);
+        } else {
+            printf("Doing programming skills, error saving auton in section 0!\n");
+            lcdSetText(LCD_PORT, 1, "Error saving!");
+        }
+        delay(1000);
+        return;
+    }
     fwrite(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
     for (int i = 0; i < AUTON_TIME * JOY_POLL_FREQ; i++) {
         printf("Recording state %d to file %s...\n", i, filename);
@@ -235,7 +253,7 @@ void loadAuton() {
         } else {
             done = true;
         }
-    } while(done == false);
+    } while(!done);
     fseek(autonFile, 0, SEEK_SET);
     char name[LCD_MESSAGE_MAX_LENGTH+1];
     memset(name, 0, sizeof(name));
@@ -256,7 +274,8 @@ void loadAuton() {
     lcdSetText(LCD_PORT, 1, "Loaded auton!");
     if(autonSlot != MAX_AUTON_SLOTS + 1){
         printf("Not doing programming skills, loaded from slot %d.\n", autonSlot);
-        lcdPrint(LCD_PORT,   2, "Slot: %d", autonSlot);
+        //lcdPrint(LCD_PORT,   2, "Slot: %d", autonSlot);
+        lcdPrint(LCD_PORT, 2, "%s", name);
     } else {
         printf("Doing programming skills, loaded from section %d.\n", progSkills);
         lcdSetText(LCD_PORT, 2, "Skills Section: 1");
