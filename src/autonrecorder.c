@@ -96,6 +96,7 @@ void recordAuton() {
         states[i].sht = sht;
         states[i].intk = intk;
         states[i].trans = trans;
+        states[i].dep = dep;
         if (joystickGetDigital(1, 7, JOY_UP)) {
             printf("Autonomous recording manually cancelled.\n");
             lcdSetText(LCD_PORT, 1, "Cancelled record.");
@@ -134,7 +135,7 @@ void saveAuton() {
     if(autonSlot == 0) {
         printf("Not saving this autonomous!\n");
         return;
-    } else {
+    } else if(autonSlot != MAX_AUTON_SLOTS+1) {
         typeString(name);
     }
     lcdSetText(LCD_PORT, 1, "Saving auton...");
@@ -161,14 +162,18 @@ void saveAuton() {
         } else {
             printf("Doing programming skills, error saving auton in section 0!\n");
             lcdSetText(LCD_PORT, 1, "Error saving!");
+            lcdSetText(LCD_PORT, 2, "Prog. Skills");
         }
         delay(1000);
         return;
     }
-    fwrite(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
+    if(autonSlot != MAX_AUTON_SLOTS+1){
+        fwrite(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
+    }
     for (int i = 0; i < AUTON_TIME * JOY_POLL_FREQ; i++) {
         printf("Recording state %d to file %s...\n", i, filename);
-        signed char write[5] = {states[i].spd, states[i].turn, states[i].sht, states[i].intk, states[i].trans};
+        signed char write[6] = {states[i].spd, states[i].turn, states[i].sht, states[i].intk, states[i].trans,
+                                states[i].dep};
         fwrite(write, sizeof(char), sizeof(write) / sizeof(char), autonFile);
         delay(10);
     }
@@ -257,16 +262,19 @@ void loadAuton() {
     fseek(autonFile, 0, SEEK_SET);
     char name[LCD_MESSAGE_MAX_LENGTH+1];
     memset(name, 0, sizeof(name));
-    fread(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
+    if(autonSlot != MAX_AUTON_SLOTS + 1){
+        fread(name, sizeof(char), sizeof(name) / sizeof(char), autonFile);
+    }
     for (int i = 0; i < AUTON_TIME * JOY_POLL_FREQ; i++) {
         printf("Loading state %d from file %s...\n", i, filename);
-        char read[5] = {0, 0, 0, 0, 0};
+        char read[6] = {0, 0, 0, 0, 0, 0};
         fread(read, sizeof(char), sizeof(read) / sizeof(char), autonFile);
         states[i].spd = (signed char) read[0];
         states[i].turn = (signed char) read[1];
         states[i].sht = (signed char) read[2];
         states[i].intk = (signed char) read[3];
         states[i].trans = (signed char) read[4];
+        states[i].dep = (signed char) read[5];
         delay(10);
     }
     fclose(autonFile);
@@ -316,6 +324,7 @@ void playbackAuton() { //must load autonomous first!
             sht = states[i].sht;
             intk = states[i].intk;
             trans = states[i].trans;
+            dep = states[i].dep;
             if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
                 printf("Playback manually cancelled.\n");
                 lcdSetText(LCD_PORT, 1, "Cancelled playback.");
@@ -326,13 +335,14 @@ void playbackAuton() { //must load autonomous first!
             moveRobot();
             if(autonLoaded == MAX_AUTON_SLOTS + 1 && file < PROGSKILL_TIME/AUTON_TIME - 1){
                 printf("Loading state %d from file %s...\n", i, filename);
-                char read[5] = {0, 0, 0, 0, 0};
+                char read[6] = {0, 0, 0, 0, 0, 0};
                 fread(read, sizeof(char), sizeof(read) / sizeof(char), nextFile);
-                states[i].sht = (signed char) read[0];
+                states[i].spd = (signed char) read[0];
                 states[i].turn = (signed char) read[1];
                 states[i].sht = (signed char) read[2];
                 states[i].intk = (signed char) read[3];
                 states[i].trans = (signed char) read[4];
+                states[i].dep = (signed char) read[5];
             }
             delay(1000 / JOY_POLL_FREQ);
         }

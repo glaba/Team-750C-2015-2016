@@ -191,7 +191,6 @@ void initGroups(){
         strcpy(groups[3].name, "Nautilus Shooter");
 
         groups[4].motor[INTAKE_ROLLER_MOTOR] = true;
-        groups[4].motor[INTAKE_CONVEYOR_MOTOR] = true;
         strcpy(groups[4].name, "Intake");
 
         groups[5].motor[TRANSMISSION_MOTOR] = true;

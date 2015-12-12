@@ -52,7 +52,7 @@
  * Structure containing the joystick state variables at a point in time.
  */
 typedef struct joyState {
-    signed char spd, turn, sht, intk, trans;
+    signed char spd, turn, sht, intk, trans, dep;
 } joyState;
 
 /**

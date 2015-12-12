@@ -85,7 +85,6 @@ inline void shoot(int spd){
  * Defines motor ports for the intake mechanism.
  */
 #define INTAKE_ROLLER_MOTOR 8
-#define INTAKE_CONVEYOR_MOTOR 9
 
 /** 
  * Intakes balls using the intake mechanism by setting the intake motor values.
@@ -94,7 +93,12 @@ inline void shoot(int spd){
  */
 inline void intake(int spd){
     motorSet(INTAKE_ROLLER_MOTOR, spd);
-    motorSet(INTAKE_CONVEYOR_MOTOR, spd);
+}
+
+#define LIFT_DEPLOY 9
+
+inline void deploy(int spd){
+    motorSet(LIFT_DEPLOY, spd);
 }
 
 #ifndef SHOOTER_HAS_THREE_MOTORS

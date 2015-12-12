@@ -27,6 +27,11 @@ extern int intk;
 extern int trans;
 
 /**
+ * Speed of the lift deployment motor.
+ */
+extern int dep;
+
+/**
  * Populates the motor state variables based on the joystick's current values.
  */
 void recordJoyInfo();

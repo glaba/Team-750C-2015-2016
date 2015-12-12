@@ -39,6 +39,7 @@ int turn;
 int sht; 
 int intk;
 int trans;
+int dep;
 
 void recordJoyInfo(){
     spd = joystickGetAnalog(1, 3);
@@ -69,6 +70,13 @@ void recordJoyInfo(){
     } else {
         trans = 0;
     }
+    if(joystickGetDigital(1, 8, JOY_UP) || joystickGetDigital(2, 8, JOY_UP)){
+        dep = 127;
+    } else if(joystickGetDigital(1, 8, JOY_DOWN) || joystickGetDigital(2, 8, JOY_DOWN)){
+        dep = -127;
+    } else {
+        dep = 0;
+    }
 }
 
 void moveRobot(){
@@ -76,6 +84,7 @@ void moveRobot(){
     shoot(sht);
     intake(intk);
     transmission(trans);
+    deploy(dep);
 }
 
 /**
