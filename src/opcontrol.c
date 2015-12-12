@@ -61,10 +61,10 @@ void recordJoyInfo(){
         intk = 0;
     }
     if(joystickGetDigital(1, 8, JOY_LEFT)){
-        trans = 40;
+        trans = 80;
         /*changeGear(GEAR_LIFT);*/
     } else if(joystickGetDigital(1, 8, JOY_RIGHT)){
-        trans = -40;
+        trans = -80;
         /*changeGear(GEAR_DRIVE);*/
     } else {
         trans = 0;

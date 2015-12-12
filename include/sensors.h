@@ -35,7 +35,7 @@ extern Encoder rightenc;
 #define GEAR_LIFT 4095
 
 #define POWER_EXPANDER_STATUS 3
-#define POWER_EXPANDER_VOLTAGE_DIVISOR 70 //Hardware revision A2
+#define POWER_EXPANDER_VOLTAGE_DIVISOR 280 //Hardware revision A2
 
 /** 
  * Returns the electric potential of the power expander battery in millivolts.
