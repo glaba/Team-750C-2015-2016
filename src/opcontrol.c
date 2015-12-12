@@ -46,16 +46,16 @@ void recordJoyInfo(){
     sht = 0;
     intk = 0;
     trans = 0;
-    if(joystickGetDigital(1, 6, JOY_UP)){
+    if(joystickGetDigital(1, 6, JOY_UP) || joystickGetDigital(2, 6, JOY_UP)){
         sht = 127;
-    } else if(joystickGetDigital(1, 6, JOY_DOWN)){
+    } else if(joystickGetDigital(1, 6, JOY_DOWN) || joystickGetDigital(2, 6, JOY_DOWN)){
         sht = -127;
     } else {
         sht = 0;
     }
-    if(joystickGetDigital(1, 5, JOY_UP)){
+    if(joystickGetDigital(1, 5, JOY_UP) || joystickGetDigital(2, 5, JOY_UP)){
         intk = 127;
-    } else if(joystickGetDigital(1, 5, JOY_DOWN)){
+    } else if(joystickGetDigital(1, 5, JOY_DOWN) || joystickGetDigital(2, 5, JOY_DOWN)){
         intk = -127;
     } else {
         intk = 0;
