@@ -858,17 +858,16 @@ void runMotorGroupMgmt(FILE *lcdport){
         bool leftPressed = lcdButtonPressed(LCD_BTN_LEFT);
         bool rightPressed = lcdButtonPressed(LCD_BTN_RIGHT);
 
-        if(rightPressed && val != 4) val++;
-        else if(rightPressed && val == 4) val = 0;
+        if(rightPressed && val != 3) val++;
+        else if(rightPressed && val == 3) val = 0;
         else if(leftPressed && val != 0) val--;
-        else if(leftPressed && val == 0) val = 4;
+        else if(leftPressed && val == 0) val = 3;
 
         switch(val){
             case 0: lcdSetText(lcdport, 1, "Add Motor Group"); break;
             case 1: lcdSetText(lcdport, 1, "Edit Motor Group"); break;
             case 2: lcdSetText(lcdport, 1, "Del Motor Group"); break;
-            case 3: lcdSetText(lcdport, 1, "Save Motor Group"); break;
-            case 4: lcdSetText(lcdport, 1, "Load Motor Group"); break;
+            case 3: lcdSetText(lcdport, 1, "Cancel"); break;
         }
         done = centerPressed;
         if(val == 0){
@@ -882,8 +881,7 @@ void runMotorGroupMgmt(FILE *lcdport){
         case 0: addMotorGroup(); break;
         case 1: editMotorGroup(selectMotorGroup(lcdport)); break;
         case 2: delMotorGroup(selectMotorGroup(lcdport)); break;
-        case 3: saveGroups(); break;
-        case 4: loadGroups(); break;
+        case 3: break;
     }
 }
 
