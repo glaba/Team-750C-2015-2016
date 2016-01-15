@@ -68,6 +68,12 @@ void initialize() {
     rightenc = encoderInit(RIGHT_ENC_TOP, RIGHT_ENC_BOT, false);
     lcdInit(LCD_PORT);
     lcdClear(LCD_PORT);
+    lcdSetBacklight(LCD_PORT, true);
+    lcdSetText(LCD_PORT, 1, "Init-ing gyro...");
+    gyro = gyroInit(GYRO_PORT, GYRO_SENSITIVITY);
+    delay(1100);
+    gyroReset(gyro);
+    lcdSetText(LCD_PORT, 1, "Init-ed gyro!");
     initAutonRecorder();
     initGroups();
     if(isOnline()){

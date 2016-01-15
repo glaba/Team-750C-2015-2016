@@ -46,6 +46,7 @@ char *lcdmsg[] = {
     "Skin Irritant",
     "Akram Sandhu",
     "Therapy Dogs",
+    "Staples Bands",
     "itoa() Sucks"
 };
 

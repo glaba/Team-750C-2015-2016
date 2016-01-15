@@ -41,4 +41,14 @@
  */
 #define RAD_TO_DEG 57.295779513082320876798154814105
 
+/**
+ * Amount of degrees in a circle.
+ */
+#define ROTATION_DEG 360
+
+/**
+ * Amount of radians in a circle.
+ */
+#define ROTATION_RAD TWO_PI
+
 #endif

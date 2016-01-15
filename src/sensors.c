@@ -10,3 +10,7 @@ Encoder leftenc;
  */
 Encoder rightenc;
 
+/**
+ * Object representing the gyroscope.
+ */
+Gyro gyro;

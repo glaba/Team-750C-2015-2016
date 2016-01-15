@@ -41,6 +41,11 @@ int intk;
 int trans;
 int dep;
 
+void targetNet(int target){
+    int error = gyroGet(gyro) % ROTATION_DEG - target;
+    turn = error * 20;
+}
+
 void recordJoyInfo(){
     spd = joystickGetAnalog(1, 3);
     turn = joystickGetAnalog(1, 1);
@@ -76,6 +81,12 @@ void recordJoyInfo(){
         dep = -127;
     } else {
         dep = 0;
+    }
+
+    if(joystickGetDigital(1, 7, JOY_DOWN)){
+        targetNet(GYRO_NET_TARGET);
+    } else if(joystickGetDigital(1, 7, JOY_UP)){
+        targetNet(0);
     }
 }
 

@@ -2,6 +2,16 @@
 #define MOTORS_H_
 
 /**
+ * Defines maximum motor speed value.
+ */
+#define MOTOR_MAX 127
+
+/**
+ * Defines motor minimum speed value.
+ */
+#define MOTOR_MIN -127
+
+/**
  * Defines motor port for the transmission to change between driving and lifting
  */
 #define TRANSMISSION_MOTOR 1

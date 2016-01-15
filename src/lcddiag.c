@@ -937,11 +937,12 @@ void runRobot(FILE *lcdport){
         } else {
             strcat(strjoy1, "Practice Mode");
         }
-        if(isEnabled()){
+        /*if(isEnabled()){
             strcat(strjoy2, "Robot Enabled");
         } else {
             strcat(strjoy2, "Robot Disabled");
-        }
+        }*/
+        sprintf(strjoy2, "Angle: %d", gyroGet(gyro));
 
         int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(strjoy1))/2;
         char str[LCD_MESSAGE_MAX_LENGTH+1] = "";

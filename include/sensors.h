@@ -52,4 +52,24 @@ inline unsigned int powerLevelExpander(){
 #define BATT_BKUP 1
 #define BATT_PEXP 2
 
+/**
+ * Defines the port for the gyroscope.
+ */
+#define GYRO_PORT 4
+
+/**
+ * Defines the gyroscope sensitivity. A value of zero represents the default sensitivity.
+ */
+#define GYRO_SENSITIVITY 0
+
+/**
+ * Defines gyroscope target angle for the opposite corner net.
+ */
+#define GYRO_NET_TARGET 38
+
+/**
+ * Object representing the gyroscope.
+ */
+extern Gyro gyro;
+
 #endif
