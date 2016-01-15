@@ -65,7 +65,7 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines gyroscope target angle for the opposite corner net.
  */
-#define GYRO_NET_TARGET 38
+#define GYRO_NET_TARGET 0
 
 /**
  * Object representing the gyroscope.

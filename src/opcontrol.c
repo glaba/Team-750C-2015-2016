@@ -86,7 +86,7 @@ void recordJoyInfo(){
     if(joystickGetDigital(1, 7, JOY_DOWN)){
         targetNet(GYRO_NET_TARGET);
     } else if(joystickGetDigital(1, 7, JOY_UP)){
-        targetNet(0);
+        gyroReset(gyro);
     }
 }
 
