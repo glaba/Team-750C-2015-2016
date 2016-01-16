@@ -46,7 +46,7 @@ inline void changeGear(int gear){
  * Defines motor ports for the left side of the drivetrain.
  */
 #define LEFT_MOTOR_TOP 2
-#define LEFT_MOTOR_BOT 3
+#define LEFT_MOTOR_BOT 6
 
 /**
  * Defines motor ports for the right side of the drivetrain.
@@ -72,7 +72,7 @@ inline void move(int spd, int turn){
  */
 #define SHOOTER_HAS_THREE_MOTORS
 
-#define NAUTILUS_SHOOTER_MOTOR_LEFT 6
+#define NAUTILUS_SHOOTER_MOTOR_LEFT 3
 #define NAUTILUS_SHOOTER_MOTOR_RIGHT 7
 #ifdef SHOOTER_HAS_THREE_MOTORS
 #define NAUTILUS_SHOOTER_MOTOR_CENTER 10
