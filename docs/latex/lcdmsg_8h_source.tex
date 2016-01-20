@@ -1,0 +1,24 @@
+\hypertarget{lcdmsg_8h_source}{}\subsection{lcdmsg.\+h}
+\label{lcdmsg_8h_source}\index{include/lcdmsg.\+h@{include/lcdmsg.\+h}}
+
+\begin{DoxyCode}
+00001 
+00010 \textcolor{preprocessor}{#ifndef LCDMSG\_H\_}
+00011 \textcolor{preprocessor}{#define LCDMSG\_H\_}
+00012 
+\hypertarget{lcdmsg_8h_source.tex_l00016}{}\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{00016} \textcolor{preprocessor}{#define LCD\_PORT uart1}
+00017 
+\hypertarget{lcdmsg_8h_source.tex_l00021}{}\hyperlink{lcdmsg_8h_aa9575881ef196e5c94e60d183742eee7}{00021} \textcolor{preprocessor}{#define LCD\_750C\_TITLE "  $$$ 750C $$$  "}
+00022 
+\hypertarget{lcdmsg_8h_source.tex_l00026}{}\hyperlink{lcdmsg_8h_ad50b23287bae902efb0984c90be2cf23}{00026} \textcolor{preprocessor}{#define LCD\_MESSAGE\_COUNT 44}
+00027 
+\hypertarget{lcdmsg_8h_source.tex_l00031}{}\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{00031} \textcolor{preprocessor}{#define LCD\_MESSAGE\_MAX\_LENGTH 16}
+00032 
+00036 \textcolor{keyword}{extern} \textcolor{keywordtype}{char} *\hyperlink{lcdmsg_8h_abbcf1856a4c9063200ef3f4131fd05f5}{lcdmsg}[];
+00037 
+00044 \textcolor{keywordtype}{void} \hyperlink{lcdmsg_8h_aabe33dfb797df5997c5e03078591aa81}{randlcdmsg}(FILE *lcdport, \textcolor{keywordtype}{int} line);
+00045 
+00051 \textcolor{keywordtype}{void} \hyperlink{lcdmsg_8h_acc19fe50b302412c894538965e77cb8b}{screensaver}(FILE *lcdport);
+00052 
+00053 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

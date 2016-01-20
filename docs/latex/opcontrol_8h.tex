@@ -1,0 +1,108 @@
+\hypertarget{opcontrol_8h}{}\subsection{include/opcontrol.h File Reference}
+\label{opcontrol_8h}\index{include/opcontrol.\+h@{include/opcontrol.\+h}}
+
+
+Header file for operator control definitions and prototypes.  
+
+
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{opcontrol_8h_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}{record\+Joy\+Info} ()
+\item 
+void \hyperlink{opcontrol_8h_ad3b45c5807c039d0ce28bb0da06f0014}{move\+Robot} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{opcontrol_8h_a642ce334330c8b0f6e33dd0a3fa65111}{spd}
+\item 
+int \hyperlink{opcontrol_8h_aaefa47f4fdf865c2358c22b542a993e4}{turn}
+\item 
+int \hyperlink{opcontrol_8h_ab9078d4ef28960b548a1621e2f6e9438}{sht}
+\item 
+int \hyperlink{opcontrol_8h_a0f71b6f71e93fa27c60c4dbbfc135bbb}{intk}
+\item 
+int \hyperlink{opcontrol_8h_a7039f0d5c4b6a662294b23dccf0bea0e}{trans}
+\item 
+int \hyperlink{opcontrol_8h_ada6c89c18e8b2a17151b9bc6b8ae060c}{dep}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Header file for operator control definitions and prototypes. 
+
+This file contains definitions of the internal motor state variables and prototypes for functions that record these variables and move the robot based on their value. 
+
+Definition in file \hyperlink{opcontrol_8h_source}{opcontrol.\+h}.
+
+
+
+\subsubsection{Function Documentation}
+\index{opcontrol.\+h@{opcontrol.\+h}!move\+Robot@{move\+Robot}}
+\index{move\+Robot@{move\+Robot}!opcontrol.\+h@{opcontrol.\+h}}
+\paragraph[{\texorpdfstring{move\+Robot()}{moveRobot()}}]{\setlength{\rightskip}{0pt plus 5cm}void move\+Robot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{opcontrol_8h_ad3b45c5807c039d0ce28bb0da06f0014}{}\label{opcontrol_8h_ad3b45c5807c039d0ce28bb0da06f0014}
+Moves the robot based on the motor state variables. 
+
+Definition at line \hyperlink{opcontrol_8c_source_l00128}{128} of file \hyperlink{opcontrol_8c_source}{opcontrol.\+c}.
+
+\index{opcontrol.\+h@{opcontrol.\+h}!record\+Joy\+Info@{record\+Joy\+Info}}
+\index{record\+Joy\+Info@{record\+Joy\+Info}!opcontrol.\+h@{opcontrol.\+h}}
+\paragraph[{\texorpdfstring{record\+Joy\+Info()}{recordJoyInfo()}}]{\setlength{\rightskip}{0pt plus 5cm}void record\+Joy\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{opcontrol_8h_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}{}\label{opcontrol_8h_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}
+Populates the motor state variables based on the joystick\textquotesingle{}s current values. 
+
+Definition at line \hyperlink{opcontrol_8c_source_l00081}{81} of file \hyperlink{opcontrol_8c_source}{opcontrol.\+c}.
+
+
+
+\subsubsection{Variable Documentation}
+\index{opcontrol.\+h@{opcontrol.\+h}!dep@{dep}}
+\index{dep@{dep}!opcontrol.\+h@{opcontrol.\+h}}
+\paragraph[{\texorpdfstring{dep}{dep}}]{\setlength{\rightskip}{0pt plus 5cm}int dep}\hypertarget{opcontrol_8h_ada6c89c18e8b2a17151b9bc6b8ae060c}{}\label{opcontrol_8h_ada6c89c18e8b2a17151b9bc6b8ae060c}
+Speed of the lift deployment motor. 
+
+Definition at line \hyperlink{opcontrol_8c_source_l00065}{65} of file \hyperlink{opcontrol_8c_source}{opcontrol.\+c}.
+
+\index{opcontrol.\+h@{opcontrol.\+h}!intk@{intk}}
+\index{intk@{intk}!opcontrol.\+h@{opcontrol.\+h}}
+\paragraph[{\texorpdfstring{intk}{intk}}]{\setlength{\rightskip}{0pt plus 5cm}int intk}\hypertarget{opcontrol_8h_a0f71b6f71e93fa27c60c4dbbfc135bbb}{}\label{opcontrol_8h_a0f71b6f71e93fa27c60c4dbbfc135bbb}
+Speed of the intake motors. 
+
+Definition at line \hyperlink{opcontrol_8c_source_l00055}{55} of file \hyperlink{opcontrol_8c_source}{opcontrol.\+c}.
+
+\index{opcontrol.\+h@{opcontrol.\+h}!sht@{sht}}
+\index{sht@{sht}!opcontrol.\+h@{opcontrol.\+h}}
+\paragraph[{\texorpdfstring{sht}{sht}}]{\setlength{\rightskip}{0pt plus 5cm}int sht}\hypertarget{opcontrol_8h_ab9078d4ef28960b548a1621e2f6e9438}{}\label{opcontrol_8h_ab9078d4ef28960b548a1621e2f6e9438}
+Speed of the shooter motors. 
+
+Definition at line \hyperlink{opcontrol_8c_source_l00050}{50} of file \hyperlink{opcontrol_8c_source}{opcontrol.\+c}.
+
+\index{opcontrol.\+h@{opcontrol.\+h}!spd@{spd}}
+\index{spd@{spd}!opcontrol.\+h@{opcontrol.\+h}}
+\paragraph[{\texorpdfstring{spd}{spd}}]{\setlength{\rightskip}{0pt plus 5cm}int spd}\hypertarget{opcontrol_8h_a642ce334330c8b0f6e33dd0a3fa65111}{}\label{opcontrol_8h_a642ce334330c8b0f6e33dd0a3fa65111}
+Forward/backward speed of the drive motors. 
+
+Definition at line \hyperlink{opcontrol_8c_source_l00040}{40} of file \hyperlink{opcontrol_8c_source}{opcontrol.\+c}.
+
+\index{opcontrol.\+h@{opcontrol.\+h}!trans@{trans}}
+\index{trans@{trans}!opcontrol.\+h@{opcontrol.\+h}}
+\paragraph[{\texorpdfstring{trans}{trans}}]{\setlength{\rightskip}{0pt plus 5cm}int trans}\hypertarget{opcontrol_8h_a7039f0d5c4b6a662294b23dccf0bea0e}{}\label{opcontrol_8h_a7039f0d5c4b6a662294b23dccf0bea0e}
+Speed of the transmission motors. 
+
+Definition at line \hyperlink{opcontrol_8c_source_l00060}{60} of file \hyperlink{opcontrol_8c_source}{opcontrol.\+c}.
+
+\index{opcontrol.\+h@{opcontrol.\+h}!turn@{turn}}
+\index{turn@{turn}!opcontrol.\+h@{opcontrol.\+h}}
+\paragraph[{\texorpdfstring{turn}{turn}}]{\setlength{\rightskip}{0pt plus 5cm}int turn}\hypertarget{opcontrol_8h_aaefa47f4fdf865c2358c22b542a993e4}{}\label{opcontrol_8h_aaefa47f4fdf865c2358c22b542a993e4}
+Turning speed of the drive motors. 
+
+Definition at line \hyperlink{opcontrol_8c_source_l00045}{45} of file \hyperlink{opcontrol_8c_source}{opcontrol.\+c}.
+

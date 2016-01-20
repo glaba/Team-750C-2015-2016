@@ -1,0 +1,644 @@
+\hypertarget{lcddiag_8c}{}\subsection{src/lcddiag.c File Reference}
+\label{lcddiag_8c}\index{src/lcddiag.\+c@{src/lcddiag.\+c}}
+
+
+File for L\+CD diagnostic menu code.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\\*
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}{type\+String} (char $\ast$dest)
+\item 
+void \hyperlink{lcddiag_8c_a816c6a9d20d80fcfcc4b684df11531b5}{save\+Groups} ()
+\item 
+void \hyperlink{lcddiag_8c_a98f03692fe38505e9b0231122b976c0e}{load\+Groups} ()
+\item 
+void \hyperlink{lcddiag_8c_ad290df3e273598f9f10fe34c257e4084}{init\+Groups} ()
+\item 
+void \hyperlink{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}{format\+Menu\+Name\+Center} (F\+I\+LE $\ast$lcdport, int line, int index)
+\item 
+int \hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{select\+Menu} ()
+\item 
+void \hyperlink{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}{run\+Screensaver} (F\+I\+LE $\ast$lcdport)
+\item 
+void \hyperlink{lcddiag_8c_a9a604d967527579e547780271290500f}{run\+Battery} (F\+I\+LE $\ast$lcdport)
+\item 
+int \hyperlink{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{select\+Motor} (F\+I\+LE $\ast$lcdport)
+\item 
+int \hyperlink{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{select\+Spd} (int mtr)
+\item 
+void \hyperlink{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}{run\+Indiv\+Motor} (F\+I\+LE $\ast$lcdport)
+\item 
+int \hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{select\+Motor\+Group} (F\+I\+LE $\ast$lcdport)
+\item 
+int \hyperlink{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{select\+Spd\+Group} (int mtr)
+\item 
+void \hyperlink{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}{run\+Group\+Motor} (F\+I\+LE $\ast$lcdport)
+\item 
+void \hyperlink{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}{run\+Motor} (F\+I\+LE $\ast$lcdport)
+\item 
+bool $\ast$ \hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{select\+Motor\+Group\+Members} (bool $\ast$motor)
+\item 
+void \hyperlink{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}{add\+Motor\+Group} ()
+\item 
+void \hyperlink{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}{edit\+Motor\+Group} (int mtr)
+\item 
+void \hyperlink{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}{del\+Motor\+Group} (int mtr)
+\item 
+void \hyperlink{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}{run\+Motor\+Group\+Mgmt} (F\+I\+LE $\ast$lcdport)
+\item 
+void \hyperlink{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}{run\+Connection} (F\+I\+LE $\ast$lcdport)
+\item 
+void \hyperlink{lcddiag_8c_a7154650020a551de49d976659df81a9d}{run\+Robot} (F\+I\+LE $\ast$lcdport)
+\item 
+void \hyperlink{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}{run\+Auton} (F\+I\+LE $\ast$lcdport)
+\item 
+void \hyperlink{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}{run\+Credits} (F\+I\+LE $\ast$lcdport)
+\item 
+void \hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{do\+Menu\+Choice} (int choice)
+\item 
+void \hyperlink{lcddiag_8c_af7a16cd7a10c542f5bfe3e4ad292c34d}{format\+L\+C\+D\+Display} (void $\ast$ignore)
+\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Task\+Handle \hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcd\+Diag\+Task} = N\+U\+LL
+\item 
+bool \hyperlink{lcddiag_8c_a8ba67e368b4d0422ad0c1fe6695040ac}{backlight} = true
+\item 
+bool \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disable\+Op\+Control} = false
+\item 
+\hyperlink{struct_motor_group}{Motor\+Group} $\ast$ \hyperlink{lcddiag_8c_a7c12b01a5e5a665d9d799e862dab6350}{groups}
+\item 
+int \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}
+\item 
+char \hyperlink{lcddiag_8c_ab5b8edfc6a94520add858274b3fac974}{menu\+Choices} \mbox{[}\hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT}\mbox{]}\mbox{[}\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}+1\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+File for L\+CD diagnostic menu code. 
+
+This file contains the code for the L\+CD diagnostic menu. The menu provides live debugging and testing functionality. It provides the following functions\+:
+\begin{DoxyItemize}
+\item Motor testing functionality (individual and group)
+\item Motor group management
+\item Battery voltage information
+\item Joystick connection status
+\item Robot sensory data
+\item Autonomous recorder status
+\item L\+CD backlight toggle
+\item Screensaver that displays during operator control
+\item Credits menu
+\end{DoxyItemize}
+
+The idea behind this was inspired by Team 750W and Akram Sandhu. Without them, this project would not be possible.
+
+Note\+: the implementation of this feature is completely different between the two teams. No code was reused from their implementation of the L\+CD diagnostic menu. 
+
+Definition in file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+
+
+\subsubsection{Function Documentation}
+\index{lcddiag.\+c@{lcddiag.\+c}!add\+Motor\+Group@{add\+Motor\+Group}}
+\index{add\+Motor\+Group@{add\+Motor\+Group}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{add\+Motor\+Group()}{addMotorGroup()}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Motor\+Group (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}{}\label{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}
+Adds a new motor group to the dynamic array. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00901}{901} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!del\+Motor\+Group@{del\+Motor\+Group}}
+\index{del\+Motor\+Group@{del\+Motor\+Group}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{del\+Motor\+Group(int mtr)}{delMotorGroup(int mtr)}}]{\setlength{\rightskip}{0pt plus 5cm}void del\+Motor\+Group (
+\begin{DoxyParamCaption}
+\item[{int}]{mtr}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}{}\label{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}
+Deletes a motor group. Prompts the user whether to cancel or to proceed with deletion.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtr} & the ID number to delete \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00972}{972} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!do\+Menu\+Choice@{do\+Menu\+Choice}}
+\index{do\+Menu\+Choice@{do\+Menu\+Choice}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{do\+Menu\+Choice(int choice)}{doMenuChoice(int choice)}}]{\setlength{\rightskip}{0pt plus 5cm}void do\+Menu\+Choice (
+\begin{DoxyParamCaption}
+\item[{int}]{choice}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{}\label{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}
+Dispatcher function that executes the selected L\+CD diagnostic menu function. This function is called with the result of \hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{select\+Menu()}.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{select\+Menu()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em choice} & the selected menu to run \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l01278}{1278} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!edit\+Motor\+Group@{edit\+Motor\+Group}}
+\index{edit\+Motor\+Group@{edit\+Motor\+Group}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{edit\+Motor\+Group(int mtr)}{editMotorGroup(int mtr)}}]{\setlength{\rightskip}{0pt plus 5cm}void edit\+Motor\+Group (
+\begin{DoxyParamCaption}
+\item[{int}]{mtr}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}{}\label{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}
+Edits a motor group. Prompts the user to either edit the name or the motors in a motor group.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtr} & the ID number of the motor group to edit \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00917}{917} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!format\+L\+C\+D\+Display@{format\+L\+C\+D\+Display}}
+\index{format\+L\+C\+D\+Display@{format\+L\+C\+D\+Display}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{format\+L\+C\+D\+Display(void $\ast$ignore)}{formatLCDDisplay(void *ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}void format\+L\+C\+D\+Display (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ignore}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_af7a16cd7a10c542f5bfe3e4ad292c34d}{}\label{lcddiag_8c_af7a16cd7a10c542f5bfe3e4ad292c34d}
+Runs the L\+CD diagnostic menu task. This thread executes concurrently with the operator control task. The L\+CD diagnostic menu starts in screensaver mode. Pressing any button cancels screensaver mode and enters the selection menu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ignore} & does nothing -\/ required by task definition \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l01300}{1300} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!format\+Menu\+Name\+Center@{format\+Menu\+Name\+Center}}
+\index{format\+Menu\+Name\+Center@{format\+Menu\+Name\+Center}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{format\+Menu\+Name\+Center(\+F\+I\+L\+E $\ast$lcdport, int line, int index)}{formatMenuNameCenter(FILE *lcdport, int line, int index)}}]{\setlength{\rightskip}{0pt plus 5cm}void format\+Menu\+Name\+Center (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport, }
+\item[{int}]{line, }
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}{}\label{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}
+Formats the L\+CD diagnostic menu name in the center of the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+{\em line} & the line on the L\+CD to print the name \\
+\hline
+{\em index} & the ID number of the menu \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00284}{284} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!init\+Groups@{init\+Groups}}
+\index{init\+Groups@{init\+Groups}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{init\+Groups()}{initGroups()}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Groups (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_ad290df3e273598f9f10fe34c257e4084}{}\label{lcddiag_8c_ad290df3e273598f9f10fe34c257e4084}
+Initializes the motor groups array to contain the standard set of groups. This includes\+: Left Drive, Right Drive, Full Drive, Nautilus Shooter, Intake, and Transmission. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00230}{230} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!load\+Groups@{load\+Groups}}
+\index{load\+Groups@{load\+Groups}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{load\+Groups()}{loadGroups()}}]{\setlength{\rightskip}{0pt plus 5cm}void load\+Groups (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a98f03692fe38505e9b0231122b976c0e}{}\label{lcddiag_8c_a98f03692fe38505e9b0231122b976c0e}
+Loads motor groups from a file on the Cortex flash memory. This is used to add custom motor groups for testing purposes. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00198}{198} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Auton@{run\+Auton}}
+\index{run\+Auton@{run\+Auton}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Auton(\+F\+I\+L\+E $\ast$lcdport)}{runAuton(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Auton (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}{}\label{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}
+Runs the autonomous recorder status menu. Displays the autonomous that is currently loaded, and if controller playback is enabled. Controller playback is automatically disabled when plugged into the competition switch.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l01170}{1170} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Battery@{run\+Battery}}
+\index{run\+Battery@{run\+Battery}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Battery(\+F\+I\+L\+E $\ast$lcdport)}{runBattery(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Battery (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a9a604d967527579e547780271290500f}{}\label{lcddiag_8c_a9a604d967527579e547780271290500f}
+Displays the battery voltages, allowing for switching between batteries.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00356}{356} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Connection@{run\+Connection}}
+\index{run\+Connection@{run\+Connection}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Connection(\+F\+I\+L\+E $\ast$lcdport)}{runConnection(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Connection (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}{}\label{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}
+Runs the joystick connection debugging menu. Prints whether the main and partner joysticks are connected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l01070}{1070} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Credits@{run\+Credits}}
+\index{run\+Credits@{run\+Credits}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Credits(\+F\+I\+L\+E $\ast$lcdport)}{runCredits(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Credits (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}{}\label{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}
+Runs the credits menu. The L\+CD diagnostic menu was inspired by Team 750W and Akram Sandhu. This would not be possible without their generosity and permissiveness to use their idea.
+
+Note\+: the implementation of this feature is completely different between the two teams. No code was reused from their implementation of the L\+CD diagnostic menu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l01235}{1235} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Group\+Motor@{run\+Group\+Motor}}
+\index{run\+Group\+Motor@{run\+Group\+Motor}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Group\+Motor(\+F\+I\+L\+E $\ast$lcdport)}{runGroupMotor(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Group\+Motor (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}{}\label{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}
+Runs the motor group test. Selection of the motor group and speed is handled by other functions.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{select\+Motor\+Group()} 
+
+\hyperlink{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{select\+Spd\+Group()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00729}{729} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Indiv\+Motor@{run\+Indiv\+Motor}}
+\index{run\+Indiv\+Motor@{run\+Indiv\+Motor}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Indiv\+Motor(\+F\+I\+L\+E $\ast$lcdport)}{runIndivMotor(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Indiv\+Motor (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}{}\label{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}
+Runs the individual motor test. Selection of the motor and speed is handled by other functions
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{select\+Motor()} 
+
+\hyperlink{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{select\+Spd()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00557}{557} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Motor@{run\+Motor}}
+\index{run\+Motor@{run\+Motor}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Motor(\+F\+I\+L\+E $\ast$lcdport)}{runMotor(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Motor (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}{}\label{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}
+Runs the top-\/level motor testing menu. Prompts the user to select between individual and group motor testing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00793}{793} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Motor\+Group\+Mgmt@{run\+Motor\+Group\+Mgmt}}
+\index{run\+Motor\+Group\+Mgmt@{run\+Motor\+Group\+Mgmt}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Motor\+Group\+Mgmt(\+F\+I\+L\+E $\ast$lcdport)}{runMotorGroupMgmt(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Motor\+Group\+Mgmt (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}{}\label{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}
+Runs the top-\/level motor group management menu. Prompts the user whether to add, edit, or delete motor groups.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l01029}{1029} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Robot@{run\+Robot}}
+\index{run\+Robot@{run\+Robot}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Robot(\+F\+I\+L\+E $\ast$lcdport)}{runRobot(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Robot (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a7154650020a551de49d976659df81a9d}{}\label{lcddiag_8c_a7154650020a551de49d976659df81a9d}
+Runs the robot sensory information menu. Displays information regarding competition switch status and gyroscope angle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l01119}{1119} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!run\+Screensaver@{run\+Screensaver}}
+\index{run\+Screensaver@{run\+Screensaver}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{run\+Screensaver(\+F\+I\+L\+E $\ast$lcdport)}{runScreensaver(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+Screensaver (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}{}\label{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}
+Runs the screensaver that displays L\+CD messages.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{lcdmsg_8c}{lcdmsg.\+c}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00337}{337} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!save\+Groups@{save\+Groups}}
+\index{save\+Groups@{save\+Groups}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{save\+Groups()}{saveGroups()}}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Groups (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a816c6a9d20d80fcfcc4b684df11531b5}{}\label{lcddiag_8c_a816c6a9d20d80fcfcc4b684df11531b5}
+Saves motor groups out to a file. This file can be loaded to add custom motor groups into memory. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00173}{173} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!select\+Menu@{select\+Menu}}
+\index{select\+Menu@{select\+Menu}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{select\+Menu()}{selectMenu()}}]{\setlength{\rightskip}{0pt plus 5cm}int select\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{}\label{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}
+Displays the list of menus and waits for the user to select one.
+
+\begin{DoxyReturn}{Returns}
+the ID number of the menu selected 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00302}{302} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!select\+Motor@{select\+Motor}}
+\index{select\+Motor@{select\+Motor}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{select\+Motor(\+F\+I\+L\+E $\ast$lcdport)}{selectMotor(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}int select\+Motor (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{}\label{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}
+Prompts the user to select an individual motor to test.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the motor number selected 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00424}{424} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!select\+Motor\+Group@{select\+Motor\+Group}}
+\index{select\+Motor\+Group@{select\+Motor\+Group}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{select\+Motor\+Group(\+F\+I\+L\+E $\ast$lcdport)}{selectMotorGroup(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}int select\+Motor\+Group (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{}\label{lcddiag_8c_a45205137e2aea6d387568cabe3072002}
+Selects the motor group to test.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the L\+CD screen\textquotesingle{}s port (either U\+A\+R\+T1 or U\+A\+R\+T2)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the ID number of the group to test 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00620}{620} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!select\+Motor\+Group\+Members@{select\+Motor\+Group\+Members}}
+\index{select\+Motor\+Group\+Members@{select\+Motor\+Group\+Members}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{select\+Motor\+Group\+Members(bool $\ast$motor)}{selectMotorGroupMembers(bool *motor)}}]{\setlength{\rightskip}{0pt plus 5cm}bool$\ast$ select\+Motor\+Group\+Members (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$}]{motor}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{}\label{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}
+Selects the motors that constitute the specified motor group.
+
+
+\begin{DoxyParams}{Parameters}
+{\em motor} & a boolean array that stores the states of each motor in the group\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the array passed 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00831}{831} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!select\+Spd@{select\+Spd}}
+\index{select\+Spd@{select\+Spd}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{select\+Spd(int mtr)}{selectSpd(int mtr)}}]{\setlength{\rightskip}{0pt plus 5cm}int select\+Spd (
+\begin{DoxyParamCaption}
+\item[{int}]{mtr}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{}\label{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}
+Selects the speed of the motor to test.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtr} & the motor number that is being tested\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the speed selected 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00492}{492} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!select\+Spd\+Group@{select\+Spd\+Group}}
+\index{select\+Spd\+Group@{select\+Spd\+Group}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{select\+Spd\+Group(int mtr)}{selectSpdGroup(int mtr)}}]{\setlength{\rightskip}{0pt plus 5cm}int select\+Spd\+Group (
+\begin{DoxyParamCaption}
+\item[{int}]{mtr}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{}\label{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}
+Selects the speed of the motor group to be tested.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtr} & the ID number of the motor group to be tested\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the speed selected 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00667}{667} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!type\+String@{type\+String}}
+\index{type\+String@{type\+String}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{type\+String(char $\ast$dest)}{typeString(char *dest)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ type\+String (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{dest}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}{}\label{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}
+Uses the L\+CD and the autonomous potentiometer to type a string. This is used to name motor groups and autonomous recordings. The maximum length of string this function can type is 16 characters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & a buffer to store the typed string (must be at least 17 characters to hold null terminator)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the buffer 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00081}{81} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+
+
+\subsubsection{Variable Documentation}
+\index{lcddiag.\+c@{lcddiag.\+c}!backlight@{backlight}}
+\index{backlight@{backlight}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{backlight}{backlight}}]{\setlength{\rightskip}{0pt plus 5cm}bool backlight = true}\hypertarget{lcddiag_8c_a8ba67e368b4d0422ad0c1fe6695040ac}{}\label{lcddiag_8c_a8ba67e368b4d0422ad0c1fe6695040ac}
+Boolean representing the L\+CD screen\textquotesingle{}s backlight state. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00036}{36} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!disable\+Op\+Control@{disable\+Op\+Control}}
+\index{disable\+Op\+Control@{disable\+Op\+Control}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{disable\+Op\+Control}{disableOpControl}}]{\setlength{\rightskip}{0pt plus 5cm}bool disable\+Op\+Control = false}\hypertarget{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{}\label{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}
+Disables operator control loop during motor testing. Since running motors is not thread safe, it is necessary to stop operator control of the motors during testing. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00042}{42} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!groups@{groups}}
+\index{groups@{groups}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{groups}{groups}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Motor\+Group}$\ast$ groups}\hypertarget{lcddiag_8c_a7c12b01a5e5a665d9d799e862dab6350}{}\label{lcddiag_8c_a7c12b01a5e5a665d9d799e862dab6350}
+Array that stores the motor groups. As this is a dynamic array, creating and editing new motor groups is possible. These motor groups are added to the array via the Motor Group Management menu. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00049}{49} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!lcd\+Diag\+Task@{lcd\+Diag\+Task}}
+\index{lcd\+Diag\+Task@{lcd\+Diag\+Task}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{lcd\+Diag\+Task}{lcdDiagTask}}]{\setlength{\rightskip}{0pt plus 5cm}Task\+Handle lcd\+Diag\+Task = N\+U\+LL}\hypertarget{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{}\label{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}
+Object representing the L\+CD diagnostic menu task. The L\+CD diagnostic menu runs in a separate thread from the operator control code. The Task\+Handle allows for pausing and resuming of the L\+CD diagnostic menu during autonomous recording. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00031}{31} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!menu\+Choices@{menu\+Choices}}
+\index{menu\+Choices@{menu\+Choices}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{menu\+Choices}{menuChoices}}]{\setlength{\rightskip}{0pt plus 5cm}char menu\+Choices\mbox{[}{\bf L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT}\mbox{]}\mbox{[}{\bf L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}+1\mbox{]}}\hypertarget{lcddiag_8c_ab5b8edfc6a94520add858274b3fac974}{}\label{lcddiag_8c_ab5b8edfc6a94520add858274b3fac974}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \textcolor{stringliteral}{"Motor Test"},
+    \textcolor{stringliteral}{"Motor Group Mgmt"},
+    \textcolor{stringliteral}{"Battery Info"},
+    \textcolor{stringliteral}{"Connection Info"},
+    \textcolor{stringliteral}{"Robot Info"},
+    \textcolor{stringliteral}{"Autonomous Info"},
+    \textcolor{stringliteral}{"Toggle Backlight"},
+    \textcolor{stringliteral}{"Screensaver"},
+    \textcolor{stringliteral}{"Credits"}
+\}
+\end{DoxyCode}
+Stores the top-\/level menu names. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00060}{60} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+c@{lcddiag.\+c}!numgroups@{numgroups}}
+\index{numgroups@{numgroups}!lcddiag.\+c@{lcddiag.\+c}}
+\paragraph[{\texorpdfstring{numgroups}{numgroups}}]{\setlength{\rightskip}{0pt plus 5cm}int numgroups}\hypertarget{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{}\label{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}
+Stores the number of motor groups. This is functionally identical to the size of the motor group array. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00055}{55} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+

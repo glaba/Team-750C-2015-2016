@@ -1,3 +1,15 @@
+/** @file autonrecorder.c
+ * @brief File for autonomous recorder code
+ *
+ * This file contains the code for the saving, loading, and playback of autonomous files.
+ * When an autonomous routine is recorded, it is saved to a file to flash memory.
+ * This file is loaded and executed during the autonomous period of the game.
+ * It works by saving the motor values at a point in time.
+ * At the corresponding point in time, the values are played back.
+ *
+ * This file also handles the recording of programming skills by stitching 4 autonomous routines together.
+ */
+
 #include "main.h"
 
 /**

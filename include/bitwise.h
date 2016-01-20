@@ -1,3 +1,10 @@
+/** @file bitwise.h
+ * @brief Header file for bitwise functions and operations
+ *
+ * This file provides macro definitions for bitwise manipulation of variables.
+ * These definitions provide a more human-readable way to manipulate individual bits.
+ */
+
 #ifndef BITWISE_H_
 #define BITWISE_H_
 

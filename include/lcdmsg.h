@@ -1,3 +1,12 @@
+/** @file lcdmsg.h
+ * @brief Header file for LCD message code
+ *
+ * This file contains definitions for the LCD screensaver messages.
+ * This file also defines the LCD port.
+ * These messages display randomly while the LCD diagnostic menu is set to the screensaver mode.
+ * These messages are mainly inside jokes among the team.
+ */
+
 #ifndef LCDMSG_H_
 #define LCDMSG_H_
 

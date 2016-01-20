@@ -1,3 +1,14 @@
+/** @file motors.c
+ * @brief File for important motor functions
+ *
+ * This file contains the code for functions regarding motor status.
+ * These functions are too complex to be defined as inline functions in the motors.h file.
+ *
+ * See the motors.h file for the basic movement functions.
+ *
+ * @see motors.h
+ */
+
 #include "main.h"
 
 /** 

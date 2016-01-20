@@ -1,3 +1,11 @@
+/** @file lcdmsg.c
+ * @brief File for LCD message code
+ *
+ * This file contains the code for the LCD screensaver messages.
+ * These messages display randomly while the LCD diagnostic menu is set to the screensaver mode.
+ * These messages are mainly inside jokes among the team.
+ */
+
 #include "main.h"
 
 /** 

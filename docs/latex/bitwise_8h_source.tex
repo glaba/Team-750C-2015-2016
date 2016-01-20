@@ -1,0 +1,18 @@
+\hypertarget{bitwise_8h_source}{}\subsection{bitwise.\+h}
+\label{bitwise_8h_source}\index{include/bitwise.\+h@{include/bitwise.\+h}}
+
+\begin{DoxyCode}
+00001 
+00008 \textcolor{preprocessor}{#ifndef BITWISE\_H\_}
+00009 \textcolor{preprocessor}{#define BITWISE\_H\_}
+00010 
+\hypertarget{bitwise_8h_source.tex_l00019}{}\hyperlink{bitwise_8h_aff20d8c0a05ad3043afa2e4ad9ebe768}{00019} \textcolor{preprocessor}{#define bitRead(value, bit) (((value) >> (bit)) & 0x01)}
+00020 
+\hypertarget{bitwise_8h_source.tex_l00027}{}\hyperlink{bitwise_8h_a6a8195c0e930f86c6af03ba6af8b41dd}{00027} \textcolor{preprocessor}{#define bitSet(value, bit) ((value) |= (1UL << (bit)))}
+00028 
+\hypertarget{bitwise_8h_source.tex_l00035}{}\hyperlink{bitwise_8h_abbe843c0521806a4ab2e7cffe44769e2}{00035} \textcolor{preprocessor}{#define bitClear(value, bit) ((value) &= ~(1UL << (bit)))}
+00036 
+\hypertarget{bitwise_8h_source.tex_l00044}{}\hyperlink{bitwise_8h_a42c17f59f3f9a3112d01246760067a8e}{00044} \textcolor{preprocessor}{#define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))}
+00045 
+00046 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

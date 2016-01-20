@@ -1,0 +1,56 @@
+\hypertarget{main_8h_source}{}\subsection{main.\+h}
+\label{main_8h_source}\index{include/main.\+h@{include/main.\+h}}
+
+\begin{DoxyCode}
+00001 
+00041 \textcolor{preprocessor}{#ifndef MAIN\_H\_}
+00042 \textcolor{preprocessor}{#define MAIN\_H\_}
+00043 
+00047 \textcolor{preprocessor}{#include <stdint.h>}
+00048 
+00052 \textcolor{preprocessor}{#include <string.h>}
+00053 
+00057 \textcolor{preprocessor}{#include <API.h>}
+00058 
+00062 \textcolor{preprocessor}{#include <\hyperlink{constants_8h}{constants.h}>}
+00063 
+00067 \textcolor{preprocessor}{#include <\hyperlink{friendly_8h}{friendly.h}>}
+00068 
+00072 \textcolor{preprocessor}{#include <\hyperlink{macros_8h}{macros.h}>}
+00073 
+00077 \textcolor{preprocessor}{#include <\hyperlink{bitwise_8h}{bitwise.h}>}
+00078 
+00082 \textcolor{preprocessor}{#include <\hyperlink{sensors_8h}{sensors.h}>}
+00083 
+00087 \textcolor{preprocessor}{#include <\hyperlink{motors_8h}{motors.h}>}
+00088 
+00092 \textcolor{preprocessor}{#include <\hyperlink{lcdmsg_8h}{lcdmsg.h}>}
+00093 
+00097 \textcolor{preprocessor}{#include <\hyperlink{lcddiag_8h}{lcddiag.h}>}
+00098 
+00102 \textcolor{preprocessor}{#include <\hyperlink{autonrecorder_8h}{autonrecorder.h}>}
+00103 
+00107 \textcolor{preprocessor}{#include <\hyperlink{opcontrol_8h}{opcontrol.h}>}
+00108 
+00109 \textcolor{comment}{// Allow usage of this file in C++ programs}
+00110 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00111 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00112 \textcolor{preprocessor}{#endif}
+00113 
+00114 \textcolor{comment}{// A function prototype looks exactly like its declaration, but with a semicolon instead of}
+00115 \textcolor{comment}{// actual code. If a function does not match a prototype, compile errors will occur.}
+00116 
+00117 \textcolor{comment}{// Prototypes for initialization, operator control and autonomous}
+00118 
+00133 \textcolor{keywordtype}{void} \hyperlink{main_8h_a3c7ca506bbc071fa740de13805b7f376}{autonomous}();
+00142 \textcolor{keywordtype}{void} \hyperlink{main_8h_ad9cda921edb01125bb13c2f86bcf624b}{initializeIO}();
+00156 \textcolor{keywordtype}{void} \hyperlink{main_8h_a25a40b6614565f755233080a384c35f1}{initialize}();
+00174 \textcolor{keywordtype}{void} \hyperlink{main_8h_ac71a94af413917f27d108e95c4d6f6a7}{operatorControl}();
+00175 
+00176 \textcolor{comment}{// End C++ export structure}
+00177 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00178 \}
+00179 \textcolor{preprocessor}{#endif}
+00180 
+00181 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

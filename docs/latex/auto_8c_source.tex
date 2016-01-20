@@ -1,0 +1,25 @@
+\hypertarget{auto_8c_source}{}\subsection{auto.\+c}
+\label{auto_8c_source}\index{src/auto.\+c@{src/auto.\+c}}
+
+\begin{DoxyCode}
+00001 
+00035 \textcolor{preprocessor}{#include "\hyperlink{main_8h}{main.h}"}
+00036 
+00037 \textcolor{comment}{/*}
+00038 \textcolor{comment}{ * Runs the user autonomous code. This function will be started in its own task with the default}
+00039 \textcolor{comment}{ * priority and stack size whenever the robot is enabled via the Field Management System or the}
+00040 \textcolor{comment}{ * VEX Competition Switch in the autonomous mode. If the robot is disabled or communications is}
+00041 \textcolor{comment}{ * lost, the autonomous task will be stopped by the kernel. Re-enabling the robot will restart}
+00042 \textcolor{comment}{ * the task, not re-start it from where it left off.}
+00043 \textcolor{comment}{ *}
+00044 \textcolor{comment}{ * Code running in the autonomous task cannot access information from the VEX Joystick. However,}
+00045 \textcolor{comment}{ * the autonomous function can be invoked from another task if a VEX Competition Switch is not}
+00046 \textcolor{comment}{ * available, and it can access joystick information if called in this way.}
+00047 \textcolor{comment}{ *}
+00048 \textcolor{comment}{ * The autonomous task may exit, unlike operatorControl() which should never exit. If it does}
+00049 \textcolor{comment}{ * so, the robot will await a switch to another mode or disable/enable cycle.}
+00050 \textcolor{comment}{ */}
+\hypertarget{auto_8c_source.tex_l00051}{}\hyperlink{main_8h_a3c7ca506bbc071fa740de13805b7f376}{00051} \textcolor{keywordtype}{void} \hyperlink{auto_8c_a3c7ca506bbc071fa740de13805b7f376}{autonomous}() \{
+00052     \hyperlink{autonrecorder_8c_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playbackAuton}();
+00053 \}
+\end{DoxyCode}

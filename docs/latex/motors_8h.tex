@@ -1,0 +1,288 @@
+\hypertarget{motors_8h}{}\subsection{include/motors.h File Reference}
+\label{motors_8h}\index{include/motors.\+h@{include/motors.\+h}}
+
+
+Header file for important motor functions and definitions.  
+
+
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{motors_8h_a5cf14eeff6ae0a3163b61e2abcf1c6c0}{M\+O\+T\+O\+R\+\_\+\+M\+AX}~127
+\item 
+\#define \hyperlink{motors_8h_a83ffb7cf4f639255103d5426aa0f8ac4}{M\+O\+T\+O\+R\+\_\+\+M\+IN}~-\/127
+\item 
+\#define \hyperlink{motors_8h_a7d8ac8902b66bb442bb27f9899aef13e}{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+M\+O\+T\+OR}~1
+\item 
+\#define \hyperlink{motors_8h_a3e06fbce97caed16e0a0f27f544587af}{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}~2
+\item 
+\#define \hyperlink{motors_8h_a43691a92e03fa5319b14f01193f47b9a}{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}~6
+\item 
+\#define \hyperlink{motors_8h_a306c5923dd0328c4bfc09255de9d124c}{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}~4
+\item 
+\#define \hyperlink{motors_8h_a85c904d091f71ba7fc53a446524b6c61}{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}~5
+\item 
+\#define \hyperlink{motors_8h_a7f78a80833903fca930b13a1f2ab6bd5}{S\+H\+O\+O\+T\+E\+R\+\_\+\+H\+A\+S\+\_\+\+T\+H\+R\+E\+E\+\_\+\+M\+O\+T\+O\+RS}
+\item 
+\#define \hyperlink{motors_8h_a4a9fed3366effbbb942b907c131ae8bd}{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+L\+E\+FT}~3
+\item 
+\#define \hyperlink{motors_8h_a3fa3054b1d74b733800c7b9252362334}{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+R\+I\+G\+HT}~7
+\item 
+\#define \hyperlink{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+C\+E\+N\+T\+ER}~10
+\item 
+\#define \hyperlink{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}{I\+N\+T\+A\+K\+E\+\_\+\+R\+O\+L\+L\+E\+R\+\_\+\+M\+O\+T\+OR}~8
+\item 
+\#define \hyperlink{motors_8h_a9e703840acb5657339f59982914dffb7}{L\+I\+F\+T\+\_\+\+D\+E\+P\+L\+OY}~9
+\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{motors_8h_aa1bbe2034fc14b835dd3d8c82f61135a}{transmission} (int \hyperlink{opcontrol_8h_a642ce334330c8b0f6e33dd0a3fa65111}{spd})
+\item 
+void \hyperlink{motors_8h_aaab2334001d6f124f67862140b6872a0}{transmission\+Set\+Pos} (void $\ast$pos)
+\item 
+void \hyperlink{motors_8h_a997340e460b7870c53c9a119c017b0cc}{change\+Gear} (int gear)
+\item 
+void \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move} (int \hyperlink{opcontrol_8h_a642ce334330c8b0f6e33dd0a3fa65111}{spd}, int \hyperlink{opcontrol_8h_aaefa47f4fdf865c2358c22b542a993e4}{turn})
+\item 
+void \hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{shoot} (int \hyperlink{opcontrol_8h_a642ce334330c8b0f6e33dd0a3fa65111}{spd})
+\item 
+void \hyperlink{motors_8h_ad29bed7d7fa6127b3ecf7e50eab23e9c}{intake} (int \hyperlink{opcontrol_8h_a642ce334330c8b0f6e33dd0a3fa65111}{spd})
+\item 
+void \hyperlink{motors_8h_af9cae4c2a660189553e6c8e51e371913}{deploy} (int \hyperlink{opcontrol_8h_a642ce334330c8b0f6e33dd0a3fa65111}{spd})
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Header file for important motor functions and definitions. 
+
+This file contains the code for functions and definitions regarding motor status. Mainly, this file defines the motor ports for each mechanism. It also defines certain motor-\/related constants. Lastly, basic movement functions are defined as inline in this file.
+
+Some functions are too complex to be defined as inline functions in the \hyperlink{motors_8h}{motors.\+h} file. See the \hyperlink{motors_8c}{motors.\+c} file for these more complicated movement functions.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{motors_8c}{motors.\+c} 
+\end{DoxySeeAlso}
+
+
+Definition in file \hyperlink{motors_8h_source}{motors.\+h}.
+
+
+
+\subsubsection{Macro Definition Documentation}
+\index{motors.\+h@{motors.\+h}!I\+N\+T\+A\+K\+E\+\_\+\+R\+O\+L\+L\+E\+R\+\_\+\+M\+O\+T\+OR@{I\+N\+T\+A\+K\+E\+\_\+\+R\+O\+L\+L\+E\+R\+\_\+\+M\+O\+T\+OR}}
+\index{I\+N\+T\+A\+K\+E\+\_\+\+R\+O\+L\+L\+E\+R\+\_\+\+M\+O\+T\+OR@{I\+N\+T\+A\+K\+E\+\_\+\+R\+O\+L\+L\+E\+R\+\_\+\+M\+O\+T\+OR}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{I\+N\+T\+A\+K\+E\+\_\+\+R\+O\+L\+L\+E\+R\+\_\+\+M\+O\+T\+OR}{INTAKE_ROLLER_MOTOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T\+A\+K\+E\+\_\+\+R\+O\+L\+L\+E\+R\+\_\+\+M\+O\+T\+OR~8}\hypertarget{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}{}\label{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}
+Defines motor ports for the intake mechanism. 
+
+Definition at line \hyperlink{motors_8h_source_l00111}{111} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT@{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}}
+\index{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT@{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}{LEFT_MOTOR_BOT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT~6}\hypertarget{motors_8h_a43691a92e03fa5319b14f01193f47b9a}{}\label{motors_8h_a43691a92e03fa5319b14f01193f47b9a}
+
+
+Definition at line \hyperlink{motors_8h_source_l00063}{63} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP@{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}}
+\index{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP@{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}{LEFT_MOTOR_TOP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+E\+F\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP~2}\hypertarget{motors_8h_a3e06fbce97caed16e0a0f27f544587af}{}\label{motors_8h_a3e06fbce97caed16e0a0f27f544587af}
+Defines motor ports for the left side of the drivetrain. 
+
+Definition at line \hyperlink{motors_8h_source_l00062}{62} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!L\+I\+F\+T\+\_\+\+D\+E\+P\+L\+OY@{L\+I\+F\+T\+\_\+\+D\+E\+P\+L\+OY}}
+\index{L\+I\+F\+T\+\_\+\+D\+E\+P\+L\+OY@{L\+I\+F\+T\+\_\+\+D\+E\+P\+L\+OY}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{L\+I\+F\+T\+\_\+\+D\+E\+P\+L\+OY}{LIFT_DEPLOY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+F\+T\+\_\+\+D\+E\+P\+L\+OY~9}\hypertarget{motors_8h_a9e703840acb5657339f59982914dffb7}{}\label{motors_8h_a9e703840acb5657339f59982914dffb7}
+
+
+Definition at line \hyperlink{motors_8h_source_l00122}{122} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!M\+O\+T\+O\+R\+\_\+\+M\+AX@{M\+O\+T\+O\+R\+\_\+\+M\+AX}}
+\index{M\+O\+T\+O\+R\+\_\+\+M\+AX@{M\+O\+T\+O\+R\+\_\+\+M\+AX}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{M\+O\+T\+O\+R\+\_\+\+M\+AX}{MOTOR_MAX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+O\+T\+O\+R\+\_\+\+M\+AX~127}\hypertarget{motors_8h_a5cf14eeff6ae0a3163b61e2abcf1c6c0}{}\label{motors_8h_a5cf14eeff6ae0a3163b61e2abcf1c6c0}
+Defines maximum motor speed value. 
+
+Definition at line \hyperlink{motors_8h_source_l00021}{21} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!M\+O\+T\+O\+R\+\_\+\+M\+IN@{M\+O\+T\+O\+R\+\_\+\+M\+IN}}
+\index{M\+O\+T\+O\+R\+\_\+\+M\+IN@{M\+O\+T\+O\+R\+\_\+\+M\+IN}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{M\+O\+T\+O\+R\+\_\+\+M\+IN}{MOTOR_MIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+O\+T\+O\+R\+\_\+\+M\+IN~-\/127}\hypertarget{motors_8h_a83ffb7cf4f639255103d5426aa0f8ac4}{}\label{motors_8h_a83ffb7cf4f639255103d5426aa0f8ac4}
+Defines motor minimum speed value. 
+
+Definition at line \hyperlink{motors_8h_source_l00026}{26} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+C\+E\+N\+T\+ER@{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+C\+E\+N\+T\+ER}}
+\index{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+C\+E\+N\+T\+ER@{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+C\+E\+N\+T\+ER}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+C\+E\+N\+T\+ER}{NAUTILUS_SHOOTER_MOTOR_CENTER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+C\+E\+N\+T\+ER~10}\hypertarget{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}{}\label{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}
+
+
+Definition at line \hyperlink{motors_8h_source_l00092}{92} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+L\+E\+FT@{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+L\+E\+FT}}
+\index{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+L\+E\+FT@{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+L\+E\+FT}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+L\+E\+FT}{NAUTILUS_SHOOTER_MOTOR_LEFT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+L\+E\+FT~3}\hypertarget{motors_8h_a4a9fed3366effbbb942b907c131ae8bd}{}\label{motors_8h_a4a9fed3366effbbb942b907c131ae8bd}
+
+
+Definition at line \hyperlink{motors_8h_source_l00089}{89} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+R\+I\+G\+HT@{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+R\+I\+G\+HT}}
+\index{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+R\+I\+G\+HT@{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+R\+I\+G\+HT}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+R\+I\+G\+HT}{NAUTILUS_SHOOTER_MOTOR_RIGHT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+A\+U\+T\+I\+L\+U\+S\+\_\+\+S\+H\+O\+O\+T\+E\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+R\+I\+G\+HT~7}\hypertarget{motors_8h_a3fa3054b1d74b733800c7b9252362334}{}\label{motors_8h_a3fa3054b1d74b733800c7b9252362334}
+
+
+Definition at line \hyperlink{motors_8h_source_l00090}{90} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT@{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}}
+\index{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT@{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}{RIGHT_MOTOR_BOT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT~5}\hypertarget{motors_8h_a85c904d091f71ba7fc53a446524b6c61}{}\label{motors_8h_a85c904d091f71ba7fc53a446524b6c61}
+
+
+Definition at line \hyperlink{motors_8h_source_l00069}{69} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP@{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}}
+\index{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP@{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}{RIGHT_MOTOR_TOP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP~4}\hypertarget{motors_8h_a306c5923dd0328c4bfc09255de9d124c}{}\label{motors_8h_a306c5923dd0328c4bfc09255de9d124c}
+Defines motor ports for the right side of the drivetrain. 
+
+Definition at line \hyperlink{motors_8h_source_l00068}{68} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!S\+H\+O\+O\+T\+E\+R\+\_\+\+H\+A\+S\+\_\+\+T\+H\+R\+E\+E\+\_\+\+M\+O\+T\+O\+RS@{S\+H\+O\+O\+T\+E\+R\+\_\+\+H\+A\+S\+\_\+\+T\+H\+R\+E\+E\+\_\+\+M\+O\+T\+O\+RS}}
+\index{S\+H\+O\+O\+T\+E\+R\+\_\+\+H\+A\+S\+\_\+\+T\+H\+R\+E\+E\+\_\+\+M\+O\+T\+O\+RS@{S\+H\+O\+O\+T\+E\+R\+\_\+\+H\+A\+S\+\_\+\+T\+H\+R\+E\+E\+\_\+\+M\+O\+T\+O\+RS}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{S\+H\+O\+O\+T\+E\+R\+\_\+\+H\+A\+S\+\_\+\+T\+H\+R\+E\+E\+\_\+\+M\+O\+T\+O\+RS}{SHOOTER_HAS_THREE_MOTORS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+H\+O\+O\+T\+E\+R\+\_\+\+H\+A\+S\+\_\+\+T\+H\+R\+E\+E\+\_\+\+M\+O\+T\+O\+RS}\hypertarget{motors_8h_a7f78a80833903fca930b13a1f2ab6bd5}{}\label{motors_8h_a7f78a80833903fca930b13a1f2ab6bd5}
+Defines motor ports for the nautilus gear shooting mechanism. 
+
+Definition at line \hyperlink{motors_8h_source_l00087}{87} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+M\+O\+T\+OR@{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+M\+O\+T\+OR}}
+\index{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+M\+O\+T\+OR@{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+M\+O\+T\+OR}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+M\+O\+T\+OR}{TRANSMISSION_MOTOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+M\+O\+T\+OR~1}\hypertarget{motors_8h_a7d8ac8902b66bb442bb27f9899aef13e}{}\label{motors_8h_a7d8ac8902b66bb442bb27f9899aef13e}
+Defines motor port for the transmission to change between driving and lifting 
+
+Definition at line \hyperlink{motors_8h_source_l00031}{31} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+
+
+\subsubsection{Function Documentation}
+\index{motors.\+h@{motors.\+h}!change\+Gear@{change\+Gear}}
+\index{change\+Gear@{change\+Gear}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{change\+Gear(int gear)}{changeGear(int gear)}}]{\setlength{\rightskip}{0pt plus 5cm}void change\+Gear (
+\begin{DoxyParamCaption}
+\item[{int}]{gear}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{motors_8h_a997340e460b7870c53c9a119c017b0cc}{}\label{motors_8h_a997340e460b7870c53c9a119c017b0cc}
+Changes the gear of the transmission to either driving or lifting. Runs a task in a separate thread to change the gear.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gear} & the gear to change to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{motors_8h_source_l00055}{55} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!deploy@{deploy}}
+\index{deploy@{deploy}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{deploy(int spd)}{deploy(int spd)}}]{\setlength{\rightskip}{0pt plus 5cm}void deploy (
+\begin{DoxyParamCaption}
+\item[{int}]{spd}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{motors_8h_af9cae4c2a660189553e6c8e51e371913}{}\label{motors_8h_af9cae4c2a660189553e6c8e51e371913}
+
+
+Definition at line \hyperlink{motors_8h_source_l00124}{124} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!intake@{intake}}
+\index{intake@{intake}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{intake(int spd)}{intake(int spd)}}]{\setlength{\rightskip}{0pt plus 5cm}void intake (
+\begin{DoxyParamCaption}
+\item[{int}]{spd}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{motors_8h_ad29bed7d7fa6127b3ecf7e50eab23e9c}{}\label{motors_8h_ad29bed7d7fa6127b3ecf7e50eab23e9c}
+Intakes balls using the intake mechanism by setting the intake motor values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spd} & the speed to set the intake motors \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{motors_8h_source_l00118}{118} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!move@{move}}
+\index{move@{move}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{move(int spd, int turn)}{move(int spd, int turn)}}]{\setlength{\rightskip}{0pt plus 5cm}void move (
+\begin{DoxyParamCaption}
+\item[{int}]{spd, }
+\item[{int}]{turn}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{}\label{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}
+Moves the robot by setting the drive motor values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spd} & the forward/backward speed value \\
+\hline
+{\em turn} & the turning speed value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{motors_8h_source_l00077}{77} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!shoot@{shoot}}
+\index{shoot@{shoot}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{shoot(int spd)}{shoot(int spd)}}]{\setlength{\rightskip}{0pt plus 5cm}void shoot (
+\begin{DoxyParamCaption}
+\item[{int}]{spd}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{}\label{motors_8h_ab183a9a4e6e469515b9f283f7156f843}
+Shoots balls from the shooter mechanism by setting the shooter motor values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spd} & the speed to set the shooter motors \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{motors_8h_source_l00100}{100} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!transmission@{transmission}}
+\index{transmission@{transmission}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{transmission(int spd)}{transmission(int spd)}}]{\setlength{\rightskip}{0pt plus 5cm}void transmission (
+\begin{DoxyParamCaption}
+\item[{int}]{spd}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{motors_8h_aa1bbe2034fc14b835dd3d8c82f61135a}{}\label{motors_8h_aa1bbe2034fc14b835dd3d8c82f61135a}
+Runs the transmission motor by setting the motor value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spd} & the speed to run the transmission motor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{motors_8h_source_l00038}{38} of file \hyperlink{motors_8h_source}{motors.\+h}.
+
+\index{motors.\+h@{motors.\+h}!transmission\+Set\+Pos@{transmission\+Set\+Pos}}
+\index{transmission\+Set\+Pos@{transmission\+Set\+Pos}!motors.\+h@{motors.\+h}}
+\paragraph[{\texorpdfstring{transmission\+Set\+Pos(void $\ast$pos)}{transmissionSetPos(void *pos)}}]{\setlength{\rightskip}{0pt plus 5cm}void transmission\+Set\+Pos (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{motors_8h_aaab2334001d6f124f67862140b6872a0}{}\label{motors_8h_aaab2334001d6f124f67862140b6872a0}
+Sets the position of the transmission.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & the position to set the transmission to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{motors_8c_source_l00019}{19} of file \hyperlink{motors_8c_source}{motors.\+c}.
+

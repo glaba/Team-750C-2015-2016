@@ -1,0 +1,316 @@
+\hypertarget{macros_8h}{}\subsection{include/macros.h File Reference}
+\label{macros_8h}\index{include/macros.\+h@{include/macros.\+h}}
+
+
+Header file for macro definitions.  
+
+
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{macros_8h_ac6afabdc09a49a433ee19d8a9486056d}{min}(a,  b)~((a)$<$(b)?(a)\+:(b))
+\item 
+\#define \hyperlink{macros_8h_a3acffbd305ee72dcd4593c0d8af64a4f}{M\+IN}(a,  b)~((a)$<$(b)?(a)\+:(b))
+\item 
+\#define \hyperlink{macros_8h_affe776513b24d84b39af8ab0930fef7f}{max}(a,  b)~((a)$>$(b)?(a)\+:(b))
+\item 
+\#define \hyperlink{macros_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{M\+AX}(a,  b)~((a)$>$(b)?(a)\+:(b))
+\item 
+\#define \hyperlink{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}{abs}(x)~((x)$>$0?(x)\+:-\/(x))
+\item 
+\#define \hyperlink{macros_8h_a7df4a1319e5665c9040aa1838eef987c}{constrain}(amt,  low,  high)~((amt)$<$(low)?(low)\+:((amt)$>$(high)?(high)\+:(amt)))
+\item 
+\#define \hyperlink{macros_8h_a6ea10f4260b54a61665ead26cb995ba3}{round}(x)~(((x) $>$=0) ?(long)((x)+0.\+5)\+:(long)((x)-\/0.\+5))
+\item 
+\#define \hyperlink{macros_8h_ac740756f75e53153605d2702b30d2a9d}{sign}(x)~((x)$>$0?1\+:((x)$<$0?-\/1\+:0))
+\item 
+\#define \hyperlink{macros_8h_a7571dba2995b9cb57259345fe49d2f97}{radians}(deg)~((deg)$\ast$\hyperlink{constants_8h_a212460e743fecb084d717bb2180c5a56}{D\+E\+G\+\_\+\+T\+O\+\_\+\+R\+AD})
+\item 
+\#define \hyperlink{macros_8h_afe93c2c14da376a1621194c15c1de496}{degrees}(rad)~((rad)$\ast$\hyperlink{constants_8h_a89e47af0449640d4f15191aba5ca24c6}{R\+A\+D\+\_\+\+T\+O\+\_\+\+D\+EG})
+\item 
+\#define \hyperlink{macros_8h_ae7616788b30810a219d9cdee95904ba4}{sq}(x)~((x)$\ast$(x))
+\item 
+\#define \hyperlink{macros_8h_ac3644f84794a8bfdacf39c4b2c2495fc}{SQ}(x)~((x)$\ast$(x))
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Header file for macro definitions. 
+
+This file provides macro definitions for various basic functions that come about frequently. 
+
+Definition in file \hyperlink{macros_8h_source}{macros.\+h}.
+
+
+
+\subsubsection{Macro Definition Documentation}
+\index{macros.\+h@{macros.\+h}!abs@{abs}}
+\index{abs@{abs}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{abs}{abs}}]{\setlength{\rightskip}{0pt plus 5cm}\#define abs(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x)$>$0?(x)\+:-\/(x))}\hypertarget{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}{}\label{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}
+Returns the absolute value of the input value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the input value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the absolute value of x 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00057}{57} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!constrain@{constrain}}
+\index{constrain@{constrain}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{constrain}{constrain}}]{\setlength{\rightskip}{0pt plus 5cm}\#define constrain(
+\begin{DoxyParamCaption}
+\item[{}]{amt, }
+\item[{}]{low, }
+\item[{}]{high}
+\end{DoxyParamCaption}
+)~((amt)$<$(low)?(low)\+:((amt)$>$(high)?(high)\+:(amt)))}\hypertarget{macros_8h_a7df4a1319e5665c9040aa1838eef987c}{}\label{macros_8h_a7df4a1319e5665c9040aa1838eef987c}
+Constrains a value to a set of boundaries.
+
+
+\begin{DoxyParams}{Parameters}
+{\em amt} & the value to constrain \\
+\hline
+{\em low} & the lower bound \\
+\hline
+{\em high} & the higher bound\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+high, amt, or low if amt is higher, in between, or lower than the range specified, respectively 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00068}{68} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!degrees@{degrees}}
+\index{degrees@{degrees}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{degrees}{degrees}}]{\setlength{\rightskip}{0pt plus 5cm}\#define degrees(
+\begin{DoxyParamCaption}
+\item[{}]{rad}
+\end{DoxyParamCaption}
+)~((rad)$\ast${\bf R\+A\+D\+\_\+\+T\+O\+\_\+\+D\+EG})}\hypertarget{macros_8h_afe93c2c14da376a1621194c15c1de496}{}\label{macros_8h_afe93c2c14da376a1621194c15c1de496}
+Converts an angle measure in degrees to radians.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rad} & the angle measure in radians\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angle measure in degrees 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00104}{104} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!max@{max}}
+\index{max@{max}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{max}{max}}]{\setlength{\rightskip}{0pt plus 5cm}\#define max(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~((a)$>$(b)?(a)\+:(b))}\hypertarget{macros_8h_affe776513b24d84b39af8ab0930fef7f}{}\label{macros_8h_affe776513b24d84b39af8ab0930fef7f}
+Returns the maximum of the two values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & the first input value \\
+\hline
+{\em b} & the second input value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the greater of the two values 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00038}{38} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!M\+AX@{M\+AX}}
+\index{M\+AX@{M\+AX}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{M\+AX}{MAX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+AX(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~((a)$>$(b)?(a)\+:(b))}\hypertarget{macros_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{}\label{macros_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}
+Returns the maximum of the two values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & the first input value \\
+\hline
+{\em b} & the second input value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the greater of the two values 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00048}{48} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!min@{min}}
+\index{min@{min}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{min}{min}}]{\setlength{\rightskip}{0pt plus 5cm}\#define min(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~((a)$<$(b)?(a)\+:(b))}\hypertarget{macros_8h_ac6afabdc09a49a433ee19d8a9486056d}{}\label{macros_8h_ac6afabdc09a49a433ee19d8a9486056d}
+Returns the minimum of the two values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & the first input value \\
+\hline
+{\em b} & the second input value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the lesser of the two values 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00018}{18} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!M\+IN@{M\+IN}}
+\index{M\+IN@{M\+IN}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{M\+IN}{MIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+IN(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~((a)$<$(b)?(a)\+:(b))}\hypertarget{macros_8h_a3acffbd305ee72dcd4593c0d8af64a4f}{}\label{macros_8h_a3acffbd305ee72dcd4593c0d8af64a4f}
+Returns the minimum of the two values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & the first input value \\
+\hline
+{\em b} & the second input value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the lesser of the two values 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00028}{28} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!radians@{radians}}
+\index{radians@{radians}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{radians}{radians}}]{\setlength{\rightskip}{0pt plus 5cm}\#define radians(
+\begin{DoxyParamCaption}
+\item[{}]{deg}
+\end{DoxyParamCaption}
+)~((deg)$\ast${\bf D\+E\+G\+\_\+\+T\+O\+\_\+\+R\+AD})}\hypertarget{macros_8h_a7571dba2995b9cb57259345fe49d2f97}{}\label{macros_8h_a7571dba2995b9cb57259345fe49d2f97}
+Converts an angle measure in degrees to radians.
+
+
+\begin{DoxyParams}{Parameters}
+{\em deg} & the angle measure in degrees\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angle measure in radians 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00095}{95} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!round@{round}}
+\index{round@{round}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{round}{round}}]{\setlength{\rightskip}{0pt plus 5cm}\#define round(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(((x) $>$=0) ?(long)((x)+0.\+5)\+:(long)((x)-\/0.\+5))}\hypertarget{macros_8h_a6ea10f4260b54a61665ead26cb995ba3}{}\label{macros_8h_a6ea10f4260b54a61665ead26cb995ba3}
+Rounds a value to the nearest integer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the value to round\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the rounded value 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00077}{77} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!sign@{sign}}
+\index{sign@{sign}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{sign}{sign}}]{\setlength{\rightskip}{0pt plus 5cm}\#define sign(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x)$>$0?1\+:((x)$<$0?-\/1\+:0))}\hypertarget{macros_8h_ac740756f75e53153605d2702b30d2a9d}{}\label{macros_8h_ac740756f75e53153605d2702b30d2a9d}
+Returns the sign of the input value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the value to determine the sign of\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1, 0, or 1 if the value is negative, zero, or positive, respectively 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00086}{86} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!sq@{sq}}
+\index{sq@{sq}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{sq}{sq}}]{\setlength{\rightskip}{0pt plus 5cm}\#define sq(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x)$\ast$(x))}\hypertarget{macros_8h_ae7616788b30810a219d9cdee95904ba4}{}\label{macros_8h_ae7616788b30810a219d9cdee95904ba4}
+Squares the input value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the value to square\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the square of the input value 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00113}{113} of file \hyperlink{macros_8h_source}{macros.\+h}.
+
+\index{macros.\+h@{macros.\+h}!SQ@{SQ}}
+\index{SQ@{SQ}!macros.\+h@{macros.\+h}}
+\paragraph[{\texorpdfstring{SQ}{SQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define SQ(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x)$\ast$(x))}\hypertarget{macros_8h_ac3644f84794a8bfdacf39c4b2c2495fc}{}\label{macros_8h_ac3644f84794a8bfdacf39c4b2c2495fc}
+Squares the input value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the value to square\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the square of the input value 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{macros_8h_source_l00122}{122} of file \hyperlink{macros_8h_source}{macros.\+h}.
+

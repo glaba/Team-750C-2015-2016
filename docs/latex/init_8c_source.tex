@@ -1,0 +1,54 @@
+\hypertarget{init_8c_source}{}\subsection{init.\+c}
+\label{init_8c_source}\index{src/init.\+c@{src/init.\+c}}
+
+\begin{DoxyCode}
+00001 
+00035 \textcolor{preprocessor}{#include "\hyperlink{main_8h}{main.h}"}
+00036 
+00037 \textcolor{comment}{/*}
+00038 \textcolor{comment}{ * Runs pre-initialization code. This function will be started in kernel mode one time while the}
+00039 \textcolor{comment}{ * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.}
+00040 \textcolor{comment}{ *}
+00041 \textcolor{comment}{ * The purpose of this function is solely to set the default pin modes (pinMode()) and port}
+00042 \textcolor{comment}{ * states (digitalWrite()) of limit switches, push buttons, and solenoids. It can also safely}
+00043 \textcolor{comment}{ * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).}
+00044 \textcolor{comment}{ */}
+\hypertarget{init_8c_source.tex_l00045}{}\hyperlink{main_8h_ad9cda921edb01125bb13c2f86bcf624b}{00045} \textcolor{keywordtype}{void} \hyperlink{init_8c_ad9cda921edb01125bb13c2f86bcf624b}{initializeIO}() \{
+00046 \}
+00047 
+00048 \textcolor{comment}{/*}
+00049 \textcolor{comment}{ * Runs user initialization code. This function will be started in its own task with the default}
+00050 \textcolor{comment}{ * priority and stack size once when the robot is starting up. It is possible that the VEXnet}
+00051 \textcolor{comment}{ * communication link may not be fully established at this time, so reading from the VEX}
+00052 \textcolor{comment}{ * Joystick may fail.}
+00053 \textcolor{comment}{ *}
+00054 \textcolor{comment}{ * This function should initialize most sensors (gyro, encoders, ultrasonics), LCDs, global}
+00055 \textcolor{comment}{ * variables, and IMEs.}
+00056 \textcolor{comment}{ *}
+00057 \textcolor{comment}{ * This function must exit relatively promptly, or the operatorControl() and autonomous() tasks}
+00058 \textcolor{comment}{ * will not start. An autonomous mode selection menu like the pre\_auton() in other environments}
+00059 \textcolor{comment}{ * can be implemented in this task if desired.}
+00060 \textcolor{comment}{ */}
+\hypertarget{init_8c_source.tex_l00061}{}\hyperlink{main_8h_a25a40b6614565f755233080a384c35f1}{00061} \textcolor{keywordtype}{void} \hyperlink{init_8c_a25a40b6614565f755233080a384c35f1}{initialize}() \{
+00062     \textcolor{keywordtype}{int} seed = powerLevelMain() + powerLevelBackup();
+00063     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < BOARD\_NR\_ADC\_PINS; i++) \{
+00064         seed += analogRead(i);
+00065     \}
+00066     srand(seed);
+00067     \hyperlink{sensors_8c_a48ead63071a2b65b87a166928a5a5c08}{leftenc} = encoderInit(\hyperlink{sensors_8h_ad0ae0aded49835e75c52bc506585f5a6}{LEFT\_ENC\_TOP}, \hyperlink{sensors_8h_ae913e0b80ef027d0a619e59a3d2ffb85}{LEFT\_ENC\_BOT}, \textcolor{keyword}{false});
+00068     \hyperlink{sensors_8c_a8c853ba918673c4878ab6935c54969e4}{rightenc} = encoderInit(\hyperlink{sensors_8h_a07c1c0ceab9fee6088955b2b2706e515}{RIGHT\_ENC\_TOP}, \hyperlink{sensors_8h_a76290ef36d8c093e1d380e26d1d01f6a}{RIGHT\_ENC\_BOT}, \textcolor{keyword}{false});
+00069     lcdInit(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00070     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00071     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
+00072     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ing gyro..."});
+00073     \hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro} = gyroInit(\hyperlink{sensors_8h_a51d281e7676749d34aab3f8ba6fab960}{GYRO\_PORT}, \hyperlink{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}{GYRO\_SENSITIVITY});
+00074     delay(1100);
+00075     gyroReset(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro});
+00076     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ed gyro!"});
+00077     \hyperlink{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}();
+00078     \hyperlink{lcddiag_8c_ad290df3e273598f9f10fe34c257e4084}{initGroups}();
+00079     \textcolor{keywordflow}{if}(isOnline())\{
+00080         \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
+00081     \}
+00082 \}
+\end{DoxyCode}

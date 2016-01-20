@@ -1,0 +1,120 @@
+\hypertarget{bitwise_8h}{}\subsection{include/bitwise.h File Reference}
+\label{bitwise_8h}\index{include/bitwise.\+h@{include/bitwise.\+h}}
+
+
+Header file for bitwise functions and operations.  
+
+
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{bitwise_8h_aff20d8c0a05ad3043afa2e4ad9ebe768}{bit\+Read}(value,  bit)~(((value) $>$$>$ (bit)) \& 0x01)
+\item 
+\#define \hyperlink{bitwise_8h_a6a8195c0e930f86c6af03ba6af8b41dd}{bit\+Set}(value,  bit)~((value) $\vert$= (1\+U\+L $<$$<$ (bit)))
+\item 
+\#define \hyperlink{bitwise_8h_abbe843c0521806a4ab2e7cffe44769e2}{bit\+Clear}(value,  bit)~((value) \&= $\sim$(1\+U\+L $<$$<$ (bit)))
+\item 
+\#define \hyperlink{bitwise_8h_a42c17f59f3f9a3112d01246760067a8e}{bit\+Write}(value,  bit,  bitvalue)~(bitvalue ? \hyperlink{bitwise_8h_a6a8195c0e930f86c6af03ba6af8b41dd}{bit\+Set}(value, bit) \+: \hyperlink{bitwise_8h_abbe843c0521806a4ab2e7cffe44769e2}{bit\+Clear}(value, bit))
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Header file for bitwise functions and operations. 
+
+This file provides macro definitions for bitwise manipulation of variables. These definitions provide a more human-\/readable way to manipulate individual bits. 
+
+Definition in file \hyperlink{bitwise_8h_source}{bitwise.\+h}.
+
+
+
+\subsubsection{Macro Definition Documentation}
+\index{bitwise.\+h@{bitwise.\+h}!bit\+Clear@{bit\+Clear}}
+\index{bit\+Clear@{bit\+Clear}!bitwise.\+h@{bitwise.\+h}}
+\paragraph[{\texorpdfstring{bit\+Clear}{bitClear}}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+Clear(
+\begin{DoxyParamCaption}
+\item[{}]{value, }
+\item[{}]{bit}
+\end{DoxyParamCaption}
+)~((value) \&= $\sim$(1\+U\+L $<$$<$ (bit)))}\hypertarget{bitwise_8h_abbe843c0521806a4ab2e7cffe44769e2}{}\label{bitwise_8h_abbe843c0521806a4ab2e7cffe44769e2}
+Clears the value of a bit in a variable to 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the variable to clear in \\
+\hline
+{\em bit} & the bit number to clear (0 being the rightmost) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{bitwise_8h_source_l00035}{35} of file \hyperlink{bitwise_8h_source}{bitwise.\+h}.
+
+\index{bitwise.\+h@{bitwise.\+h}!bit\+Read@{bit\+Read}}
+\index{bit\+Read@{bit\+Read}!bitwise.\+h@{bitwise.\+h}}
+\paragraph[{\texorpdfstring{bit\+Read}{bitRead}}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+Read(
+\begin{DoxyParamCaption}
+\item[{}]{value, }
+\item[{}]{bit}
+\end{DoxyParamCaption}
+)~(((value) $>$$>$ (bit)) \& 0x01)}\hypertarget{bitwise_8h_aff20d8c0a05ad3043afa2e4ad9ebe768}{}\label{bitwise_8h_aff20d8c0a05ad3043afa2e4ad9ebe768}
+Reads the value of a bit (1 or 0) from a variable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the variable to read from \\
+\hline
+{\em bit} & the bit number to read (0 being the rightmost)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the bit (1 or 0) 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{bitwise_8h_source_l00019}{19} of file \hyperlink{bitwise_8h_source}{bitwise.\+h}.
+
+\index{bitwise.\+h@{bitwise.\+h}!bit\+Set@{bit\+Set}}
+\index{bit\+Set@{bit\+Set}!bitwise.\+h@{bitwise.\+h}}
+\paragraph[{\texorpdfstring{bit\+Set}{bitSet}}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+Set(
+\begin{DoxyParamCaption}
+\item[{}]{value, }
+\item[{}]{bit}
+\end{DoxyParamCaption}
+)~((value) $\vert$= (1\+U\+L $<$$<$ (bit)))}\hypertarget{bitwise_8h_a6a8195c0e930f86c6af03ba6af8b41dd}{}\label{bitwise_8h_a6a8195c0e930f86c6af03ba6af8b41dd}
+Sets the value of a bit in a variable to 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the variable to set in \\
+\hline
+{\em bit} & the bit number to set (0 being the rightmost) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{bitwise_8h_source_l00027}{27} of file \hyperlink{bitwise_8h_source}{bitwise.\+h}.
+
+\index{bitwise.\+h@{bitwise.\+h}!bit\+Write@{bit\+Write}}
+\index{bit\+Write@{bit\+Write}!bitwise.\+h@{bitwise.\+h}}
+\paragraph[{\texorpdfstring{bit\+Write}{bitWrite}}]{\setlength{\rightskip}{0pt plus 5cm}\#define bit\+Write(
+\begin{DoxyParamCaption}
+\item[{}]{value, }
+\item[{}]{bit, }
+\item[{}]{bitvalue}
+\end{DoxyParamCaption}
+)~(bitvalue ? {\bf bit\+Set}(value, bit) \+: {\bf bit\+Clear}(value, bit))}\hypertarget{bitwise_8h_a42c17f59f3f9a3112d01246760067a8e}{}\label{bitwise_8h_a42c17f59f3f9a3112d01246760067a8e}
+Writes a value (1 or 0) to a bit in a variable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the variable to write in \\
+\hline
+{\em bit} & the bit number to set (0 being the rightmost) \\
+\hline
+{\em bitvalue} & the value to write (1 or 0) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{bitwise_8h_source_l00044}{44} of file \hyperlink{bitwise_8h_source}{bitwise.\+h}.
+

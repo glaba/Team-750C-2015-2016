@@ -1,3 +1,9 @@
+/** @file macros.h
+ * @brief Header file for macro definitions 
+ *
+ * This file provides macro definitions for various basic functions that come about frequently.
+ */
+
 #ifndef MACROS_H_
 #define MACROS_H_
 

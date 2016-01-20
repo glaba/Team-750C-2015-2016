@@ -1,3 +1,12 @@
+/** @file friendly.h
+ * @brief Header file for human-readable definitions
+ *
+ * This file provides constant definitions for various sensory states that appear frequently.
+ * Since the button pressed state is represented by an unintuitive LOW value,
+ * these constants create definitions for the pressed and unpressed states of a button.
+ *
+ */
+
 #ifndef FRIENDLY_H_
 #define FRIENDLY_H_
 

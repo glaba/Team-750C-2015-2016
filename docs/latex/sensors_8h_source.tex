@@ -1,0 +1,51 @@
+\hypertarget{sensors_8h_source}{}\subsection{sensors.\+h}
+\label{sensors_8h_source}\index{include/sensors.\+h@{include/sensors.\+h}}
+
+\begin{DoxyCode}
+00001 
+00015 \textcolor{preprocessor}{#ifndef SENSORS\_H\_}
+00016 \textcolor{preprocessor}{#define SENSORS\_H\_}
+00017 
+\hypertarget{sensors_8h_source.tex_l00021}{}\hyperlink{sensors_8h_ad0ae0aded49835e75c52bc506585f5a6}{00021} \textcolor{preprocessor}{#define LEFT\_ENC\_TOP 1}
+\hypertarget{sensors_8h_source.tex_l00022}{}\hyperlink{sensors_8h_ae913e0b80ef027d0a619e59a3d2ffb85}{00022} \textcolor{preprocessor}{#define LEFT\_ENC\_BOT 2}
+00023 
+00027 \textcolor{keyword}{extern} Encoder \hyperlink{sensors_8h_a48ead63071a2b65b87a166928a5a5c08}{leftenc};
+00028 
+\hypertarget{sensors_8h_source.tex_l00032}{}\hyperlink{sensors_8h_a07c1c0ceab9fee6088955b2b2706e515}{00032} \textcolor{preprocessor}{#define RIGHT\_ENC\_TOP 3}
+\hypertarget{sensors_8h_source.tex_l00033}{}\hyperlink{sensors_8h_a76290ef36d8c093e1d380e26d1d01f6a}{00033} \textcolor{preprocessor}{#define RIGHT\_ENC\_BOT 4}
+00034 
+00038 \textcolor{keyword}{extern} Encoder \hyperlink{sensors_8h_a8c853ba918673c4878ab6935c54969e4}{rightenc};
+00039 
+\hypertarget{sensors_8h_source.tex_l00043}{}\hyperlink{sensors_8h_a4df8b77c0d00d0604d3e8d0fd5fa5d40}{00043} \textcolor{preprocessor}{#define TRANSMISSION\_POT 2}
+00044 
+\hypertarget{sensors_8h_source.tex_l00048}{}\hyperlink{sensors_8h_aaaba487ef4204a2d1755d80994bb04ca}{00048} \textcolor{preprocessor}{#define GEAR\_DRIVE 1860}
+00049 
+\hypertarget{sensors_8h_source.tex_l00053}{}\hyperlink{sensors_8h_a3b1b936537462c395fee9c9785dfc9a1}{00053} \textcolor{preprocessor}{#define GEAR\_LIFT 4095}
+00054 
+\hypertarget{sensors_8h_source.tex_l00059}{}\hyperlink{sensors_8h_a0f128e79b5e93af55f4b30b0bedcea3f}{00059} \textcolor{preprocessor}{#define POWER\_EXPANDER\_STATUS 3}
+00060 
+\hypertarget{sensors_8h_source.tex_l00065}{}\hyperlink{sensors_8h_a3fbd303e783c833bf2812682e0905188}{00065} \textcolor{preprocessor}{#define POWER\_EXPANDER\_VOLTAGE\_DIVISOR 280 //Hardware revision A2}
+00066 
+\hypertarget{sensors_8h_source.tex_l00072}{}\hyperlink{sensors_8h_af8de9fe9eba1282f34dce42deebffc93}{00072} \textcolor{keyword}{inline} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \hyperlink{sensors_8h_af8de9fe9eba1282f34dce42deebffc93}{powerLevelExpander}()\{
+00073     \textcolor{keywordflow}{return} analogRead(\hyperlink{sensors_8h_a0f128e79b5e93af55f4b30b0bedcea3f}{POWER\_EXPANDER\_STATUS})*1000/
+      \hyperlink{sensors_8h_a3fbd303e783c833bf2812682e0905188}{POWER\_EXPANDER\_VOLTAGE\_DIVISOR};
+00074 \}
+00075 
+\hypertarget{sensors_8h_source.tex_l00079}{}\hyperlink{sensors_8h_a842286083506a5f26da4ff813d635012}{00079} \textcolor{preprocessor}{#define NUM\_BATTS 3}
+00080 
+\hypertarget{sensors_8h_source.tex_l00084}{}\hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{00084} \textcolor{preprocessor}{#define BATT\_MAIN 0}
+00085 
+\hypertarget{sensors_8h_source.tex_l00089}{}\hyperlink{sensors_8h_a5af8f9e877197004f0f5bf982a755146}{00089} \textcolor{preprocessor}{#define BATT\_BKUP 1}
+00090 
+\hypertarget{sensors_8h_source.tex_l00094}{}\hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{00094} \textcolor{preprocessor}{#define BATT\_PEXP 2}
+00095 
+\hypertarget{sensors_8h_source.tex_l00099}{}\hyperlink{sensors_8h_a51d281e7676749d34aab3f8ba6fab960}{00099} \textcolor{preprocessor}{#define GYRO\_PORT 4}
+00100 
+\hypertarget{sensors_8h_source.tex_l00104}{}\hyperlink{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}{00104} \textcolor{preprocessor}{#define GYRO\_SENSITIVITY 0}
+00105 
+\hypertarget{sensors_8h_source.tex_l00109}{}\hyperlink{sensors_8h_a0bbc24e22c825c0cb35cc0a5a769d8f0}{00109} \textcolor{preprocessor}{#define GYRO\_NET\_TARGET 0}
+00110 
+00114 \textcolor{keyword}{extern} Gyro \hyperlink{sensors_8h_ad2d059cd4baeedd5fbead13085953eed}{gyro};
+00115 
+00116 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

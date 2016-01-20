@@ -1,3 +1,10 @@
+/** @file opcontrol.h
+ * @brief Header file for operator control definitions and prototypes
+ *
+ * This file contains definitions of the internal motor state variables
+ * and prototypes for functions that record these variables and move the robot based on their value.
+ */
+
 #ifndef OPCONTROL_H
 #define OPCONTROL_H
 

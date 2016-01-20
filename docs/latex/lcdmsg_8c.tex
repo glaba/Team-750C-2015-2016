@@ -1,0 +1,81 @@
+\hypertarget{lcdmsg_8c}{}\subsection{src/lcdmsg.c File Reference}
+\label{lcdmsg_8c}\index{src/lcdmsg.\+c@{src/lcdmsg.\+c}}
+
+
+File for L\+CD message code.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\\*
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lcdmsg_8c_aabe33dfb797df5997c5e03078591aa81}{randlcdmsg} (F\+I\+LE $\ast$lcdport, int line)
+\item 
+void \hyperlink{lcdmsg_8c_acc19fe50b302412c894538965e77cb8b}{screensaver} (F\+I\+LE $\ast$lcdport)
+\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{lcdmsg_8c_abbcf1856a4c9063200ef3f4131fd05f5}{lcdmsg} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+File for L\+CD message code. 
+
+This file contains the code for the L\+CD screensaver messages. These messages display randomly while the L\+CD diagnostic menu is set to the screensaver mode. These messages are mainly inside jokes among the team. 
+
+Definition in file \hyperlink{lcdmsg_8c_source}{lcdmsg.\+c}.
+
+
+
+\subsubsection{Function Documentation}
+\index{lcdmsg.\+c@{lcdmsg.\+c}!randlcdmsg@{randlcdmsg}}
+\index{randlcdmsg@{randlcdmsg}!lcdmsg.\+c@{lcdmsg.\+c}}
+\paragraph[{\texorpdfstring{randlcdmsg(\+F\+I\+L\+E $\ast$lcdport, int line)}{randlcdmsg(FILE *lcdport, int line)}}]{\setlength{\rightskip}{0pt plus 5cm}void randlcdmsg (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport, }
+\item[{int}]{line}
+\end{DoxyParamCaption}
+)}\hypertarget{lcdmsg_8c_aabe33dfb797df5997c5e03078591aa81}{}\label{lcdmsg_8c_aabe33dfb797df5997c5e03078591aa81}
+Displays a random L\+CD message from the master list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the port the L\+CD is connected to \\
+\hline
+{\em line} & the line to display the message on \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcdmsg_8c_source_l00067}{67} of file \hyperlink{lcdmsg_8c_source}{lcdmsg.\+c}.
+
+\index{lcdmsg.\+c@{lcdmsg.\+c}!screensaver@{screensaver}}
+\index{screensaver@{screensaver}!lcdmsg.\+c@{lcdmsg.\+c}}
+\paragraph[{\texorpdfstring{screensaver(\+F\+I\+L\+E $\ast$lcdport)}{screensaver(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void screensaver (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcdmsg_8c_acc19fe50b302412c894538965e77cb8b}{}\label{lcdmsg_8c_acc19fe50b302412c894538965e77cb8b}
+Formats the L\+CD by displaying 750C title and message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the port the L\+CD is connected to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcdmsg_8c_source_l00086}{86} of file \hyperlink{lcdmsg_8c_source}{lcdmsg.\+c}.
+
+
+
+\subsubsection{Variable Documentation}
+\index{lcdmsg.\+c@{lcdmsg.\+c}!lcdmsg@{lcdmsg}}
+\index{lcdmsg@{lcdmsg}!lcdmsg.\+c@{lcdmsg.\+c}}
+\paragraph[{\texorpdfstring{lcdmsg}{lcdmsg}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lcdmsg\mbox{[}$\,$\mbox{]}}\hypertarget{lcdmsg_8c_abbcf1856a4c9063200ef3f4131fd05f5}{}\label{lcdmsg_8c_abbcf1856a4c9063200ef3f4131fd05f5}
+Master list of all L\+CD messages. 
+
+Definition at line \hyperlink{lcdmsg_8c_source_l00014}{14} of file \hyperlink{lcdmsg_8c_source}{lcdmsg.\+c}.
+

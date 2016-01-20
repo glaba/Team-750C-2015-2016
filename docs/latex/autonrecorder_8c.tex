@@ -1,0 +1,141 @@
+\hypertarget{autonrecorder_8c}{}\subsection{src/autonrecorder.c File Reference}
+\label{autonrecorder_8c}\index{src/autonrecorder.\+c@{src/autonrecorder.\+c}}
+
+
+File for autonomous recorder code.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\\*
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{autonrecorder_8c_a7233586e332461dc25c7cc950a08d429}{select\+Auton} ()
+\item 
+void \hyperlink{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{init\+Auton\+Recorder} ()
+\item 
+void \hyperlink{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}{record\+Auton} ()
+\item 
+void \hyperlink{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}{save\+Auton} ()
+\item 
+void \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{load\+Auton} ()
+\item 
+void \hyperlink{autonrecorder_8c_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playback\+Auton} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structjoy_state}{joy\+State} \hyperlink{autonrecorder_8c_a904e0a0d44a852a7df1122a3c7fecdef}{states} \mbox{[}\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{A\+U\+T\+O\+N\+\_\+\+T\+I\+ME} $\ast$\hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{J\+O\+Y\+\_\+\+P\+O\+L\+L\+\_\+\+F\+R\+EQ}\mbox{]}
+\item 
+int \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{auton\+Loaded}
+\item 
+int \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{prog\+Skills}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+File for autonomous recorder code. 
+
+This file contains the code for the saving, loading, and playback of autonomous files. When an autonomous routine is recorded, it is saved to a file to flash memory. This file is loaded and executed during the autonomous period of the game. It works by saving the motor values at a point in time. At the corresponding point in time, the values are played back.
+
+This file also handles the recording of programming skills by stitching 4 autonomous routines together. 
+
+Definition in file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+
+
+\subsubsection{Function Documentation}
+\index{autonrecorder.\+c@{autonrecorder.\+c}!init\+Auton\+Recorder@{init\+Auton\+Recorder}}
+\index{init\+Auton\+Recorder@{init\+Auton\+Recorder}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{init\+Auton\+Recorder()}{initAutonRecorder()}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Auton\+Recorder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{}\label{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}
+Initializes autonomous recorder by setting states array to zero. 
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00072}{72} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+\index{autonrecorder.\+c@{autonrecorder.\+c}!load\+Auton@{load\+Auton}}
+\index{load\+Auton@{load\+Auton}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{load\+Auton()}{loadAuton()}}]{\setlength{\rightskip}{0pt plus 5cm}void load\+Auton (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{}\label{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}
+Loads autonomous file contents into states array. 
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00216}{216} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+\index{autonrecorder.\+c@{autonrecorder.\+c}!playback\+Auton@{playback\+Auton}}
+\index{playback\+Auton@{playback\+Auton}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{playback\+Auton()}{playbackAuton()}}]{\setlength{\rightskip}{0pt plus 5cm}void playback\+Auton (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{autonrecorder_8c_ae592a73a6bd9b2adcaa58a8ee82daaa0}{}\label{autonrecorder_8c_ae592a73a6bd9b2adcaa58a8ee82daaa0}
+Replays autonomous based on loaded values in states array. 
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00309}{309} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+\index{autonrecorder.\+c@{autonrecorder.\+c}!record\+Auton@{record\+Auton}}
+\index{record\+Auton@{record\+Auton}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{record\+Auton()}{recordAuton()}}]{\setlength{\rightskip}{0pt plus 5cm}void record\+Auton (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}{}\label{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}
+Records driver joystick values into states array. 
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00088}{88} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+\index{autonrecorder.\+c@{autonrecorder.\+c}!save\+Auton@{save\+Auton}}
+\index{save\+Auton@{save\+Auton}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{save\+Auton()}{saveAuton()}}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Auton (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}{}\label{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}
+Saves contents of the states array to a file in flash memory. 
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00133}{133} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+\index{autonrecorder.\+c@{autonrecorder.\+c}!select\+Auton@{select\+Auton}}
+\index{select\+Auton@{select\+Auton}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{select\+Auton()}{selectAuton()}}]{\setlength{\rightskip}{0pt plus 5cm}int select\+Auton (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{autonrecorder_8c_a7233586e332461dc25c7cc950a08d429}{}\label{autonrecorder_8c_a7233586e332461dc25c7cc950a08d429}
+Selects which autonomous file to use based on the potentiometer reading.
+
+\begin{DoxyReturn}{Returns}
+the autonomous selected (slot number) 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00036}{36} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+
+
+\subsubsection{Variable Documentation}
+\index{autonrecorder.\+c@{autonrecorder.\+c}!auton\+Loaded@{auton\+Loaded}}
+\index{auton\+Loaded@{auton\+Loaded}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{auton\+Loaded}{autonLoaded}}]{\setlength{\rightskip}{0pt plus 5cm}int auton\+Loaded}\hypertarget{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{}\label{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}
+Slot number of currently loaded autonomous routine. 
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00024}{24} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+\index{autonrecorder.\+c@{autonrecorder.\+c}!prog\+Skills@{prog\+Skills}}
+\index{prog\+Skills@{prog\+Skills}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{prog\+Skills}{progSkills}}]{\setlength{\rightskip}{0pt plus 5cm}int prog\+Skills}\hypertarget{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{}\label{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}
+Section number (0-\/3) of currently loaded programming skills routine. 
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00029}{29} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+
+\index{autonrecorder.\+c@{autonrecorder.\+c}!states@{states}}
+\index{states@{states}!autonrecorder.\+c@{autonrecorder.\+c}}
+\paragraph[{\texorpdfstring{states}{states}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf joy\+State} states\mbox{[}{\bf A\+U\+T\+O\+N\+\_\+\+T\+I\+ME} $\ast${\bf J\+O\+Y\+\_\+\+P\+O\+L\+L\+\_\+\+F\+R\+EQ}\mbox{]}}\hypertarget{autonrecorder_8c_a904e0a0d44a852a7df1122a3c7fecdef}{}\label{autonrecorder_8c_a904e0a0d44a852a7df1122a3c7fecdef}
+Stores the joystick state variables for moving the robot. Used for recording and playing back autonomous routines. 
+
+Definition at line \hyperlink{autonrecorder_8c_source_l00019}{19} of file \hyperlink{autonrecorder_8c_source}{autonrecorder.\+c}.
+

@@ -1,3 +1,14 @@
+/** @file autonrecorder.h
+ * @brief Header file for autonomous recorder functions and definitions
+ *
+ * This file contains definitions and function declarations for the autonomous recorder.
+ * These definitions provide fundamental constants and classes that the autonomous recorder uses.
+ * Additionally, this file defines the autonomous selection potentiometer and button.
+ * It also provides access to the autonomous recorder functions from other files.
+ * This allows for the recorder to be accessed during operator control.
+ *
+ */
+
 #ifndef AUTONRECORDER_H
 #define AUTONRECORDER_H
 
@@ -68,26 +79,27 @@ extern int autonLoaded;
 
 /**
  * Section number (0-3) of currently loaded programming skills routine.
+ * Since programming skills lasts for 60 seconds, it can be represented by 4 standard autonomous recordings.
  */
 extern int progSkills;
 
 /** 
- * Initializes autonomous recorder by setting states array to zero.
+ * Initializes autonomous recorder by setting joystick states array to zero.
  */
 void initAutonRecorder();
 
 /** 
- * Records driver joystick values into states array.
+ * Records driver joystick values into states array for saving.
  */
 void recordAuton();
 
 /** 
- * Saves contents of the states array to a file in flash memory.
+ * Saves contents of the states array to a file in flash memory for later playback.
  */
 void saveAuton();
 
 /** 
- * Loads autonomous file contents into states array.
+ * Loads autonomous file contents into states array for playback.
  */
 void loadAuton();
 

@@ -1,0 +1,313 @@
+\hypertarget{lcddiag_8h}{}\subsection{include/lcddiag.h File Reference}
+\label{lcddiag_8h}\index{include/lcddiag.\+h@{include/lcddiag.\+h}}
+
+
+Header file for L\+CD diagnostic menu functions and definitions.  
+
+
+\subsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_motor_group}{Motor\+Group}
+\end{DoxyCompactItemize}
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT}~9
+\item 
+\#define \hyperlink{lcddiag_8h_ae6fe324cd9273893eee9eb0d5769e4f0}{M\+E\+N\+U\+\_\+\+M\+O\+T\+OR}~0
+\item 
+\#define \hyperlink{lcddiag_8h_a167e3569f77429ebc3565f22e6efeed5}{M\+E\+N\+U\+\_\+\+M\+O\+T\+O\+R\+\_\+\+M\+G\+MT}~1
+\item 
+\#define \hyperlink{lcddiag_8h_afda057112a42ae99d3a7ebceb6f146d2}{M\+E\+N\+U\+\_\+\+B\+A\+T\+T\+E\+RY}~2
+\item 
+\#define \hyperlink{lcddiag_8h_a587cce72d772563eadcb99ecf9ea7501}{M\+E\+N\+U\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+ON}~3
+\item 
+\#define \hyperlink{lcddiag_8h_a8cc6a725ad9992def546ea6adac06d23}{M\+E\+N\+U\+\_\+\+R\+O\+B\+OT}~4
+\item 
+\#define \hyperlink{lcddiag_8h_a014f70d5953c92a6d1cd06b94c6dcbee}{M\+E\+N\+U\+\_\+\+A\+U\+T\+ON}~5
+\item 
+\#define \hyperlink{lcddiag_8h_a51157531331641e407b380e4345b4b65}{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+L\+I\+G\+HT}~6
+\item 
+\#define \hyperlink{lcddiag_8h_a9d4f4fbdfdddf2f8c7ab8d8c363059a9}{M\+E\+N\+U\+\_\+\+S\+C\+R\+E\+E\+N\+S\+A\+V\+ER}~7
+\item 
+\#define \hyperlink{lcddiag_8h_a887014df198bd0c4a6ae8610d000a1f3}{M\+E\+N\+U\+\_\+\+C\+R\+E\+D\+I\+TS}~8
+\end{DoxyCompactItemize}
+\subsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_motor_group}{Motor\+Group} \hyperlink{lcddiag_8h_ab54759fd4972d34ba92441b33145081f}{Motor\+Group}
+\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcd\+Button\+Pressed} (int btn)
+\item 
+bool \hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcd\+Any\+Button\+Pressed} ()
+\item 
+void \hyperlink{lcddiag_8h_ad290df3e273598f9f10fe34c257e4084}{init\+Groups} ()
+\item 
+char $\ast$ \hyperlink{lcddiag_8h_a17fe3ffc769a6d02c5226b3bfb79f28f}{type\+String} (char $\ast$dest)
+\item 
+void \hyperlink{lcddiag_8h_af7a16cd7a10c542f5bfe3e4ad292c34d}{format\+L\+C\+D\+Display} (void $\ast$ignore)
+\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{lcddiag_8h_ab5b8edfc6a94520add858274b3fac974}{menu\+Choices} \mbox{[}\hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT}\mbox{]}\mbox{[}\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}+1\mbox{]}
+\item 
+Task\+Handle \hyperlink{lcddiag_8h_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcd\+Diag\+Task}
+\item 
+\hyperlink{struct_motor_group}{Motor\+Group} $\ast$ \hyperlink{lcddiag_8h_a7c12b01a5e5a665d9d799e862dab6350}{groups}
+\item 
+int \hyperlink{lcddiag_8h_a205f1cedec1664555276e0a71a1c87d8}{numgroups}
+\item 
+bool \hyperlink{lcddiag_8h_a0f0b335cd078d025d6fb720eb3bf6437}{disable\+Op\+Control}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Header file for L\+CD diagnostic menu functions and definitions. 
+
+This file contains function prototypes and definitions for the L\+CD diagnostic menu. The menu provides live debugging and testing functionality. It provides the following functions\+:
+\begin{DoxyItemize}
+\item Motor testing functionality (individual and group)
+\item Motor group management
+\item Battery voltage information
+\item Joystick connection status
+\item Robot sensory data
+\item Autonomous recorder status
+\item L\+CD backlight toggle
+\item Screensaver that displays during operator control
+\item Credits menu
+\end{DoxyItemize}
+
+This file maintains constants and internal states regarding the menu\textquotesingle{}s functionality.
+
+The idea behind this was inspired by Team 750W and Akram Sandhu. Without them, this project would not be possible.
+
+Note\+: the implementation of this feature is completely different between the two teams. No code was reused from their implementation of the L\+CD diagnostic menu. 
+
+Definition in file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+
+
+\subsubsection{Macro Definition Documentation}
+\index{lcddiag.\+h@{lcddiag.\+h}!L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT@{L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT}}
+\index{L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT@{L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT}{LCD_MENU_COUNT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT~9}\hypertarget{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{}\label{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}
+The number of top-\/level menus available in the L\+CD diagnostic menu system. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00078}{78} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+A\+U\+T\+ON@{M\+E\+N\+U\+\_\+\+A\+U\+T\+ON}}
+\index{M\+E\+N\+U\+\_\+\+A\+U\+T\+ON@{M\+E\+N\+U\+\_\+\+A\+U\+T\+ON}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+A\+U\+T\+ON}{MENU_AUTON}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+A\+U\+T\+ON~5}\hypertarget{lcddiag_8h_a014f70d5953c92a6d1cd06b94c6dcbee}{}\label{lcddiag_8h_a014f70d5953c92a6d1cd06b94c6dcbee}
+Menu ID number of the autonomous recorder status indicator. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00108}{108} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+L\+I\+G\+HT@{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+L\+I\+G\+HT}}
+\index{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+L\+I\+G\+HT@{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+L\+I\+G\+HT}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+L\+I\+G\+HT}{MENU_BACKLIGHT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+L\+I\+G\+HT~6}\hypertarget{lcddiag_8h_a51157531331641e407b380e4345b4b65}{}\label{lcddiag_8h_a51157531331641e407b380e4345b4b65}
+Menu ID number of the backlight toggle. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00113}{113} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+B\+A\+T\+T\+E\+RY@{M\+E\+N\+U\+\_\+\+B\+A\+T\+T\+E\+RY}}
+\index{M\+E\+N\+U\+\_\+\+B\+A\+T\+T\+E\+RY@{M\+E\+N\+U\+\_\+\+B\+A\+T\+T\+E\+RY}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+B\+A\+T\+T\+E\+RY}{MENU_BATTERY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+B\+A\+T\+T\+E\+RY~2}\hypertarget{lcddiag_8h_afda057112a42ae99d3a7ebceb6f146d2}{}\label{lcddiag_8h_afda057112a42ae99d3a7ebceb6f146d2}
+Menu ID number of the battery voltage readout. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00093}{93} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+ON@{M\+E\+N\+U\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+ON}}
+\index{M\+E\+N\+U\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+ON@{M\+E\+N\+U\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+ON}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+ON}{MENU_CONNECTION}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+ON~3}\hypertarget{lcddiag_8h_a587cce72d772563eadcb99ecf9ea7501}{}\label{lcddiag_8h_a587cce72d772563eadcb99ecf9ea7501}
+Menu ID number of the joystick connection state indicator. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00098}{98} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+C\+R\+E\+D\+I\+TS@{M\+E\+N\+U\+\_\+\+C\+R\+E\+D\+I\+TS}}
+\index{M\+E\+N\+U\+\_\+\+C\+R\+E\+D\+I\+TS@{M\+E\+N\+U\+\_\+\+C\+R\+E\+D\+I\+TS}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+C\+R\+E\+D\+I\+TS}{MENU_CREDITS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+C\+R\+E\+D\+I\+TS~8}\hypertarget{lcddiag_8h_a887014df198bd0c4a6ae8610d000a1f3}{}\label{lcddiag_8h_a887014df198bd0c4a6ae8610d000a1f3}
+Menu ID number of the credits menu. Thanks again to Team 750W and Akram Sandhu. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00124}{124} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+M\+O\+T\+OR@{M\+E\+N\+U\+\_\+\+M\+O\+T\+OR}}
+\index{M\+E\+N\+U\+\_\+\+M\+O\+T\+OR@{M\+E\+N\+U\+\_\+\+M\+O\+T\+OR}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+M\+O\+T\+OR}{MENU_MOTOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+M\+O\+T\+OR~0}\hypertarget{lcddiag_8h_ae6fe324cd9273893eee9eb0d5769e4f0}{}\label{lcddiag_8h_ae6fe324cd9273893eee9eb0d5769e4f0}
+Menu ID number of the motor testing menu. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00083}{83} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+M\+O\+T\+O\+R\+\_\+\+M\+G\+MT@{M\+E\+N\+U\+\_\+\+M\+O\+T\+O\+R\+\_\+\+M\+G\+MT}}
+\index{M\+E\+N\+U\+\_\+\+M\+O\+T\+O\+R\+\_\+\+M\+G\+MT@{M\+E\+N\+U\+\_\+\+M\+O\+T\+O\+R\+\_\+\+M\+G\+MT}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+M\+O\+T\+O\+R\+\_\+\+M\+G\+MT}{MENU_MOTOR_MGMT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+M\+O\+T\+O\+R\+\_\+\+M\+G\+MT~1}\hypertarget{lcddiag_8h_a167e3569f77429ebc3565f22e6efeed5}{}\label{lcddiag_8h_a167e3569f77429ebc3565f22e6efeed5}
+Menu ID number of the motor group manager. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00088}{88} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+R\+O\+B\+OT@{M\+E\+N\+U\+\_\+\+R\+O\+B\+OT}}
+\index{M\+E\+N\+U\+\_\+\+R\+O\+B\+OT@{M\+E\+N\+U\+\_\+\+R\+O\+B\+OT}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+R\+O\+B\+OT}{MENU_ROBOT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+R\+O\+B\+OT~4}\hypertarget{lcddiag_8h_a8cc6a725ad9992def546ea6adac06d23}{}\label{lcddiag_8h_a8cc6a725ad9992def546ea6adac06d23}
+Menu ID number of the robot sensory state indicator. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00103}{103} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!M\+E\+N\+U\+\_\+\+S\+C\+R\+E\+E\+N\+S\+A\+V\+ER@{M\+E\+N\+U\+\_\+\+S\+C\+R\+E\+E\+N\+S\+A\+V\+ER}}
+\index{M\+E\+N\+U\+\_\+\+S\+C\+R\+E\+E\+N\+S\+A\+V\+ER@{M\+E\+N\+U\+\_\+\+S\+C\+R\+E\+E\+N\+S\+A\+V\+ER}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{M\+E\+N\+U\+\_\+\+S\+C\+R\+E\+E\+N\+S\+A\+V\+ER}{MENU_SCREENSAVER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+E\+N\+U\+\_\+\+S\+C\+R\+E\+E\+N\+S\+A\+V\+ER~7}\hypertarget{lcddiag_8h_a9d4f4fbdfdddf2f8c7ab8d8c363059a9}{}\label{lcddiag_8h_a9d4f4fbdfdddf2f8c7ab8d8c363059a9}
+Menu ID number of the L\+CD message screensaver. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00118}{118} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+
+
+\subsubsection{Typedef Documentation}
+\index{lcddiag.\+h@{lcddiag.\+h}!Motor\+Group@{Motor\+Group}}
+\index{Motor\+Group@{Motor\+Group}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{Motor\+Group}{MotorGroup}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Motor\+Group}  {\bf Motor\+Group}}\hypertarget{lcddiag_8h_ab54759fd4972d34ba92441b33145081f}{}\label{lcddiag_8h_ab54759fd4972d34ba92441b33145081f}
+Object representing motor groups. Has flags for each motor that belongs to the group, as well as a 16-\/character name. 
+
+\subsubsection{Function Documentation}
+\index{lcddiag.\+h@{lcddiag.\+h}!format\+L\+C\+D\+Display@{format\+L\+C\+D\+Display}}
+\index{format\+L\+C\+D\+Display@{format\+L\+C\+D\+Display}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{format\+L\+C\+D\+Display(void $\ast$ignore)}{formatLCDDisplay(void *ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}void format\+L\+C\+D\+Display (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ignore}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8h_af7a16cd7a10c542f5bfe3e4ad292c34d}{}\label{lcddiag_8h_af7a16cd7a10c542f5bfe3e4ad292c34d}
+Runs the L\+CD diagnostic menu task. The task starts in screensaver mode. Pressing any button cancels screensaver mode and enters the selection menu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ignore} & does nothing -\/ required by task definition\\
+\hline
+\end{DoxyParams}
+Runs the L\+CD diagnostic menu task. This thread executes concurrently with the operator control task. The L\+CD diagnostic menu starts in screensaver mode. Pressing any button cancels screensaver mode and enters the selection menu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ignore} & does nothing -\/ required by task definition \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l01300}{1300} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!init\+Groups@{init\+Groups}}
+\index{init\+Groups@{init\+Groups}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{init\+Groups()}{initGroups()}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Groups (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8h_ad290df3e273598f9f10fe34c257e4084}{}\label{lcddiag_8h_ad290df3e273598f9f10fe34c257e4084}
+Initializes the motor groups array to contain the standard set of groups. This includes\+: Left Drive, Right Drive, Full Drive, Nautilus Shooter, Intake, and Transmission. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00230}{230} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!lcd\+Any\+Button\+Pressed@{lcd\+Any\+Button\+Pressed}}
+\index{lcd\+Any\+Button\+Pressed@{lcd\+Any\+Button\+Pressed}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{lcd\+Any\+Button\+Pressed()}{lcdAnyButtonPressed()}}]{\setlength{\rightskip}{0pt plus 5cm}bool lcd\+Any\+Button\+Pressed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{}\label{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}
+Checks if the any L\+CD button is pressed. This function waits for the button to be released before terminating. Due to this, it can only be called once per loop iteration. Its value should be stored in a boolean variable.
+
+\begin{DoxyReturn}{Returns}
+true if pressed, false if not 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8h_source_l00064}{64} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!lcd\+Button\+Pressed@{lcd\+Button\+Pressed}}
+\index{lcd\+Button\+Pressed@{lcd\+Button\+Pressed}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{lcd\+Button\+Pressed(int btn)}{lcdButtonPressed(int btn)}}]{\setlength{\rightskip}{0pt plus 5cm}bool lcd\+Button\+Pressed (
+\begin{DoxyParamCaption}
+\item[{int}]{btn}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{}\label{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}
+Checks if the specified L\+CD button is pressed. This function\textquotesingle{}s valid parameters are\+:
+\begin{DoxyItemize}
+\item L\+C\+D\+\_\+\+B\+T\+N\+\_\+\+L\+E\+FT
+\item L\+C\+D\+\_\+\+B\+T\+N\+\_\+\+R\+I\+G\+HT
+\item L\+C\+D\+\_\+\+B\+T\+N\+\_\+\+C\+E\+N\+T\+ER.
+\end{DoxyItemize}
+
+This function waits for the specified button to be released before terminating. Due to this, it can only be called once per loop iteration. Its value should be stored in a boolean variable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em btn} & the button to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if pressed, false if not 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8h_source_l00044}{44} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!type\+String@{type\+String}}
+\index{type\+String@{type\+String}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{type\+String(char $\ast$dest)}{typeString(char *dest)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ type\+String (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{dest}
+\end{DoxyParamCaption}
+)}\hypertarget{lcddiag_8h_a17fe3ffc769a6d02c5226b3bfb79f28f}{}\label{lcddiag_8h_a17fe3ffc769a6d02c5226b3bfb79f28f}
+Uses the L\+CD and the autonomous potentiometer to type a string. This is used to name motor groups and autonomous recordings. The maximum length of string this function can type is 16 characters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & a buffer to store the typed string (must be at least 17 characters to hold null terminator)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the buffer 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{lcddiag_8c_source_l00081}{81} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+
+
+\subsubsection{Variable Documentation}
+\index{lcddiag.\+h@{lcddiag.\+h}!disable\+Op\+Control@{disable\+Op\+Control}}
+\index{disable\+Op\+Control@{disable\+Op\+Control}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{disable\+Op\+Control}{disableOpControl}}]{\setlength{\rightskip}{0pt plus 5cm}bool disable\+Op\+Control}\hypertarget{lcddiag_8h_a0f0b335cd078d025d6fb720eb3bf6437}{}\label{lcddiag_8h_a0f0b335cd078d025d6fb720eb3bf6437}
+Disables operator control loop during motor testing. Since running motors is not thread safe, it is necessary to stop operator control of the motors during testing. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00042}{42} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!groups@{groups}}
+\index{groups@{groups}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{groups}{groups}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Motor\+Group}$\ast$ groups}\hypertarget{lcddiag_8h_a7c12b01a5e5a665d9d799e862dab6350}{}\label{lcddiag_8h_a7c12b01a5e5a665d9d799e862dab6350}
+Array that stores the motor groups. As this is a dynamic array, creating and editing new motor groups is possible. These motor groups are added to the array via the Motor Group Management menu. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00049}{49} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!lcd\+Diag\+Task@{lcd\+Diag\+Task}}
+\index{lcd\+Diag\+Task@{lcd\+Diag\+Task}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{lcd\+Diag\+Task}{lcdDiagTask}}]{\setlength{\rightskip}{0pt plus 5cm}Task\+Handle lcd\+Diag\+Task}\hypertarget{lcddiag_8h_a2a17fd7ddf1721b3a9d9b2a3d728c365}{}\label{lcddiag_8h_a2a17fd7ddf1721b3a9d9b2a3d728c365}
+Object representing the L\+CD diagnostic menu task. The L\+CD diagnostic menu runs in a separate thread from the operator control code. The Task\+Handle allows for pausing and resuming of the L\+CD diagnostic menu during autonomous recording. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00031}{31} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!menu\+Choices@{menu\+Choices}}
+\index{menu\+Choices@{menu\+Choices}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{menu\+Choices}{menuChoices}}]{\setlength{\rightskip}{0pt plus 5cm}char menu\+Choices\mbox{[}{\bf L\+C\+D\+\_\+\+M\+E\+N\+U\+\_\+\+C\+O\+U\+NT}\mbox{]}\mbox{[}{\bf L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}+1\mbox{]}}\hypertarget{lcddiag_8h_ab5b8edfc6a94520add858274b3fac974}{}\label{lcddiag_8h_ab5b8edfc6a94520add858274b3fac974}
+Stores the top-\/level menu names. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00060}{60} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+
+\index{lcddiag.\+h@{lcddiag.\+h}!numgroups@{numgroups}}
+\index{numgroups@{numgroups}!lcddiag.\+h@{lcddiag.\+h}}
+\paragraph[{\texorpdfstring{numgroups}{numgroups}}]{\setlength{\rightskip}{0pt plus 5cm}int numgroups}\hypertarget{lcddiag_8h_a205f1cedec1664555276e0a71a1c87d8}{}\label{lcddiag_8h_a205f1cedec1664555276e0a71a1c87d8}
+Stores the number of motor groups. This is functionally identical to the size of the motor group array. 
+
+Definition at line \hyperlink{lcddiag_8c_source_l00055}{55} of file \hyperlink{lcddiag_8c_source}{lcddiag.\+c}.
+

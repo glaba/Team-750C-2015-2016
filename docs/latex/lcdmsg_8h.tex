@@ -1,0 +1,122 @@
+\hypertarget{lcdmsg_8h}{}\subsection{include/lcdmsg.h File Reference}
+\label{lcdmsg_8h}\index{include/lcdmsg.\+h@{include/lcdmsg.\+h}}
+
+
+Header file for L\+CD message code.  
+
+
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{L\+C\+D\+\_\+\+P\+O\+RT}~uart1
+\item 
+\#define \hyperlink{lcdmsg_8h_aa9575881ef196e5c94e60d183742eee7}{L\+C\+D\+\_\+750\+C\+\_\+\+T\+I\+T\+LE}~\char`\"{}  \$\$\$ 750\+C \$\$\$  \char`\"{}
+\item 
+\#define \hyperlink{lcdmsg_8h_ad50b23287bae902efb0984c90be2cf23}{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+C\+O\+U\+NT}~44
+\item 
+\#define \hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}~16
+\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lcdmsg_8h_aabe33dfb797df5997c5e03078591aa81}{randlcdmsg} (F\+I\+LE $\ast$lcdport, int line)
+\item 
+void \hyperlink{lcdmsg_8h_acc19fe50b302412c894538965e77cb8b}{screensaver} (F\+I\+LE $\ast$lcdport)
+\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{lcdmsg_8h_abbcf1856a4c9063200ef3f4131fd05f5}{lcdmsg} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Header file for L\+CD message code. 
+
+This file contains definitions for the L\+CD screensaver messages. This file also defines the L\+CD port. These messages display randomly while the L\+CD diagnostic menu is set to the screensaver mode. These messages are mainly inside jokes among the team. 
+
+Definition in file \hyperlink{lcdmsg_8h_source}{lcdmsg.\+h}.
+
+
+
+\subsubsection{Macro Definition Documentation}
+\index{lcdmsg.\+h@{lcdmsg.\+h}!L\+C\+D\+\_\+750\+C\+\_\+\+T\+I\+T\+LE@{L\+C\+D\+\_\+750\+C\+\_\+\+T\+I\+T\+LE}}
+\index{L\+C\+D\+\_\+750\+C\+\_\+\+T\+I\+T\+LE@{L\+C\+D\+\_\+750\+C\+\_\+\+T\+I\+T\+LE}!lcdmsg.\+h@{lcdmsg.\+h}}
+\paragraph[{\texorpdfstring{L\+C\+D\+\_\+750\+C\+\_\+\+T\+I\+T\+LE}{LCD_750C_TITLE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+C\+D\+\_\+750\+C\+\_\+\+T\+I\+T\+LE~\char`\"{}  \$\$\$ 750\+C \$\$\$  \char`\"{}}\hypertarget{lcdmsg_8h_aa9575881ef196e5c94e60d183742eee7}{}\label{lcdmsg_8h_aa9575881ef196e5c94e60d183742eee7}
+Defines title string for L\+CD to display. 
+
+Definition at line \hyperlink{lcdmsg_8h_source_l00021}{21} of file \hyperlink{lcdmsg_8h_source}{lcdmsg.\+h}.
+
+\index{lcdmsg.\+h@{lcdmsg.\+h}!L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+C\+O\+U\+NT@{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+C\+O\+U\+NT}}
+\index{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+C\+O\+U\+NT@{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+C\+O\+U\+NT}!lcdmsg.\+h@{lcdmsg.\+h}}
+\paragraph[{\texorpdfstring{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+C\+O\+U\+NT}{LCD_MESSAGE_COUNT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+C\+O\+U\+NT~44}\hypertarget{lcdmsg_8h_ad50b23287bae902efb0984c90be2cf23}{}\label{lcdmsg_8h_ad50b23287bae902efb0984c90be2cf23}
+Defines the amount of L\+CD messages in the master list. 
+
+Definition at line \hyperlink{lcdmsg_8h_source_l00026}{26} of file \hyperlink{lcdmsg_8h_source}{lcdmsg.\+h}.
+
+\index{lcdmsg.\+h@{lcdmsg.\+h}!L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH@{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}}
+\index{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH@{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}!lcdmsg.\+h@{lcdmsg.\+h}}
+\paragraph[{\texorpdfstring{L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}{LCD_MESSAGE_MAX_LENGTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH~16}\hypertarget{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{}\label{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}
+Defines the max length for L\+CD messages. 
+
+Definition at line \hyperlink{lcdmsg_8h_source_l00031}{31} of file \hyperlink{lcdmsg_8h_source}{lcdmsg.\+h}.
+
+\index{lcdmsg.\+h@{lcdmsg.\+h}!L\+C\+D\+\_\+\+P\+O\+RT@{L\+C\+D\+\_\+\+P\+O\+RT}}
+\index{L\+C\+D\+\_\+\+P\+O\+RT@{L\+C\+D\+\_\+\+P\+O\+RT}!lcdmsg.\+h@{lcdmsg.\+h}}
+\paragraph[{\texorpdfstring{L\+C\+D\+\_\+\+P\+O\+RT}{LCD_PORT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+C\+D\+\_\+\+P\+O\+RT~uart1}\hypertarget{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{}\label{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}
+Defines the port the L\+CD is plugged into. 
+
+Definition at line \hyperlink{lcdmsg_8h_source_l00016}{16} of file \hyperlink{lcdmsg_8h_source}{lcdmsg.\+h}.
+
+
+
+\subsubsection{Function Documentation}
+\index{lcdmsg.\+h@{lcdmsg.\+h}!randlcdmsg@{randlcdmsg}}
+\index{randlcdmsg@{randlcdmsg}!lcdmsg.\+h@{lcdmsg.\+h}}
+\paragraph[{\texorpdfstring{randlcdmsg(\+F\+I\+L\+E $\ast$lcdport, int line)}{randlcdmsg(FILE *lcdport, int line)}}]{\setlength{\rightskip}{0pt plus 5cm}void randlcdmsg (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport, }
+\item[{int}]{line}
+\end{DoxyParamCaption}
+)}\hypertarget{lcdmsg_8h_aabe33dfb797df5997c5e03078591aa81}{}\label{lcdmsg_8h_aabe33dfb797df5997c5e03078591aa81}
+Displays a random L\+CD message from the master list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the port the L\+CD is connected to \\
+\hline
+{\em line} & the line to display the message on \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcdmsg_8c_source_l00067}{67} of file \hyperlink{lcdmsg_8c_source}{lcdmsg.\+c}.
+
+\index{lcdmsg.\+h@{lcdmsg.\+h}!screensaver@{screensaver}}
+\index{screensaver@{screensaver}!lcdmsg.\+h@{lcdmsg.\+h}}
+\paragraph[{\texorpdfstring{screensaver(\+F\+I\+L\+E $\ast$lcdport)}{screensaver(FILE *lcdport)}}]{\setlength{\rightskip}{0pt plus 5cm}void screensaver (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{lcdport}
+\end{DoxyParamCaption}
+)}\hypertarget{lcdmsg_8h_acc19fe50b302412c894538965e77cb8b}{}\label{lcdmsg_8h_acc19fe50b302412c894538965e77cb8b}
+Formats the L\+CD by displaying 750C title and message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcdport} & the port the L\+CD is connected to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{lcdmsg_8c_source_l00086}{86} of file \hyperlink{lcdmsg_8c_source}{lcdmsg.\+c}.
+
+
+
+\subsubsection{Variable Documentation}
+\index{lcdmsg.\+h@{lcdmsg.\+h}!lcdmsg@{lcdmsg}}
+\index{lcdmsg@{lcdmsg}!lcdmsg.\+h@{lcdmsg.\+h}}
+\paragraph[{\texorpdfstring{lcdmsg}{lcdmsg}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lcdmsg\mbox{[}$\,$\mbox{]}}\hypertarget{lcdmsg_8h_abbcf1856a4c9063200ef3f4131fd05f5}{}\label{lcdmsg_8h_abbcf1856a4c9063200ef3f4131fd05f5}
+Master list of all L\+CD messages. 
+
+Definition at line \hyperlink{lcdmsg_8c_source_l00014}{14} of file \hyperlink{lcdmsg_8c_source}{lcdmsg.\+c}.
+

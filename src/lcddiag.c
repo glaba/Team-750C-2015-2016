@@ -1,11 +1,62 @@
+/** @file lcddiag.c
+ * @brief File for LCD diagnostic menu code
+ *
+ * This file contains the code for the LCD diagnostic menu.
+ * The menu provides live debugging and testing functionality.
+ * It provides the following functions:
+ *     - Motor testing functionality (individual and group)
+ *     - Motor group management
+ *     - Battery voltage information
+ *     - Joystick connection status
+ *     - Robot sensory data
+ *     - Autonomous recorder status
+ *     - LCD backlight toggle
+ *     - Screensaver that displays during operator control
+ *     - Credits menu
+ *
+ * The idea behind this was inspired by Team 750W and Akram Sandhu.
+ * Without them, this project would not be possible.
+ *
+ * Note: the implementation of this feature is completely different between the two teams.
+ * No code was reused from their implementation of the LCD diagnostic menu.
+ */
+
 #include "main.h"
 
+/**
+ * Object representing the LCD diagnostic menu task.
+ * The LCD diagnostic menu runs in a separate thread from the operator control code.
+ * The TaskHandle allows for pausing and resuming of the LCD diagnostic menu during autonomous recording.
+ */
 TaskHandle lcdDiagTask = NULL;
+
+/**
+ * Boolean representing the LCD screen's backlight state.
+ */
 bool backlight = true;
+
+/**
+ * Disables operator control loop during motor testing.
+ * Since running motors is not thread safe, it is necessary to stop operator control of the motors during testing.
+ */
 bool disableOpControl = false;
+
+/**
+ * Array that stores the motor groups.
+ * As this is a dynamic array, creating and editing new motor groups is possible.
+ * These motor groups are added to the array via the Motor Group Management menu.
+ */
 MotorGroup *groups;
+
+/**
+ * Stores the number of motor groups.
+ * This is functionally identical to the size of the motor group array.
+ */
 int numgroups;
 
+/**
+ * Stores the top-level menu names.
+ */
 char menuChoices[LCD_MENU_COUNT][LCD_MESSAGE_MAX_LENGTH+1] = {
     "Motor Test",
     "Motor Group Mgmt",
@@ -18,6 +69,15 @@ char menuChoices[LCD_MENU_COUNT][LCD_MESSAGE_MAX_LENGTH+1] = {
     "Credits"
 };
 
+/**
+ * Uses the LCD and the autonomous potentiometer to type a string.
+ * This is used to name motor groups and autonomous recordings.
+ * The maximum length of string this function can type is 16 characters.
+ *
+ * @param dest a buffer to store the typed string (must be at least 17 characters to hold null terminator)
+ *
+ * @return a pointer to the buffer
+ */
 char* typeString(char *dest){
     bool done = false;
     int val;
@@ -106,6 +166,10 @@ char* typeString(char *dest){
     return dest;
 }
 
+/**
+ * Saves motor groups out to a file.
+ * This file can be loaded to add custom motor groups into memory.
+ */
 void saveGroups(){
     FILE* group = fopen("grp", "w");
     taskPrioritySet(NULL, TASK_PRIORITY_HIGHEST-1);
@@ -127,6 +191,10 @@ void saveGroups(){
     delay(1000);
 }
 
+/**
+ * Loads motor groups from a file on the Cortex flash memory.
+ * This is used to add custom motor groups for testing purposes.
+ */
 void loadGroups(){
     FILE* group = fopen("grp", "r");
     taskPrioritySet(NULL, TASK_PRIORITY_HIGHEST-1);
@@ -155,6 +223,10 @@ void loadGroups(){
     delay(1000);
 }
 
+/**
+ * Initializes the motor groups array to contain the standard set of groups.
+ * This includes: Left Drive, Right Drive, Full Drive, Nautilus Shooter, Intake, and Transmission.
+ */
 void initGroups(){
     FILE* group = fopen("grp", "r");
     if(group == NULL){
@@ -202,6 +274,13 @@ void initGroups(){
     }
 }
 
+/** 
+ * Formats the LCD diagnostic menu name in the center of the screen.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ * @param line the line on the LCD to print the name
+ * @param index the ID number of the menu
+ */
 void formatMenuNameCenter(FILE* lcdport, int line, int index){
     int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(menuChoices[index]))/2;
     char str[LCD_MESSAGE_MAX_LENGTH+1] = "";
@@ -215,6 +294,11 @@ void formatMenuNameCenter(FILE* lcdport, int line, int index){
     lcdSetText(lcdport, line, str);
 }
 
+/** 
+ * Displays the list of menus and waits for the user to select one.
+ * 
+ * @return the ID number of the menu selected
+ */
 int selectMenu() {
     bool done = false;
     int val = 0;
@@ -243,6 +327,13 @@ int selectMenu() {
     return val;
 }
 
+/** 
+ * Runs the screensaver that displays LCD messages.
+ *
+ * @see lcdmsg.c
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runScreensaver(FILE *lcdport){
     int cycle = 0;
     do {
@@ -257,6 +348,11 @@ void runScreensaver(FILE *lcdport){
     } while(!lcdAnyButtonPressed());
 }
 
+/** 
+ * Displays the battery voltages, allowing for switching between batteries.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runBattery(FILE *lcdport){
     bool done = false;
     int val = BATT_MAIN;
@@ -318,6 +414,13 @@ void runBattery(FILE *lcdport){
     } while(!done);
 }
 
+/** 
+ * Prompts the user to select an individual motor to test.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ * 
+ * @return the motor number selected
+ */
 int selectMotor(FILE *lcdport){
     bool done = false;
     int val = 1;
@@ -379,6 +482,13 @@ int selectMotor(FILE *lcdport){
     return val;
 }
 
+/** 
+ * Selects the speed of the motor to test.
+ * 
+ * @param mtr the motor number that is being tested
+ * 
+ * @return the speed selected
+ */
 int selectSpd(int mtr) {
     bool done = false;
     int val=0;
@@ -435,6 +545,15 @@ int selectSpd(int mtr) {
     return val;
 }
 
+/** 
+ * Runs the individual motor test.
+ * Selection of the motor and speed is handled by other functions
+ *
+ * @see selectMotor()
+ * @see selectSpd()
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runIndivMotor(FILE *lcdport){
     bool done = false;
     int mtr = selectMotor(lcdport);
@@ -491,6 +610,13 @@ void runIndivMotor(FILE *lcdport){
     disableOpControl = false;
 }
 
+/** 
+ * Selects the motor group to test.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ * 
+ * @return the ID number of the group to test
+ */
 int selectMotorGroup(FILE *lcdport){
     bool done = false;
     int val = 0;
@@ -531,6 +657,13 @@ int selectMotorGroup(FILE *lcdport){
     return val;
 }
 
+/** 
+ * Selects the speed of the motor group to be tested.
+ * 
+ * @param mtr the ID number of the motor group to be tested
+ * 
+ * @return the speed selected
+ */
 int selectSpdGroup(int mtr) {
     bool done = false;
     int val;
@@ -584,6 +717,15 @@ int selectSpdGroup(int mtr) {
     return val;
 }
 
+/** 
+ * Runs the motor group test.
+ * Selection of the motor group and speed is handled by other functions.
+ *
+ * @see selectMotorGroup()
+ * @see selectSpdGroup()
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runGroupMotor(FILE *lcdport){
     bool done = false;
     int mtr = selectMotorGroup(lcdport);
@@ -642,6 +784,12 @@ void runGroupMotor(FILE *lcdport){
     disableOpControl = false;
 }
 
+/** 
+ * Runs the top-level motor testing menu.
+ * Prompts the user to select between individual and group motor testing.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runMotor(FILE *lcdport){
     bool done = false;
     int val = 0;
@@ -673,6 +821,13 @@ void runMotor(FILE *lcdport){
     }
 }
 
+/** 
+ * Selects the motors that constitute the specified motor group.
+ * 
+ * @param motor a boolean array that stores the states of each motor in the group
+ * 
+ * @return a pointer to the array passed
+ */
 bool* selectMotorGroupMembers(bool *motor){
     bool done = false;
     int val = 1;
@@ -702,7 +857,7 @@ bool* selectMotorGroupMembers(bool *motor){
         } else {
             strcpy(motorstr, "Confirm");
         }
-int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
+        int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
         char str[LCD_MESSAGE_MAX_LENGTH+1] = "";
         for(int i = 0; i < spaces; i++){
             strcat(str, " ");
@@ -740,6 +895,9 @@ int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(motorstr))/2;
     return motor;
 }
 
+/** 
+ * Adds a new motor group to the dynamic array.
+ */
 void addMotorGroup(){
     MotorGroup *temp = (MotorGroup*) realloc(groups, sizeof(MotorGroup)*(numgroups+1));
     if(temp == NULL) return;
@@ -750,6 +908,12 @@ void addMotorGroup(){
     selectMotorGroupMembers(groups[numgroups-1].motor);
 }
 
+/** 
+ * Edits a motor group.
+ * Prompts the user to either edit the name or the motors in a motor group.
+ * 
+ * @param mtr the ID number of the motor group to edit
+ */
 void editMotorGroup(int mtr){
     if(mtr == -1) return;
     bool done = false;
@@ -799,6 +963,12 @@ void editMotorGroup(int mtr){
     }
 }
 
+/** 
+ * Deletes a motor group.
+ * Prompts the user whether to cancel or to proceed with deletion.
+ * 
+ * @param mtr the ID number to delete
+ */
 void delMotorGroup(int mtr){
     if(mtr == -1) return;
     int val = 0;
@@ -850,6 +1020,12 @@ void delMotorGroup(int mtr){
     }
 }
 
+/** 
+ * Runs the top-level motor group management menu.
+ * Prompts the user whether to add, edit, or delete motor groups.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runMotorGroupMgmt(FILE *lcdport){
     bool done = false;
     int val = 0;
@@ -867,7 +1043,7 @@ void runMotorGroupMgmt(FILE *lcdport){
             case 0: lcdSetText(lcdport, 1, "Add Motor Group"); break;
             case 1: lcdSetText(lcdport, 1, "Edit Motor Group"); break;
             case 2: lcdSetText(lcdport, 1, "Del Motor Group"); break;
-            case 3: lcdSetText(lcdport, 1, "Cancel"); break;
+            case 3: lcdSetText(lcdport, 1, "Cancel Grp. Mgmt"); break;
         }
         done = centerPressed;
         if(val == 0){
@@ -885,6 +1061,12 @@ void runMotorGroupMgmt(FILE *lcdport){
     }
 }
 
+/** 
+ * Runs the joystick connection debugging menu.
+ * Prints whether the main and partner joysticks are connected.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runConnection(FILE *lcdport){
     do {
         char strjoy1[LCD_MESSAGE_MAX_LENGTH+1] = "";
@@ -928,6 +1110,12 @@ void runConnection(FILE *lcdport){
     } while(!lcdAnyButtonPressed());
 }
 
+/** 
+ * Runs the robot sensory information menu.
+ * Displays information regarding competition switch status and gyroscope angle.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runRobot(FILE *lcdport){
     do {
         char strjoy1[LCD_MESSAGE_MAX_LENGTH+1] = "";
@@ -972,6 +1160,13 @@ void runRobot(FILE *lcdport){
     } while(!lcdAnyButtonPressed());
 }
 
+/** 
+ * Runs the autonomous recorder status menu.
+ * Displays the autonomous that is currently loaded, and if controller playback is enabled.
+ * Controller playback is automatically disabled when plugged into the competition switch.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runAuton(FILE *lcdport){
     do {
         char strjoy1[LCD_MESSAGE_MAX_LENGTH+1] = "";
@@ -980,6 +1175,8 @@ void runAuton(FILE *lcdport){
             strcat(strjoy1, "No Auton Loaded");
         } else if(autonLoaded == 0){
             strcat(strjoy1, "Empty Auton");
+        } else if(autonLoaded == MAX_AUTON_SLOTS + 1){
+            strcat(strjoy1, "Prog. Skills");
         } else {
             FILE* autonFile;
             char filename[AUTON_FILENAME_MAX_LENGTH];
@@ -1025,6 +1222,16 @@ void runAuton(FILE *lcdport){
     } while(!lcdAnyButtonPressed());
 }
 
+/** 
+ * Runs the credits menu.
+ * The LCD diagnostic menu was inspired by Team 750W and Akram Sandhu.
+ * This would not be possible without their generosity and permissiveness to use their idea.
+ *
+ * Note: the implementation of this feature is completely different between the two teams.
+ * No code was reused from their implementation of the LCD diagnostic menu.
+ * 
+ * @param lcdport the LCD screen's port (either UART1 or UART2)
+ */
 void runCredits(FILE *lcdport){
     do {
         char strjoy1[LCD_MESSAGE_MAX_LENGTH+1] = "";
@@ -1060,6 +1267,14 @@ void runCredits(FILE *lcdport){
     } while(!lcdAnyButtonPressed());
 }
 
+/** 
+ * Dispatcher function that executes the selected LCD diagnostic menu function.
+ * This function is called with the result of selectMenu().
+ * 
+ * @see selectMenu()
+ * 
+ * @param choice the selected menu to run
+ */
 void doMenuChoice(int choice){
     switch(choice){
         case MENU_SCREENSAVER: runScreensaver(LCD_PORT); break;
@@ -1074,7 +1289,15 @@ void doMenuChoice(int choice){
     }
 }
 
-void formatLCDDisplay(void *ignore){ //runs as task
+/**
+ * Runs the LCD diagnostic menu task.
+ * This thread executes concurrently with the operator control task.
+ * The LCD diagnostic menu starts in screensaver mode.
+ * Pressing any button cancels screensaver mode and enters the selection menu.
+ *
+ * @param ignore does nothing - required by task definition
+ */
+void formatLCDDisplay(void *ignore){
     lcdSetBacklight(LCD_PORT, backlight);
     doMenuChoice(MENU_SCREENSAVER);
     while(true){

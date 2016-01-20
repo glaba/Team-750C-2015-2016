@@ -1,3 +1,17 @@
+/** @file motors.h
+ * @brief Header file for important motor functions and definitions
+ *
+ * This file contains the code for functions and definitions regarding motor status.
+ * Mainly, this file defines the motor ports for each mechanism.
+ * It also defines certain motor-related constants.
+ * Lastly, basic movement functions are defined as inline in this file.
+ *
+ * Some functions are too complex to be defined as inline functions in the motors.h file.
+ * See the motors.c file for these more complicated movement functions.
+ *
+ * @see motors.c
+ */
+
 #ifndef MOTORS_H_
 #define MOTORS_H_
 

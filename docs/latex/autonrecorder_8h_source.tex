@@ -1,0 +1,48 @@
+\hypertarget{autonrecorder_8h_source}{}\subsection{autonrecorder.\+h}
+\label{autonrecorder_8h_source}\index{include/autonrecorder.\+h@{include/autonrecorder.\+h}}
+
+\begin{DoxyCode}
+00001 
+00012 \textcolor{preprocessor}{#ifndef AUTONRECORDER\_H}
+00013 \textcolor{preprocessor}{#define AUTONRECORDER\_H}
+00014 
+\hypertarget{autonrecorder_8h_source.tex_l00018}{}\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{00018} \textcolor{preprocessor}{#define AUTON\_TIME 15}
+00019 
+\hypertarget{autonrecorder_8h_source.tex_l00023}{}\hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{00023} \textcolor{preprocessor}{#define PROGSKILL\_TIME 60}
+00024 
+\hypertarget{autonrecorder_8h_source.tex_l00030}{}\hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{00030} \textcolor{preprocessor}{#define JOY\_POLL\_FREQ 50}
+00031 
+\hypertarget{autonrecorder_8h_source.tex_l00035}{}\hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{00035} \textcolor{preprocessor}{#define MAX\_AUTON\_SLOTS 10}
+00036 
+\hypertarget{autonrecorder_8h_source.tex_l00040}{}\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{00040} \textcolor{preprocessor}{#define AUTON\_FILENAME\_MAX\_LENGTH 8}
+00041 
+\hypertarget{autonrecorder_8h_source.tex_l00045}{}\hyperlink{autonrecorder_8h_a2490cda7a399f481333af2e5589b74a9}{00045} \textcolor{preprocessor}{#define AUTON\_POT 1}
+00046 
+\hypertarget{autonrecorder_8h_source.tex_l00050}{}\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{00050} \textcolor{preprocessor}{#define AUTON\_BUTTON 2}
+00051 
+\hypertarget{autonrecorder_8h_source.tex_l00055}{}\hyperlink{autonrecorder_8h_a7bd1f10693336e3b7507b03888872897}{00055} \textcolor{preprocessor}{#define AUTON\_POT\_LOW 0}
+00056 
+\hypertarget{autonrecorder_8h_source.tex_l00060}{}\hyperlink{autonrecorder_8h_a01989d89b8bed150d0aacdaef5ccabd3}{00060} \textcolor{preprocessor}{#define AUTON\_POT\_HIGH 4095}
+00061 
+\hypertarget{autonrecorder_8h_source.tex_l00065}{}\hyperlink{structjoy_state}{00065} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{structjoy_state}{joyState} \{
+\hypertarget{autonrecorder_8h_source.tex_l00066}{}\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{00066}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd}, \hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn}, \hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht}, \hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk}, \hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans}, \hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep};
+00067 \} \hyperlink{autonrecorder_8h_a2ed010bca1f3d0ab7081bbcae3ed238a}{joyState};
+00068 
+00073 \textcolor{keyword}{extern} \hyperlink{structjoy_state}{joyState} \hyperlink{autonrecorder_8h_a904e0a0d44a852a7df1122a3c7fecdef}{states}[\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME}*\hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}];
+00074 
+00078 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \hyperlink{autonrecorder_8h_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded};
+00079 
+00084 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \hyperlink{autonrecorder_8h_aa2eda471576bdbaf33835a71da9bc616}{progSkills};
+00085 
+00089 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}();
+00090 
+00094 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}();
+00095 
+00099 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}();
+00100 
+00104 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
+00105 
+00109 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playbackAuton}();
+00110 
+00111 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

@@ -1,3 +1,11 @@
+/** @file constants.h
+ * @brief Header file for mathematical constants
+ *
+ * This file provides constant definitions for various mathematical values that appear frequently.
+ * These definitions provide a more human-readable way to do math operations on variables.
+ *
+ */
+
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 

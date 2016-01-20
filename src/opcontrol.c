@@ -34,18 +34,50 @@
 
 #include "main.h"
 
+/**
+ * Forward/backward speed of the drive motors.
+ */
 int spd;
+
+/**
+ * Turning speed of the drive motors.
+ */
 int turn;
+
+/**
+ * Speed of the shooter motors.
+ */
 int sht; 
+
+/**
+ * Speed of the intake motors.
+ */
 int intk;
+
+/**
+ * Speed of the transmission motors.
+ */
 int trans;
+
+/**
+ * Speed of the lift deployment motor.
+ */
 int dep;
 
+/** 
+ * Faces the robot towards the desired gyroscope angle by turning it.
+ * This function implements a simple PID control loop in order to correct for error.
+ * 
+ * @param target the desired robot angle
+ */
 void targetNet(int target){
     int error = gyroGet(gyro) % ROTATION_DEG - target;
     turn = error * 20;
 }
 
+/**
+ * Populates the motor state variables based on the joystick's current values.
+ */
 void recordJoyInfo(){
     spd = joystickGetAnalog(1, 3);
     turn = joystickGetAnalog(1, 1);
@@ -90,6 +122,9 @@ void recordJoyInfo(){
     }
 }
 
+/**
+ * Moves the robot based on the motor state variables.
+ */
 void moveRobot(){
     move(spd, turn);
     shoot(sht);
@@ -116,7 +151,7 @@ void moveRobot(){
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 void operatorControl() {
-    lcdSetBacklight(LCD_PORT, false);
+    lcdSetBacklight(LCD_PORT, true);
     while (true) {
         if(isOnline() || progSkills == 0){
             if(lcdDiagTask == NULL){
@@ -129,9 +164,11 @@ void operatorControl() {
                 if (joystickGetDigital(1, 7, JOY_RIGHT) && !isOnline()) {
                     taskSuspend(lcdDiagTask);
                     recordAuton();
+                    lcdSetBacklight(LCD_PORT, true);
                     saveAuton();
                 } else if (joystickGetDigital(1, 7, JOY_LEFT) && !isOnline()) {
                     taskSuspend(lcdDiagTask);
+                    lcdSetBacklight(LCD_PORT, true);
                     loadAuton();
                     playbackAuton();
                 }
