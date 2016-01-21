@@ -284,18 +284,18 @@
 \contentsline {paragraph}{\numberline {4.35.2.2}operator\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Control()}{81}{paragraph.4.35.2.2}
 \contentsline {paragraph}{\numberline {4.35.2.3}record\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Joy\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Info()}{81}{paragraph.4.35.2.3}
 \contentsline {paragraph}{\numberline {4.35.2.4}target\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Net(int target)}{81}{paragraph.4.35.2.4}
-\contentsline {subsubsection}{\numberline {4.35.3}Variable Documentation}{81}{subsubsection.4.35.3}
-\contentsline {paragraph}{\numberline {4.35.3.1}dep}{81}{paragraph.4.35.3.1}
+\contentsline {subsubsection}{\numberline {4.35.3}Variable Documentation}{82}{subsubsection.4.35.3}
+\contentsline {paragraph}{\numberline {4.35.3.1}dep}{82}{paragraph.4.35.3.1}
 \contentsline {paragraph}{\numberline {4.35.3.2}intk}{82}{paragraph.4.35.3.2}
 \contentsline {paragraph}{\numberline {4.35.3.3}sht}{82}{paragraph.4.35.3.3}
 \contentsline {paragraph}{\numberline {4.35.3.4}spd}{82}{paragraph.4.35.3.4}
 \contentsline {paragraph}{\numberline {4.35.3.5}trans}{82}{paragraph.4.35.3.5}
 \contentsline {paragraph}{\numberline {4.35.3.6}turn}{82}{paragraph.4.35.3.6}
-\contentsline {subsection}{\numberline {4.36}opcontrol.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{82}{subsection.4.36}
+\contentsline {subsection}{\numberline {4.36}opcontrol.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{83}{subsection.4.36}
 \contentsline {subsection}{\numberline {4.37}src/sensors.c File Reference}{84}{subsection.4.37}
 \contentsline {subsubsection}{\numberline {4.37.1}Detailed Description}{84}{subsubsection.4.37.1}
-\contentsline {subsubsection}{\numberline {4.37.2}Variable Documentation}{84}{subsubsection.4.37.2}
-\contentsline {paragraph}{\numberline {4.37.2.1}gyro}{84}{paragraph.4.37.2.1}
+\contentsline {subsubsection}{\numberline {4.37.2}Variable Documentation}{85}{subsubsection.4.37.2}
+\contentsline {paragraph}{\numberline {4.37.2.1}gyro}{85}{paragraph.4.37.2.1}
 \contentsline {paragraph}{\numberline {4.37.2.2}leftenc}{85}{paragraph.4.37.2.2}
 \contentsline {paragraph}{\numberline {4.37.2.3}rightenc}{85}{paragraph.4.37.2.3}
 \contentsline {subsection}{\numberline {4.38}sensors.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{85}{subsection.4.38}

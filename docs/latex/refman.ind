@@ -109,7 +109,7 @@
     \subitem {lcddiag.\+c}, \hyperpage{55}
   \item {dep}
     \subitem {joy\+State}, \hyperpage{3}
-    \subitem {opcontrol.\+c}, \hyperpage{81}
+    \subitem {opcontrol.\+c}, \hyperpage{82}
     \subitem {opcontrol.\+h}, \hyperpage{38}
   \item {deploy}
     \subitem {motors.\+h}, \hyperpage{34}
@@ -153,7 +153,7 @@
     \subitem {lcddiag.\+c}, \hyperpage{62}
     \subitem {lcddiag.\+h}, \hyperpage{20}
   \item {gyro}
-    \subitem {sensors.\+c}, \hyperpage{84}
+    \subitem {sensors.\+c}, \hyperpage{85}
     \subitem {sensors.\+h}, \hyperpage{42}
 
   \indexspace
@@ -318,7 +318,7 @@
     \subitem {randlcdmsg}, \hyperpage{22}
     \subitem {screensaver}, \hyperpage{23}
   \item {leftenc}
-    \subitem {sensors.\+c}, \hyperpage{84}
+    \subitem {sensors.\+c}, \hyperpage{85}
     \subitem {sensors.\+h}, \hyperpage{42}
   \item {load\+Auton}
     \subitem {autonrecorder.\+c}, \hyperpage{46}
@@ -449,7 +449,7 @@
   \indexspace
 
   \item {opcontrol.\+c}
-    \subitem {dep}, \hyperpage{81}
+    \subitem {dep}, \hyperpage{82}
     \subitem {intk}, \hyperpage{82}
     \subitem {move\+Robot}, \hyperpage{81}
     \subitem {operator\+Control}, \hyperpage{81}
@@ -575,8 +575,8 @@
   \item {select\+Spd\+Group}
     \subitem {lcddiag.\+c}, \hyperpage{61}
   \item {sensors.\+c}
-    \subitem {gyro}, \hyperpage{84}
-    \subitem {leftenc}, \hyperpage{84}
+    \subitem {gyro}, \hyperpage{85}
+    \subitem {leftenc}, \hyperpage{85}
     \subitem {rightenc}, \hyperpage{85}
   \item {sensors.\+h}
     \subitem {B\+A\+T\+T\+\_\+\+B\+K\+UP}, \hyperpage{40}
@@ -628,7 +628,7 @@
   \item {src/lcddiag.\+c}, \hyperpage{53}, \hyperpage{63}
   \item {src/lcdmsg.\+c}, \hyperpage{76}, \hyperpage{78}
   \item {src/motors.\+c}, \hyperpage{78, 79}
-  \item {src/opcontrol.\+c}, \hyperpage{80}, \hyperpage{82}
+  \item {src/opcontrol.\+c}, \hyperpage{80}, \hyperpage{83}
   \item {src/sensors.\+c}, \hyperpage{84, 85}
   \item {states}
     \subitem {autonrecorder.\+c}, \hyperpage{47}
