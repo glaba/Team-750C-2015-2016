@@ -2,6 +2,11 @@
 \label{structjoy_state}\index{joy\+State@{joy\+State}}
 
 
+Representation of the operator controller\textquotesingle{}s instructions at a point in time.  
+
+
+
+
 {\ttfamily \#include $<$autonrecorder.\+h$>$}
 
 \subsubsection*{Public Attributes}
@@ -22,9 +27,11 @@ signed char \hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep}
 
 
 \subsubsection{Detailed Description}
-Structure containing the joystick state variables at a point in time. 
+Representation of the operator controller\textquotesingle{}s instructions at a point in time. 
 
-Definition at line \hyperlink{autonrecorder_8h_source_l00065}{65} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
+This state represents the values of the motors at a point in time. These instructions are played back at the rate polled to send the same commands the operator did. 
+
+Definition at line \hyperlink{autonrecorder_8h_source_l00068}{68} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
 
 
 
@@ -32,44 +39,44 @@ Definition at line \hyperlink{autonrecorder_8h_source_l00065}{65} of file \hyper
 \index{joy\+State@{joy\+State}!dep@{dep}}
 \index{dep@{dep}!joy\+State@{joy\+State}}
 \paragraph[{\texorpdfstring{dep}{dep}}]{\setlength{\rightskip}{0pt plus 5cm}signed char joy\+State\+::dep}\hypertarget{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{}\label{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}
+Speed of the lift deployment motor. 
 
-
-Definition at line \hyperlink{autonrecorder_8h_source_l00066}{66} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
+Definition at line \hyperlink{autonrecorder_8h_source_l00097}{97} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
 
 \index{joy\+State@{joy\+State}!intk@{intk}}
 \index{intk@{intk}!joy\+State@{joy\+State}}
 \paragraph[{\texorpdfstring{intk}{intk}}]{\setlength{\rightskip}{0pt plus 5cm}signed char joy\+State\+::intk}\hypertarget{structjoy_state_a2314ed43be31ccc565381efd8398b921}{}\label{structjoy_state_a2314ed43be31ccc565381efd8398b921}
+Speed of the intake motor. 
 
-
-Definition at line \hyperlink{autonrecorder_8h_source_l00066}{66} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
+Definition at line \hyperlink{autonrecorder_8h_source_l00087}{87} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
 
 \index{joy\+State@{joy\+State}!sht@{sht}}
 \index{sht@{sht}!joy\+State@{joy\+State}}
 \paragraph[{\texorpdfstring{sht}{sht}}]{\setlength{\rightskip}{0pt plus 5cm}signed char joy\+State\+::sht}\hypertarget{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{}\label{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}
+Speed of the shooter motors. 
 
-
-Definition at line \hyperlink{autonrecorder_8h_source_l00066}{66} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
+Definition at line \hyperlink{autonrecorder_8h_source_l00082}{82} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
 
 \index{joy\+State@{joy\+State}!spd@{spd}}
 \index{spd@{spd}!joy\+State@{joy\+State}}
 \paragraph[{\texorpdfstring{spd}{spd}}]{\setlength{\rightskip}{0pt plus 5cm}signed char joy\+State\+::spd}\hypertarget{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{}\label{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}
+Forward/backward speed of the drive motors. 
 
-
-Definition at line \hyperlink{autonrecorder_8h_source_l00066}{66} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
+Definition at line \hyperlink{autonrecorder_8h_source_l00072}{72} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
 
 \index{joy\+State@{joy\+State}!trans@{trans}}
 \index{trans@{trans}!joy\+State@{joy\+State}}
 \paragraph[{\texorpdfstring{trans}{trans}}]{\setlength{\rightskip}{0pt plus 5cm}signed char joy\+State\+::trans}\hypertarget{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{}\label{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}
+Speed of the transmission motor. 
 
-
-Definition at line \hyperlink{autonrecorder_8h_source_l00066}{66} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
+Definition at line \hyperlink{autonrecorder_8h_source_l00092}{92} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
 
 \index{joy\+State@{joy\+State}!turn@{turn}}
 \index{turn@{turn}!joy\+State@{joy\+State}}
 \paragraph[{\texorpdfstring{turn}{turn}}]{\setlength{\rightskip}{0pt plus 5cm}signed char joy\+State\+::turn}\hypertarget{structjoy_state_aacdbb758b97190220423402f63020483}{}\label{structjoy_state_aacdbb758b97190220423402f63020483}
+Turning speed of the drive motors. 
 
-
-Definition at line \hyperlink{autonrecorder_8h_source_l00066}{66} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
+Definition at line \hyperlink{autonrecorder_8h_source_l00077}{77} of file \hyperlink{autonrecorder_8h_source}{autonrecorder.\+h}.
 
 
 

@@ -114,6 +114,9 @@ $(document).ready(function(){initNavTree('struct_motor_group.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a logical motor grouping, to be used when testing motors.  
+ <a href="struct_motor_group.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="lcddiag_8h_source.html">lcddiag.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -124,9 +127,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a8f7c6b03cfece909eb0db0b67ce24e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Object representing motor groups. Has flags for each motor that belongs to the group, as well as a 16-character name. </p>
+<div class="textblock"><p>Represents a logical motor grouping, to be used when testing motors. </p>
+<p>Has flags for each motor that belongs to the group, as well as a 16-character name. </p>
 
-<p>Definition at line <a class="el" href="lcddiag_8h_source.html#l00142">142</a> of file <a class="el" href="lcddiag_8h_source.html">lcddiag.h</a>.</p>
+<p>Definition at line <a class="el" href="lcddiag_8h_source.html#l00143">143</a> of file <a class="el" href="lcddiag_8h_source.html">lcddiag.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a05d10a69eb1ae279fab13f9a009d84be"></a>
 <div class="memitem">
@@ -137,8 +141,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Stores if each motor is contained in this group or not.</p>
+<p>This array contains 11 values. Element 0 is ignored. Elements 1-10 represent the respective motor ports. </p>
 
-<p>Definition at line <a class="el" href="lcddiag_8h_source.html#l00143">143</a> of file <a class="el" href="lcddiag_8h_source.html">lcddiag.h</a>.</p>
+<p>Definition at line <a class="el" href="lcddiag_8h_source.html#l00149">149</a> of file <a class="el" href="lcddiag_8h_source.html">lcddiag.h</a>.</p>
 
 </div>
 </div>
@@ -151,8 +157,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The name of the motor group.</p>
+<p>The name can be a maximum of 16 characters. The buffer is 17 characters to hold the null terminator. </p>
 
-<p>Definition at line <a class="el" href="lcddiag_8h_source.html#l00144">144</a> of file <a class="el" href="lcddiag_8h_source.html">lcddiag.h</a>.</p>
+<p>Definition at line <a class="el" href="lcddiag_8h_source.html#l00157">157</a> of file <a class="el" href="lcddiag_8h_source.html">lcddiag.h</a>.</p>
 
 </div>
 </div>

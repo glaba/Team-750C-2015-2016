@@ -2,6 +2,11 @@
 \label{struct_motor_group}\index{Motor\+Group@{Motor\+Group}}
 
 
+Represents a logical motor grouping, to be used when testing motors.  
+
+
+
+
 {\ttfamily \#include $<$lcddiag.\+h$>$}
 
 \subsubsection*{Public Attributes}
@@ -14,9 +19,11 @@ char \hyperlink{struct_motor_group_a8f7c6b03cfece909eb0db0b67ce24e6a}{name} \mbo
 
 
 \subsubsection{Detailed Description}
-Object representing motor groups. Has flags for each motor that belongs to the group, as well as a 16-\/character name. 
+Represents a logical motor grouping, to be used when testing motors. 
 
-Definition at line \hyperlink{lcddiag_8h_source_l00142}{142} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+Has flags for each motor that belongs to the group, as well as a 16-\/character name. 
+
+Definition at line \hyperlink{lcddiag_8h_source_l00143}{143} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
 
 
 
@@ -24,16 +31,20 @@ Definition at line \hyperlink{lcddiag_8h_source_l00142}{142} of file \hyperlink{
 \index{Motor\+Group@{Motor\+Group}!motor@{motor}}
 \index{motor@{motor}!Motor\+Group@{Motor\+Group}}
 \paragraph[{\texorpdfstring{motor}{motor}}]{\setlength{\rightskip}{0pt plus 5cm}bool Motor\+Group\+::motor\mbox{[}11\mbox{]}}\hypertarget{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{}\label{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}
+Stores if each motor is contained in this group or not.
 
+This array contains 11 values. Element 0 is ignored. Elements 1-\/10 represent the respective motor ports. 
 
-Definition at line \hyperlink{lcddiag_8h_source_l00143}{143} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+Definition at line \hyperlink{lcddiag_8h_source_l00149}{149} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
 
 \index{Motor\+Group@{Motor\+Group}!name@{name}}
 \index{name@{name}!Motor\+Group@{Motor\+Group}}
 \paragraph[{\texorpdfstring{name}{name}}]{\setlength{\rightskip}{0pt plus 5cm}char Motor\+Group\+::name\mbox{[}{\bf L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}+1\mbox{]}}\hypertarget{struct_motor_group_a8f7c6b03cfece909eb0db0b67ce24e6a}{}\label{struct_motor_group_a8f7c6b03cfece909eb0db0b67ce24e6a}
+The name of the motor group.
 
+The name can be a maximum of 16 characters. The buffer is 17 characters to hold the null terminator. 
 
-Definition at line \hyperlink{lcddiag_8h_source_l00144}{144} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
+Definition at line \hyperlink{lcddiag_8h_source_l00157}{157} of file \hyperlink{lcddiag_8h_source}{lcddiag.\+h}.
 
 
 

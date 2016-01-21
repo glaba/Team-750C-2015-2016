@@ -24,12 +24,12 @@ extern int turn;
 extern int sht;
 
 /**
- * Speed of the intake motors.
+ * Speed of the intake motor.
  */
 extern int intk;
 
 /**
- * Speed of the transmission motors.
+ * Speed of the transmission motor.
  */
 extern int trans;
 

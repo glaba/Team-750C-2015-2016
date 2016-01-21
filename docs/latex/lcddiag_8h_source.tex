@@ -54,22 +54,23 @@
 00130 
 00136 \textcolor{keyword}{extern} TaskHandle \hyperlink{lcddiag_8h_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask};
 00137 
-\hypertarget{lcddiag_8h_source.tex_l00142}{}\hyperlink{struct_motor_group}{00142} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{struct_motor_group}{MotorGroup} \{
-\hypertarget{lcddiag_8h_source.tex_l00143}{}\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{00143}     \textcolor{keywordtype}{bool} \hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[11];
-\hypertarget{lcddiag_8h_source.tex_l00144}{}\hyperlink{struct_motor_group_a8f7c6b03cfece909eb0db0b67ce24e6a}{00144}     \textcolor{keywordtype}{char} \hyperlink{struct_motor_group_a8f7c6b03cfece909eb0db0b67ce24e6a}{name}[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00145 \} \hyperlink{lcddiag_8h_ab54759fd4972d34ba92441b33145081f}{MotorGroup};
-00146 
-00152 \textcolor{keyword}{extern} \hyperlink{struct_motor_group}{MotorGroup} *\hyperlink{lcddiag_8h_a7c12b01a5e5a665d9d799e862dab6350}{groups};
-00153 
-00158 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8h_a205f1cedec1664555276e0a71a1c87d8}{numgroups};
+\hypertarget{lcddiag_8h_source.tex_l00143}{}\hyperlink{struct_motor_group}{00143} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{struct_motor_group}{MotorGroup} \{
+\hypertarget{lcddiag_8h_source.tex_l00149}{}\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{00149}     \textcolor{keywordtype}{bool} \hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[11];
+00150 
+\hypertarget{lcddiag_8h_source.tex_l00157}{}\hyperlink{struct_motor_group_a8f7c6b03cfece909eb0db0b67ce24e6a}{00157}     \textcolor{keywordtype}{char} \hyperlink{struct_motor_group_a8f7c6b03cfece909eb0db0b67ce24e6a}{name}[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00158 \} \hyperlink{lcddiag_8h_ab54759fd4972d34ba92441b33145081f}{MotorGroup};
 00159 
-00164 \textcolor{keyword}{extern} \textcolor{keywordtype}{bool} \hyperlink{lcddiag_8h_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl};
-00165 
-00170 \textcolor{keywordtype}{void} \hyperlink{lcddiag_8h_ad290df3e273598f9f10fe34c257e4084}{initGroups}();
-00171 
-00181 \textcolor{keywordtype}{char}* \hyperlink{lcddiag_8h_a17fe3ffc769a6d02c5226b3bfb79f28f}{typeString}(\textcolor{keywordtype}{char}* dest);
-00182 
-00190 \textcolor{keywordtype}{void} \hyperlink{lcddiag_8h_af7a16cd7a10c542f5bfe3e4ad292c34d}{formatLCDDisplay}(\textcolor{keywordtype}{void}* ignore);
-00191 
-00192 \textcolor{preprocessor}{#endif}
+00165 \textcolor{keyword}{extern} \hyperlink{struct_motor_group}{MotorGroup} *\hyperlink{lcddiag_8h_a7c12b01a5e5a665d9d799e862dab6350}{groups};
+00166 
+00171 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8h_a205f1cedec1664555276e0a71a1c87d8}{numgroups};
+00172 
+00177 \textcolor{keyword}{extern} \textcolor{keywordtype}{bool} \hyperlink{lcddiag_8h_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl};
+00178 
+00183 \textcolor{keywordtype}{void} \hyperlink{lcddiag_8h_ad290df3e273598f9f10fe34c257e4084}{initGroups}();
+00184 
+00194 \textcolor{keywordtype}{char}* \hyperlink{lcddiag_8h_a17fe3ffc769a6d02c5226b3bfb79f28f}{typeString}(\textcolor{keywordtype}{char}* dest);
+00195 
+00203 \textcolor{keywordtype}{void} \hyperlink{lcddiag_8h_af7a16cd7a10c542f5bfe3e4ad292c34d}{formatLCDDisplay}(\textcolor{keywordtype}{void}* ignore);
+00204 
+00205 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

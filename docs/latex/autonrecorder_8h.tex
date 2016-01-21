@@ -9,7 +9,7 @@ Header file for autonomous recorder functions and definitions.
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structjoy_state}{joy\+State}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Representation of the operator controller\textquotesingle{}s instructions at a point in time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,7 +35,7 @@ struct \hyperlink{structjoy_state}{joy\+State}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct \hyperlink{structjoy_state}{joy\+State} \hyperlink{autonrecorder_8h_a2ed010bca1f3d0ab7081bbcae3ed238a}{joy\+State}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Representation of the operator controller\textquotesingle{}s instructions at a point in time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -139,7 +139,11 @@ Definition at line \hyperlink{autonrecorder_8h_source_l00023}{23} of file \hyper
 \index{autonrecorder.\+h@{autonrecorder.\+h}!joy\+State@{joy\+State}}
 \index{joy\+State@{joy\+State}!autonrecorder.\+h@{autonrecorder.\+h}}
 \paragraph[{\texorpdfstring{joy\+State}{joyState}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf joy\+State}  {\bf joy\+State}}\hypertarget{autonrecorder_8h_a2ed010bca1f3d0ab7081bbcae3ed238a}{}\label{autonrecorder_8h_a2ed010bca1f3d0ab7081bbcae3ed238a}
-Structure containing the joystick state variables at a point in time. 
+
+
+Representation of the operator controller\textquotesingle{}s instructions at a point in time. 
+
+This state represents the values of the motors at a point in time. These instructions are played back at the rate polled to send the same commands the operator did. 
 
 \subsubsection{Function Documentation}
 \index{autonrecorder.\+h@{autonrecorder.\+h}!init\+Auton\+Recorder@{init\+Auton\+Recorder}}

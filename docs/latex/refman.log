@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.16)  19 JAN 2016 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.16)  21 JAN 2016 10:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1117,69 +1117,83 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 10.79993pt on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
 (Font)              scaled to size 10.79993pt on input line 1.
-)
-(./files.tex [1] [2]) (./structjoy_state.tex
-LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 6.29996pt on input line 1.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 5.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 8.99994pt on input line 7.
-LaTeX Font Info:    Try loading font information for TS1+phv on input line 10.
+LaTeX Font Info:    Try loading font information for TS1+phv on input line 3.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
 )
+LaTeX Font Info:    Font shape `TS1/phv/bx/n' in size <10> not available
+(Font)              Font shape `TS1/phv/b/n' tried instead on input line 3.
+LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
+(Font)              scaled to size 8.99994pt on input line 3.
+) (./files.tex [1] [2])
+(./structjoy_state.tex
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 6.29996pt on input line 1.
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 10.
- [3])
-(./struct_motor_group.tex) (./autonrecorder_8h.tex [4] [5] [6] [7])
-(./autonrecorder_8h_source.tex [8]) (./bitwise_8h.tex
+(Font)              scaled to size 8.99994pt on input line 5.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 10.
+ (/usr/share/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 8.99994pt on input line 12.
+
+[3]) (./struct_motor_group.tex [4]) (./autonrecorder_8h.tex
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.09995pt on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 12.
+LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <9> not available
+(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 12.
+LaTeX Font Info:    Font shape `TS1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 12.
+ [5] [6] [7]
+[8]) (./autonrecorder_8h_source.tex [9]) (./bitwise_8h.tex
 LaTeX Font Info:    Font shape `T1/phv/bc/it' in size <10> not available
 (Font)              Font shape `T1/phv/bc/sl' tried instead on input line 38.
 LaTeX Font Info:    Font shape `T1/phv/bc/sl' will be
 (Font)              scaled to size 8.99994pt on input line 38.
- [9]
+ [10]
 Underfull \hbox (badness 10000) detected at line 69
 [][][]
  []
 
-[10]) (./bitwise_8h_source.tex) (./constants_8h.tex [11])
-(./constants_8h_source.tex [12]) (./friendly_8h.tex [13])
-(./friendly_8h_source.tex) (./lcddiag_8h.tex [14] [15] [16] [17]
+) (./bitwise_8h_source.tex [11]) (./constants_8h.tex [12])
+(./constants_8h_source.tex [13]) (./friendly_8h.tex [14])
+(./friendly_8h_source.tex) (./lcddiag_8h.tex [15] [16] [17] [18]
 
 LaTeX Font Warning: Font shape `T1/pcr/bc/n' undefined
-(Font)              using `T1/pcr/m/n' instead on input line 217.
+(Font)              using `T1/pcr/m/n' instead on input line 221.
 
 
-Underfull \hbox (badness 10000) detected at line 220
+Underfull \hbox (badness 10000) detected at line 224
 [][][]
  []
 
 
-Overfull \vbox (9.24257pt too high) has occurred while \output is active []
-
-
-[18]
-Underfull \hbox (badness 10000) detected at line 248
+Underfull \hbox (badness 10000) detected at line 252
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 269
+Underfull \hbox (badness 10000) detected at line 273
 [][][]
  []
 
-) (./lcddiag_8h_source.tex [19] [20]) (./lcdmsg_8h.tex [21])
-(./lcdmsg_8h_source.tex [22]) (./macros_8h.tex [23]
+[19]) (./lcddiag_8h_source.tex [20]) (./lcdmsg_8h.tex [21] [22])
+(./lcdmsg_8h_source.tex) (./macros_8h.tex [23]
 Underfull \hbox (badness 10000) detected at line 61
 [][][]
  []
 
 
+Overfull \vbox (26.92221pt too high) has occurred while \output is active []
+
+
+[24]
 Underfull \hbox (badness 10000) detected at line 88
 [][][]
  []
@@ -1189,12 +1203,12 @@ Underfull \hbox (badness 10000) detected at line 109
 [][][]
  []
 
-[24]
+
 Underfull \hbox (badness 10000) detected at line 133
 [][][]
  []
 
-
+[25]
 Underfull \hbox (badness 10000) detected at line 157
 [][][]
  []
@@ -1204,12 +1218,12 @@ Underfull \hbox (badness 10000) detected at line 181
 [][][]
  []
 
-[25]
+
 Underfull \hbox (badness 10000) detected at line 205
 [][][]
  []
 
-
+[26]
 Underfull \hbox (badness 10000) detected at line 226
 [][][]
  []
@@ -1219,7 +1233,7 @@ Underfull \hbox (badness 10000) detected at line 247
 [][][]
  []
 
-[26]
+
 Underfull \hbox (badness 10000) detected at line 268
 [][][]
  []
@@ -1229,12 +1243,12 @@ Underfull \hbox (badness 10000) detected at line 289
 [][][]
  []
 
-
+[27]
 Underfull \hbox (badness 10000) detected at line 310
 [][][]
  []
 
-) (./macros_8h_source.tex [27]) (./main_8h.tex
+) (./macros_8h_source.tex) (./main_8h.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--21
 
  []
@@ -1244,68 +1258,75 @@ Underfull \hbox (badness 10000) detected at line 63
 [][][]
  []
 
-[32] [33] [34]) (./motors_8h_source.tex [35]) (./opcontrol_8h.tex [36])
-(./opcontrol_8h_source.tex [37]) (./sensors_8h.tex [38]
+[32] [33]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [34])
+(./motors_8h_source.tex [35]) (./opcontrol_8h.tex
+Underfull \vbox (badness 1048) has occurred while \output is active []
+
+ [36]
+[37]) (./opcontrol_8h_source.tex) (./sensors_8h.tex [38] [39]
 Underfull \hbox (badness 10000) detected at line 66
 [][][]
  []
 
-[39] [40]
+[40] [41]
 Underfull \hbox (badness 10000) detected at line 200
 [][][]
  []
 
-) (./sensors_8h_source.tex [41]) (./auto_8c.tex
+) (./sensors_8h_source.tex [42]) (./auto_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[42]) (./auto_8c_source.tex [43]) (./autonrecorder_8c.tex
+[43]) (./auto_8c_source.tex [44]) (./autonrecorder_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[44]
+[45]
 Underfull \hbox (badness 10000) detected at line 111
 [][][]
  []
 
-) (./autonrecorder_8c_source.tex [45] [46]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [47]
+) (./autonrecorder_8c_source.tex [46] [47]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [48]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [49])
+ [49]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [50])
 (./init_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[50]) (./init_8c_source.tex [51]) (./lcddiag_8c.tex
+[51]) (./init_8c_source.tex [52]) (./lcddiag_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[52] [53]
+[53] [54]
 Underfull \hbox (badness 10000) detected at line 144
 [][][]
  []
 
-[54] [55]
+[55] [56]
 Underfull \hbox (badness 10000) detected at line 321
 [][][]
  []
 
-[56]
+[57]
 Underfull \hbox (badness 10000) detected at line 344
 [][][]
  []
 
-[57]
+[58]
 Underfull \hbox (badness 10000) detected at line 421
 [][][]
  []
@@ -1315,7 +1336,7 @@ Underfull \hbox (badness 10000) detected at line 453
 [][][]
  []
 
-[58]
+[59]
 Underfull \hbox (badness 10000) detected at line 474
 [][][]
  []
@@ -1334,7 +1355,7 @@ Underfull \hbox (badness 10000) detected at line 516
 Overfull \vbox (0.97295pt too high) has occurred while \output is active []
 
 
-[59]
+[60]
 Underfull \hbox (badness 10000) detected at line 537
 [][][]
  []
@@ -1349,10 +1370,7 @@ Underfull \hbox (badness 10000) detected at line 579
 [][][]
  []
 
-[60]) (./lcddiag_8c_source.tex [61] [62]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [63]
+[61]) (./lcddiag_8c_source.tex [62] [63]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [64]
@@ -1385,31 +1403,34 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [73]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [74])
+ [74]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [75])
 (./lcdmsg_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[75]) (./lcdmsg_8c_source.tex [76]) (./motors_8c.tex
+[76]) (./lcdmsg_8c_source.tex [77]) (./motors_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[77]
+[78]
 Underfull \hbox (badness 10000) detected at line 23
 [][][]
  []
 
-) (./motors_8c_source.tex) (./opcontrol_8c.tex [78]
+) (./motors_8c_source.tex) (./opcontrol_8c.tex [79]
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[79] [80]) (./opcontrol_8c_source.tex [81]
+[80] [81]) (./opcontrol_8c_source.tex [82]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [82])
+ [83])
 (./sensors_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
@@ -1420,11 +1441,12 @@ Underfull \hbox (badness 10000) detected at line 27
 [][][]
  []
 
-) (./sensors_8c_source.tex [83]) [84] (./refman.ind [85
+) (./sensors_8c_source.tex [84]) [85] [86
 
+] (./refman.ind [87
 
-] [86] [87] [88]
-[89] [90])
+] [88] [89]
+[90] [91] [92])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 190.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 190.
  (./refman.aux)
@@ -1439,13 +1461,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 190.
  ) 
 Here is how much of TeX's memory you used:
- 16132 strings out of 493054
- 244032 string characters out of 6140585
- 340191 words of memory out of 5000000
- 18295 multiletter control sequences out of 15000+600000
- 43130 words of font info for 55 fonts, out of 8000000 for 9000
+ 16153 strings out of 493054
+ 244463 string characters out of 6140585
+ 340192 words of memory out of 5000000
+ 18302 multiletter control sequences out of 15000+600000
+ 48545 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,16n,92p,3660b,643s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,16n,92p,3660b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{opcontrol_8c_source_l00073} has been referenced b
 ut does not exist, replaced by a fixed one
 
@@ -1902,19 +1924,34 @@ pdfTeX warning (dest): name{autonrecorder_8h_source_l00040} has been referenced
 pdfTeX warning (dest): name{autonrecorder_8h_source_l00050} has been referenced
  but does not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8h_source_l00144} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8h_source_l00157} has been referenced but d
+oes not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{lcddiag_8h_source_l00149} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{lcddiag_8h_source_l00143} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8h_source_l00142} has been referenced but d
-oes not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{autonrecorder_8h_source_l00066} has been referenced
+pdfTeX warning (dest): name{autonrecorder_8h_source_l00077} has been referenced
  but does not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{autonrecorder_8h_source_l00065} has been referenced
+pdfTeX warning (dest): name{autonrecorder_8h_source_l00092} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{autonrecorder_8h_source_l00072} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{autonrecorder_8h_source_l00082} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{autonrecorder_8h_source_l00087} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{autonrecorder_8h_source_l00097} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{autonrecorder_8h_source_l00068} has been referenced
  but does not exist, replaced by a fixed one
 
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts
@@ -1926,10 +1963,10 @@ hare/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts
 uhvb8ac.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8ac.pfb></usr/
 share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fon
 ts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (94 pages, 356638 bytes).
+Output written on refman.pdf (96 pages, 358658 bytes).
 PDF statistics:
- 4139 PDF objects out of 4296 (max. 8388607)
- 3993 compressed objects within 40 object streams
- 1038 named destinations out of 1200 (max. 500000)
+ 4166 PDF objects out of 4296 (max. 8388607)
+ 4017 compressed objects within 41 object streams
+ 1050 named destinations out of 1200 (max. 500000)
  841 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -136,11 +136,24 @@ extern char menuChoices[LCD_MENU_COUNT][LCD_MESSAGE_MAX_LENGTH+1];
 extern TaskHandle lcdDiagTask;
 
 /**
- * Object representing motor groups.
+ * @brief Represents a logical motor grouping, to be used when testing motors.
+ *
  * Has flags for each motor that belongs to the group, as well as a 16-character name.
  */
 typedef struct MotorGroup {
+    /** 
+     * Stores if each motor is contained in this group or not.
+     *
+     * This array contains 11 values. Element 0 is ignored. Elements 1-10 represent the respective motor ports.
+     */
     bool motor[11];
+
+    /** 
+     * The name of the motor group.
+     *
+     * The name can be a maximum of 16 characters.
+     * The buffer is 17 characters to hold the null terminator.
+     */
     char name[LCD_MESSAGE_MAX_LENGTH+1];
 } MotorGroup;
 

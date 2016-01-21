@@ -60,10 +60,41 @@
 #define AUTON_POT_HIGH 4095
 
 /**
- * Structure containing the joystick state variables at a point in time.
+ * @brief Representation of the operator controller's instructions at a point in time.
+ * 
+ * This state represents the values of the motors at a point in time.
+ * These instructions are played back at the rate polled to send the same commands the operator did.
  */
 typedef struct joyState {
-    signed char spd, turn, sht, intk, trans, dep;
+    /**
+    * Forward/backward speed of the drive motors.
+    */
+    signed char spd;
+
+    /**
+    * Turning speed of the drive motors.
+    */
+    signed char turn;
+
+    /**
+    * Speed of the shooter motors.
+    */
+    signed char sht; 
+
+    /**
+    * Speed of the intake motor.
+    */
+    signed char intk;
+
+    /**
+    * Speed of the transmission motor.
+    */
+    signed char trans;
+
+    /**
+    * Speed of the lift deployment motor.
+    */
+    signed char dep;
 } joyState;
 
 /**
