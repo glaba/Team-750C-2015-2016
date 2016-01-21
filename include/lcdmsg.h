@@ -23,7 +23,7 @@
 /**
  * Defines the amount of LCD messages in the master list.
  */
-#define LCD_MESSAGE_COUNT 44
+#define LCD_MESSAGE_COUNT 47
 
 /**
  * Defines the max length for LCD messages.
@@ -33,7 +33,7 @@
 /** 
  * Master list of all LCD messages.
  */
-extern char *lcdmsg[];
+extern char* lcdmsg[];
 
 /** 
  * Displays a random LCD message from the master list.

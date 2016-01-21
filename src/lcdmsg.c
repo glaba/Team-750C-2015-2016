@@ -11,7 +11,7 @@
 /** 
  * Master list of all LCD messages.
  */
-char *lcdmsg[] = {
+char* lcdmsg[] = {
     "Hint of Lime",
     "Review Committee",
     "Exacerbate",
@@ -55,6 +55,9 @@ char *lcdmsg[] = {
     "Akram Sandhu",
     "Therapy Dogs",
     "Staples Bands",
+    "New Nautilus",
+    "Nauty Gears",
+    "TURBO GEARS",
     "itoa() Sucks"
 };
 
