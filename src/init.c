@@ -64,6 +64,7 @@ void initialize() {
         seed += analogRead(i);
     }
     srand(seed);
+    pinMode(SHOOTER_LIMIT, INPUT);
     leftenc = encoderInit(LEFT_ENC_TOP, LEFT_ENC_BOT, false);
     rightenc = encoderInit(RIGHT_ENC_TOP, RIGHT_ENC_BOT, false);
     lcdInit(LCD_PORT);
@@ -71,6 +72,7 @@ void initialize() {
     lcdSetBacklight(LCD_PORT, true);
     lcdSetText(LCD_PORT, 1, "Init-ing gyro...");
     gyro = gyroInit(GYRO_PORT, GYRO_SENSITIVITY);
+    sonar = ultrasonicInit(ULTRASONIC_ECHO_PORT, ULTRASONIC_PING_PORT);
     delay(1100);
     gyroReset(gyro);
     lcdSetText(LCD_PORT, 1, "Init-ed gyro!");

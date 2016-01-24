@@ -97,6 +97,11 @@
 #include <lcddiag.h>
 
 /**
+ * Hard-coded autonomous routine definitions and function declarations 
+ */
+#include <autonroutines.h>
+
+/**
  * Autonomous recorder definitions and function declarations
  */
 #include <autonrecorder.h>

@@ -109,8 +109,33 @@ inline unsigned int powerLevelExpander(){
 #define GYRO_NET_TARGET 0
 
 /**
+ * Defines the proportion term for the gyroscope alignment P loop
+ */
+#define GYRO_P 10
+
+/**
  * Object representing the gyroscope.
  */
 extern Gyro gyro;
+
+/**
+ * Defines the port for the limit switch that is triggered when the shooter fires
+ */
+#define SHOOTER_LIMIT 5
+
+/**
+ * Defines the port for the ultrasonic echo wire (orange)
+ */
+#define ULTRASONIC_ECHO_PORT 11
+
+/**
+ * Defines the port for the ultrasonic ping wire (yellow)
+ */
+#define ULTRASONIC_PING_PORT 12
+
+/**
+ * Object representing the ultrasonic sensor
+ */
+extern Ultrasonic sonar;
 
 #endif

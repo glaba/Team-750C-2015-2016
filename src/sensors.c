@@ -26,3 +26,8 @@ Encoder rightenc;
  * Object representing the gyroscope.
  */
 Gyro gyro;
+
+/**
+ * Object representing the ultrasonic sensor.
+ */
+Ultrasonic sonar;

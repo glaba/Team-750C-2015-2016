@@ -72,7 +72,7 @@ int dep;
  */
 void targetNet(int target){
     int error = gyroGet(gyro) % ROTATION_DEG - target;
-    turn = error * 20;
+    turn = error * GYRO_P;
 }
 
 /**

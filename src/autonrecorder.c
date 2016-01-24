@@ -37,14 +37,16 @@ int selectAuton() {
     bool done = false;
     int val;
     do {
-        val = (float) ((float) analogRead(AUTON_POT)/(float) AUTON_POT_HIGH) * (MAX_AUTON_SLOTS+2);
-        if(val > MAX_AUTON_SLOTS+1){
-            val = MAX_AUTON_SLOTS+1;
+        val = (float) ((float) analogRead(AUTON_POT)/(float) AUTON_POT_HIGH) * (MAX_AUTON_SLOTS+3);
+        if(val > MAX_AUTON_SLOTS+2){
+            val = MAX_AUTON_SLOTS+2;
         }
         if(val == 0) {
             lcdSetText(LCD_PORT, 2, "NONE");
         } else if(val == MAX_AUTON_SLOTS+1) {
             lcdSetText(LCD_PORT, 2, "Prog. Skills");
+        } else if (val == MAX_AUTON_SLOTS+2) {
+            lcdSetText(LCD_PORT, 2, "Hardcoded Skills");
         } else {
             char filename[AUTON_FILENAME_MAX_LENGTH];
             snprintf(filename, sizeof(filename)/sizeof(char), "a%d", val);
@@ -235,6 +237,12 @@ void loadAuton() {
             lcdSetText(LCD_PORT, 1, "Loading skills...");
             lcdPrint(LCD_PORT,   2, "Skills Part: 1");
             autonLoaded = MAX_AUTON_SLOTS + 1;
+        } else if (autonSlot == MAX_AUTON_SLOTS + 2) {
+            printf("Performing hard-coded programming skills.\n");
+            lcdSetText(LCD_PORT, 1, "Loading skills...");
+            lcdPrint(LCD_PORT,   2, "Hardcoded Skills");
+            autonLoaded = MAX_AUTON_SLOTS + 2;
+            return;
         } else if(autonSlot == autonLoaded) {
             printf("Autonomous %d is already loaded.\n", autonSlot);
             lcdSetText(LCD_PORT, 1, "Loaded auton!");
@@ -314,7 +322,10 @@ void playbackAuton() { //must load autonomous first!
     if(autonLoaded == 0) {
         printf("autonLoaded = 0, doing nothing.\n");
         return;
-    } 
+    } else if (autonLoaded == MAX_AUTON_SLOTS + 2) {
+        runHardCodedProgrammingSkills();
+        return;
+    }
     printf("Beginning playback...\n");
     lcdSetText(LCD_PORT, 1, "Playing back...");
     lcdSetText(LCD_PORT, 2, "");
