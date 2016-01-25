@@ -6,7 +6,6 @@
  * Additionally, this file defines the autonomous selection potentiometer and button.
  * It also provides access to the autonomous recorder functions from other files.
  * This allows for the recorder to be accessed during operator control.
- *
  */
 
 #ifndef AUTONRECORDER_H
@@ -140,3 +139,4 @@ void loadAuton();
 void playbackAuton();
 
 #endif
+

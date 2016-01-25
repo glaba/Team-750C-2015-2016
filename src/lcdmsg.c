@@ -90,3 +90,4 @@ void screensaver(FILE *lcdport) {
     lcdSetText(lcdport, 1, LCD_750C_TITLE);
     randlcdmsg(lcdport, 2);
 }
+

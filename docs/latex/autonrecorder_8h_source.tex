@@ -3,56 +3,57 @@
 
 \begin{DoxyCode}
 00001 
-00012 \textcolor{preprocessor}{#ifndef AUTONRECORDER\_H}
-00013 \textcolor{preprocessor}{#define AUTONRECORDER\_H}
-00014 
-\hypertarget{autonrecorder_8h_source.tex_l00018}{}\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{00018} \textcolor{preprocessor}{#define AUTON\_TIME 15}
-00019 
-\hypertarget{autonrecorder_8h_source.tex_l00023}{}\hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{00023} \textcolor{preprocessor}{#define PROGSKILL\_TIME 60}
-00024 
-\hypertarget{autonrecorder_8h_source.tex_l00030}{}\hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{00030} \textcolor{preprocessor}{#define JOY\_POLL\_FREQ 50}
-00031 
-\hypertarget{autonrecorder_8h_source.tex_l00035}{}\hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{00035} \textcolor{preprocessor}{#define MAX\_AUTON\_SLOTS 10}
-00036 
-\hypertarget{autonrecorder_8h_source.tex_l00040}{}\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{00040} \textcolor{preprocessor}{#define AUTON\_FILENAME\_MAX\_LENGTH 8}
-00041 
-\hypertarget{autonrecorder_8h_source.tex_l00045}{}\hyperlink{autonrecorder_8h_a2490cda7a399f481333af2e5589b74a9}{00045} \textcolor{preprocessor}{#define AUTON\_POT 1}
-00046 
-\hypertarget{autonrecorder_8h_source.tex_l00050}{}\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{00050} \textcolor{preprocessor}{#define AUTON\_BUTTON 2}
-00051 
-\hypertarget{autonrecorder_8h_source.tex_l00055}{}\hyperlink{autonrecorder_8h_a7bd1f10693336e3b7507b03888872897}{00055} \textcolor{preprocessor}{#define AUTON\_POT\_LOW 0}
-00056 
-\hypertarget{autonrecorder_8h_source.tex_l00060}{}\hyperlink{autonrecorder_8h_a01989d89b8bed150d0aacdaef5ccabd3}{00060} \textcolor{preprocessor}{#define AUTON\_POT\_HIGH 4095}
-00061 
-\hypertarget{autonrecorder_8h_source.tex_l00068}{}\hyperlink{structjoy_state}{00068} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{structjoy_state}{joyState} \{
-\hypertarget{autonrecorder_8h_source.tex_l00072}{}\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{00072}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd};
-00073 
-\hypertarget{autonrecorder_8h_source.tex_l00077}{}\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{00077}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn};
-00078 
-\hypertarget{autonrecorder_8h_source.tex_l00082}{}\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{00082}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht}; 
-00083 
-\hypertarget{autonrecorder_8h_source.tex_l00087}{}\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{00087}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk};
-00088 
-\hypertarget{autonrecorder_8h_source.tex_l00092}{}\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{00092}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans};
-00093 
-\hypertarget{autonrecorder_8h_source.tex_l00097}{}\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{00097}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep};
-00098 \} \hyperlink{autonrecorder_8h_a2ed010bca1f3d0ab7081bbcae3ed238a}{joyState};
-00099 
-00104 \textcolor{keyword}{extern} \hyperlink{structjoy_state}{joyState} \hyperlink{autonrecorder_8h_a904e0a0d44a852a7df1122a3c7fecdef}{states}[\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME}*\hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}];
-00105 
-00109 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \hyperlink{autonrecorder_8h_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded};
-00110 
-00115 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \hyperlink{autonrecorder_8h_aa2eda471576bdbaf33835a71da9bc616}{progSkills};
-00116 
-00120 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}();
-00121 
-00125 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}();
-00126 
-00130 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}();
-00131 
-00135 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
-00136 
-00140 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playbackAuton}();
-00141 
-00142 \textcolor{preprocessor}{#endif}
+00011 \textcolor{preprocessor}{#ifndef AUTONRECORDER\_H}
+00012 \textcolor{preprocessor}{#define AUTONRECORDER\_H}
+00013 
+\hypertarget{autonrecorder_8h_source.tex_l00017}{}\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{00017} \textcolor{preprocessor}{#define AUTON\_TIME 15}
+00018 
+\hypertarget{autonrecorder_8h_source.tex_l00022}{}\hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{00022} \textcolor{preprocessor}{#define PROGSKILL\_TIME 60}
+00023 
+\hypertarget{autonrecorder_8h_source.tex_l00029}{}\hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{00029} \textcolor{preprocessor}{#define JOY\_POLL\_FREQ 50}
+00030 
+\hypertarget{autonrecorder_8h_source.tex_l00034}{}\hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{00034} \textcolor{preprocessor}{#define MAX\_AUTON\_SLOTS 10}
+00035 
+\hypertarget{autonrecorder_8h_source.tex_l00039}{}\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{00039} \textcolor{preprocessor}{#define AUTON\_FILENAME\_MAX\_LENGTH 8}
+00040 
+\hypertarget{autonrecorder_8h_source.tex_l00044}{}\hyperlink{autonrecorder_8h_a2490cda7a399f481333af2e5589b74a9}{00044} \textcolor{preprocessor}{#define AUTON\_POT 1}
+00045 
+\hypertarget{autonrecorder_8h_source.tex_l00049}{}\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{00049} \textcolor{preprocessor}{#define AUTON\_BUTTON 2}
+00050 
+\hypertarget{autonrecorder_8h_source.tex_l00054}{}\hyperlink{autonrecorder_8h_a7bd1f10693336e3b7507b03888872897}{00054} \textcolor{preprocessor}{#define AUTON\_POT\_LOW 0}
+00055 
+\hypertarget{autonrecorder_8h_source.tex_l00059}{}\hyperlink{autonrecorder_8h_a01989d89b8bed150d0aacdaef5ccabd3}{00059} \textcolor{preprocessor}{#define AUTON\_POT\_HIGH 4095}
+00060 
+\hypertarget{autonrecorder_8h_source.tex_l00067}{}\hyperlink{structjoy_state}{00067} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{structjoy_state}{joyState} \{
+\hypertarget{autonrecorder_8h_source.tex_l00071}{}\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{00071}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd};
+00072 
+\hypertarget{autonrecorder_8h_source.tex_l00076}{}\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{00076}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn};
+00077 
+\hypertarget{autonrecorder_8h_source.tex_l00081}{}\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{00081}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht}; 
+00082 
+\hypertarget{autonrecorder_8h_source.tex_l00086}{}\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{00086}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk};
+00087 
+\hypertarget{autonrecorder_8h_source.tex_l00091}{}\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{00091}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans};
+00092 
+\hypertarget{autonrecorder_8h_source.tex_l00096}{}\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{00096}     \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} \hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep};
+00097 \} \hyperlink{autonrecorder_8h_a2ed010bca1f3d0ab7081bbcae3ed238a}{joyState};
+00098 
+00103 \textcolor{keyword}{extern} \hyperlink{structjoy_state}{joyState} \hyperlink{autonrecorder_8h_a904e0a0d44a852a7df1122a3c7fecdef}{states}[\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME}*\hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}];
+00104 
+00108 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \hyperlink{autonrecorder_8h_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded};
+00109 
+00114 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \hyperlink{autonrecorder_8h_aa2eda471576bdbaf33835a71da9bc616}{progSkills};
+00115 
+00119 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}();
+00120 
+00124 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}();
+00125 
+00129 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}();
+00130 
+00134 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
+00135 
+00139 \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8h_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playbackAuton}();
+00140 
+00141 \textcolor{preprocessor}{#endif}
+00142 
 \end{DoxyCode}

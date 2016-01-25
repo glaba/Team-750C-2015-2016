@@ -381,3 +381,4 @@ void playbackAuton() { //must load autonomous first!
     lcdSetText(LCD_PORT, 2, "");
     delay(1000);
 }
+

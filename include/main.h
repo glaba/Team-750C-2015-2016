@@ -42,72 +42,72 @@
 #define MAIN_H_
 
 /**
- * C standard integer type header
+ * C standard integer type header.
  */
 #include <stdint.h>
 
 /**
- * C standard string function header
+ * C standard string function header.
  */
 #include <string.h>
 
 /**
- * PROS main API header
+ * PROS main API header.
  */
 #include <API.h>
 
 /**
- * Mathematical constant definitions
+ * Mathematical constant definitions.
  */
 #include <constants.h>
 
 /**
- * Useful redefinitions to make code more readable
+ * Useful redefinitions to make code more readable.
  */
 #include <friendly.h>
 
 /**
- * Simple macros for performing common operations
+ * Simple macros for performing common operations.
  */
 #include <macros.h>
 
 /**
- * Macros for performing bitwise operations
+ * Macros for performing bitwise operations.
  */
 #include <bitwise.h>
 
 /**
- * Sensor definitions and function declarations
+ * Sensor definitions and function declarations.
  */
 #include <sensors.h>
 
 /**
- * Motor definitions and function declarations
+ * Motor definitions and function declarations.
  */
 #include <motors.h>
 
 /**
- * LCD definitions and function declarations
+ * LCD definitions and function declarations.
  */
 #include <lcdmsg.h>
 
 /**
- * LCD diagnostics menu definitions and function declarations
+ * LCD diagnostics menu definitions and function declarations.
  */
 #include <lcddiag.h>
 
 /**
- * Hard-coded autonomous routine definitions and function declarations 
+ * Hard-coded autonomous routine definitions and function declarations.
  */
 #include <autonroutines.h>
 
 /**
- * Autonomous recorder definitions and function declarations
+ * Autonomous recorder definitions and function declarations.
  */
 #include <autonrecorder.h>
 
 /**
- * Operator control definitions and function declarations
+ * Operator control definitions and function declarations.
  */
 #include <opcontrol.h>
 
@@ -184,3 +184,4 @@ void operatorControl();
 #endif
 
 #endif
+

@@ -6,6 +6,7 @@ var sensors_8h =
     [ "GEAR_DRIVE", "sensors_8h.html#aaaba487ef4204a2d1755d80994bb04ca", null ],
     [ "GEAR_LIFT", "sensors_8h.html#a3b1b936537462c395fee9c9785dfc9a1", null ],
     [ "GYRO_NET_TARGET", "sensors_8h.html#a0bbc24e22c825c0cb35cc0a5a769d8f0", null ],
+    [ "GYRO_P", "sensors_8h.html#a5caef30fe7ef36e6f497db8bf9fd9c67", null ],
     [ "GYRO_PORT", "sensors_8h.html#a51d281e7676749d34aab3f8ba6fab960", null ],
     [ "GYRO_SENSITIVITY", "sensors_8h.html#a6e58fcea626847c9734cdc19eb93a6c5", null ],
     [ "LEFT_ENC_BOT", "sensors_8h.html#ae913e0b80ef027d0a619e59a3d2ffb85", null ],
@@ -15,9 +16,13 @@ var sensors_8h =
     [ "POWER_EXPANDER_VOLTAGE_DIVISOR", "sensors_8h.html#a3fbd303e783c833bf2812682e0905188", null ],
     [ "RIGHT_ENC_BOT", "sensors_8h.html#a76290ef36d8c093e1d380e26d1d01f6a", null ],
     [ "RIGHT_ENC_TOP", "sensors_8h.html#a07c1c0ceab9fee6088955b2b2706e515", null ],
+    [ "SHOOTER_LIMIT", "sensors_8h.html#a354b5ed50c08708ba703ca9e9121a0cf", null ],
     [ "TRANSMISSION_POT", "sensors_8h.html#a4df8b77c0d00d0604d3e8d0fd5fa5d40", null ],
+    [ "ULTRASONIC_ECHO_PORT", "sensors_8h.html#ac6e827f0a9c2f52b4d935274daad778a", null ],
+    [ "ULTRASONIC_PING_PORT", "sensors_8h.html#a97be84893513dc7afb5c4c26b7bdd074", null ],
     [ "powerLevelExpander", "sensors_8h.html#af8de9fe9eba1282f34dce42deebffc93", null ],
     [ "gyro", "sensors_8h.html#ad2d059cd4baeedd5fbead13085953eed", null ],
     [ "leftenc", "sensors_8h.html#a48ead63071a2b65b87a166928a5a5c08", null ],
-    [ "rightenc", "sensors_8h.html#a8c853ba918673c4878ab6935c54969e4", null ]
+    [ "rightenc", "sensors_8h.html#a8c853ba918673c4878ab6935c54969e4", null ],
+    [ "sonar", "sensors_8h.html#a09e334aba0637f228c65c135f428606a", null ]
 ];

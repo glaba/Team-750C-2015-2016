@@ -153,6 +153,14 @@ Macros</h2></td></tr>
 <tr class="separator:a6e58fcea626847c9734cdc19eb93a6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bbc24e22c825c0cb35cc0a5a769d8f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sensors_8h.html#a0bbc24e22c825c0cb35cc0a5a769d8f0">GYRO_NET_TARGET</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a0bbc24e22c825c0cb35cc0a5a769d8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5caef30fe7ef36e6f497db8bf9fd9c67"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sensors_8h.html#a5caef30fe7ef36e6f497db8bf9fd9c67">GYRO_P</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a5caef30fe7ef36e6f497db8bf9fd9c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354b5ed50c08708ba703ca9e9121a0cf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sensors_8h.html#a354b5ed50c08708ba703ca9e9121a0cf">SHOOTER_LIMIT</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a354b5ed50c08708ba703ca9e9121a0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6e827f0a9c2f52b4d935274daad778a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sensors_8h.html#ac6e827f0a9c2f52b4d935274daad778a">ULTRASONIC_ECHO_PORT</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:ac6e827f0a9c2f52b4d935274daad778a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97be84893513dc7afb5c4c26b7bdd074"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sensors_8h.html#a97be84893513dc7afb5c4c26b7bdd074">ULTRASONIC_PING_PORT</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:a97be84893513dc7afb5c4c26b7bdd074"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -167,6 +175,8 @@ Variables</h2></td></tr>
 <tr class="separator:a8c853ba918673c4878ab6935c54969e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2d059cd4baeedd5fbead13085953eed"><td class="memItemLeft" align="right" valign="top">Gyro&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sensors_8h.html#ad2d059cd4baeedd5fbead13085953eed">gyro</a></td></tr>
 <tr class="separator:ad2d059cd4baeedd5fbead13085953eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e334aba0637f228c65c135f428606a"><td class="memItemLeft" align="right" valign="top">Ultrasonic&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sensors_8h.html#a09e334aba0637f228c65c135f428606a">sonar</a></td></tr>
+<tr class="separator:a09e334aba0637f228c65c135f428606a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>File for important sensor declarations and functions. </p>
@@ -187,7 +197,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Battery ID number of the robot's backup battery. </p>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00089">89</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00090">90</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -202,7 +212,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Battery ID number of the robot's main battery. </p>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00084">84</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00085">85</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -217,7 +227,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Battery ID number of the power expander's battery. </p>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00094">94</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00095">95</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -262,7 +272,22 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Defines gyroscope target angle for the opposite corner net. </p>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00109">109</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00110">110</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5caef30fe7ef36e6f497db8bf9fd9c67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GYRO_P&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Defines the proportional error-correction term for the gyroscope alignment velocity control loop. </p>
+
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00115">115</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -277,7 +302,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Defines the port for the gyroscope. </p>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00099">99</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00100">100</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -292,7 +317,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Defines the gyroscope sensitivity. A value of zero represents the default sensitivity. </p>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00104">104</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00105">105</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -336,7 +361,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>The number of batteries present on the robot. </p>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00079">79</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00080">80</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -364,9 +389,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Defines power expander divisor. The sensor's value is divided by this to get the battery voltage. </p>
+<p>Defines power expander divisor. This varies by hardware revision. This value is for hardware revision A2. The sensor's value is divided by this to get the battery voltage. </p>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00065">65</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00066">66</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -399,6 +424,21 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a354b5ed50c08708ba703ca9e9121a0cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SHOOTER_LIMIT&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Defines the port for the limit switch that is triggered when the shooter fires. </p>
+
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00125">125</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a4df8b77c0d00d0604d3e8d0fd5fa5d40"></a>
 <div class="memitem">
 <div class="memproto">
@@ -411,6 +451,36 @@ Variables</h2></td></tr>
 <p>Defines the transmission potentiometer for position determination. </p>
 
 <p>Definition at line <a class="el" href="sensors_8h_source.html#l00043">43</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac6e827f0a9c2f52b4d935274daad778a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ULTRASONIC_ECHO_PORT&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Defines the port for the ultrasonic echo wire (orange). </p>
+
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00130">130</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a97be84893513dc7afb5c4c26b7bdd074"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ULTRASONIC_PING_PORT&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Defines the port for the ultrasonic ping wire (yellow). </p>
+
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00135">135</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -438,7 +508,7 @@ Variables</h2></td></tr>
 <p>Returns the electric potential of the power expander battery in millivolts.</p>
 <dl class="section return"><dt>Returns</dt><dd>the power expander battery voltage, in millivolts </dd></dl>
 
-<p>Definition at line <a class="el" href="sensors_8h_source.html#l00072">72</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
+<p>Definition at line <a class="el" href="sensors_8h_source.html#l00073">73</a> of file <a class="el" href="sensors_8h_source.html">sensors.h</a>.</p>
 
 </div>
 </div>
@@ -485,6 +555,21 @@ Variables</h2></td></tr>
 <p>Object representing the encoder on the right side of the drivetrain. </p>
 
 <p>Definition at line <a class="el" href="sensors_8c_source.html#l00023">23</a> of file <a class="el" href="sensors_8c_source.html">sensors.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a09e334aba0637f228c65c135f428606a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Ultrasonic sonar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Object representing the ultrasonic sensor. </p>
+
+<p>Definition at line <a class="el" href="sensors_8c_source.html#l00033">33</a> of file <a class="el" href="sensors_8c_source.html">sensors.c</a>.</p>
 
 </div>
 </div>

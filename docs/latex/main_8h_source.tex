@@ -28,29 +28,32 @@
 00093 
 00097 \textcolor{preprocessor}{#include <\hyperlink{lcddiag_8h}{lcddiag.h}>}
 00098 
-00102 \textcolor{preprocessor}{#include <\hyperlink{autonrecorder_8h}{autonrecorder.h}>}
+00102 \textcolor{preprocessor}{#include <\hyperlink{autonroutines_8h}{autonroutines.h}>}
 00103 
-00107 \textcolor{preprocessor}{#include <\hyperlink{opcontrol_8h}{opcontrol.h}>}
+00107 \textcolor{preprocessor}{#include <\hyperlink{autonrecorder_8h}{autonrecorder.h}>}
 00108 
-00109 \textcolor{comment}{// Allow usage of this file in C++ programs}
-00110 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
-00111 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
-00112 \textcolor{preprocessor}{#endif}
+00112 \textcolor{preprocessor}{#include <\hyperlink{opcontrol_8h}{opcontrol.h}>}
 00113 
-00114 \textcolor{comment}{// A function prototype looks exactly like its declaration, but with a semicolon instead of}
-00115 \textcolor{comment}{// actual code. If a function does not match a prototype, compile errors will occur.}
-00116 
-00117 \textcolor{comment}{// Prototypes for initialization, operator control and autonomous}
+00114 \textcolor{comment}{// Allow usage of this file in C++ programs}
+00115 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00116 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00117 \textcolor{preprocessor}{#endif}
 00118 
-00133 \textcolor{keywordtype}{void} \hyperlink{main_8h_a3c7ca506bbc071fa740de13805b7f376}{autonomous}();
-00142 \textcolor{keywordtype}{void} \hyperlink{main_8h_ad9cda921edb01125bb13c2f86bcf624b}{initializeIO}();
-00156 \textcolor{keywordtype}{void} \hyperlink{main_8h_a25a40b6614565f755233080a384c35f1}{initialize}();
-00174 \textcolor{keywordtype}{void} \hyperlink{main_8h_ac71a94af413917f27d108e95c4d6f6a7}{operatorControl}();
-00175 
-00176 \textcolor{comment}{// End C++ export structure}
-00177 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
-00178 \}
-00179 \textcolor{preprocessor}{#endif}
+00119 \textcolor{comment}{// A function prototype looks exactly like its declaration, but with a semicolon instead of}
+00120 \textcolor{comment}{// actual code. If a function does not match a prototype, compile errors will occur.}
+00121 
+00122 \textcolor{comment}{// Prototypes for initialization, operator control and autonomous}
+00123 
+00138 \textcolor{keywordtype}{void} \hyperlink{main_8h_a3c7ca506bbc071fa740de13805b7f376}{autonomous}();
+00147 \textcolor{keywordtype}{void} \hyperlink{main_8h_ad9cda921edb01125bb13c2f86bcf624b}{initializeIO}();
+00161 \textcolor{keywordtype}{void} \hyperlink{main_8h_a25a40b6614565f755233080a384c35f1}{initialize}();
+00179 \textcolor{keywordtype}{void} \hyperlink{main_8h_ac71a94af413917f27d108e95c4d6f6a7}{operatorControl}();
 00180 
-00181 \textcolor{preprocessor}{#endif}
+00181 \textcolor{comment}{// End C++ export structure}
+00182 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00183 \}
+00184 \textcolor{preprocessor}{#endif}
+00185 
+00186 \textcolor{preprocessor}{#endif}
+00187 
 \end{DoxyCode}

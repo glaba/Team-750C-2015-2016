@@ -203,3 +203,4 @@ char* typeString(char* dest);
 void formatLCDDisplay(void* ignore);
 
 #endif
+

@@ -39,6 +39,14 @@ File for important sensor declarations and functions.
 \#define \hyperlink{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}{G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}~0
 \item 
 \#define \hyperlink{sensors_8h_a0bbc24e22c825c0cb35cc0a5a769d8f0}{G\+Y\+R\+O\+\_\+\+N\+E\+T\+\_\+\+T\+A\+R\+G\+ET}~0
+\item 
+\#define \hyperlink{sensors_8h_a5caef30fe7ef36e6f497db8bf9fd9c67}{G\+Y\+R\+O\+\_\+P}~10
+\item 
+\#define \hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}~5
+\item 
+\#define \hyperlink{sensors_8h_ac6e827f0a9c2f52b4d935274daad778a}{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT}~11
+\item 
+\#define \hyperlink{sensors_8h_a97be84893513dc7afb5c4c26b7bdd074}{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT}~12
 \end{DoxyCompactItemize}
 \subsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -53,6 +61,8 @@ Encoder \hyperlink{sensors_8h_a48ead63071a2b65b87a166928a5a5c08}{leftenc}
 Encoder \hyperlink{sensors_8h_a8c853ba918673c4878ab6935c54969e4}{rightenc}
 \item 
 Gyro \hyperlink{sensors_8h_ad2d059cd4baeedd5fbead13085953eed}{gyro}
+\item 
+Ultrasonic \hyperlink{sensors_8h_a09e334aba0637f228c65c135f428606a}{sonar}
 \end{DoxyCompactItemize}
 
 
@@ -78,21 +88,21 @@ Definition in file \hyperlink{sensors_8h_source}{sensors.\+h}.
 \paragraph[{\texorpdfstring{B\+A\+T\+T\+\_\+\+B\+K\+UP}{BATT_BKUP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+T\+T\+\_\+\+B\+K\+UP~1}\hypertarget{sensors_8h_a5af8f9e877197004f0f5bf982a755146}{}\label{sensors_8h_a5af8f9e877197004f0f5bf982a755146}
 Battery ID number of the robot\textquotesingle{}s backup battery. 
 
-Definition at line \hyperlink{sensors_8h_source_l00089}{89} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00090}{90} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!B\+A\+T\+T\+\_\+\+M\+A\+IN@{B\+A\+T\+T\+\_\+\+M\+A\+IN}}
 \index{B\+A\+T\+T\+\_\+\+M\+A\+IN@{B\+A\+T\+T\+\_\+\+M\+A\+IN}!sensors.\+h@{sensors.\+h}}
 \paragraph[{\texorpdfstring{B\+A\+T\+T\+\_\+\+M\+A\+IN}{BATT_MAIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+T\+T\+\_\+\+M\+A\+IN~0}\hypertarget{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{}\label{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}
 Battery ID number of the robot\textquotesingle{}s main battery. 
 
-Definition at line \hyperlink{sensors_8h_source_l00084}{84} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00085}{85} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!B\+A\+T\+T\+\_\+\+P\+E\+XP@{B\+A\+T\+T\+\_\+\+P\+E\+XP}}
 \index{B\+A\+T\+T\+\_\+\+P\+E\+XP@{B\+A\+T\+T\+\_\+\+P\+E\+XP}!sensors.\+h@{sensors.\+h}}
 \paragraph[{\texorpdfstring{B\+A\+T\+T\+\_\+\+P\+E\+XP}{BATT_PEXP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+T\+T\+\_\+\+P\+E\+XP~2}\hypertarget{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{}\label{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}
 Battery ID number of the power expander\textquotesingle{}s battery. 
 
-Definition at line \hyperlink{sensors_8h_source_l00094}{94} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00095}{95} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!G\+E\+A\+R\+\_\+\+D\+R\+I\+VE@{G\+E\+A\+R\+\_\+\+D\+R\+I\+VE}}
 \index{G\+E\+A\+R\+\_\+\+D\+R\+I\+VE@{G\+E\+A\+R\+\_\+\+D\+R\+I\+VE}!sensors.\+h@{sensors.\+h}}
@@ -113,21 +123,28 @@ Definition at line \hyperlink{sensors_8h_source_l00053}{53} of file \hyperlink{s
 \paragraph[{\texorpdfstring{G\+Y\+R\+O\+\_\+\+N\+E\+T\+\_\+\+T\+A\+R\+G\+ET}{GYRO_NET_TARGET}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+Y\+R\+O\+\_\+\+N\+E\+T\+\_\+\+T\+A\+R\+G\+ET~0}\hypertarget{sensors_8h_a0bbc24e22c825c0cb35cc0a5a769d8f0}{}\label{sensors_8h_a0bbc24e22c825c0cb35cc0a5a769d8f0}
 Defines gyroscope target angle for the opposite corner net. 
 
-Definition at line \hyperlink{sensors_8h_source_l00109}{109} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00110}{110} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+
+\index{sensors.\+h@{sensors.\+h}!G\+Y\+R\+O\+\_\+P@{G\+Y\+R\+O\+\_\+P}}
+\index{G\+Y\+R\+O\+\_\+P@{G\+Y\+R\+O\+\_\+P}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{G\+Y\+R\+O\+\_\+P}{GYRO_P}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+Y\+R\+O\+\_\+P~10}\hypertarget{sensors_8h_a5caef30fe7ef36e6f497db8bf9fd9c67}{}\label{sensors_8h_a5caef30fe7ef36e6f497db8bf9fd9c67}
+Defines the proportional error-\/correction term for the gyroscope alignment velocity control loop. 
+
+Definition at line \hyperlink{sensors_8h_source_l00115}{115} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!G\+Y\+R\+O\+\_\+\+P\+O\+RT@{G\+Y\+R\+O\+\_\+\+P\+O\+RT}}
 \index{G\+Y\+R\+O\+\_\+\+P\+O\+RT@{G\+Y\+R\+O\+\_\+\+P\+O\+RT}!sensors.\+h@{sensors.\+h}}
 \paragraph[{\texorpdfstring{G\+Y\+R\+O\+\_\+\+P\+O\+RT}{GYRO_PORT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+Y\+R\+O\+\_\+\+P\+O\+RT~4}\hypertarget{sensors_8h_a51d281e7676749d34aab3f8ba6fab960}{}\label{sensors_8h_a51d281e7676749d34aab3f8ba6fab960}
 Defines the port for the gyroscope. 
 
-Definition at line \hyperlink{sensors_8h_source_l00099}{99} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00100}{100} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY@{G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}}
 \index{G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY@{G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}!sensors.\+h@{sensors.\+h}}
 \paragraph[{\texorpdfstring{G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}{GYRO_SENSITIVITY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY~0}\hypertarget{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}{}\label{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}
 Defines the gyroscope sensitivity. A value of zero represents the default sensitivity. 
 
-Definition at line \hyperlink{sensors_8h_source_l00104}{104} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00105}{105} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!L\+E\+F\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT@{L\+E\+F\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT}}
 \index{L\+E\+F\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT@{L\+E\+F\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT}!sensors.\+h@{sensors.\+h}}
@@ -148,7 +165,7 @@ Definition at line \hyperlink{sensors_8h_source_l00021}{21} of file \hyperlink{s
 \paragraph[{\texorpdfstring{N\+U\+M\+\_\+\+B\+A\+T\+TS}{NUM_BATTS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+U\+M\+\_\+\+B\+A\+T\+TS~3}\hypertarget{sensors_8h_a842286083506a5f26da4ff813d635012}{}\label{sensors_8h_a842286083506a5f26da4ff813d635012}
 The number of batteries present on the robot. 
 
-Definition at line \hyperlink{sensors_8h_source_l00079}{79} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00080}{80} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+S\+T\+A\+T\+US@{P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+S\+T\+A\+T\+US}}
 \index{P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+S\+T\+A\+T\+US@{P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+S\+T\+A\+T\+US}!sensors.\+h@{sensors.\+h}}
@@ -160,9 +177,9 @@ Definition at line \hyperlink{sensors_8h_source_l00059}{59} of file \hyperlink{s
 \index{sensors.\+h@{sensors.\+h}!P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+V\+O\+L\+T\+A\+G\+E\+\_\+\+D\+I\+V\+I\+S\+OR@{P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+V\+O\+L\+T\+A\+G\+E\+\_\+\+D\+I\+V\+I\+S\+OR}}
 \index{P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+V\+O\+L\+T\+A\+G\+E\+\_\+\+D\+I\+V\+I\+S\+OR@{P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+V\+O\+L\+T\+A\+G\+E\+\_\+\+D\+I\+V\+I\+S\+OR}!sensors.\+h@{sensors.\+h}}
 \paragraph[{\texorpdfstring{P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+V\+O\+L\+T\+A\+G\+E\+\_\+\+D\+I\+V\+I\+S\+OR}{POWER_EXPANDER_VOLTAGE_DIVISOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+V\+O\+L\+T\+A\+G\+E\+\_\+\+D\+I\+V\+I\+S\+OR~280}\hypertarget{sensors_8h_a3fbd303e783c833bf2812682e0905188}{}\label{sensors_8h_a3fbd303e783c833bf2812682e0905188}
-Defines power expander divisor. The sensor\textquotesingle{}s value is divided by this to get the battery voltage. 
+Defines power expander divisor. This varies by hardware revision. This value is for hardware revision A2. The sensor\textquotesingle{}s value is divided by this to get the battery voltage. 
 
-Definition at line \hyperlink{sensors_8h_source_l00065}{65} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00066}{66} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!R\+I\+G\+H\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT@{R\+I\+G\+H\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT}}
 \index{R\+I\+G\+H\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT@{R\+I\+G\+H\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT}!sensors.\+h@{sensors.\+h}}
@@ -178,12 +195,33 @@ Defines the encoder ports on the right side of the drivetrain.
 
 Definition at line \hyperlink{sensors_8h_source_l00032}{32} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
+\index{sensors.\+h@{sensors.\+h}!S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT@{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}}
+\index{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT@{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}{SHOOTER_LIMIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT~5}\hypertarget{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{}\label{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}
+Defines the port for the limit switch that is triggered when the shooter fires. 
+
+Definition at line \hyperlink{sensors_8h_source_l00125}{125} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+
 \index{sensors.\+h@{sensors.\+h}!T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT@{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT}}
 \index{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT@{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT}!sensors.\+h@{sensors.\+h}}
 \paragraph[{\texorpdfstring{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT}{TRANSMISSION_POT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT~2}\hypertarget{sensors_8h_a4df8b77c0d00d0604d3e8d0fd5fa5d40}{}\label{sensors_8h_a4df8b77c0d00d0604d3e8d0fd5fa5d40}
 Defines the transmission potentiometer for position determination. 
 
 Definition at line \hyperlink{sensors_8h_source_l00043}{43} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+
+\index{sensors.\+h@{sensors.\+h}!U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT@{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT}}
+\index{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT@{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT}{ULTRASONIC_ECHO_PORT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT~11}\hypertarget{sensors_8h_ac6e827f0a9c2f52b4d935274daad778a}{}\label{sensors_8h_ac6e827f0a9c2f52b4d935274daad778a}
+Defines the port for the ultrasonic echo wire (orange). 
+
+Definition at line \hyperlink{sensors_8h_source_l00130}{130} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+
+\index{sensors.\+h@{sensors.\+h}!U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT@{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT}}
+\index{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT@{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT}{ULTRASONIC_PING_PORT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT~12}\hypertarget{sensors_8h_a97be84893513dc7afb5c4c26b7bdd074}{}\label{sensors_8h_a97be84893513dc7afb5c4c26b7bdd074}
+Defines the port for the ultrasonic ping wire (yellow). 
+
+Definition at line \hyperlink{sensors_8h_source_l00135}{135} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 
 
@@ -202,7 +240,7 @@ the power expander battery voltage, in millivolts
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{sensors_8h_source_l00072}{72} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+Definition at line \hyperlink{sensors_8h_source_l00073}{73} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 
 
@@ -227,4 +265,11 @@ Definition at line \hyperlink{sensors_8c_source_l00018}{18} of file \hyperlink{s
 Object representing the encoder on the right side of the drivetrain. 
 
 Definition at line \hyperlink{sensors_8c_source_l00023}{23} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
+
+\index{sensors.\+h@{sensors.\+h}!sonar@{sonar}}
+\index{sonar@{sonar}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{sonar}{sonar}}]{\setlength{\rightskip}{0pt plus 5cm}Ultrasonic sonar}\hypertarget{sensors_8h_a09e334aba0637f228c65c135f428606a}{}\label{sensors_8h_a09e334aba0637f228c65c135f428606a}
+Object representing the ultrasonic sensor. 
+
+Definition at line \hyperlink{sensors_8c_source_l00033}{33} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
 

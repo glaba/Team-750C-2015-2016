@@ -51,3 +51,4 @@ void randlcdmsg(FILE *lcdport, int line);
 void screensaver(FILE *lcdport);
 
 #endif
+

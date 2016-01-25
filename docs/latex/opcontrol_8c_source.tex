@@ -19,7 +19,7 @@
 00066 
 \hypertarget{opcontrol_8c_source.tex_l00073}{}\hyperlink{opcontrol_8c_a42af913b14d8bc475023395dac8ae30e}{00073} \textcolor{keywordtype}{void} \hyperlink{opcontrol_8c_a42af913b14d8bc475023395dac8ae30e}{targetNet}(\textcolor{keywordtype}{int} target)\{
 00074     \textcolor{keywordtype}{int} error = gyroGet(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro}) % \hyperlink{constants_8h_af5a74308a3fd418c13af67f9319e5308}{ROTATION\_DEG} - target;
-00075     \hyperlink{opcontrol_8c_aaefa47f4fdf865c2358c22b542a993e4}{turn} = error * 20;
+00075     \hyperlink{opcontrol_8c_aaefa47f4fdf865c2358c22b542a993e4}{turn} = error * \hyperlink{sensors_8h_a5caef30fe7ef36e6f497db8bf9fd9c67}{GYRO\_P};
 00076 \}
 00077 
 \hypertarget{opcontrol_8c_source.tex_l00081}{}\hyperlink{opcontrol_8h_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}{00081} \textcolor{keywordtype}{void} \hyperlink{opcontrol_8c_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}{recordJoyInfo}()\{
@@ -113,4 +113,5 @@
 00188         delay(20);
 00189     \}
 00190 \}
+00191 
 \end{DoxyCode}

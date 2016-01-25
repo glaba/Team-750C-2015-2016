@@ -60,6 +60,7 @@ extern Encoder rightenc;
 
 /**
  * Defines power expander divisor.
+ * This varies by hardware revision. This value is for hardware revision A2.
  * The sensor's value is divided by this to get the battery voltage.
  */
 #define POWER_EXPANDER_VOLTAGE_DIVISOR 280 //Hardware revision A2
@@ -109,7 +110,7 @@ inline unsigned int powerLevelExpander(){
 #define GYRO_NET_TARGET 0
 
 /**
- * Defines the proportion term for the gyroscope alignment P loop
+ * Defines the proportional error-correction term for the gyroscope alignment velocity control loop.
  */
 #define GYRO_P 10
 
@@ -119,23 +120,24 @@ inline unsigned int powerLevelExpander(){
 extern Gyro gyro;
 
 /**
- * Defines the port for the limit switch that is triggered when the shooter fires
+ * Defines the port for the limit switch that is triggered when the shooter fires.
  */
 #define SHOOTER_LIMIT 5
 
 /**
- * Defines the port for the ultrasonic echo wire (orange)
+ * Defines the port for the ultrasonic echo wire (orange).
  */
 #define ULTRASONIC_ECHO_PORT 11
 
 /**
- * Defines the port for the ultrasonic ping wire (yellow)
+ * Defines the port for the ultrasonic ping wire (yellow).
  */
 #define ULTRASONIC_PING_PORT 12
 
 /**
- * Object representing the ultrasonic sensor
+ * Object representing the ultrasonic sensor.
  */
 extern Ultrasonic sonar;
 
 #endif
+

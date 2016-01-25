@@ -35,20 +35,24 @@
 00064         seed += analogRead(i);
 00065     \}
 00066     srand(seed);
-00067     \hyperlink{sensors_8c_a48ead63071a2b65b87a166928a5a5c08}{leftenc} = encoderInit(\hyperlink{sensors_8h_ad0ae0aded49835e75c52bc506585f5a6}{LEFT\_ENC\_TOP}, \hyperlink{sensors_8h_ae913e0b80ef027d0a619e59a3d2ffb85}{LEFT\_ENC\_BOT}, \textcolor{keyword}{false});
-00068     \hyperlink{sensors_8c_a8c853ba918673c4878ab6935c54969e4}{rightenc} = encoderInit(\hyperlink{sensors_8h_a07c1c0ceab9fee6088955b2b2706e515}{RIGHT\_ENC\_TOP}, \hyperlink{sensors_8h_a76290ef36d8c093e1d380e26d1d01f6a}{RIGHT\_ENC\_BOT}, \textcolor{keyword}{false});
-00069     lcdInit(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
-00070     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
-00071     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
-00072     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ing gyro..."});
-00073     \hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro} = gyroInit(\hyperlink{sensors_8h_a51d281e7676749d34aab3f8ba6fab960}{GYRO\_PORT}, \hyperlink{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}{GYRO\_SENSITIVITY});
-00074     delay(1100);
-00075     gyroReset(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro});
-00076     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ed gyro!"});
-00077     \hyperlink{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}();
-00078     \hyperlink{lcddiag_8c_ad290df3e273598f9f10fe34c257e4084}{initGroups}();
-00079     \textcolor{keywordflow}{if}(isOnline())\{
-00080         \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
-00081     \}
-00082 \}
+00067     pinMode(\hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{SHOOTER\_LIMIT}, INPUT);
+00068     \hyperlink{sensors_8c_a48ead63071a2b65b87a166928a5a5c08}{leftenc} = encoderInit(\hyperlink{sensors_8h_ad0ae0aded49835e75c52bc506585f5a6}{LEFT\_ENC\_TOP}, \hyperlink{sensors_8h_ae913e0b80ef027d0a619e59a3d2ffb85}{LEFT\_ENC\_BOT}, \textcolor{keyword}{false});
+00069     \hyperlink{sensors_8c_a8c853ba918673c4878ab6935c54969e4}{rightenc} = encoderInit(\hyperlink{sensors_8h_a07c1c0ceab9fee6088955b2b2706e515}{RIGHT\_ENC\_TOP}, \hyperlink{sensors_8h_a76290ef36d8c093e1d380e26d1d01f6a}{RIGHT\_ENC\_BOT}, \textcolor{keyword}{false});
+00070     lcdInit(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00071     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00072     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
+00073     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ing gyro..."});
+00074     \hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro} = gyroInit(\hyperlink{sensors_8h_a51d281e7676749d34aab3f8ba6fab960}{GYRO\_PORT}, \hyperlink{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}{GYRO\_SENSITIVITY});
+00075     \hyperlink{sensors_8c_a09e334aba0637f228c65c135f428606a}{sonar} = ultrasonicInit(\hyperlink{sensors_8h_ac6e827f0a9c2f52b4d935274daad778a}{ULTRASONIC\_ECHO\_PORT}, 
+      \hyperlink{sensors_8h_a97be84893513dc7afb5c4c26b7bdd074}{ULTRASONIC\_PING\_PORT});
+00076     delay(1100);
+00077     gyroReset(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro});
+00078     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ed gyro!"});
+00079     \hyperlink{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}();
+00080     \hyperlink{lcddiag_8c_ad290df3e273598f9f10fe34c257e4084}{initGroups}();
+00081     \textcolor{keywordflow}{if}(isOnline())\{
+00082         \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
+00083     \}
+00084 \}
+00085 
 \end{DoxyCode}

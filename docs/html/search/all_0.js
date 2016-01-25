@@ -12,5 +12,7 @@ var searchData=
   ['autonloaded',['autonLoaded',['../autonrecorder_8c.html#a4e72d907ee74449b71b5e20943f4217e',1,'autonLoaded():&#160;autonrecorder.c'],['../autonrecorder_8h.html#a4e72d907ee74449b71b5e20943f4217e',1,'autonLoaded():&#160;autonrecorder.c']]],
   ['autonomous',['autonomous',['../auto_8c.html#a3c7ca506bbc071fa740de13805b7f376',1,'autonomous():&#160;auto.c'],['../main_8h.html#a3c7ca506bbc071fa740de13805b7f376',1,'autonomous():&#160;auto.c']]],
   ['autonrecorder_2ec',['autonrecorder.c',['../autonrecorder_8c.html',1,'']]],
-  ['autonrecorder_2eh',['autonrecorder.h',['../autonrecorder_8h.html',1,'']]]
+  ['autonrecorder_2eh',['autonrecorder.h',['../autonrecorder_8h.html',1,'']]],
+  ['autonroutines_2ec',['autonroutines.c',['../autonroutines_8c.html',1,'']]],
+  ['autonroutines_2eh',['autonroutines.h',['../autonroutines_8h.html',1,'']]]
 ];

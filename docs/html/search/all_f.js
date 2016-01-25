@@ -19,6 +19,7 @@ var searchData=
   ['runconnection',['runConnection',['../lcddiag_8c.html#ae830c338f6de302a9719b9e7829d9897',1,'lcddiag.c']]],
   ['runcredits',['runCredits',['../lcddiag_8c.html#a636890926de259e3f0869b8f4c4789c3',1,'lcddiag.c']]],
   ['rungroupmotor',['runGroupMotor',['../lcddiag_8c.html#a61bf99fda231c065d2113f0c67b8d72a',1,'lcddiag.c']]],
+  ['runhardcodedprogrammingskills',['runHardCodedProgrammingSkills',['../autonroutines_8c.html#adfa547bf86c78d482d16cb15a4ddd642',1,'runHardCodedProgrammingSkills():&#160;autonroutines.c'],['../autonroutines_8h.html#adfa547bf86c78d482d16cb15a4ddd642',1,'runHardCodedProgrammingSkills():&#160;autonroutines.c']]],
   ['runindivmotor',['runIndivMotor',['../lcddiag_8c.html#ad4df85d8b386f9a60b097fd65cf27e3b',1,'lcddiag.c']]],
   ['runmotor',['runMotor',['../lcddiag_8c.html#a3391c1825bcf4987f3fad9f42a9c1f0d',1,'lcddiag.c']]],
   ['runmotorgroupmgmt',['runMotorGroupMgmt',['../lcddiag_8c.html#a9c8ce3f638a12bc9a264dd447be96a6d',1,'lcddiag.c']]],

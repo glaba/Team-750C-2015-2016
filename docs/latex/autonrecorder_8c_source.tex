@@ -16,330 +16,342 @@
 00038     \textcolor{keywordtype}{int} val;
 00039     \textcolor{keywordflow}{do} \{
 00040         val = (float) ((\textcolor{keywordtype}{float}) analogRead(\hyperlink{autonrecorder_8h_a2490cda7a399f481333af2e5589b74a9}{AUTON\_POT})/(float) 
-      \hyperlink{autonrecorder_8h_a01989d89b8bed150d0aacdaef5ccabd3}{AUTON\_POT\_HIGH}) * (\hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+2);
-00041         \textcolor{keywordflow}{if}(val > \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+1)\{
-00042             val = \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+1;
+      \hyperlink{autonrecorder_8h_a01989d89b8bed150d0aacdaef5ccabd3}{AUTON\_POT\_HIGH}) * (\hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+3);
+00041         \textcolor{keywordflow}{if}(val > \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+2)\{
+00042             val = \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+2;
 00043         \}
 00044         \textcolor{keywordflow}{if}(val == 0) \{
 00045             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"NONE"});
 00046         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+1) \{
 00047             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Prog. Skills"});
-00048         \} \textcolor{keywordflow}{else} \{
-00049             \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
-00050             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"a%d"}, val);
-00051             FILE* autonFile = fopen(filename, \textcolor{stringliteral}{"r"});
-00052             \textcolor{keywordflow}{if}(autonFile == NULL)\{
-00053                 lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Slot: %d (EMPTY)"}, val);
-00054             \} \textcolor{keywordflow}{else} \{
-00055                 \textcolor{keywordtype}{char} name[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00056                 memset(name, 0, \textcolor{keyword}{sizeof}(name));
-00057                 fread(name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(name) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
-00058                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, name);
-00059                 fclose(autonFile);
-00060             \}
-00061         \}
-00062         done = (digitalRead(\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{AUTON\_BUTTON}) == \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED});
-00063         delay(20);
-00064     \} \textcolor{keywordflow}{while}(!done);
-00065     printf(\textcolor{stringliteral}{"Selected autonomous: %d\(\backslash\)n"}, val);
-00066     \textcolor{keywordflow}{return} val;
-00067 \}
-00068 
-\hypertarget{autonrecorder_8c_source.tex_l00072}{}\hyperlink{autonrecorder_8h_acd89c8b2c622ae271c5d63d7fb8fa5f6}{00072} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}() \{
-00073     printf(\textcolor{stringliteral}{"Beginning initialization of autonomous recorder...\(\backslash\)n"});
-00074     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
-00075     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init recorder..."});
-00076     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00077     memset(states, 0, \textcolor{keyword}{sizeof}(*states));
-00078     printf(\textcolor{stringliteral}{"Completed initialization of autonomous recorder.\(\backslash\)n"});
-00079     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ed recorder!"});
-00080     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00081     \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = -1;
-00082     \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} = 0;
-00083 \}
-00084 
-\hypertarget{autonrecorder_8c_source.tex_l00088}{}\hyperlink{autonrecorder_8h_a1611f78b8c904848dcc98ae4b0b5b22b}{00088} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}() \{
-00089     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
-00090     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 3; i > 0; i--)\{
-00091         lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
-00092         printf(\textcolor{stringliteral}{"Beginning autonomous recording in %d...\(\backslash\)n"}, i);
-00093         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Recording auton"});
-00094         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"in %d..."}, i);
-00095         delay(1000);
-00096     \}
-00097     printf(\textcolor{stringliteral}{"Ready to begin autonomous recording.\(\backslash\)n"});
-00098     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Recording auton..."});
-00099     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00100     \textcolor{keywordtype}{bool} lightState = \textcolor{keyword}{false};
-00101     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}; i++) \{
-00102         printf(\textcolor{stringliteral}{"Recording state %d...\(\backslash\)n"}, i);
-00103         lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, lightState);
-00104         lightState = !lightState;
-00105         \hyperlink{opcontrol_8c_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}{recordJoyInfo}();
-00106         states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd} = \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd};
-00107         states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn} = \hyperlink{opcontrol_8c_aaefa47f4fdf865c2358c22b542a993e4}{turn};
-00108         states[i].\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht} = \hyperlink{opcontrol_8c_ab9078d4ef28960b548a1621e2f6e9438}{sht};
-00109         states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk} = \hyperlink{opcontrol_8c_a0f71b6f71e93fa27c60c4dbbfc135bbb}{intk};
-00110         states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans} = \hyperlink{opcontrol_8c_a7039f0d5c4b6a662294b23dccf0bea0e}{trans};
-00111         states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep} = \hyperlink{opcontrol_8c_ada6c89c18e8b2a17151b9bc6b8ae060c}{dep};
-00112         \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_UP)) \{
-00113             printf(\textcolor{stringliteral}{"Autonomous recording manually cancelled.\(\backslash\)n"});
-00114             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Cancelled record."});
-00115             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00116             memset(states + i + 1, 0, \textcolor{keyword}{sizeof}(\hyperlink{structjoy_state}{joyState}) * (\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * JOY\_POLL\_FREQ - i 
+00048         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+2) \{
+00049             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Hardcoded Skills"});
+00050         \} \textcolor{keywordflow}{else} \{
+00051             \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
+00052             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"a%d"}, val);
+00053             FILE* autonFile = fopen(filename, \textcolor{stringliteral}{"r"});
+00054             \textcolor{keywordflow}{if}(autonFile == NULL)\{
+00055                 lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Slot: %d (EMPTY)"}, val);
+00056             \} \textcolor{keywordflow}{else} \{
+00057                 \textcolor{keywordtype}{char} name[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00058                 memset(name, 0, \textcolor{keyword}{sizeof}(name));
+00059                 fread(name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(name) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
+00060                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, name);
+00061                 fclose(autonFile);
+00062             \}
+00063         \}
+00064         done = (digitalRead(\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{AUTON\_BUTTON}) == \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED});
+00065         delay(20);
+00066     \} \textcolor{keywordflow}{while}(!done);
+00067     printf(\textcolor{stringliteral}{"Selected autonomous: %d\(\backslash\)n"}, val);
+00068     \textcolor{keywordflow}{return} val;
+00069 \}
+00070 
+\hypertarget{autonrecorder_8c_source.tex_l00074}{}\hyperlink{autonrecorder_8h_acd89c8b2c622ae271c5d63d7fb8fa5f6}{00074} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}() \{
+00075     printf(\textcolor{stringliteral}{"Beginning initialization of autonomous recorder...\(\backslash\)n"});
+00076     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00077     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init recorder..."});
+00078     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00079     memset(states, 0, \textcolor{keyword}{sizeof}(*states));
+00080     printf(\textcolor{stringliteral}{"Completed initialization of autonomous recorder.\(\backslash\)n"});
+00081     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ed recorder!"});
+00082     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00083     \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = -1;
+00084     \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} = 0;
+00085 \}
+00086 
+\hypertarget{autonrecorder_8c_source.tex_l00090}{}\hyperlink{autonrecorder_8h_a1611f78b8c904848dcc98ae4b0b5b22b}{00090} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}() \{
+00091     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00092     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 3; i > 0; i--)\{
+00093         lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
+00094         printf(\textcolor{stringliteral}{"Beginning autonomous recording in %d...\(\backslash\)n"}, i);
+00095         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Recording auton"});
+00096         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"in %d..."}, i);
+00097         delay(1000);
+00098     \}
+00099     printf(\textcolor{stringliteral}{"Ready to begin autonomous recording.\(\backslash\)n"});
+00100     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Recording auton..."});
+00101     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00102     \textcolor{keywordtype}{bool} lightState = \textcolor{keyword}{false};
+00103     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}; i++) \{
+00104         printf(\textcolor{stringliteral}{"Recording state %d...\(\backslash\)n"}, i);
+00105         lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, lightState);
+00106         lightState = !lightState;
+00107         \hyperlink{opcontrol_8c_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}{recordJoyInfo}();
+00108         states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd} = \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd};
+00109         states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn} = \hyperlink{opcontrol_8c_aaefa47f4fdf865c2358c22b542a993e4}{turn};
+00110         states[i].\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht} = \hyperlink{opcontrol_8c_ab9078d4ef28960b548a1621e2f6e9438}{sht};
+00111         states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk} = \hyperlink{opcontrol_8c_a0f71b6f71e93fa27c60c4dbbfc135bbb}{intk};
+00112         states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans} = \hyperlink{opcontrol_8c_a7039f0d5c4b6a662294b23dccf0bea0e}{trans};
+00113         states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep} = \hyperlink{opcontrol_8c_ada6c89c18e8b2a17151b9bc6b8ae060c}{dep};
+00114         \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_UP)) \{
+00115             printf(\textcolor{stringliteral}{"Autonomous recording manually cancelled.\(\backslash\)n"});
+00116             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Cancelled record."});
+00117             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00118             memset(states + i + 1, 0, \textcolor{keyword}{sizeof}(\hyperlink{structjoy_state}{joyState}) * (\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * JOY\_POLL\_FREQ - i 
       - 1));
-00117             i = \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ};
-00118         \}
-00119         \hyperlink{opcontrol_8c_ad3b45c5807c039d0ce28bb0da06f0014}{moveRobot}();
-00120         delay(1000 / JOY\_POLL\_FREQ);
-00121     \}
-00122     printf(\textcolor{stringliteral}{"Completed autonomous recording.\(\backslash\)n"});
-00123     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Recorded auton!"});
-00124     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00125     motorStopAll();
-00126     delay(1000);
-00127     \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = 0;
-00128 \}
-00129 
-\hypertarget{autonrecorder_8c_source.tex_l00133}{}\hyperlink{autonrecorder_8h_ae6b758086a3b984c6705e12859eed2cc}{00133} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}() \{
-00134     printf(\textcolor{stringliteral}{"Waiting for file selection...\(\backslash\)n"});
-00135     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
-00136     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Save to?"});
-00137     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00138     \textcolor{keywordtype}{int} autonSlot;
-00139     \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} == 0) \{
-00140         autonSlot = \hyperlink{autonrecorder_8c_a7233586e332461dc25c7cc950a08d429}{selectAuton}();
-00141     \} \textcolor{keywordflow}{else} \{
-00142         printf(\textcolor{stringliteral}{"Currently in the middle of a programming skills run.\(\backslash\)n"});
-00143         autonSlot = \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1;
-00144     \}
-00145     \textcolor{keywordtype}{char} name[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00146     memset(name, 0, \textcolor{keyword}{sizeof}(name));
-00147     \textcolor{keywordflow}{if}(autonSlot == 0) \{
-00148         printf(\textcolor{stringliteral}{"Not saving this autonomous!\(\backslash\)n"});
-00149         \textcolor{keywordflow}{return};
-00150     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+1) \{
-00151         \hyperlink{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}{typeString}(name);
-00152     \}
-00153     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Saving auton..."});
-00154     \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
-00155     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1) \{
-00156         printf(\textcolor{stringliteral}{"Not doing programming skills, recording to slot %d.\(\backslash\)n"},autonSlot);
-00157         snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"a%d"}, autonSlot);
-00158         \textcolor{comment}{//lcdPrint(LCD\_PORT, 2, "Slot: %d", autonSlot);}
-00159         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"%s"}, name);
-00160     \} \textcolor{keywordflow}{else} \{
-00161         printf(\textcolor{stringliteral}{"Doing programming skills, recording to section %d.\(\backslash\)n"}, 
+00119             i = \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ};
+00120         \}
+00121         \hyperlink{opcontrol_8c_ad3b45c5807c039d0ce28bb0da06f0014}{moveRobot}();
+00122         delay(1000 / JOY\_POLL\_FREQ);
+00123     \}
+00124     printf(\textcolor{stringliteral}{"Completed autonomous recording.\(\backslash\)n"});
+00125     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Recorded auton!"});
+00126     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00127     motorStopAll();
+00128     delay(1000);
+00129     \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = 0;
+00130 \}
+00131 
+\hypertarget{autonrecorder_8c_source.tex_l00135}{}\hyperlink{autonrecorder_8h_ae6b758086a3b984c6705e12859eed2cc}{00135} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}() \{
+00136     printf(\textcolor{stringliteral}{"Waiting for file selection...\(\backslash\)n"});
+00137     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00138     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Save to?"});
+00139     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00140     \textcolor{keywordtype}{int} autonSlot;
+00141     \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} == 0) \{
+00142         autonSlot = \hyperlink{autonrecorder_8c_a7233586e332461dc25c7cc950a08d429}{selectAuton}();
+00143     \} \textcolor{keywordflow}{else} \{
+00144         printf(\textcolor{stringliteral}{"Currently in the middle of a programming skills run.\(\backslash\)n"});
+00145         autonSlot = \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1;
+00146     \}
+00147     \textcolor{keywordtype}{char} name[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00148     memset(name, 0, \textcolor{keyword}{sizeof}(name));
+00149     \textcolor{keywordflow}{if}(autonSlot == 0) \{
+00150         printf(\textcolor{stringliteral}{"Not saving this autonomous!\(\backslash\)n"});
+00151         \textcolor{keywordflow}{return};
+00152     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+1) \{
+00153         \hyperlink{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}{typeString}(name);
+00154     \}
+00155     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Saving auton..."});
+00156     \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
+00157     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1) \{
+00158         printf(\textcolor{stringliteral}{"Not doing programming skills, recording to slot %d.\(\backslash\)n"},autonSlot);
+00159         snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"a%d"}, autonSlot);
+00160         \textcolor{comment}{//lcdPrint(LCD\_PORT, 2, "Slot: %d", autonSlot);}
+00161         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"%s"}, name);
+00162     \} \textcolor{keywordflow}{else} \{
+00163         printf(\textcolor{stringliteral}{"Doing programming skills, recording to section %d.\(\backslash\)n"}, 
       \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
-00162         snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"p%d"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
-00163         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Skills Part: %d"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills}+1);
-00164     \}
-00165     printf(\textcolor{stringliteral}{"Saving to file %s...\(\backslash\)n"},filename);
-00166     FILE *autonFile = fopen(filename, \textcolor{stringliteral}{"w"});
-00167     \textcolor{keywordflow}{if} (autonFile == NULL) \{
-00168         printf(\textcolor{stringliteral}{"Error saving autonomous in file %s!\(\backslash\)n"}, filename);
-00169         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Error saving!"});
-00170         \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
-00171             printf(\textcolor{stringliteral}{"Not doing programming skills, error saving auton in slot %d!\(\backslash\)n"}, autonSlot);
-00172             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Error saving!"});
-00173             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2,   \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
-00174         \} \textcolor{keywordflow}{else} \{
-00175             printf(\textcolor{stringliteral}{"Doing programming skills, error saving auton in section 0!\(\backslash\)n"});
-00176             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Error saving!"});
-00177             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Prog. Skills"});
-00178         \}
-00179         delay(1000);
-00180         \textcolor{keywordflow}{return};
-00181     \}
-00182     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+1)\{
-00183         fwrite(name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(name) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
-00184     \}
-00185     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}; i++) \{
-00186         printf(\textcolor{stringliteral}{"Recording state %d to file %s...\(\backslash\)n"}, i, filename);
-00187         \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} write[6] = \{states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd}, states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn}, states[i].
+00164         snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"p%d"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
+00165         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Skills Part: %d"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills}+1);
+00166     \}
+00167     printf(\textcolor{stringliteral}{"Saving to file %s...\(\backslash\)n"},filename);
+00168     FILE *autonFile = fopen(filename, \textcolor{stringliteral}{"w"});
+00169     \textcolor{keywordflow}{if} (autonFile == NULL) \{
+00170         printf(\textcolor{stringliteral}{"Error saving autonomous in file %s!\(\backslash\)n"}, filename);
+00171         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Error saving!"});
+00172         \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
+00173             printf(\textcolor{stringliteral}{"Not doing programming skills, error saving auton in slot %d!\(\backslash\)n"}, autonSlot);
+00174             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Error saving!"});
+00175             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2,   \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
+00176         \} \textcolor{keywordflow}{else} \{
+00177             printf(\textcolor{stringliteral}{"Doing programming skills, error saving auton in section 0!\(\backslash\)n"});
+00178             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Error saving!"});
+00179             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Prog. Skills"});
+00180         \}
+00181         delay(1000);
+00182         \textcolor{keywordflow}{return};
+00183     \}
+00184     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS}+1)\{
+00185         fwrite(name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(name) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
+00186     \}
+00187     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}; i++) \{
+00188         printf(\textcolor{stringliteral}{"Recording state %d to file %s...\(\backslash\)n"}, i, filename);
+00189         \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char} write[6] = \{states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd}, states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn}, states[i].
       \hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht}, states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk}, states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans},
-00188                                 states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep}\};
-00189         fwrite(write, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(write) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
-00190         delay(10);
-00191     \}
-00192     fclose(autonFile);
-00193     printf(\textcolor{stringliteral}{"Completed saving autonomous to file %s.\(\backslash\)n"}, filename);
-00194     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Saved auton!"});
-00195     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1) \{
-00196         printf(\textcolor{stringliteral}{"Not doing programming skills, recorded to slot %d.\(\backslash\)n"},autonSlot);
-00197         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
-00198     \} \textcolor{keywordflow}{else} \{
-00199         printf(\textcolor{stringliteral}{"Doing programming skills, recorded to section %d.\(\backslash\)n"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
-00200         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Skills Part: %d"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills}+1);
-00201     \}
-00202     delay(1000);
-00203     \textcolor{keywordflow}{if}(autonSlot == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1) \{
-00204         printf(\textcolor{stringliteral}{"Proceeding to next programming skills section (%d).\(\backslash\)n"}, ++
+00190                                 states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep}\};
+00191         fwrite(write, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(write) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
+00192         delay(10);
+00193     \}
+00194     fclose(autonFile);
+00195     printf(\textcolor{stringliteral}{"Completed saving autonomous to file %s.\(\backslash\)n"}, filename);
+00196     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Saved auton!"});
+00197     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1) \{
+00198         printf(\textcolor{stringliteral}{"Not doing programming skills, recorded to slot %d.\(\backslash\)n"},autonSlot);
+00199         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
+00200     \} \textcolor{keywordflow}{else} \{
+00201         printf(\textcolor{stringliteral}{"Doing programming skills, recorded to section %d.\(\backslash\)n"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
+00202         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Skills Part: %d"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills}+1);
+00203     \}
+00204     delay(1000);
+00205     \textcolor{keywordflow}{if}(autonSlot == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1) \{
+00206         printf(\textcolor{stringliteral}{"Proceeding to next programming skills section (%d).\(\backslash\)n"}, ++
       \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
-00205     \}
-00206     \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} == \hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{PROGSKILL\_TIME}/\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME}) \{
-00207         printf(\textcolor{stringliteral}{"Finished recording programming skills (all parts).\(\backslash\)n"});
-00208         \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} = 0;
-00209     \}
-00210     \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = autonSlot;
-00211 \}
-00212 
-\hypertarget{autonrecorder_8c_source.tex_l00216}{}\hyperlink{autonrecorder_8h_af6d130061f44459f9b3c629123e78f6e}{00216} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}() \{
-00217     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
-00218     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00219     \textcolor{keywordtype}{int} autonSlot;
-00220     FILE* autonFile;
-00221     \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
-00222     \textcolor{keywordflow}{do} \{
-00223         printf(\textcolor{stringliteral}{"Waiting for file selection...\(\backslash\)n"});
-00224         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Load from?"});
-00225         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00226         autonSlot = \hyperlink{autonrecorder_8c_a7233586e332461dc25c7cc950a08d429}{selectAuton}();
-00227         \textcolor{keywordflow}{if}(autonSlot == 0) \{
-00228             printf(\textcolor{stringliteral}{"Not loading an autonomous!\(\backslash\)n"});
-00229             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Not loading!"});
-00230             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT},   2, \textcolor{stringliteral}{""});
-00231             \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = 0;
-00232             \textcolor{keywordflow}{return};
-00233         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(autonSlot == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
-00234             printf(\textcolor{stringliteral}{"Performing programming skills.\(\backslash\)n"});
-00235             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loading skills..."});
-00236             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT},   2, \textcolor{stringliteral}{"Skills Part: 1"});
-00237             \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1;
-00238         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(autonSlot == \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded}) \{
-00239             printf(\textcolor{stringliteral}{"Autonomous %d is already loaded.\(\backslash\)n"}, autonSlot);
-00240             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loaded auton!"});
-00241             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT},   2, \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
-00242             \textcolor{keywordflow}{return};
-00243         \}
-00244         printf(\textcolor{stringliteral}{"Loading autonomous from slot %d...\(\backslash\)n"}, autonSlot);
-00245         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loading auton..."});
-00246         \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
-00247             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2,   \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
-00248         \}
-00249         \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
-00250             printf(\textcolor{stringliteral}{"Not doing programming skills, loading slot %d\(\backslash\)n"}, autonSlot);
-00251             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"a%d"}, autonSlot);
-00252         \} \textcolor{keywordflow}{else} \{
-00253             printf(\textcolor{stringliteral}{"Doing programming skills, loading section 0.\(\backslash\)n"});
-00254             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"p0"});
-00255         \}
-00256         printf(\textcolor{stringliteral}{"Loading from file %s...\(\backslash\)n"},filename);
-00257         autonFile = fopen(filename, \textcolor{stringliteral}{"r"});
-00258         \textcolor{keywordflow}{if} (autonFile == NULL) \{
-00259             printf(\textcolor{stringliteral}{"No autonomous was saved in file %s!\(\backslash\)n"}, filename);
-00260             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"No auton saved!"});
-00261             \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
-00262                 printf(\textcolor{stringliteral}{"Not doing programming skills, no auton in slot %d!\(\backslash\)n"}, autonSlot);
-00263                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"No auton saved!"});
-00264                 lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2,   \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
-00265             \} \textcolor{keywordflow}{else} \{
-00266                 printf(\textcolor{stringliteral}{"Doing programming skills, no auton in section 0!\(\backslash\)n"});
-00267                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"No skills saved!"});
-00268             \}
-00269             delay(1000);
-00270         \} \textcolor{keywordflow}{else} \{
-00271             done = \textcolor{keyword}{true};
-00272         \}
-00273     \} \textcolor{keywordflow}{while}(!done);
-00274     fseek(autonFile, 0, SEEK\_SET);
-00275     \textcolor{keywordtype}{char} name[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00276     memset(name, 0, \textcolor{keyword}{sizeof}(name));
-00277     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
-00278         fread(name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(name) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
-00279     \}
-00280     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}; i++) \{
-00281         printf(\textcolor{stringliteral}{"Loading state %d from file %s...\(\backslash\)n"}, i, filename);
-00282         \textcolor{keywordtype}{char} read[6] = \{0, 0, 0, 0, 0, 0\};
-00283         fread(read, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(read) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
-00284         states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd} = (\textcolor{keywordtype}{signed} char) read[0];
-00285         states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn} = (\textcolor{keywordtype}{signed} char) read[1];
-00286         states[i].\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht} = (\textcolor{keywordtype}{signed} char) read[2];
-00287         states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk} = (\textcolor{keywordtype}{signed} char) read[3];
-00288         states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans} = (\textcolor{keywordtype}{signed} char) read[4];
-00289         states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep} = (\textcolor{keywordtype}{signed} char) read[5];
-00290         delay(10);
-00291     \}
-00292     fclose(autonFile);
-00293     printf(\textcolor{stringliteral}{"Completed loading autonomous from file %s.\(\backslash\)n"}, filename);
-00294     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loaded auton!"});
-00295     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
-00296         printf(\textcolor{stringliteral}{"Not doing programming skills, loaded from slot %d.\(\backslash\)n"}, autonSlot);
-00297         \textcolor{comment}{//lcdPrint(LCD\_PORT,   2, "Slot: %d", autonSlot);}
-00298         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"%s"}, name);
-00299     \} \textcolor{keywordflow}{else} \{
-00300         printf(\textcolor{stringliteral}{"Doing programming skills, loaded from section %d.\(\backslash\)n"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
-00301         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Skills Section: 1"});
-00302     \}
-00303     \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = autonSlot;
-00304 \}
-00305 
-\hypertarget{autonrecorder_8c_source.tex_l00309}{}\hyperlink{autonrecorder_8h_ae592a73a6bd9b2adcaa58a8ee82daaa0}{00309} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playbackAuton}() \{ \textcolor{comment}{//must load autonomous first!}
-00310     \textcolor{keywordflow}{if} (\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == -1 \textcolor{comment}{/* nothing in memory */}) \{
-00311         printf(\textcolor{stringliteral}{"No autonomous loaded, entering loadAuton()\(\backslash\)n"});
-00312         \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
-00313     \}
-00314     \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == 0) \{
-00315         printf(\textcolor{stringliteral}{"autonLoaded = 0, doing nothing.\(\backslash\)n"});
-00316         \textcolor{keywordflow}{return};
-00317     \} 
-00318     printf(\textcolor{stringliteral}{"Beginning playback...\(\backslash\)n"});
-00319     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Playing back..."});
-00320     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00321     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
-00322     \textcolor{keywordtype}{int} file=0;
-00323     \textcolor{keywordflow}{do}\{
-00324         FILE* nextFile = NULL;
-00325         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"File: %d"}, file+1);
-00326         \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
-00327         \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1 && file < 
+00207     \}
+00208     \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} == \hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{PROGSKILL\_TIME}/\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME}) \{
+00209         printf(\textcolor{stringliteral}{"Finished recording programming skills (all parts).\(\backslash\)n"});
+00210         \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} = 0;
+00211     \}
+00212     \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = autonSlot;
+00213 \}
+00214 
+\hypertarget{autonrecorder_8c_source.tex_l00218}{}\hyperlink{autonrecorder_8h_af6d130061f44459f9b3c629123e78f6e}{00218} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}() \{
+00219     lcdClear(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00220     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00221     \textcolor{keywordtype}{int} autonSlot;
+00222     FILE* autonFile;
+00223     \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
+00224     \textcolor{keywordflow}{do} \{
+00225         printf(\textcolor{stringliteral}{"Waiting for file selection...\(\backslash\)n"});
+00226         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Load from?"});
+00227         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00228         autonSlot = \hyperlink{autonrecorder_8c_a7233586e332461dc25c7cc950a08d429}{selectAuton}();
+00229         \textcolor{keywordflow}{if}(autonSlot == 0) \{
+00230             printf(\textcolor{stringliteral}{"Not loading an autonomous!\(\backslash\)n"});
+00231             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Not loading!"});
+00232             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT},   2, \textcolor{stringliteral}{""});
+00233             \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = 0;
+00234             \textcolor{keywordflow}{return};
+00235         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(autonSlot == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
+00236             printf(\textcolor{stringliteral}{"Performing programming skills.\(\backslash\)n"});
+00237             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loading skills..."});
+00238             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT},   2, \textcolor{stringliteral}{"Skills Part: 1"});
+00239             \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1;
+00240         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (autonSlot == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 2) \{
+00241             printf(\textcolor{stringliteral}{"Performing hard-coded programming skills.\(\backslash\)n"});
+00242             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loading skills..."});
+00243             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT},   2, \textcolor{stringliteral}{"Hardcoded Skills"});
+00244             \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 2;
+00245             \textcolor{keywordflow}{return};
+00246         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(autonSlot == \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded}) \{
+00247             printf(\textcolor{stringliteral}{"Autonomous %d is already loaded.\(\backslash\)n"}, autonSlot);
+00248             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loaded auton!"});
+00249             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT},   2, \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
+00250             \textcolor{keywordflow}{return};
+00251         \}
+00252         printf(\textcolor{stringliteral}{"Loading autonomous from slot %d...\(\backslash\)n"}, autonSlot);
+00253         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loading auton..."});
+00254         \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
+00255             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2,   \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
+00256         \}
+00257         \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
+00258             printf(\textcolor{stringliteral}{"Not doing programming skills, loading slot %d\(\backslash\)n"}, autonSlot);
+00259             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"a%d"}, autonSlot);
+00260         \} \textcolor{keywordflow}{else} \{
+00261             printf(\textcolor{stringliteral}{"Doing programming skills, loading section 0.\(\backslash\)n"});
+00262             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"p0"});
+00263         \}
+00264         printf(\textcolor{stringliteral}{"Loading from file %s...\(\backslash\)n"},filename);
+00265         autonFile = fopen(filename, \textcolor{stringliteral}{"r"});
+00266         \textcolor{keywordflow}{if} (autonFile == NULL) \{
+00267             printf(\textcolor{stringliteral}{"No autonomous was saved in file %s!\(\backslash\)n"}, filename);
+00268             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"No auton saved!"});
+00269             \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
+00270                 printf(\textcolor{stringliteral}{"Not doing programming skills, no auton in slot %d!\(\backslash\)n"}, autonSlot);
+00271                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"No auton saved!"});
+00272                 lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2,   \textcolor{stringliteral}{"Slot: %d"}, autonSlot);
+00273             \} \textcolor{keywordflow}{else} \{
+00274                 printf(\textcolor{stringliteral}{"Doing programming skills, no auton in section 0!\(\backslash\)n"});
+00275                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"No skills saved!"});
+00276             \}
+00277             delay(1000);
+00278         \} \textcolor{keywordflow}{else} \{
+00279             done = \textcolor{keyword}{true};
+00280         \}
+00281     \} \textcolor{keywordflow}{while}(!done);
+00282     fseek(autonFile, 0, SEEK\_SET);
+00283     \textcolor{keywordtype}{char} name[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00284     memset(name, 0, \textcolor{keyword}{sizeof}(name));
+00285     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
+00286         fread(name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(name) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
+00287     \}
+00288     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}; i++) \{
+00289         printf(\textcolor{stringliteral}{"Loading state %d from file %s...\(\backslash\)n"}, i, filename);
+00290         \textcolor{keywordtype}{char} read[6] = \{0, 0, 0, 0, 0, 0\};
+00291         fread(read, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(read) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
+00292         states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd} = (\textcolor{keywordtype}{signed} char) read[0];
+00293         states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn} = (\textcolor{keywordtype}{signed} char) read[1];
+00294         states[i].\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht} = (\textcolor{keywordtype}{signed} char) read[2];
+00295         states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk} = (\textcolor{keywordtype}{signed} char) read[3];
+00296         states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans} = (\textcolor{keywordtype}{signed} char) read[4];
+00297         states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep} = (\textcolor{keywordtype}{signed} char) read[5];
+00298         delay(10);
+00299     \}
+00300     fclose(autonFile);
+00301     printf(\textcolor{stringliteral}{"Completed loading autonomous from file %s.\(\backslash\)n"}, filename);
+00302     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Loaded auton!"});
+00303     \textcolor{keywordflow}{if}(autonSlot != \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
+00304         printf(\textcolor{stringliteral}{"Not doing programming skills, loaded from slot %d.\(\backslash\)n"}, autonSlot);
+00305         \textcolor{comment}{//lcdPrint(LCD\_PORT,   2, "Slot: %d", autonSlot);}
+00306         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"%s"}, name);
+00307     \} \textcolor{keywordflow}{else} \{
+00308         printf(\textcolor{stringliteral}{"Doing programming skills, loaded from section %d.\(\backslash\)n"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
+00309         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"Skills Section: 1"});
+00310     \}
+00311     \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} = autonSlot;
+00312 \}
+00313 
+\hypertarget{autonrecorder_8c_source.tex_l00317}{}\hyperlink{autonrecorder_8h_ae592a73a6bd9b2adcaa58a8ee82daaa0}{00317} \textcolor{keywordtype}{void} \hyperlink{autonrecorder_8c_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playbackAuton}() \{ \textcolor{comment}{//must load autonomous first!}
+00318     \textcolor{keywordflow}{if} (\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == -1 \textcolor{comment}{/* nothing in memory */}) \{
+00319         printf(\textcolor{stringliteral}{"No autonomous loaded, entering loadAuton()\(\backslash\)n"});
+00320         \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
+00321     \}
+00322     \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == 0) \{
+00323         printf(\textcolor{stringliteral}{"autonLoaded = 0, doing nothing.\(\backslash\)n"});
+00324         \textcolor{keywordflow}{return};
+00325     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 2) \{
+00326         \hyperlink{autonroutines_8c_adfa547bf86c78d482d16cb15a4ddd642}{runHardCodedProgrammingSkills}();
+00327         \textcolor{keywordflow}{return};
+00328     \}
+00329     printf(\textcolor{stringliteral}{"Beginning playback...\(\backslash\)n"});
+00330     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Playing back..."});
+00331     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00332     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
+00333     \textcolor{keywordtype}{int} file=0;
+00334     \textcolor{keywordflow}{do}\{
+00335         FILE* nextFile = NULL;
+00336         lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"File: %d"}, file+1);
+00337         \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
+00338         \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1 && file < 
       \hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{PROGSKILL\_TIME}/\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} - 1)\{
-00328             printf(\textcolor{stringliteral}{"Next section: %d\(\backslash\)n"}, file+1);
-00329             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"p%d"}, file+1);
-00330             nextFile = fopen(filename, \textcolor{stringliteral}{"r"});
-00331         \}
-00332         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}; i++) \{
-00333             printf(\textcolor{stringliteral}{"Playing back state %d...\(\backslash\)n"}, i);
-00334             \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd} = states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd};
-00335             \hyperlink{opcontrol_8c_aaefa47f4fdf865c2358c22b542a993e4}{turn} = states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn};
-00336             \hyperlink{opcontrol_8c_ab9078d4ef28960b548a1621e2f6e9438}{sht} = states[i].\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht};
-00337             \hyperlink{opcontrol_8c_a0f71b6f71e93fa27c60c4dbbfc135bbb}{intk} = states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk};
-00338             \hyperlink{opcontrol_8c_a7039f0d5c4b6a662294b23dccf0bea0e}{trans} = states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans};
-00339             \hyperlink{opcontrol_8c_ada6c89c18e8b2a17151b9bc6b8ae060c}{dep} = states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep};
-00340             \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_UP) && !isOnline()) \{
-00341                 printf(\textcolor{stringliteral}{"Playback manually cancelled.\(\backslash\)n"});
-00342                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Cancelled playback."});
-00343                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00344                 i = \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ};
-00345                 file = \hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{PROGSKILL\_TIME}/\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME};
-00346             \}
-00347             \hyperlink{opcontrol_8c_ad3b45c5807c039d0ce28bb0da06f0014}{moveRobot}();
-00348             \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1 && file < 
+00339             printf(\textcolor{stringliteral}{"Next section: %d\(\backslash\)n"}, file+1);
+00340             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"p%d"}, file+1);
+00341             nextFile = fopen(filename, \textcolor{stringliteral}{"r"});
+00342         \}
+00343         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ}; i++) \{
+00344             printf(\textcolor{stringliteral}{"Playing back state %d...\(\backslash\)n"}, i);
+00345             \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd} = states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd};
+00346             \hyperlink{opcontrol_8c_aaefa47f4fdf865c2358c22b542a993e4}{turn} = states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn};
+00347             \hyperlink{opcontrol_8c_ab9078d4ef28960b548a1621e2f6e9438}{sht} = states[i].\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht};
+00348             \hyperlink{opcontrol_8c_a0f71b6f71e93fa27c60c4dbbfc135bbb}{intk} = states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk};
+00349             \hyperlink{opcontrol_8c_a7039f0d5c4b6a662294b23dccf0bea0e}{trans} = states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans};
+00350             \hyperlink{opcontrol_8c_ada6c89c18e8b2a17151b9bc6b8ae060c}{dep} = states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep};
+00351             \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_UP) && !isOnline()) \{
+00352                 printf(\textcolor{stringliteral}{"Playback manually cancelled.\(\backslash\)n"});
+00353                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Cancelled playback."});
+00354                 lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00355                 i = \hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} * \hyperlink{autonrecorder_8h_a3d2260a30e7ce727bef0402edee4b205}{JOY\_POLL\_FREQ};
+00356                 file = \hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{PROGSKILL\_TIME}/\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME};
+00357             \}
+00358             \hyperlink{opcontrol_8c_ad3b45c5807c039d0ce28bb0da06f0014}{moveRobot}();
+00359             \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1 && file < 
       \hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{PROGSKILL\_TIME}/\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} - 1)\{
-00349                 printf(\textcolor{stringliteral}{"Loading state %d from file %s...\(\backslash\)n"}, i, filename);
-00350                 \textcolor{keywordtype}{char} read[6] = \{0, 0, 0, 0, 0, 0\};
-00351                 fread(read, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(read) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), nextFile);
-00352                 states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd} = (\textcolor{keywordtype}{signed} char) read[0];
-00353                 states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn} = (\textcolor{keywordtype}{signed} char) read[1];
-00354                 states[i].\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht} = (\textcolor{keywordtype}{signed} char) read[2];
-00355                 states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk} = (\textcolor{keywordtype}{signed} char) read[3];
-00356                 states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans} = (\textcolor{keywordtype}{signed} char) read[4];
-00357                 states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep} = (\textcolor{keywordtype}{signed} char) read[5];
-00358             \}
-00359             delay(1000 / JOY\_POLL\_FREQ);
-00360         \}
-00361         \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1 && file < 
+00360                 printf(\textcolor{stringliteral}{"Loading state %d from file %s...\(\backslash\)n"}, i, filename);
+00361                 \textcolor{keywordtype}{char} read[6] = \{0, 0, 0, 0, 0, 0\};
+00362                 fread(read, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(read) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), nextFile);
+00363                 states[i].\hyperlink{structjoy_state_a7867156ddb5bc22d57010c5af00c98af}{spd} = (\textcolor{keywordtype}{signed} char) read[0];
+00364                 states[i].\hyperlink{structjoy_state_aacdbb758b97190220423402f63020483}{turn} = (\textcolor{keywordtype}{signed} char) read[1];
+00365                 states[i].\hyperlink{structjoy_state_a751363be4e40b27bcbe558f41a15fe91}{sht} = (\textcolor{keywordtype}{signed} char) read[2];
+00366                 states[i].\hyperlink{structjoy_state_a2314ed43be31ccc565381efd8398b921}{intk} = (\textcolor{keywordtype}{signed} char) read[3];
+00367                 states[i].\hyperlink{structjoy_state_acc4f7bae078e8c8b7840cda61382c7cf}{trans} = (\textcolor{keywordtype}{signed} char) read[4];
+00368                 states[i].\hyperlink{structjoy_state_a3ba5ee3c4eec0e2ee03338b397a17958}{dep} = (\textcolor{keywordtype}{signed} char) read[5];
+00369             \}
+00370             delay(1000 / JOY\_POLL\_FREQ);
+00371         \}
+00372         \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1 && file < 
       \hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{PROGSKILL\_TIME}/\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME} - 1)\{
-00362             printf(\textcolor{stringliteral}{"Finished with section %d, closing file.\(\backslash\)n"}, file+1);
-00363             fclose(nextFile);
-00364         \}
-00365         file++;
-00366     \} \textcolor{keywordflow}{while}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1 && file < 
+00373             printf(\textcolor{stringliteral}{"Finished with section %d, closing file.\(\backslash\)n"}, file+1);
+00374             fclose(nextFile);
+00375         \}
+00376         file++;
+00377     \} \textcolor{keywordflow}{while}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1 && file < 
       \hyperlink{autonrecorder_8h_a5e27ac66dea6c2da6239f967e72208e2}{PROGSKILL\_TIME}/\hyperlink{autonrecorder_8h_aa19f7c427989a0a67f55958c610d0355}{AUTON\_TIME});
-00367     motorStopAll();
-00368     printf(\textcolor{stringliteral}{"Completed playback.\(\backslash\)n"});
-00369     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Played back!"});
-00370     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
-00371     delay(1000);
-00372 \}
+00378     motorStopAll();
+00379     printf(\textcolor{stringliteral}{"Completed playback.\(\backslash\)n"});
+00380     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Played back!"});
+00381     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{""});
+00382     delay(1000);
+00383 \}
+00384 
 \end{DoxyCode}

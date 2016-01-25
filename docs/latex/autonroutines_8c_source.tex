@@ -1,0 +1,55 @@
+\hypertarget{autonroutines_8c_source}{}\subsection{autonroutines.\+c}
+\label{autonroutines_8c_source}\index{src/autonroutines.\+c@{src/autonroutines.\+c}}
+
+\begin{DoxyCode}
+00001 
+00007 \textcolor{preprocessor}{#include "\hyperlink{main_8h}{main.h}"}
+00008 
+\hypertarget{autonroutines_8c_source.tex_l00013}{}\hyperlink{autonroutines_8h_adfa547bf86c78d482d16cb15a4ddd642}{00013} \textcolor{keywordtype}{void} \hyperlink{autonroutines_8c_adfa547bf86c78d482d16cb15a4ddd642}{runHardCodedProgrammingSkills}() \{
+00014     \textcolor{keywordtype}{int} numShots = 0;
+00015     \textcolor{keywordtype}{bool} shooterLimitPressed = \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED};
+00016     \hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{shoot}(-127);
+00017     \textcolor{keywordflow}{while} (numShots - 1 <= 32 \textcolor{comment}{/* one shot subtracted because the shooter starts uncocked */}) \{
+00018         \textcolor{keywordflow}{if} (shooterLimitPressed == \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED} && digitalRead(\hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{SHOOTER\_LIMIT}) == 
+      \hyperlink{friendly_8h_ab165b69b767feb15cba30d2fabcb11cd}{UNPRESSED}) \{
+00019             numShots++;
+00020         \}
+00021         shooterLimitPressed = digitalRead(\hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{SHOOTER\_LIMIT});
+00022         delay(20);
+00023     \}
+00024     \hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{shoot}(0);
+00025 
+00026     \textcolor{keywordflow}{while} (gyroGet(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro}) % \hyperlink{constants_8h_af5a74308a3fd418c13af67f9319e5308}{ROTATION\_DEG} != -90 - 
+      \hyperlink{autonroutines_8h_aa165645a0873b1a6d4e2260e31201afe}{CLOSE\_GOAL\_ANGLE} \textcolor{comment}{/* turning right */}) \{
+00027         \textcolor{keywordtype}{int} error = (-90 - \hyperlink{autonroutines_8h_aa165645a0873b1a6d4e2260e31201afe}{CLOSE\_GOAL\_ANGLE}) - gyroGet(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro}) % 
+      \hyperlink{constants_8h_af5a74308a3fd418c13af67f9319e5308}{ROTATION\_DEG};
+00028         \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(0, error * \hyperlink{sensors_8h_a5caef30fe7ef36e6f497db8bf9fd9c67}{GYRO\_P});
+00029     \}
+00030     \textcolor{keywordflow}{while} (ultrasonicGet(\hyperlink{sensors_8c_a09e334aba0637f228c65c135f428606a}{sonar}) < \hyperlink{autonroutines_8h_a2befdcf4842481d11a6058994d8fbef7}{DISTANCE\_TO\_OTHER\_SIDE} - 30) \{
+00031         \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(127, 0);
+00032     \}
+00033     \textcolor{keywordflow}{while} (ultrasonicGet(\hyperlink{sensors_8c_a09e334aba0637f228c65c135f428606a}{sonar}) < \hyperlink{autonroutines_8h_a2befdcf4842481d11a6058994d8fbef7}{DISTANCE\_TO\_OTHER\_SIDE}) \{
+00034         \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(64, 0);
+00035     \}
+00036     \textcolor{keywordflow}{while} (gyroGet(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro}) % \hyperlink{constants_8h_af5a74308a3fd418c13af67f9319e5308}{ROTATION\_DEG} != -2*\hyperlink{autonroutines_8h_aa165645a0873b1a6d4e2260e31201afe}{CLOSE\_GOAL\_ANGLE} \textcolor{comment}{/* turning
+       left */}) \{
+00037         \textcolor{keywordtype}{int} error = (-2*\hyperlink{autonroutines_8h_aa165645a0873b1a6d4e2260e31201afe}{CLOSE\_GOAL\_ANGLE}) - gyroGet(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro}) % 
+      \hyperlink{constants_8h_af5a74308a3fd418c13af67f9319e5308}{ROTATION\_DEG};
+00038         \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(0, error * \hyperlink{sensors_8h_a5caef30fe7ef36e6f497db8bf9fd9c67}{GYRO\_P});
+00039     \}
+00040 
+00041     numShots = 0;
+00042     shooterLimitPressed = digitalRead(\hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{SHOOTER\_LIMIT});
+00043     \hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{shoot}(-127);
+00044     \textcolor{keywordflow}{while} (numShots - 1 <= 32 \textcolor{comment}{/* one shot subtracted because the shooter starts uncocked */}) \{
+00045         \textcolor{keywordflow}{if} (shooterLimitPressed == \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED} && digitalRead(\hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{SHOOTER\_LIMIT}) == 
+      \hyperlink{friendly_8h_ab165b69b767feb15cba30d2fabcb11cd}{UNPRESSED}) \{
+00046             numShots++;
+00047         \}
+00048         shooterLimitPressed = digitalRead(\hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{SHOOTER\_LIMIT});
+00049         delay(20);
+00050     \}
+00051     \hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{shoot}(0);
+00052 \}
+00053 
+\end{DoxyCode}

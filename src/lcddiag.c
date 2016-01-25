@@ -1304,3 +1304,4 @@ void formatLCDDisplay(void *ignore){
         doMenuChoice(selectMenu());
     }
 }
+
