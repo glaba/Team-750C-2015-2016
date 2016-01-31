@@ -22,6 +22,56 @@ Encoder leftenc;
  */
 Encoder rightenc;
 
+void rturn(int bodydegs) {
+	clearDriveEncoders();
+	float turndeg;
+	float encdegperbodydeg = DRIVE_WHEELBASE / (DRIVE_DIA * DRIVE_GEARRATIO);
+	turndeg = encdegperbodydeg * bodydegs;
+
+	while(abs(encoderGet(rightenc)) < abs(turndeg)) {
+		move(0, MOTOR_MAX);
+        delay(20);
+	}
+
+	move(0, 0);
+	clearDriveEncoders();
+}
+
+void lturn(int bodydegs) {
+	clearDriveEncoders();
+	float turndeg;
+	float encdegperbodydeg = DRIVE_WHEELBASE / (DRIVE_DIA * DRIVE_GEARRATIO);
+	turndeg = encdegperbodydeg * bodydegs;
+
+	while(abs(encoderGet(leftenc)) < abs(turndeg)) {
+		move(0, -MOTOR_MAX);
+        delay(20);
+	}
+
+	move(0, 0);
+	clearDriveEncoders();
+}
+
+void goForward(int inches) {
+	int deg;
+	float encperinch;
+	encperinch = 360/(DRIVE_DIA * PI * DRIVE_GEARRATIO);
+	deg = encperinch * (float)inches;
+
+	clearDriveEncoders();
+	while(abs(encoderGet(rightenc)) <  abs(deg))
+	{
+		move(sign(inches) * 127, 0);
+		delay(20);
+	}
+	move(0,0);
+	clearDriveEncoders();
+}
+
+void goBackward(int inches) {
+	goForward(-inches);
+}
+
 /**
  * Object representing the gyroscope.
  */

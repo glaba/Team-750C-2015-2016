@@ -37,6 +37,42 @@ extern Encoder leftenc;
  */
 extern Encoder rightenc;
 
+/** 
+ * Clears the drive encoders by resetting their value to zero.
+ */
+inline void clearDriveEncoders(){
+    encoderReset(leftenc);
+    encoderReset(rightenc);
+}
+
+/** 
+ * Turns the robot left to a specified angle.
+ * 
+ * @param bodydegs the amount of degrees to turn the robot
+ */
+void lturn(int bodydegs);
+
+/** 
+ * Turns the robot right to a specified angle.
+ * 
+ * @param bodydegs the amount of degrees to turn the robot
+ */
+void rturn(int bodydegs);
+
+/** 
+ * Moves the robot forward a specified distance.
+ * 
+ * @param inches the amount of inches to move forward
+ */
+void goForward(int inches);
+
+/** 
+ * Moves the robot backward a specified distance.
+ * 
+ * @param inches the amount of inches to move backward
+ */
+void goBackward(int inches);
+
 /**
  * Defines the transmission potentiometer for position determination.
  */

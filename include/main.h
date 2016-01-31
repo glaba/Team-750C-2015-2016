@@ -87,6 +87,11 @@
 #include <motors.h>
 
 /**
+ * Robot physical constant definitions and function declarations.
+ */
+#include <robot.h>
+
+/**
  * LCD definitions and function declarations.
  */
 #include <lcdmsg.h>
