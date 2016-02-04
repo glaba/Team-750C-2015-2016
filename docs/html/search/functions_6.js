@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['lcdanybuttonpressed',['lcdAnyButtonPressed',['../lcddiag_8h.html#a0592813f995bfeeadb9bee923833ed35',1,'lcddiag.h']]],
-  ['lcdbuttonpressed',['lcdButtonPressed',['../lcddiag_8h.html#a74e4c744db49f9b7b645095575e152ad',1,'lcddiag.h']]],
-  ['loadauton',['loadAuton',['../autonrecorder_8c.html#af6d130061f44459f9b3c629123e78f6e',1,'loadAuton():&#160;autonrecorder.c'],['../autonrecorder_8h.html#af6d130061f44459f9b3c629123e78f6e',1,'loadAuton():&#160;autonrecorder.c']]],
-  ['loadgroups',['loadGroups',['../lcddiag_8c.html#a98f03692fe38505e9b0231122b976c0e',1,'lcddiag.c']]]
+  ['initautonrecorder',['initAutonRecorder',['../autonrecorder_8c.html#acd89c8b2c622ae271c5d63d7fb8fa5f6',1,'initAutonRecorder():&#160;autonrecorder.c'],['../autonrecorder_8h.html#acd89c8b2c622ae271c5d63d7fb8fa5f6',1,'initAutonRecorder():&#160;autonrecorder.c']]],
+  ['initgroups',['initGroups',['../lcddiag_8c.html#ad290df3e273598f9f10fe34c257e4084',1,'initGroups():&#160;lcddiag.c'],['../lcddiag_8h.html#ad290df3e273598f9f10fe34c257e4084',1,'initGroups():&#160;lcddiag.c']]],
+  ['initialize',['initialize',['../init_8c.html#a25a40b6614565f755233080a384c35f1',1,'initialize():&#160;init.c'],['../main_8h.html#a25a40b6614565f755233080a384c35f1',1,'initialize():&#160;init.c']]],
+  ['initializeio',['initializeIO',['../init_8c.html#ad9cda921edb01125bb13c2f86bcf624b',1,'initializeIO():&#160;init.c'],['../main_8h.html#ad9cda921edb01125bb13c2f86bcf624b',1,'initializeIO():&#160;init.c']]],
+  ['intake',['intake',['../motors_8h.html#ad29bed7d7fa6127b3ecf7e50eab23e9c',1,'motors.h']]]
 ];

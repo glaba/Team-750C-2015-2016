@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['playbackauton',['playbackAuton',['../autonrecorder_8c.html#ae592a73a6bd9b2adcaa58a8ee82daaa0',1,'playbackAuton():&#160;autonrecorder.c'],['../autonrecorder_8h.html#ae592a73a6bd9b2adcaa58a8ee82daaa0',1,'playbackAuton():&#160;autonrecorder.c']]],
-  ['powerlevelexpander',['powerLevelExpander',['../sensors_8h.html#af8de9fe9eba1282f34dce42deebffc93',1,'sensors.h']]]
+  ['operatorcontrol',['operatorControl',['../opcontrol_8c.html#ac71a94af413917f27d108e95c4d6f6a7',1,'operatorControl():&#160;opcontrol.c'],['../main_8h.html#ac71a94af413917f27d108e95c4d6f6a7',1,'operatorControl():&#160;opcontrol.c']]]
 ];

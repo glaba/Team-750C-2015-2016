@@ -257,9 +257,7 @@ void initGroups(){
 
         groups[3].motor[NAUTILUS_SHOOTER_MOTOR_LEFT] = true;
         groups[3].motor[NAUTILUS_SHOOTER_MOTOR_RIGHT] = true;
-#ifdef SHOOTER_HAS_THREE_MOTORS
         groups[3].motor[NAUTILUS_SHOOTER_MOTOR_CENTER] = true;
-#endif
         strcpy(groups[3].name, "Nautilus Shooter");
 
         groups[4].motor[INTAKE_ROLLER_MOTOR] = true;

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.16)  24 JAN 2016 22:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.16)  3 FEB 2016 20:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1117,6 +1117,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 10.79993pt on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
 (Font)              scaled to size 10.79993pt on input line 1.
+ [1]
 LaTeX Font Info:    Try loading font information for TS1+phv on input line 3.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ts1phv.fd
@@ -1126,7 +1127,7 @@ LaTeX Font Info:    Font shape `TS1/phv/bx/n' in size <10> not available
 (Font)              Font shape `TS1/phv/b/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
 (Font)              scaled to size 8.99994pt on input line 3.
- [1]) (./files.tex [2])
+) (./files.tex [2])
 (./structjoy_state.tex
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
 (Font)              scaled to size 6.29996pt on input line 1.
@@ -1254,67 +1255,68 @@ Underfull \hbox (badness 10000) detected at line 310
  []
 
 ) (./macros_8h_source.tex) (./main_8h.tex
-Underfull \hbox (badness 10000) in paragraph at lines 8--22
+Underfull \hbox (badness 10000) in paragraph at lines 8--23
 
  []
 
 [30] [31] [32]) (./main_8h_source.tex [33]) (./motors_8h.tex [34]
-Underfull \hbox (badness 10000) detected at line 63
+Underfull \hbox (badness 10000) detected at line 65
 [][][]
  []
 
 [35] [36] [37]) (./motors_8h_source.tex [38]) (./opcontrol_8h.tex [39])
-(./opcontrol_8h_source.tex [40]) (./sensors_8h.tex [41]
-Underfull \hbox (badness 10000) detected at line 76
+(./opcontrol_8h_source.tex [40]) (./robot_8h.tex [41]) (./robot_8h_source.tex)
+(./sensors_8h.tex [42]
+Underfull \hbox (badness 10000) detected at line 86
 [][][]
  []
 
-[42] [43]
-Underfull \hbox (badness 10000) detected at line 238
+[43] [44] [45] [46]
+Underfull \hbox (badness 10000) detected at line 313
 [][][]
  []
 
-[44]) (./sensors_8h_source.tex [45]) (./auto_8c.tex
+[47]) (./sensors_8h_source.tex [48]) (./auto_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[46]) (./auto_8c_source.tex [47]) (./autonrecorder_8c.tex
+[49]) (./auto_8c_source.tex) (./autonrecorder_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[48]
+[50] [51]
 Underfull \hbox (badness 10000) detected at line 111
 [][][]
  []
 
-) (./autonrecorder_8c_source.tex [49] [50]
+) (./autonrecorder_8c_source.tex [52] [53]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [51]
+ [54]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [52]
+ [55]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [53])
+ [56])
 (./autonroutines_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[54]) (./autonroutines_8c_source.tex) (./init_8c.tex
+) (./autonroutines_8c_source.tex [57]) (./init_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[55] [56]) (./init_8c_source.tex) (./lcddiag_8c.tex
+[58]) (./init_8c_source.tex [59]) (./lcddiag_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[57] [58] [59]
+[60] [61] [62]
 Underfull \hbox (badness 10000) detected at line 144
 [][][]
  []
@@ -1323,7 +1325,7 @@ Underfull \hbox (badness 10000) detected at line 144
 Overfull \vbox (0.9185pt too high) has occurred while \output is active []
 
 
-[60] [61]
+[63] [64]
 Underfull \hbox (badness 10000) detected at line 321
 [][][]
  []
@@ -1333,12 +1335,12 @@ Underfull \hbox (badness 10000) detected at line 344
 [][][]
  []
 
-[62]
+[65]
 Underfull \hbox (badness 10000) detected at line 421
 [][][]
  []
 
-[63]
+[66]
 Underfull \hbox (badness 10000) detected at line 453
 [][][]
  []
@@ -1356,7 +1358,7 @@ Underfull \hbox (badness 10000) detected at line 495
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [64]
+ [67]
 Underfull \hbox (badness 10000) detected at line 516
 [][][]
  []
@@ -1371,21 +1373,12 @@ Underfull \hbox (badness 10000) detected at line 558
 [][][]
  []
 
-[65]
+[68]
 Underfull \hbox (badness 10000) detected at line 579
 [][][]
  []
 
-) (./lcddiag_8c_source.tex [66] [67]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [68]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [69]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [70]
+) (./lcddiag_8c_source.tex [69] [70]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [71]
@@ -1412,16 +1405,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [78]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [79])
+ [79]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [80]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [81]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [82])
 (./lcdmsg_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[80]) (./lcdmsg_8c_source.tex [81]) (./motors_8c.tex
-Underfull \vbox (badness 1057) has occurred while \output is active []
-
- [82]
+[83]) (./lcdmsg_8c_source.tex [84]) (./motors_8c.tex [85]
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
@@ -1431,45 +1430,50 @@ Underfull \hbox (badness 10000) detected at line 23
 [][][]
  []
 
-) (./motors_8c_source.tex [83]) (./opcontrol_8c.tex
+) (./motors_8c_source.tex [86]) (./opcontrol_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[84] [85]) (./opcontrol_8c_source.tex [86] [87]) (./sensors_8c.tex
+[87] [88]) (./opcontrol_8c_source.tex [89] [90]) (./sensors_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-
-Underfull \hbox (badness 10000) detected at line 29
+[91]
+Underfull \hbox (badness 10000) detected at line 40
 [][][]
  []
 
-[88]) (./sensors_8c_source.tex) [89] [90
 
-] (./refman.ind [91
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] [92] [93] [94]
-[95] [96])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 194.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 194.
+ [92])
+(./sensors_8c_source.tex [93]) [94] (./refman.ind [95
+
+
+] [96] [97] [98] [99]
+[100] [101
+
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 196.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
  (./refman.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 194.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 194.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 196.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 196.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 9FE1EEA7BC51F477E4996CEFF015D122;23348.
+(rerunfilecheck)             Checksum: 446EE25884D9221A3FC9E8D395AC2F0C;24414.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 194.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 196.
  ) 
 Here is how much of TeX's memory you used:
- 16241 strings out of 493054
- 246846 string characters out of 6140585
- 342364 words of memory out of 5000000
- 18325 multiletter control sequences out of 15000+600000
+ 16339 strings out of 493054
+ 249169 string characters out of 6140585
+ 345898 words of memory out of 5000000
+ 18353 multiletter control sequences out of 15000+600000
  48545 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,16n,92p,3660b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1479,79 +1483,79 @@ ut does not exist, replaced by a fixed one
 pdfTeX warning (dest): name{lcddiag_8c_source_l00036} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00667} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00665} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00492} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00490} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00831} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00829} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00620} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00618} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00424} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00422} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00302} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00300} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{lcddiag_8c_source_l00173} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00337} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00335} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l01119} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l01117} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l01029} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l01027} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00793} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00791} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00557} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00555} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00729} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00727} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l01235} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l01233} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l01070} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l01068} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00356} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00354} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l01170} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l01168} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{lcddiag_8c_source_l00198} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00284} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00282} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00917} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00915} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l01278} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l01276} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00972} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00970} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l00901} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l00899} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{autonrecorder_8c_source_l00036} has been referenced
  but does not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8c_source_l00033} has been referenced but d
+pdfTeX warning (dest): name{sensors_8c_source_l00083} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{sensors_8c_source_l00023} has been referenced but d
@@ -1560,22 +1564,37 @@ oes not exist, replaced by a fixed one
 pdfTeX warning (dest): name{sensors_8c_source_l00018} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8c_source_l00028} has been referenced but d
+pdfTeX warning (dest): name{sensors_8c_source_l00078} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00073} has been referenced but d
+pdfTeX warning (dest): name{sensors_8c_source_l00025} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00135} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00109} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00130} has been referenced but d
+pdfTeX warning (dest): name{sensors_8c_source_l00040} has been referenced but d
+oes not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{sensors_8c_source_l00055} has been referenced but d
+oes not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{sensors_8c_source_l00071} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{sensors_8h_source_l00043} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00125} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00171} has been referenced but d
+oes not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{sensors_8h_source_l00166} has been referenced but d
+oes not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{sensors_8h_source_l00079} has been referenced but d
+oes not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{sensors_8h_source_l00161} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{sensors_8h_source_l00032} has been referenced but d
@@ -1584,13 +1603,13 @@ oes not exist, replaced by a fixed one
 pdfTeX warning (dest): name{sensors_8h_source_l00033} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00066} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00102} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00059} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00095} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00080} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00116} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{sensors_8h_source_l00021} has been referenced but d
@@ -1599,32 +1618,41 @@ oes not exist, replaced by a fixed one
 pdfTeX warning (dest): name{sensors_8h_source_l00022} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00105} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00141} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00100} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00136} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00115} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00151} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00110} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00146} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00053} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00089} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00048} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00084} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00095} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00131} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00085} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00121} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8h_source_l00090} has been referenced but d
+pdfTeX warning (dest): name{sensors_8h_source_l00126} has been referenced but d
 oes not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{robot_8h_source_l00015} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{robot_8h_source_l00025} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{robot_8h_source_l00020} has been referenced but doe
+s not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{opcontrol_8c_source_l00045} has been referenced but
  does not exist, replaced by a fixed one
@@ -1656,16 +1684,16 @@ es not exist, replaced by a fixed one
 pdfTeX warning (dest): name{motors_8h_source_l00038} has been referenced but do
 es not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{motors_8h_source_l00100} has been referenced but do
+pdfTeX warning (dest): name{motors_8h_source_l00098} has been referenced but do
 es not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{motors_8h_source_l00077} has been referenced but do
 es not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{motors_8h_source_l00118} has been referenced but do
+pdfTeX warning (dest): name{motors_8h_source_l00114} has been referenced but do
 es not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{motors_8h_source_l00124} has been referenced but do
+pdfTeX warning (dest): name{motors_8h_source_l00123} has been referenced but do
 es not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{motors_8h_source_l00055} has been referenced but do
@@ -1675,6 +1703,9 @@ pdfTeX warning (dest): name{motors_8h_source_l00031} has been referenced but do
 es not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{motors_8h_source_l00087} has been referenced but do
+es not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{motors_8h_source_l00118} has been referenced but do
 es not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{motors_8h_source_l00068} has been referenced but do
@@ -1689,7 +1720,7 @@ es not exist, replaced by a fixed one
 pdfTeX warning (dest): name{motors_8h_source_l00089} has been referenced but do
 es not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{motors_8h_source_l00092} has been referenced but do
+pdfTeX warning (dest): name{motors_8h_source_l00091} has been referenced but do
 es not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{motors_8h_source_l00026} has been referenced but do
@@ -1698,7 +1729,7 @@ es not exist, replaced by a fixed one
 pdfTeX warning (dest): name{motors_8h_source_l00021} has been referenced but do
 es not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{motors_8h_source_l00122} has been referenced but do
+pdfTeX warning (dest): name{motors_8h_source_l00121} has been referenced but do
 es not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{motors_8h_source_l00062} has been referenced but do
@@ -1707,7 +1738,7 @@ es not exist, replaced by a fixed one
 pdfTeX warning (dest): name{motors_8h_source_l00063} has been referenced but do
 es not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{motors_8h_source_l00111} has been referenced but do
+pdfTeX warning (dest): name{motors_8h_source_l00107} has been referenced but do
 es not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{opcontrol_8c_source_l00153} has been referenced but
@@ -1761,10 +1792,10 @@ es not exist, replaced by a fixed one
 pdfTeX warning (dest): name{lcdmsg_8c_source_l00014} has been referenced but do
 es not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcdmsg_8c_source_l00089} has been referenced but do
+pdfTeX warning (dest): name{lcdmsg_8c_source_l00090} has been referenced but do
 es not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcdmsg_8c_source_l00070} has been referenced but do
+pdfTeX warning (dest): name{lcdmsg_8c_source_l00071} has been referenced but do
 es not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{lcdmsg_8h_source_l00016} has been referenced but do
@@ -1806,7 +1837,7 @@ oes not exist, replaced by a fixed one
 pdfTeX warning (dest): name{lcddiag_8c_source_l00230} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{lcddiag_8c_source_l01300} has been referenced but d
+pdfTeX warning (dest): name{lcddiag_8c_source_l01298} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{lcddiag_8h_source_l00118} has been referenced but d
@@ -1992,10 +2023,10 @@ hare/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts
 uhvb8ac.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8ac.pfb></usr/
 share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fon
 ts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (100 pages, 371958 bytes).
+Output written on refman.pdf (105 pages, 386489 bytes).
 PDF statistics:
- 4409 PDF objects out of 5155 (max. 8388607)
- 4254 compressed objects within 43 object streams
- 1106 named destinations out of 1200 (max. 500000)
- 913 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4651 PDF objects out of 5155 (max. 8388607)
+ 4489 compressed objects within 45 object streams
+ 1172 named destinations out of 1200 (max. 500000)
+ 953 words of extra memory for PDF output out of 10000 (max. 10000000)
 

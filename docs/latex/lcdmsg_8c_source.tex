@@ -51,27 +51,28 @@
 00057     \textcolor{stringliteral}{"Staples Bands"},
 00058     \textcolor{stringliteral}{"New Nautilus"},
 00059     \textcolor{stringliteral}{"Nauty Gears"},
-00060     \textcolor{stringliteral}{"TURBO GEARS"},
-00061     \textcolor{stringliteral}{"itoa() Sucks"}
-00062 \};
-00063 
-\hypertarget{lcdmsg_8c_source.tex_l00070}{}\hyperlink{lcdmsg_8h_aabe33dfb797df5997c5e03078591aa81}{00070} \textcolor{keywordtype}{void} \hyperlink{lcdmsg_8c_aabe33dfb797df5997c5e03078591aa81}{randlcdmsg}(FILE *lcdport, \textcolor{keywordtype}{int} line)\{
-00071     \textcolor{keywordtype}{int} index = rand() % \hyperlink{lcdmsg_8h_ad50b23287bae902efb0984c90be2cf23}{LCD\_MESSAGE\_COUNT};
-00072     \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(\hyperlink{lcdmsg_8c_abbcf1856a4c9063200ef3f4131fd05f5}{lcdmsg}[index]))/2;
-00073     \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00074     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00075         strcat(str, \textcolor{stringliteral}{" "});
-00076     \}
-00077     strcat(str, \hyperlink{lcdmsg_8c_abbcf1856a4c9063200ef3f4131fd05f5}{lcdmsg}[index]);
-00078     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00079         strcat(str, \textcolor{stringliteral}{" "});
-00080     \}
-00081     lcdSetText(lcdport, line, str);
-00082 \}
-00083 
-\hypertarget{lcdmsg_8c_source.tex_l00089}{}\hyperlink{lcdmsg_8h_acc19fe50b302412c894538965e77cb8b}{00089} \textcolor{keywordtype}{void} \hyperlink{lcdmsg_8c_acc19fe50b302412c894538965e77cb8b}{screensaver}(FILE *lcdport) \{
-00090     lcdSetText(lcdport, 1, \hyperlink{lcdmsg_8h_aa9575881ef196e5c94e60d183742eee7}{LCD\_750C\_TITLE});
-00091     \hyperlink{lcdmsg_8c_aabe33dfb797df5997c5e03078591aa81}{randlcdmsg}(lcdport, 2);
-00092 \}
-00093 
+00060     \textcolor{stringliteral}{"New 'n' Nauty"},
+00061     \textcolor{stringliteral}{"TURBO GEARS"},
+00062     \textcolor{stringliteral}{"itoa() Sucks"}
+00063 \};
+00064 
+\hypertarget{lcdmsg_8c_source.tex_l00071}{}\hyperlink{lcdmsg_8h_aabe33dfb797df5997c5e03078591aa81}{00071} \textcolor{keywordtype}{void} \hyperlink{lcdmsg_8c_aabe33dfb797df5997c5e03078591aa81}{randlcdmsg}(FILE *lcdport, \textcolor{keywordtype}{int} line)\{
+00072     \textcolor{keywordtype}{int} index = rand() % \hyperlink{lcdmsg_8h_ad50b23287bae902efb0984c90be2cf23}{LCD\_MESSAGE\_COUNT};
+00073     \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(\hyperlink{lcdmsg_8c_abbcf1856a4c9063200ef3f4131fd05f5}{lcdmsg}[index]))/2;
+00074     \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00075     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00076         strcat(str, \textcolor{stringliteral}{" "});
+00077     \}
+00078     strcat(str, \hyperlink{lcdmsg_8c_abbcf1856a4c9063200ef3f4131fd05f5}{lcdmsg}[index]);
+00079     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00080         strcat(str, \textcolor{stringliteral}{" "});
+00081     \}
+00082     lcdSetText(lcdport, line, str);
+00083 \}
+00084 
+\hypertarget{lcdmsg_8c_source.tex_l00090}{}\hyperlink{lcdmsg_8h_acc19fe50b302412c894538965e77cb8b}{00090} \textcolor{keywordtype}{void} \hyperlink{lcdmsg_8c_acc19fe50b302412c894538965e77cb8b}{screensaver}(FILE *lcdport) \{
+00091     lcdSetText(lcdport, 1, \hyperlink{lcdmsg_8h_aa9575881ef196e5c94e60d183742eee7}{LCD\_750C\_TITLE});
+00092     \hyperlink{lcdmsg_8c_aabe33dfb797df5997c5e03078591aa81}{randlcdmsg}(lcdport, 2);
+00093 \}
+00094 
 \end{DoxyCode}

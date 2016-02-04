@@ -24,10 +24,10 @@
 00057 \}
 00058 
 \hypertarget{motors_8h_source.tex_l00062}{}\hyperlink{motors_8h_a3e06fbce97caed16e0a0f27f544587af}{00062} \textcolor{preprocessor}{#define LEFT\_MOTOR\_TOP 2}
-\hypertarget{motors_8h_source.tex_l00063}{}\hyperlink{motors_8h_a43691a92e03fa5319b14f01193f47b9a}{00063} \textcolor{preprocessor}{#define LEFT\_MOTOR\_BOT 6}
+\hypertarget{motors_8h_source.tex_l00063}{}\hyperlink{motors_8h_a43691a92e03fa5319b14f01193f47b9a}{00063} \textcolor{preprocessor}{#define LEFT\_MOTOR\_BOT 5}
 00064 
-\hypertarget{motors_8h_source.tex_l00068}{}\hyperlink{motors_8h_a306c5923dd0328c4bfc09255de9d124c}{00068} \textcolor{preprocessor}{#define RIGHT\_MOTOR\_TOP 4}
-\hypertarget{motors_8h_source.tex_l00069}{}\hyperlink{motors_8h_a85c904d091f71ba7fc53a446524b6c61}{00069} \textcolor{preprocessor}{#define RIGHT\_MOTOR\_BOT 5}
+\hypertarget{motors_8h_source.tex_l00068}{}\hyperlink{motors_8h_a306c5923dd0328c4bfc09255de9d124c}{00068} \textcolor{preprocessor}{#define RIGHT\_MOTOR\_TOP 3}
+\hypertarget{motors_8h_source.tex_l00069}{}\hyperlink{motors_8h_a85c904d091f71ba7fc53a446524b6c61}{00069} \textcolor{preprocessor}{#define RIGHT\_MOTOR\_BOT 4}
 00070 
 \hypertarget{motors_8h_source.tex_l00077}{}\hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{00077} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(\textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd}, \textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_aaefa47f4fdf865c2358c22b542a993e4}{turn})\{
 00078     motorSet(\hyperlink{motors_8h_a3e06fbce97caed16e0a0f27f544587af}{LEFT\_MOTOR\_TOP}, spd + turn);
@@ -38,33 +38,33 @@
 00083 
 \hypertarget{motors_8h_source.tex_l00087}{}\hyperlink{motors_8h_a7f78a80833903fca930b13a1f2ab6bd5}{00087} \textcolor{preprocessor}{#define SHOOTER\_HAS\_THREE\_MOTORS}
 00088 
-\hypertarget{motors_8h_source.tex_l00089}{}\hyperlink{motors_8h_a4a9fed3366effbbb942b907c131ae8bd}{00089} \textcolor{preprocessor}{#define NAUTILUS\_SHOOTER\_MOTOR\_LEFT 3}
+\hypertarget{motors_8h_source.tex_l00089}{}\hyperlink{motors_8h_a4a9fed3366effbbb942b907c131ae8bd}{00089} \textcolor{preprocessor}{#define NAUTILUS\_SHOOTER\_MOTOR\_LEFT 6}
 \hypertarget{motors_8h_source.tex_l00090}{}\hyperlink{motors_8h_a3fa3054b1d74b733800c7b9252362334}{00090} \textcolor{preprocessor}{#define NAUTILUS\_SHOOTER\_MOTOR\_RIGHT 7}
-00091 \textcolor{preprocessor}{#ifdef SHOOTER\_HAS\_THREE\_MOTORS}
-\hypertarget{motors_8h_source.tex_l00092}{}\hyperlink{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}{00092} \textcolor{preprocessor}{#define NAUTILUS\_SHOOTER\_MOTOR\_CENTER 10}
-00093 \textcolor{preprocessor}{#endif}
-00094 
-\hypertarget{motors_8h_source.tex_l00100}{}\hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{00100} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{shoot}(\textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd})\{
-00101     motorSet(\hyperlink{motors_8h_a4a9fed3366effbbb942b907c131ae8bd}{NAUTILUS\_SHOOTER\_MOTOR\_LEFT}, spd);
-00102     motorSet(\hyperlink{motors_8h_a3fa3054b1d74b733800c7b9252362334}{NAUTILUS\_SHOOTER\_MOTOR\_RIGHT}, -spd);
-00103 \textcolor{preprocessor}{#ifdef SHOOTER\_HAS\_THREE\_MOTORS}
-00104     motorSet(\hyperlink{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}{NAUTILUS\_SHOOTER\_MOTOR\_CENTER}, -spd);
-00105 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* SHOOTER\_HAS\_THREE\_MOTORS */}\textcolor{preprocessor}{}
-00106 \}
-00107 
-\hypertarget{motors_8h_source.tex_l00111}{}\hyperlink{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}{00111} \textcolor{preprocessor}{#define INTAKE\_ROLLER\_MOTOR 8}
-00112 
-\hypertarget{motors_8h_source.tex_l00118}{}\hyperlink{motors_8h_ad29bed7d7fa6127b3ecf7e50eab23e9c}{00118} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{motors_8h_ad29bed7d7fa6127b3ecf7e50eab23e9c}{intake}(\textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd})\{
-00119     motorSet(\hyperlink{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}{INTAKE\_ROLLER\_MOTOR}, spd);
-00120 \}
-00121 
-\hypertarget{motors_8h_source.tex_l00122}{}\hyperlink{motors_8h_a9e703840acb5657339f59982914dffb7}{00122} \textcolor{preprocessor}{#define LIFT\_DEPLOY 9}
-00123 
-\hypertarget{motors_8h_source.tex_l00124}{}\hyperlink{motors_8h_af9cae4c2a660189553e6c8e51e371913}{00124} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{motors_8h_af9cae4c2a660189553e6c8e51e371913}{deploy}(\textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd})\{
-00125     motorSet(\hyperlink{motors_8h_a9e703840acb5657339f59982914dffb7}{LIFT\_DEPLOY}, spd);
-00126 \}
+\hypertarget{motors_8h_source.tex_l00091}{}\hyperlink{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}{00091} \textcolor{preprocessor}{#define NAUTILUS\_SHOOTER\_MOTOR\_CENTER 8}
+00092 
+\hypertarget{motors_8h_source.tex_l00098}{}\hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{00098} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{motors_8h_ab183a9a4e6e469515b9f283f7156f843}{shoot}(\textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd})\{
+00099     motorSet(\hyperlink{motors_8h_a4a9fed3366effbbb942b907c131ae8bd}{NAUTILUS\_SHOOTER\_MOTOR\_LEFT}, -spd);
+00100     motorSet(\hyperlink{motors_8h_a3fa3054b1d74b733800c7b9252362334}{NAUTILUS\_SHOOTER\_MOTOR\_RIGHT}, spd);
+00101     motorSet(\hyperlink{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}{NAUTILUS\_SHOOTER\_MOTOR\_CENTER}, spd);
+00102 \}
+00103 
+\hypertarget{motors_8h_source.tex_l00107}{}\hyperlink{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}{00107} \textcolor{preprocessor}{#define INTAKE\_ROLLER\_MOTOR 10}
+00108 
+\hypertarget{motors_8h_source.tex_l00114}{}\hyperlink{motors_8h_ad29bed7d7fa6127b3ecf7e50eab23e9c}{00114} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{motors_8h_ad29bed7d7fa6127b3ecf7e50eab23e9c}{intake}(\textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd})\{
+00115     motorSet(\hyperlink{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}{INTAKE\_ROLLER\_MOTOR}, spd);
+00116 \}
+00117 
+\hypertarget{motors_8h_source.tex_l00118}{}\hyperlink{motors_8h_a1764b7462fb0a7e34cc39a48f15422ca}{00118} \textcolor{preprocessor}{#define ROBOT\_HAS\_LIFT\_DEPLOY\_MOTOR 1}
+00119 
+00120 \textcolor{preprocessor}{#ifdef ROBOT\_HAS\_LIFT\_DEPLOY\_MOTOR}
+\hypertarget{motors_8h_source.tex_l00121}{}\hyperlink{motors_8h_a9e703840acb5657339f59982914dffb7}{00121} \textcolor{preprocessor}{#define LIFT\_DEPLOY 9}
+00122 
+\hypertarget{motors_8h_source.tex_l00123}{}\hyperlink{motors_8h_af9cae4c2a660189553e6c8e51e371913}{00123} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{motors_8h_af9cae4c2a660189553e6c8e51e371913}{deploy}(\textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd})\{
+00124     motorSet(\hyperlink{motors_8h_a9e703840acb5657339f59982914dffb7}{LIFT\_DEPLOY}, spd);
+00125 \}
+00126 \textcolor{preprocessor}{#endif}
 00127 
-00128 \textcolor{preprocessor}{#ifndef SHOOTER\_HAS\_THREE\_MOTORS}
+00128 \textcolor{preprocessor}{#ifndef ROBOT\_HAS\_LIFT\_DEPLOY\_MOTOR}
 00129 
 00132 \textcolor{preprocessor}{#define SHOOTER\_ANGLE\_MOTOR 10}
 00133 

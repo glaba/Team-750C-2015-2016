@@ -9,8 +9,60 @@
 00019 
 \hypertarget{sensors_8c_source.tex_l00023}{}\hyperlink{sensors_8h_a8c853ba918673c4878ab6935c54969e4}{00023} Encoder \hyperlink{sensors_8c_a8c853ba918673c4878ab6935c54969e4}{rightenc};
 00024 
-\hypertarget{sensors_8c_source.tex_l00028}{}\hyperlink{sensors_8h_ad2d059cd4baeedd5fbead13085953eed}{00028} Gyro \hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro};
-00029 
-\hypertarget{sensors_8c_source.tex_l00033}{}\hyperlink{sensors_8h_a09e334aba0637f228c65c135f428606a}{00033} Ultrasonic \hyperlink{sensors_8c_a09e334aba0637f228c65c135f428606a}{sonar};
-00034 
+\hypertarget{sensors_8c_source.tex_l00025}{}\hyperlink{sensors_8h_ad701efe604d40c13910416224d3dd9e3}{00025} \textcolor{keywordtype}{void} \hyperlink{sensors_8c_ad701efe604d40c13910416224d3dd9e3}{rturn}(\textcolor{keywordtype}{int} bodydegs) \{
+00026     \hyperlink{sensors_8h_acdacd94315ad0d5b73d99eaed29be5f5}{clearDriveEncoders}();
+00027     \textcolor{keywordtype}{float} turndeg;
+00028     \textcolor{keywordtype}{float} encdegperbodydeg = \hyperlink{robot_8h_a61fe90734b16253ea19fc295e0ec71dc}{DRIVE\_WHEELBASE} / (\hyperlink{robot_8h_a756d6f470dc64b6c3c004b75760d60d0}{DRIVE\_DIA} * 
+      \hyperlink{robot_8h_ac82b3d02a4f4ff550895e0cb11b96219}{DRIVE\_GEARRATIO});
+00029     turndeg = encdegperbodydeg * bodydegs;
+00030 
+00031     \textcolor{keywordflow}{while}(\hyperlink{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}{abs}(encoderGet(\hyperlink{sensors_8c_a8c853ba918673c4878ab6935c54969e4}{rightenc})) < \hyperlink{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}{abs}(turndeg)) \{
+00032         \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(0, \hyperlink{motors_8h_a5cf14eeff6ae0a3163b61e2abcf1c6c0}{MOTOR\_MAX});
+00033         delay(20);
+00034     \}
+00035 
+00036     \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(0, 0);
+00037     \hyperlink{sensors_8h_acdacd94315ad0d5b73d99eaed29be5f5}{clearDriveEncoders}();
+00038 \}
+00039 
+\hypertarget{sensors_8c_source.tex_l00040}{}\hyperlink{sensors_8h_a6c61a5584d9cf1eaac994e0fb9f6b61c}{00040} \textcolor{keywordtype}{void} \hyperlink{sensors_8c_a6c61a5584d9cf1eaac994e0fb9f6b61c}{lturn}(\textcolor{keywordtype}{int} bodydegs) \{
+00041     \hyperlink{sensors_8h_acdacd94315ad0d5b73d99eaed29be5f5}{clearDriveEncoders}();
+00042     \textcolor{keywordtype}{float} turndeg;
+00043     \textcolor{keywordtype}{float} encdegperbodydeg = \hyperlink{robot_8h_a61fe90734b16253ea19fc295e0ec71dc}{DRIVE\_WHEELBASE} / (\hyperlink{robot_8h_a756d6f470dc64b6c3c004b75760d60d0}{DRIVE\_DIA} * 
+      \hyperlink{robot_8h_ac82b3d02a4f4ff550895e0cb11b96219}{DRIVE\_GEARRATIO});
+00044     turndeg = encdegperbodydeg * bodydegs;
+00045 
+00046     \textcolor{keywordflow}{while}(\hyperlink{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}{abs}(encoderGet(\hyperlink{sensors_8c_a48ead63071a2b65b87a166928a5a5c08}{leftenc})) < \hyperlink{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}{abs}(turndeg)) \{
+00047         \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(0, -\hyperlink{motors_8h_a5cf14eeff6ae0a3163b61e2abcf1c6c0}{MOTOR\_MAX});
+00048         delay(20);
+00049     \}
+00050 
+00051     \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(0, 0);
+00052     \hyperlink{sensors_8h_acdacd94315ad0d5b73d99eaed29be5f5}{clearDriveEncoders}();
+00053 \}
+00054 
+\hypertarget{sensors_8c_source.tex_l00055}{}\hyperlink{sensors_8h_aac3aa2a1f6d4df8618c2e95a99f69bd5}{00055} \textcolor{keywordtype}{void} \hyperlink{sensors_8c_aac3aa2a1f6d4df8618c2e95a99f69bd5}{goForward}(\textcolor{keywordtype}{int} inches) \{
+00056     \textcolor{keywordtype}{int} deg;
+00057     \textcolor{keywordtype}{float} encperinch;
+00058     encperinch = 360/(\hyperlink{robot_8h_a756d6f470dc64b6c3c004b75760d60d0}{DRIVE\_DIA} * \hyperlink{constants_8h_a598a3330b3c21701223ee0ca14316eca}{PI} * \hyperlink{robot_8h_ac82b3d02a4f4ff550895e0cb11b96219}{DRIVE\_GEARRATIO});
+00059     deg = encperinch * (float)inches;
+00060 
+00061     \hyperlink{sensors_8h_acdacd94315ad0d5b73d99eaed29be5f5}{clearDriveEncoders}();
+00062     \textcolor{keywordflow}{while}(\hyperlink{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}{abs}(encoderGet(\hyperlink{sensors_8c_a8c853ba918673c4878ab6935c54969e4}{rightenc})) <  \hyperlink{macros_8h_a3aa069ac3980707dae1e0530f50d59e4}{abs}(deg))
+00063     \{
+00064         \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(\hyperlink{macros_8h_ac740756f75e53153605d2702b30d2a9d}{sign}(inches) * 127, 0);
+00065         delay(20);
+00066     \}
+00067     \hyperlink{motors_8h_ae918d6900bfd9ad920597db4f3ff138f}{move}(0,0);
+00068     \hyperlink{sensors_8h_acdacd94315ad0d5b73d99eaed29be5f5}{clearDriveEncoders}();
+00069 \}
+00070 
+\hypertarget{sensors_8c_source.tex_l00071}{}\hyperlink{sensors_8h_a588c302940f0bd83c1f7f7fef3447171}{00071} \textcolor{keywordtype}{void} \hyperlink{sensors_8c_a588c302940f0bd83c1f7f7fef3447171}{goBackward}(\textcolor{keywordtype}{int} inches) \{
+00072     \hyperlink{sensors_8c_aac3aa2a1f6d4df8618c2e95a99f69bd5}{goForward}(-inches);
+00073 \}
+00074 
+\hypertarget{sensors_8c_source.tex_l00078}{}\hyperlink{sensors_8h_ad2d059cd4baeedd5fbead13085953eed}{00078} Gyro \hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro};
+00079 
+\hypertarget{sensors_8c_source.tex_l00083}{}\hyperlink{sensors_8h_a09e334aba0637f228c65c135f428606a}{00083} Ultrasonic \hyperlink{sensors_8c_a09e334aba0637f228c65c135f428606a}{sonar};
+00084 
 \end{DoxyCode}

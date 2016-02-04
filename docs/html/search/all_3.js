@@ -7,5 +7,8 @@ var searchData=
   ['deploy',['deploy',['../motors_8h.html#af9cae4c2a660189553e6c8e51e371913',1,'motors.h']]],
   ['disableopcontrol',['disableOpControl',['../lcddiag_8c.html#a0f0b335cd078d025d6fb720eb3bf6437',1,'disableOpControl():&#160;lcddiag.c'],['../lcddiag_8h.html#a0f0b335cd078d025d6fb720eb3bf6437',1,'disableOpControl():&#160;lcddiag.c']]],
   ['distance_5fto_5fother_5fside',['DISTANCE_TO_OTHER_SIDE',['../autonroutines_8h.html#a2befdcf4842481d11a6058994d8fbef7',1,'autonroutines.h']]],
-  ['domenuchoice',['doMenuChoice',['../lcddiag_8c.html#a668a59e2aa24df3a86222962ad9b4ad2',1,'lcddiag.c']]]
+  ['domenuchoice',['doMenuChoice',['../lcddiag_8c.html#a668a59e2aa24df3a86222962ad9b4ad2',1,'lcddiag.c']]],
+  ['drive_5fdia',['DRIVE_DIA',['../robot_8h.html#a756d6f470dc64b6c3c004b75760d60d0',1,'robot.h']]],
+  ['drive_5fgearratio',['DRIVE_GEARRATIO',['../robot_8h.html#ac82b3d02a4f4ff550895e0cb11b96219',1,'robot.h']]],
+  ['drive_5fwheelbase',['DRIVE_WHEELBASE',['../robot_8h.html#a61fe90734b16253ea19fc295e0ec71dc',1,'robot.h']]]
 ];

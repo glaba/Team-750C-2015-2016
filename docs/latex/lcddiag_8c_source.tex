@@ -197,910 +197,908 @@
 00257 
 00258         groups[3].\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[\hyperlink{motors_8h_a4a9fed3366effbbb942b907c131ae8bd}{NAUTILUS\_SHOOTER\_MOTOR\_LEFT}] = \textcolor{keyword}{true};
 00259         groups[3].\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[\hyperlink{motors_8h_a3fa3054b1d74b733800c7b9252362334}{NAUTILUS\_SHOOTER\_MOTOR\_RIGHT}] = \textcolor{keyword}{true};
-00260 \textcolor{preprocessor}{#ifdef SHOOTER\_HAS\_THREE\_MOTORS}
-00261         groups[3].\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[\hyperlink{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}{NAUTILUS\_SHOOTER\_MOTOR\_CENTER}] = \textcolor{keyword}{true};
-00262 \textcolor{preprocessor}{#endif}
-00263         strcpy(groups[3].name, \textcolor{stringliteral}{"Nautilus Shooter"});
-00264 
-00265         groups[4].\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[\hyperlink{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}{INTAKE\_ROLLER\_MOTOR}] = \textcolor{keyword}{true};
-00266         strcpy(groups[4].name, \textcolor{stringliteral}{"Intake"});
-00267 
-00268         groups[5].\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[\hyperlink{motors_8h_a7d8ac8902b66bb442bb27f9899aef13e}{TRANSMISSION\_MOTOR}] = \textcolor{keyword}{true};
-00269         strcpy(groups[5].name, \textcolor{stringliteral}{"Transmission"});
-00270 
-00271         \textcolor{comment}{//saveGroups();}
-00272     \} \textcolor{keywordflow}{else} \{
-00273         \textcolor{comment}{//loadGroups();}
-00274     \}
-00275 \}
-00276 
-\hypertarget{lcddiag_8c_source.tex_l00284}{}\hyperlink{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}{00284} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}{formatMenuNameCenter}(FILE* lcdport, \textcolor{keywordtype}{int} line, \textcolor{keywordtype}{int} index)\{
-00285     \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(
+00260         groups[3].\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[\hyperlink{motors_8h_a681ecbcdbf9007fc5ccf3d67cdcfb505}{NAUTILUS\_SHOOTER\_MOTOR\_CENTER}] = \textcolor{keyword}{true};
+00261         strcpy(groups[3].name, \textcolor{stringliteral}{"Nautilus Shooter"});
+00262 
+00263         groups[4].\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[\hyperlink{motors_8h_a8ac783dc4e09804d3b2f7e3b6bbecad7}{INTAKE\_ROLLER\_MOTOR}] = \textcolor{keyword}{true};
+00264         strcpy(groups[4].name, \textcolor{stringliteral}{"Intake"});
+00265 
+00266         groups[5].\hyperlink{struct_motor_group_a05d10a69eb1ae279fab13f9a009d84be}{motor}[\hyperlink{motors_8h_a7d8ac8902b66bb442bb27f9899aef13e}{TRANSMISSION\_MOTOR}] = \textcolor{keyword}{true};
+00267         strcpy(groups[5].name, \textcolor{stringliteral}{"Transmission"});
+00268 
+00269         \textcolor{comment}{//saveGroups();}
+00270     \} \textcolor{keywordflow}{else} \{
+00271         \textcolor{comment}{//loadGroups();}
+00272     \}
+00273 \}
+00274 
+\hypertarget{lcddiag_8c_source.tex_l00282}{}\hyperlink{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}{00282} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}{formatMenuNameCenter}(FILE* lcdport, \textcolor{keywordtype}{int} line, \textcolor{keywordtype}{int} index)\{
+00283     \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(
       \hyperlink{lcddiag_8c_ab5b8edfc6a94520add858274b3fac974}{menuChoices}[index]))/2;
-00286     \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00287     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00288         strcat(str, \textcolor{stringliteral}{" "});
-00289     \}
-00290     strcat(str, \hyperlink{lcddiag_8c_ab5b8edfc6a94520add858274b3fac974}{menuChoices}[index]);
-00291     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00292         strcat(str, \textcolor{stringliteral}{" "});
-00293     \}
-00294     lcdSetText(lcdport, line, str);
-00295 \}
-00296 
-\hypertarget{lcddiag_8c_source.tex_l00302}{}\hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{00302} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{selectMenu}() \{
-00303     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00304     \textcolor{keywordtype}{int} val = 0;
-00305     \textcolor{keywordflow}{do} \{
-00306         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00307         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-00308         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-00309 
-00310         \textcolor{keywordflow}{if}(rightPressed && val != \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{LCD\_MENU\_COUNT}-1) val++;
-00311         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{LCD\_MENU\_COUNT}-1) val = 0;
-00312         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
-00313         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == 0) val = \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{LCD\_MENU\_COUNT} - 1;
-00314 
-00315         \hyperlink{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}{formatMenuNameCenter}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, val);
-00316         \textcolor{keywordflow}{if}(val == 0)\{
+00284     \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00285     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00286         strcat(str, \textcolor{stringliteral}{" "});
+00287     \}
+00288     strcat(str, \hyperlink{lcddiag_8c_ab5b8edfc6a94520add858274b3fac974}{menuChoices}[index]);
+00289     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00290         strcat(str, \textcolor{stringliteral}{" "});
+00291     \}
+00292     lcdSetText(lcdport, line, str);
+00293 \}
+00294 
+\hypertarget{lcddiag_8c_source.tex_l00300}{}\hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{00300} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{selectMenu}() \{
+00301     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00302     \textcolor{keywordtype}{int} val = 0;
+00303     \textcolor{keywordflow}{do} \{
+00304         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00305         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+00306         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+00307 
+00308         \textcolor{keywordflow}{if}(rightPressed && val != \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{LCD\_MENU\_COUNT}-1) val++;
+00309         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{LCD\_MENU\_COUNT}-1) val = 0;
+00310         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
+00311         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == 0) val = \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{LCD\_MENU\_COUNT} - 1;
+00312 
+00313         \hyperlink{lcddiag_8c_a465a6cd66cde04199ae9641acce59d52}{formatMenuNameCenter}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, val);
+00314         \textcolor{keywordflow}{if}(val == 0)\{
+00315             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
+00316         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{LCD\_MENU\_COUNT}-1) \{
 00317             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
-00318         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == \hyperlink{lcddiag_8h_af08e03edfc50fa6a3af2555f9cce6e6c}{LCD\_MENU\_COUNT}-1) \{
+00318         \} \textcolor{keywordflow}{else} \{
 00319             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
-00320         \} \textcolor{keywordflow}{else} \{
-00321             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
-00322         \}
-00323         delay(20);
-00324         done = centerPressed;
-00325     \} \textcolor{keywordflow}{while}(!done);
-00326     printf(\textcolor{stringliteral}{"Selected menu choice: %d\(\backslash\)n"}, val);
-00327     \textcolor{keywordflow}{return} val;
-00328 \}
-00329 
-\hypertarget{lcddiag_8c_source.tex_l00337}{}\hyperlink{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}{00337} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}{runScreensaver}(FILE *lcdport)\{
-00338     \textcolor{keywordtype}{int} cycle = 0;
-00339     \textcolor{keywordflow}{do} \{
-00340         \textcolor{keywordflow}{if}(cycle == 0)\{
-00341             \hyperlink{lcdmsg_8c_acc19fe50b302412c894538965e77cb8b}{screensaver}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
-00342         \}
-00343         delay(20);
-00344         cycle++;
-00345         \textcolor{keywordflow}{if}(cycle==150)\{
-00346             cycle=0;
-00347         \}
-00348     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
-00349 \}
-00350 
-\hypertarget{lcddiag_8c_source.tex_l00356}{}\hyperlink{lcddiag_8c_a9a604d967527579e547780271290500f}{00356} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a9a604d967527579e547780271290500f}{runBattery}(FILE *lcdport)\{
-00357     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00358     \textcolor{keywordtype}{int} val = \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN};
-00359     \textcolor{keywordflow}{do} \{
-00360         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00361         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-00362         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-00363 
-00364         \textcolor{keywordflow}{if}(rightPressed && val != \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP}) val++;
-00365         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP}) val = \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN};
-00366         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN}) val--;
-00367         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN}) val = \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP};
-00368 
-00369         \textcolor{keywordtype}{int} beforepoint = 0;
-00370         \textcolor{keywordtype}{int} afterpoint = 0;
-00371         \textcolor{keywordtype}{char} battdisp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00372         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00373         memset(battdisp, 0, \textcolor{keyword}{sizeof}(battdisp));
-00374         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00375 
-00376         \textcolor{keywordflow}{switch}(val)\{
-00377             \textcolor{keywordflow}{case} \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN}: beforepoint = powerLevelMain()/1000;
-00378                             afterpoint = powerLevelMain()%1000;
-00379                             strcat(battdisp, \textcolor{stringliteral}{"Mn Batt: "});
-00380                             \textcolor{keywordflow}{break};
-00381             \textcolor{keywordflow}{case} \hyperlink{sensors_8h_a5af8f9e877197004f0f5bf982a755146}{BATT\_BKUP}: beforepoint = powerLevelBackup()/1000;
-00382                             afterpoint = powerLevelBackup()%1000;
-00383                             strcat(battdisp, \textcolor{stringliteral}{"Bk Batt: "});
-00384                             \textcolor{keywordflow}{break};
-00385             \textcolor{keywordflow}{case} \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP}: beforepoint = \hyperlink{sensors_8h_af8de9fe9eba1282f34dce42deebffc93}{powerLevelExpander}()/1000;
-00386                             afterpoint = \hyperlink{sensors_8h_af8de9fe9eba1282f34dce42deebffc93}{powerLevelExpander}()%1000;
-00387                             strcat(battdisp, \textcolor{stringliteral}{"Ex Batt: "});
-00388                             \textcolor{keywordflow}{break};
-00389         \}
-00390         sprintf(temp, \textcolor{stringliteral}{"%d.%d V"}, beforepoint, afterpoint);
-00391         strcat(battdisp, temp);
-00392 
-00393         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(battdisp))/2;
-00394         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00395         memset(str, 0, \textcolor{keyword}{sizeof}(str));
-00396         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00397             strcat(str, \textcolor{stringliteral}{" "});
-00398         \}
-00399         strcat(str, battdisp);
-00400         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00401             strcat(str, \textcolor{stringliteral}{" "});
-00402         \}
-00403         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
-00404 
-00405         \textcolor{keywordflow}{if}(val == \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN})\{
-00406             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"EX     ESC    BK"});
-00407         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP}) \{
-00408             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"BK     ESC    MN"});
-00409         \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{//BATT\_BKUP}
-00410             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"MN     ESC    EX"});
-00411         \}
-00412         delay(20);
-00413         done = centerPressed;
-00414     \} \textcolor{keywordflow}{while}(!done);
-00415 \}
-00416 
-\hypertarget{lcddiag_8c_source.tex_l00424}{}\hyperlink{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{00424} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{selectMotor}(FILE *lcdport)\{
-00425     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00426     \textcolor{keywordtype}{int} val = 1;
-00427     \textcolor{keywordflow}{do} \{
-00428         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00429         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-00430         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-00431 
-00432         \textcolor{keywordflow}{if}(rightPressed && val != 10) val++;
-00433         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == 10) val = 0;
-00434         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
-00435         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == 0) val = 10;
-00436 
-00437         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00438         \textcolor{keywordflow}{if}(val != 0)\{
-00439             \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00440             memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00441             memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00442             strcpy(motorstr, \textcolor{stringliteral}{"Motor: "});
-00443             sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
-00444             strcat(motorstr, temp);
-00445         \} \textcolor{keywordflow}{else} \{
-00446             strcpy(motorstr, \textcolor{stringliteral}{"Cancel"});
-00447         \}
-00448 
-00449         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00450         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00451         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00452             strcat(str, \textcolor{stringliteral}{" "});
-00453         \}
-00454         strcat(str, motorstr);
-00455         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00456             strcat(str, \textcolor{stringliteral}{" "});
-00457         \}
+00320         \}
+00321         delay(20);
+00322         done = centerPressed;
+00323     \} \textcolor{keywordflow}{while}(!done);
+00324     printf(\textcolor{stringliteral}{"Selected menu choice: %d\(\backslash\)n"}, val);
+00325     \textcolor{keywordflow}{return} val;
+00326 \}
+00327 
+\hypertarget{lcddiag_8c_source.tex_l00335}{}\hyperlink{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}{00335} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}{runScreensaver}(FILE *lcdport)\{
+00336     \textcolor{keywordtype}{int} cycle = 0;
+00337     \textcolor{keywordflow}{do} \{
+00338         \textcolor{keywordflow}{if}(cycle == 0)\{
+00339             \hyperlink{lcdmsg_8c_acc19fe50b302412c894538965e77cb8b}{screensaver}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT});
+00340         \}
+00341         delay(20);
+00342         cycle++;
+00343         \textcolor{keywordflow}{if}(cycle==150)\{
+00344             cycle=0;
+00345         \}
+00346     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
+00347 \}
+00348 
+\hypertarget{lcddiag_8c_source.tex_l00354}{}\hyperlink{lcddiag_8c_a9a604d967527579e547780271290500f}{00354} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a9a604d967527579e547780271290500f}{runBattery}(FILE *lcdport)\{
+00355     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00356     \textcolor{keywordtype}{int} val = \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN};
+00357     \textcolor{keywordflow}{do} \{
+00358         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00359         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+00360         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+00361 
+00362         \textcolor{keywordflow}{if}(rightPressed && val != \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP}) val++;
+00363         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP}) val = \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN};
+00364         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN}) val--;
+00365         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN}) val = \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP};
+00366 
+00367         \textcolor{keywordtype}{int} beforepoint = 0;
+00368         \textcolor{keywordtype}{int} afterpoint = 0;
+00369         \textcolor{keywordtype}{char} battdisp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00370         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00371         memset(battdisp, 0, \textcolor{keyword}{sizeof}(battdisp));
+00372         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00373 
+00374         \textcolor{keywordflow}{switch}(val)\{
+00375             \textcolor{keywordflow}{case} \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN}: beforepoint = powerLevelMain()/1000;
+00376                             afterpoint = powerLevelMain()%1000;
+00377                             strcat(battdisp, \textcolor{stringliteral}{"Mn Batt: "});
+00378                             \textcolor{keywordflow}{break};
+00379             \textcolor{keywordflow}{case} \hyperlink{sensors_8h_a5af8f9e877197004f0f5bf982a755146}{BATT\_BKUP}: beforepoint = powerLevelBackup()/1000;
+00380                             afterpoint = powerLevelBackup()%1000;
+00381                             strcat(battdisp, \textcolor{stringliteral}{"Bk Batt: "});
+00382                             \textcolor{keywordflow}{break};
+00383             \textcolor{keywordflow}{case} \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP}: beforepoint = \hyperlink{sensors_8h_af8de9fe9eba1282f34dce42deebffc93}{powerLevelExpander}()/1000;
+00384                             afterpoint = \hyperlink{sensors_8h_af8de9fe9eba1282f34dce42deebffc93}{powerLevelExpander}()%1000;
+00385                             strcat(battdisp, \textcolor{stringliteral}{"Ex Batt: "});
+00386                             \textcolor{keywordflow}{break};
+00387         \}
+00388         sprintf(temp, \textcolor{stringliteral}{"%d.%d V"}, beforepoint, afterpoint);
+00389         strcat(battdisp, temp);
+00390 
+00391         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(battdisp))/2;
+00392         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00393         memset(str, 0, \textcolor{keyword}{sizeof}(str));
+00394         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00395             strcat(str, \textcolor{stringliteral}{" "});
+00396         \}
+00397         strcat(str, battdisp);
+00398         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00399             strcat(str, \textcolor{stringliteral}{" "});
+00400         \}
+00401         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
+00402 
+00403         \textcolor{keywordflow}{if}(val == \hyperlink{sensors_8h_aa48831e4de90908c1b37560e7aba2c5f}{BATT\_MAIN})\{
+00404             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"EX     ESC    BK"});
+00405         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == \hyperlink{sensors_8h_aaad063d8cfbd393cdc04bcaae68b48ef}{BATT\_PEXP}) \{
+00406             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"BK     ESC    MN"});
+00407         \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{//BATT\_BKUP}
+00408             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"MN     ESC    EX"});
+00409         \}
+00410         delay(20);
+00411         done = centerPressed;
+00412     \} \textcolor{keywordflow}{while}(!done);
+00413 \}
+00414 
+\hypertarget{lcddiag_8c_source.tex_l00422}{}\hyperlink{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{00422} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{selectMotor}(FILE *lcdport)\{
+00423     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00424     \textcolor{keywordtype}{int} val = 1;
+00425     \textcolor{keywordflow}{do} \{
+00426         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00427         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+00428         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+00429 
+00430         \textcolor{keywordflow}{if}(rightPressed && val != 10) val++;
+00431         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == 10) val = 0;
+00432         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
+00433         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == 0) val = 10;
+00434 
+00435         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00436         \textcolor{keywordflow}{if}(val != 0)\{
+00437             \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00438             memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00439             memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00440             strcpy(motorstr, \textcolor{stringliteral}{"Motor: "});
+00441             sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
+00442             strcat(motorstr, temp);
+00443         \} \textcolor{keywordflow}{else} \{
+00444             strcpy(motorstr, \textcolor{stringliteral}{"Cancel"});
+00445         \}
+00446 
+00447         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00448         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00449         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00450             strcat(str, \textcolor{stringliteral}{" "});
+00451         \}
+00452         strcat(str, motorstr);
+00453         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00454             strcat(str, \textcolor{stringliteral}{" "});
+00455         \}
+00456 
+00457         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
 00458 
-00459         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
-00460 
-00461         done = centerPressed;
-00462         \textcolor{keywordflow}{if}(val == 0)\{
-00463             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"10     SEL     1"});
-00464         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
-00465             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"ESC    SEL     2"});
-00466         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 10) \{
-00467             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"9      SEL   ESC"});
-00468         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val == 9) \{
-00469             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"8      SEL    10"});
-00470         \} \textcolor{keywordflow}{else} \{
-00471             \textcolor{keywordtype}{char} navstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00472             memset(navstr, 0, \textcolor{keyword}{sizeof}(navstr));
-00473             sprintf(navstr, \textcolor{stringliteral}{"%c      SEL     %c"},(val-1) + \textcolor{charliteral}{'0'}, (val+1) + \textcolor{charliteral}{'0'});
-00474             \textcolor{comment}{/*navstr[0] = (val-1) + '0';*/}
-00475             \textcolor{comment}{/*strcat(navstr, "      SEL     ");*/}
-00476             \textcolor{comment}{/*navstr[LCD\_MESSAGE\_MAX\_LENGTH] = (val+1) + '0';*/}
-00477             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, navstr);
-00478         \}
-00479         delay(20);
-00480     \} \textcolor{keywordflow}{while}(!done);
-00481     printf(\textcolor{stringliteral}{"Testing motor %d.\(\backslash\)n"}, val);
-00482     \textcolor{keywordflow}{return} val;
-00483 \}
-00484 
-\hypertarget{lcddiag_8c_source.tex_l00492}{}\hyperlink{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{00492} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{selectSpd}(\textcolor{keywordtype}{int} mtr) \{
-00493     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00494     \textcolor{keywordtype}{int} val=0;
-00495     \textcolor{keywordflow}{do} \{
-00496         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00497         \textcolor{comment}{/*bool leftPressed = lcdButtonPressed(LCD\_BTN\_LEFT);*/}
-00498         \textcolor{comment}{/*bool rightPressed = lcdButtonPressed(LCD\_BTN\_RIGHT);*/}
-00499 
-00500         val = (float) ((\textcolor{keywordtype}{float}) analogRead(\hyperlink{autonrecorder_8h_a2490cda7a399f481333af2e5589b74a9}{AUTON\_POT})/(float) 
+00459         done = centerPressed;
+00460         \textcolor{keywordflow}{if}(val == 0)\{
+00461             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"10     SEL     1"});
+00462         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
+00463             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"ESC    SEL     2"});
+00464         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 10) \{
+00465             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"9      SEL   ESC"});
+00466         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val == 9) \{
+00467             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"8      SEL    10"});
+00468         \} \textcolor{keywordflow}{else} \{
+00469             \textcolor{keywordtype}{char} navstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00470             memset(navstr, 0, \textcolor{keyword}{sizeof}(navstr));
+00471             sprintf(navstr, \textcolor{stringliteral}{"%c      SEL     %c"},(val-1) + \textcolor{charliteral}{'0'}, (val+1) + \textcolor{charliteral}{'0'});
+00472             \textcolor{comment}{/*navstr[0] = (val-1) + '0';*/}
+00473             \textcolor{comment}{/*strcat(navstr, "      SEL     ");*/}
+00474             \textcolor{comment}{/*navstr[LCD\_MESSAGE\_MAX\_LENGTH] = (val+1) + '0';*/}
+00475             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, navstr);
+00476         \}
+00477         delay(20);
+00478     \} \textcolor{keywordflow}{while}(!done);
+00479     printf(\textcolor{stringliteral}{"Testing motor %d.\(\backslash\)n"}, val);
+00480     \textcolor{keywordflow}{return} val;
+00481 \}
+00482 
+\hypertarget{lcddiag_8c_source.tex_l00490}{}\hyperlink{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{00490} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{selectSpd}(\textcolor{keywordtype}{int} mtr) \{
+00491     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00492     \textcolor{keywordtype}{int} val=0;
+00493     \textcolor{keywordflow}{do} \{
+00494         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00495         \textcolor{comment}{/*bool leftPressed = lcdButtonPressed(LCD\_BTN\_LEFT);*/}
+00496         \textcolor{comment}{/*bool rightPressed = lcdButtonPressed(LCD\_BTN\_RIGHT);*/}
+00497 
+00498         val = (float) ((\textcolor{keywordtype}{float}) analogRead(\hyperlink{autonrecorder_8h_a2490cda7a399f481333af2e5589b74a9}{AUTON\_POT})/(float) 
       \hyperlink{autonrecorder_8h_a01989d89b8bed150d0aacdaef5ccabd3}{AUTON\_POT\_HIGH}) * 254;
-00501         val -= 127;
-00502         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00503         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00504         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00505         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00506         strcpy(motorstr, \textcolor{stringliteral}{"Motor: "});
-00507         sprintf(temp, \textcolor{stringliteral}{"%d"}, mtr);
-00508         strcat(motorstr, temp);
-00509 
-00510         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00511         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00512         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00513             strcat(str, \textcolor{stringliteral}{" "});
-00514         \}
-00515         strcat(str, motorstr);
-00516         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00517             strcat(str, \textcolor{stringliteral}{" "});
-00518         \}
+00499         val -= 127;
+00500         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00501         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00502         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00503         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00504         strcpy(motorstr, \textcolor{stringliteral}{"Motor: "});
+00505         sprintf(temp, \textcolor{stringliteral}{"%d"}, mtr);
+00506         strcat(motorstr, temp);
+00507 
+00508         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00509         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00510         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00511             strcat(str, \textcolor{stringliteral}{" "});
+00512         \}
+00513         strcat(str, motorstr);
+00514         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00515             strcat(str, \textcolor{stringliteral}{" "});
+00516         \}
+00517 
+00518         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
 00519 
-00520         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
-00521 
-00522         \textcolor{keywordtype}{char} speedstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00523         memset(speedstr, 0, \textcolor{keyword}{sizeof}(speedstr));
-00524         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00525         strcpy(speedstr, \textcolor{stringliteral}{"Speed: "});
-00526         sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
-00527         strcat(speedstr, temp);
-00528 
-00529         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(speedstr))/2;
-00530         strcpy(str, \textcolor{stringliteral}{""});
-00531         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00532             strcat(str, \textcolor{stringliteral}{" "});
-00533         \}
-00534         strcat(str, speedstr);
-00535         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00536             strcat(str, \textcolor{stringliteral}{" "});
-00537         \}
+00520         \textcolor{keywordtype}{char} speedstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00521         memset(speedstr, 0, \textcolor{keyword}{sizeof}(speedstr));
+00522         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00523         strcpy(speedstr, \textcolor{stringliteral}{"Speed: "});
+00524         sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
+00525         strcat(speedstr, temp);
+00526 
+00527         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(speedstr))/2;
+00528         strcpy(str, \textcolor{stringliteral}{""});
+00529         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00530             strcat(str, \textcolor{stringliteral}{" "});
+00531         \}
+00532         strcat(str, speedstr);
+00533         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00534             strcat(str, \textcolor{stringliteral}{" "});
+00535         \}
+00536 
+00537         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, str);
 00538 
-00539         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, str);
-00540 
-00541         done = (digitalRead(\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{AUTON\_BUTTON}) == \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED} || centerPressed);
-00542         delay(20);
-00543     \} \textcolor{keywordflow}{while}(!done);
-00544     printf(\textcolor{stringliteral}{"Using speed: %d\(\backslash\)n"}, val);
-00545     \textcolor{keywordflow}{return} val;
-00546 \}
-00547 
-\hypertarget{lcddiag_8c_source.tex_l00557}{}\hyperlink{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}{00557} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}{runIndivMotor}(FILE *lcdport)\{
-00558     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00559     \textcolor{keywordtype}{int} mtr = \hyperlink{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{selectMotor}(lcdport);
-00560     \textcolor{keywordflow}{if}(mtr == 0) \textcolor{keywordflow}{return};
-00561     \textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd} = \hyperlink{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{selectSpd}(mtr);
-00562     \textcolor{keywordtype}{int} val = \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd};
-00563     \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl} = \textcolor{keyword}{true};
-00564     motorStopAll();
-00565     \textcolor{keywordflow}{do} \{
-00566         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00567         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00568         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00569         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00570         strcpy(motorstr, \textcolor{stringliteral}{"Motor: "});
-00571         sprintf(temp, \textcolor{stringliteral}{"%d"}, mtr);
-00572         strcat(motorstr, temp);
-00573 
-00574         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00575         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00576         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00577             strcat(str, \textcolor{stringliteral}{" "});
-00578         \}
-00579         strcat(str, motorstr);
-00580         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00581             strcat(str, \textcolor{stringliteral}{" "});
-00582         \}
+00539         done = (digitalRead(\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{AUTON\_BUTTON}) == \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED} || centerPressed);
+00540         delay(20);
+00541     \} \textcolor{keywordflow}{while}(!done);
+00542     printf(\textcolor{stringliteral}{"Using speed: %d\(\backslash\)n"}, val);
+00543     \textcolor{keywordflow}{return} val;
+00544 \}
+00545 
+\hypertarget{lcddiag_8c_source.tex_l00555}{}\hyperlink{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}{00555} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}{runIndivMotor}(FILE *lcdport)\{
+00556     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00557     \textcolor{keywordtype}{int} mtr = \hyperlink{lcddiag_8c_ae7425e4ec1454bd0054bd4e1db7ea686}{selectMotor}(lcdport);
+00558     \textcolor{keywordflow}{if}(mtr == 0) \textcolor{keywordflow}{return};
+00559     \textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd} = \hyperlink{lcddiag_8c_a1f4f4ecd7b0c166456dd26a66e51f813}{selectSpd}(mtr);
+00560     \textcolor{keywordtype}{int} val = \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd};
+00561     \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl} = \textcolor{keyword}{true};
+00562     motorStopAll();
+00563     \textcolor{keywordflow}{do} \{
+00564         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00565         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00566         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00567         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00568         strcpy(motorstr, \textcolor{stringliteral}{"Motor: "});
+00569         sprintf(temp, \textcolor{stringliteral}{"%d"}, mtr);
+00570         strcat(motorstr, temp);
+00571 
+00572         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00573         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00574         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00575             strcat(str, \textcolor{stringliteral}{" "});
+00576         \}
+00577         strcat(str, motorstr);
+00578         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00579             strcat(str, \textcolor{stringliteral}{" "});
+00580         \}
+00581 
+00582         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
 00583 
-00584         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
-00585 
-00586         \textcolor{keywordtype}{char} speedstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00587         memset(speedstr, 0, \textcolor{keyword}{sizeof}(speedstr));
-00588         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00589         strcpy(speedstr, \textcolor{stringliteral}{"Run Speed: "});
-00590         sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
-00591         strcat(speedstr, temp);
-00592 
-00593         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(speedstr))/2;
-00594         strcpy(str, \textcolor{stringliteral}{""});
-00595         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00596             strcat(str, \textcolor{stringliteral}{" "});
-00597         \}
-00598         strcat(str, speedstr);
-00599         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00600             strcat(str, \textcolor{stringliteral}{" "});
-00601         \}
+00584         \textcolor{keywordtype}{char} speedstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00585         memset(speedstr, 0, \textcolor{keyword}{sizeof}(speedstr));
+00586         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00587         strcpy(speedstr, \textcolor{stringliteral}{"Run Speed: "});
+00588         sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
+00589         strcat(speedstr, temp);
+00590 
+00591         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(speedstr))/2;
+00592         strcpy(str, \textcolor{stringliteral}{""});
+00593         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00594             strcat(str, \textcolor{stringliteral}{" "});
+00595         \}
+00596         strcat(str, speedstr);
+00597         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00598             strcat(str, \textcolor{stringliteral}{" "});
+00599         \}
+00600 
+00601         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, str);
 00602 
-00603         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, str);
-00604 
-00605         done = \hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}();
-00606         motorSet(mtr, val);
-00607 
-00608         delay(20);
-00609     \} \textcolor{keywordflow}{while}(!done);
-00610     \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl} = \textcolor{keyword}{false};
-00611 \}
-00612 
-\hypertarget{lcddiag_8c_source.tex_l00620}{}\hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{00620} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{selectMotorGroup}(FILE *lcdport)\{
-00621     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00622     \textcolor{keywordtype}{int} val = 0;
-00623     \textcolor{keywordflow}{do} \{
-00624         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00625         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-00626         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-00627 
-00628         \textcolor{keywordflow}{if}(rightPressed && val != \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1) val++;
-00629         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1) val = -1;
-00630         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != -1) val--;
-00631         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == -1) val = \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1;
-00632 
-00633         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00634         \textcolor{keywordflow}{if}(val != -1)\{
-00635             memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00636             strcpy(motorstr, groups[val].name);
-00637         \} \textcolor{keywordflow}{else} \{
-00638             strcpy(motorstr, \textcolor{stringliteral}{"Cancel"});
-00639         \}
-00640 
-00641         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00642         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00643         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00644             strcat(str, \textcolor{stringliteral}{" "});
-00645         \}
-00646         strcat(str, motorstr);
-00647         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00648             strcat(str, \textcolor{stringliteral}{" "});
-00649         \}
+00603         done = \hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}();
+00604         motorSet(mtr, val);
+00605 
+00606         delay(20);
+00607     \} \textcolor{keywordflow}{while}(!done);
+00608     \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl} = \textcolor{keyword}{false};
+00609 \}
+00610 
+\hypertarget{lcddiag_8c_source.tex_l00618}{}\hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{00618} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{selectMotorGroup}(FILE *lcdport)\{
+00619     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00620     \textcolor{keywordtype}{int} val = 0;
+00621     \textcolor{keywordflow}{do} \{
+00622         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00623         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+00624         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+00625 
+00626         \textcolor{keywordflow}{if}(rightPressed && val != \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1) val++;
+00627         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1) val = -1;
+00628         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != -1) val--;
+00629         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == -1) val = \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1;
+00630 
+00631         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00632         \textcolor{keywordflow}{if}(val != -1)\{
+00633             memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00634             strcpy(motorstr, groups[val].name);
+00635         \} \textcolor{keywordflow}{else} \{
+00636             strcpy(motorstr, \textcolor{stringliteral}{"Cancel"});
+00637         \}
+00638 
+00639         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00640         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00641         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00642             strcat(str, \textcolor{stringliteral}{" "});
+00643         \}
+00644         strcat(str, motorstr);
+00645         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00646             strcat(str, \textcolor{stringliteral}{" "});
+00647         \}
+00648 
+00649         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
 00650 
-00651         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
-00652 
-00653         done = centerPressed;
-00654         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
-00655         delay(20);
-00656     \} \textcolor{keywordflow}{while}(!done);
-00657     \textcolor{keywordflow}{return} val;
-00658 \}
-00659 
-\hypertarget{lcddiag_8c_source.tex_l00667}{}\hyperlink{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{00667} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{selectSpdGroup}(\textcolor{keywordtype}{int} mtr) \{
-00668     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00669     \textcolor{keywordtype}{int} val;
-00670     \textcolor{keywordflow}{do} \{
-00671         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00672         \textcolor{comment}{/*bool leftPressed = lcdButtonPressed(LCD\_BTN\_LEFT);*/}
-00673         \textcolor{comment}{/*bool rightPressed = lcdButtonPressed(LCD\_BTN\_RIGHT);*/}
-00674 
-00675         val = (float) ((\textcolor{keywordtype}{float}) analogRead(\hyperlink{autonrecorder_8h_a2490cda7a399f481333af2e5589b74a9}{AUTON\_POT})/(float) 
+00651         done = centerPressed;
+00652         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
+00653         delay(20);
+00654     \} \textcolor{keywordflow}{while}(!done);
+00655     \textcolor{keywordflow}{return} val;
+00656 \}
+00657 
+\hypertarget{lcddiag_8c_source.tex_l00665}{}\hyperlink{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{00665} \textcolor{keywordtype}{int} \hyperlink{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{selectSpdGroup}(\textcolor{keywordtype}{int} mtr) \{
+00666     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00667     \textcolor{keywordtype}{int} val;
+00668     \textcolor{keywordflow}{do} \{
+00669         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00670         \textcolor{comment}{/*bool leftPressed = lcdButtonPressed(LCD\_BTN\_LEFT);*/}
+00671         \textcolor{comment}{/*bool rightPressed = lcdButtonPressed(LCD\_BTN\_RIGHT);*/}
+00672 
+00673         val = (float) ((\textcolor{keywordtype}{float}) analogRead(\hyperlink{autonrecorder_8h_a2490cda7a399f481333af2e5589b74a9}{AUTON\_POT})/(float) 
       \hyperlink{autonrecorder_8h_a01989d89b8bed150d0aacdaef5ccabd3}{AUTON\_POT\_HIGH}) * 254;
-00676         val -= 127;
-00677         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00678         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00679         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00680         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00681         strcpy(motorstr, groups[mtr].name);
-00682 
-00683         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00684         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00685         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00686             strcat(str, \textcolor{stringliteral}{" "});
-00687         \}
-00688         strcat(str, motorstr);
-00689         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00690             strcat(str, \textcolor{stringliteral}{" "});
-00691         \}
+00674         val -= 127;
+00675         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00676         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00677         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00678         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00679         strcpy(motorstr, groups[mtr].name);
+00680 
+00681         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00682         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00683         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00684             strcat(str, \textcolor{stringliteral}{" "});
+00685         \}
+00686         strcat(str, motorstr);
+00687         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00688             strcat(str, \textcolor{stringliteral}{" "});
+00689         \}
+00690 
+00691         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
 00692 
-00693         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
-00694 
-00695         \textcolor{keywordtype}{char} speedstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00696         memset(speedstr, 0, \textcolor{keyword}{sizeof}(speedstr));
-00697         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00698         strcpy(speedstr, \textcolor{stringliteral}{"Speed: "});
-00699         sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
-00700         strcat(speedstr, temp);
-00701 
-00702         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(speedstr))/2;
-00703         strcpy(str, \textcolor{stringliteral}{""});
-00704         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00705             strcat(str, \textcolor{stringliteral}{" "});
-00706         \}
-00707         strcat(str, speedstr);
-00708         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00709             strcat(str, \textcolor{stringliteral}{" "});
-00710         \}
+00693         \textcolor{keywordtype}{char} speedstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00694         memset(speedstr, 0, \textcolor{keyword}{sizeof}(speedstr));
+00695         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00696         strcpy(speedstr, \textcolor{stringliteral}{"Speed: "});
+00697         sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
+00698         strcat(speedstr, temp);
+00699 
+00700         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(speedstr))/2;
+00701         strcpy(str, \textcolor{stringliteral}{""});
+00702         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00703             strcat(str, \textcolor{stringliteral}{" "});
+00704         \}
+00705         strcat(str, speedstr);
+00706         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00707             strcat(str, \textcolor{stringliteral}{" "});
+00708         \}
+00709 
+00710         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, str);
 00711 
-00712         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, str);
-00713 
-00714         done = (digitalRead(\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{AUTON\_BUTTON}) == \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED} || centerPressed);
-00715         delay(20);
-00716     \} \textcolor{keywordflow}{while}(!done);
-00717     \textcolor{keywordflow}{return} val;
-00718 \}
-00719 
-\hypertarget{lcddiag_8c_source.tex_l00729}{}\hyperlink{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}{00729} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}{runGroupMotor}(FILE *lcdport)\{
-00730     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00731     \textcolor{keywordtype}{int} mtr = \hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{selectMotorGroup}(lcdport);
-00732     \textcolor{keywordflow}{if}(mtr == -1) \textcolor{keywordflow}{return};
-00733     \textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd} = \hyperlink{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{selectSpdGroup}(mtr);
-00734     \textcolor{keywordtype}{int} val = \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd};
-00735     \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl} = \textcolor{keyword}{true};
-00736     motorStopAll();
-00737     \textcolor{keywordflow}{do} \{
-00738         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00739         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00740         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00741         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00742         strcpy(motorstr, groups[mtr].name);
-00743 
-00744         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00745         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00746         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00747             strcat(str, \textcolor{stringliteral}{" "});
-00748         \}
-00749         strcat(str, motorstr);
-00750         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00751             strcat(str, \textcolor{stringliteral}{" "});
-00752         \}
+00712         done = (digitalRead(\hyperlink{autonrecorder_8h_a5e5e9512ca0c5f741113ae51b24258c1}{AUTON\_BUTTON}) == \hyperlink{friendly_8h_a654adff3c664f27f0b29c24af818dd26}{PRESSED} || centerPressed);
+00713         delay(20);
+00714     \} \textcolor{keywordflow}{while}(!done);
+00715     \textcolor{keywordflow}{return} val;
+00716 \}
+00717 
+\hypertarget{lcddiag_8c_source.tex_l00727}{}\hyperlink{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}{00727} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}{runGroupMotor}(FILE *lcdport)\{
+00728     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00729     \textcolor{keywordtype}{int} mtr = \hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{selectMotorGroup}(lcdport);
+00730     \textcolor{keywordflow}{if}(mtr == -1) \textcolor{keywordflow}{return};
+00731     \textcolor{keywordtype}{int} \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd} = \hyperlink{lcddiag_8c_a7a421f9cf3e21c806080bee51c68a5c9}{selectSpdGroup}(mtr);
+00732     \textcolor{keywordtype}{int} val = \hyperlink{opcontrol_8c_a642ce334330c8b0f6e33dd0a3fa65111}{spd};
+00733     \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl} = \textcolor{keyword}{true};
+00734     motorStopAll();
+00735     \textcolor{keywordflow}{do} \{
+00736         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00737         \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00738         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00739         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00740         strcpy(motorstr, groups[mtr].name);
+00741 
+00742         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00743         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00744         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00745             strcat(str, \textcolor{stringliteral}{" "});
+00746         \}
+00747         strcat(str, motorstr);
+00748         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00749             strcat(str, \textcolor{stringliteral}{" "});
+00750         \}
+00751 
+00752         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
 00753 
-00754         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
-00755 
-00756         \textcolor{keywordtype}{char} speedstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00757         memset(speedstr, 0, \textcolor{keyword}{sizeof}(speedstr));
-00758         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00759         strcat(speedstr, \textcolor{stringliteral}{"Run Speed: "});
-00760         sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
-00761         strcat(speedstr, temp);
-00762 
-00763         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(speedstr))/2;
-00764         strcpy(str, \textcolor{stringliteral}{""});
-00765         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00766             strcat(str, \textcolor{stringliteral}{" "});
-00767         \}
-00768         strcat(str, speedstr);
-00769         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00770             strcat(str, \textcolor{stringliteral}{" "});
-00771         \}
+00754         \textcolor{keywordtype}{char} speedstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00755         memset(speedstr, 0, \textcolor{keyword}{sizeof}(speedstr));
+00756         memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00757         strcat(speedstr, \textcolor{stringliteral}{"Run Speed: "});
+00758         sprintf(temp, \textcolor{stringliteral}{"%d"}, val);
+00759         strcat(speedstr, temp);
+00760 
+00761         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(speedstr))/2;
+00762         strcpy(str, \textcolor{stringliteral}{""});
+00763         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00764             strcat(str, \textcolor{stringliteral}{" "});
+00765         \}
+00766         strcat(str, speedstr);
+00767         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00768             strcat(str, \textcolor{stringliteral}{" "});
+00769         \}
+00770 
+00771         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, str);
 00772 
-00773         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, str);
-00774 
-00775         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= 10; i++)\{
-00776             \textcolor{keywordflow}{if}(groups[mtr].motor[i])\{
-00777                 motorSet(i, val);
-00778             \}
-00779         \}
-00780 
-00781         done = \hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}();
-00782         delay(20);
-00783     \} \textcolor{keywordflow}{while}(!done);
-00784     \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl} = \textcolor{keyword}{false};
-00785 \}
-00786 
-\hypertarget{lcddiag_8c_source.tex_l00793}{}\hyperlink{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}{00793} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}{runMotor}(FILE *lcdport)\{
-00794     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00795     \textcolor{keywordtype}{int} val = 0;
-00796     \textcolor{keywordflow}{do} \{
-00797         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00798         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-00799         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-00800 
-00801         \textcolor{keywordflow}{if}(rightPressed && val != 1) val++;
-00802         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
-00803 
-00804         \textcolor{keywordflow}{if}(val)\{
-00805             lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Indiv Motor Test"});
-00806         \} \textcolor{keywordflow}{else} \{
-00807             lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Group Motor Test"});
-00808         \}
-00809         done = centerPressed;
-00810         \textcolor{keywordflow}{if}(val == 0)\{
-00811             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"|      SEL     >"});
-00812         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
-00813             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     |"});
-00814         \}
-00815         delay(20);
-00816     \} \textcolor{keywordflow}{while}(!done);
-00817     \textcolor{keywordflow}{if}(val)\{
-00818         \hyperlink{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}{runIndivMotor}(lcdport);
-00819     \} \textcolor{keywordflow}{else} \{
-00820         \hyperlink{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}{runGroupMotor}(lcdport);
-00821     \}
-00822 \}
-00823 
-\hypertarget{lcddiag_8c_source.tex_l00831}{}\hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{00831} \textcolor{keywordtype}{bool}* \hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{selectMotorGroupMembers}(\textcolor{keywordtype}{bool} *motor)\{
-00832     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00833     \textcolor{keywordtype}{int} val = 1;
-00834     \textcolor{keywordflow}{do} \{
-00835         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00836         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-00837         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-00838 
-00839         \textcolor{keywordflow}{if}(rightPressed && val != 10) val++;
-00840         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == 10) val = 0;
-00841         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
-00842         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == 0) val = 10;
-00843 
-00844         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00845         \textcolor{keywordflow}{if}(val != 0)\{
-00846             \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00847             memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00848             memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
-00849             strcpy(motorstr, \textcolor{stringliteral}{"Motor "});
-00850             sprintf(temp, \textcolor{stringliteral}{"%d:"}, val);
-00851             strcat(motorstr, temp);
-00852             \textcolor{keywordflow}{if}(motor[val])\{
-00853                 strcat(motorstr, \textcolor{stringliteral}{" On"});
-00854             \} \textcolor{keywordflow}{else} \{
-00855                 strcat(motorstr, \textcolor{stringliteral}{" Off"});
-00856             \}
-00857         \} \textcolor{keywordflow}{else} \{
-00858             strcpy(motorstr, \textcolor{stringliteral}{"Confirm"});
-00859         \}
-00860         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00861         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00862         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00863             strcat(str, \textcolor{stringliteral}{" "});
-00864         \}
-00865         strcat(str, motorstr);
-00866         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00867             strcat(str, \textcolor{stringliteral}{" "});
-00868         \}
+00773         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= 10; i++)\{
+00774             \textcolor{keywordflow}{if}(groups[mtr].motor[i])\{
+00775                 motorSet(i, val);
+00776             \}
+00777         \}
+00778 
+00779         done = \hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}();
+00780         delay(20);
+00781     \} \textcolor{keywordflow}{while}(!done);
+00782     \hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl} = \textcolor{keyword}{false};
+00783 \}
+00784 
+\hypertarget{lcddiag_8c_source.tex_l00791}{}\hyperlink{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}{00791} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}{runMotor}(FILE *lcdport)\{
+00792     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00793     \textcolor{keywordtype}{int} val = 0;
+00794     \textcolor{keywordflow}{do} \{
+00795         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00796         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+00797         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+00798 
+00799         \textcolor{keywordflow}{if}(rightPressed && val != 1) val++;
+00800         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
+00801 
+00802         \textcolor{keywordflow}{if}(val)\{
+00803             lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Indiv Motor Test"});
+00804         \} \textcolor{keywordflow}{else} \{
+00805             lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Group Motor Test"});
+00806         \}
+00807         done = centerPressed;
+00808         \textcolor{keywordflow}{if}(val == 0)\{
+00809             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"|      SEL     >"});
+00810         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
+00811             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     |"});
+00812         \}
+00813         delay(20);
+00814     \} \textcolor{keywordflow}{while}(!done);
+00815     \textcolor{keywordflow}{if}(val)\{
+00816         \hyperlink{lcddiag_8c_ad4df85d8b386f9a60b097fd65cf27e3b}{runIndivMotor}(lcdport);
+00817     \} \textcolor{keywordflow}{else} \{
+00818         \hyperlink{lcddiag_8c_a61bf99fda231c065d2113f0c67b8d72a}{runGroupMotor}(lcdport);
+00819     \}
+00820 \}
+00821 
+\hypertarget{lcddiag_8c_source.tex_l00829}{}\hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{00829} \textcolor{keywordtype}{bool}* \hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{selectMotorGroupMembers}(\textcolor{keywordtype}{bool} *motor)\{
+00830     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00831     \textcolor{keywordtype}{int} val = 1;
+00832     \textcolor{keywordflow}{do} \{
+00833         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00834         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+00835         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+00836 
+00837         \textcolor{keywordflow}{if}(rightPressed && val != 10) val++;
+00838         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == 10) val = 0;
+00839         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
+00840         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == 0) val = 10;
+00841 
+00842         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00843         \textcolor{keywordflow}{if}(val != 0)\{
+00844             \textcolor{keywordtype}{char} temp[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00845             memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00846             memset(temp, 0, \textcolor{keyword}{sizeof}(temp));
+00847             strcpy(motorstr, \textcolor{stringliteral}{"Motor "});
+00848             sprintf(temp, \textcolor{stringliteral}{"%d:"}, val);
+00849             strcat(motorstr, temp);
+00850             \textcolor{keywordflow}{if}(motor[val])\{
+00851                 strcat(motorstr, \textcolor{stringliteral}{" On"});
+00852             \} \textcolor{keywordflow}{else} \{
+00853                 strcat(motorstr, \textcolor{stringliteral}{" Off"});
+00854             \}
+00855         \} \textcolor{keywordflow}{else} \{
+00856             strcpy(motorstr, \textcolor{stringliteral}{"Confirm"});
+00857         \}
+00858         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00859         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00860         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00861             strcat(str, \textcolor{stringliteral}{" "});
+00862         \}
+00863         strcat(str, motorstr);
+00864         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00865             strcat(str, \textcolor{stringliteral}{" "});
+00866         \}
+00867 
+00868         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
 00869 
-00870         lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, str);
-00871 
-00872         done = (centerPressed && val == 0);
-00873         \textcolor{keywordflow}{if}(centerPressed && val != 0)\{
-00874             motor[val] = !motor[val];
-00875         \}
-00876         \textcolor{keywordflow}{if}(val == 0)\{
-00877             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"10     SEL     1"});
-00878         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
-00879             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"ESC    SEL     2"});
-00880         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 10) \{
-00881             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"9      SEL   ESC"});
-00882         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val == 9) \{
-00883             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"8      SEL    10"});
-00884         \} \textcolor{keywordflow}{else} \{
-00885             \textcolor{keywordtype}{char} navstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00886             memset(navstr, 0, \textcolor{keyword}{sizeof}(navstr));
-00887             sprintf(navstr, \textcolor{stringliteral}{"%c      SEL     %c"},(val-1) + \textcolor{charliteral}{'0'}, (val+1) + \textcolor{charliteral}{'0'});
-00888             \textcolor{comment}{/*navstr[0] = (val-1) + '0';*/}
-00889             \textcolor{comment}{/*strcat(navstr, "      SEL     ");*/}
-00890             \textcolor{comment}{/*navstr[LCD\_MESSAGE\_MAX\_LENGTH] = (val+1) + '0';*/}
-00891             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, navstr);
-00892         \}
-00893         delay(20);
-00894     \} \textcolor{keywordflow}{while}(!done);
-00895     \textcolor{keywordflow}{return} motor;
-00896 \}
-00897 
-\hypertarget{lcddiag_8c_source.tex_l00901}{}\hyperlink{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}{00901} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}{addMotorGroup}()\{
-00902     \hyperlink{struct_motor_group}{MotorGroup} *temp = (\hyperlink{struct_motor_group}{MotorGroup}*) realloc(groups, \textcolor{keyword}{sizeof}(
+00870         done = (centerPressed && val == 0);
+00871         \textcolor{keywordflow}{if}(centerPressed && val != 0)\{
+00872             motor[val] = !motor[val];
+00873         \}
+00874         \textcolor{keywordflow}{if}(val == 0)\{
+00875             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"10     SEL     1"});
+00876         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
+00877             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"ESC    SEL     2"});
+00878         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 10) \{
+00879             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"9      SEL   ESC"});
+00880         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val == 9) \{
+00881             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"8      SEL    10"});
+00882         \} \textcolor{keywordflow}{else} \{
+00883             \textcolor{keywordtype}{char} navstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00884             memset(navstr, 0, \textcolor{keyword}{sizeof}(navstr));
+00885             sprintf(navstr, \textcolor{stringliteral}{"%c      SEL     %c"},(val-1) + \textcolor{charliteral}{'0'}, (val+1) + \textcolor{charliteral}{'0'});
+00886             \textcolor{comment}{/*navstr[0] = (val-1) + '0';*/}
+00887             \textcolor{comment}{/*strcat(navstr, "      SEL     ");*/}
+00888             \textcolor{comment}{/*navstr[LCD\_MESSAGE\_MAX\_LENGTH] = (val+1) + '0';*/}
+00889             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, navstr);
+00890         \}
+00891         delay(20);
+00892     \} \textcolor{keywordflow}{while}(!done);
+00893     \textcolor{keywordflow}{return} motor;
+00894 \}
+00895 
+\hypertarget{lcddiag_8c_source.tex_l00899}{}\hyperlink{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}{00899} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}{addMotorGroup}()\{
+00900     \hyperlink{struct_motor_group}{MotorGroup} *temp = (\hyperlink{struct_motor_group}{MotorGroup}*) realloc(groups, \textcolor{keyword}{sizeof}(
       \hyperlink{struct_motor_group}{MotorGroup})*(\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}+1));
-00903     \textcolor{keywordflow}{if}(temp == NULL) \textcolor{keywordflow}{return};
-00904     groups = temp;
-00905     \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}++;
-00906     memset(&groups[\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1], 0, \textcolor{keyword}{sizeof}(groups[\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1]));
-00907     \hyperlink{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}{typeString}(groups[\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1].name);
-00908     \hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{selectMotorGroupMembers}(groups[\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1].motor);
-00909 \}
-00910 
-\hypertarget{lcddiag_8c_source.tex_l00917}{}\hyperlink{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}{00917} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}{editMotorGroup}(\textcolor{keywordtype}{int} mtr)\{
-00918     \textcolor{keywordflow}{if}(mtr == -1) \textcolor{keywordflow}{return};
-00919     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00920     \textcolor{keywordtype}{int} val = 0;
-00921     FILE *lcdport = \hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT};
-00922     \textcolor{keywordflow}{do} \{
-00923         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00924         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-00925         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-00926 
-00927         \textcolor{keywordflow}{if}(rightPressed && val != 1) val++;
-00928         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
-00929 
-00930         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00931         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00932 
-00933         \textcolor{keywordflow}{if}(val)\{
-00934             strcpy(motorstr, \textcolor{stringliteral}{"Edit Name"});
-00935         \} \textcolor{keywordflow}{else} \{
-00936             strcpy(motorstr, \textcolor{stringliteral}{"Edit Motors"});
-00937         \}
-00938 
-00939         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00940         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00941         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00942             strcat(str, \textcolor{stringliteral}{" "});
-00943         \}
-00944         strcat(str, motorstr);
-00945         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00946             strcat(str, \textcolor{stringliteral}{" "});
-00947         \}
+00901     \textcolor{keywordflow}{if}(temp == NULL) \textcolor{keywordflow}{return};
+00902     groups = temp;
+00903     \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}++;
+00904     memset(&groups[\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1], 0, \textcolor{keyword}{sizeof}(groups[\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1]));
+00905     \hyperlink{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}{typeString}(groups[\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1].name);
+00906     \hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{selectMotorGroupMembers}(groups[\hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups}-1].motor);
+00907 \}
+00908 
+\hypertarget{lcddiag_8c_source.tex_l00915}{}\hyperlink{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}{00915} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}{editMotorGroup}(\textcolor{keywordtype}{int} mtr)\{
+00916     \textcolor{keywordflow}{if}(mtr == -1) \textcolor{keywordflow}{return};
+00917     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00918     \textcolor{keywordtype}{int} val = 0;
+00919     FILE *lcdport = \hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT};
+00920     \textcolor{keywordflow}{do} \{
+00921         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00922         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+00923         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+00924 
+00925         \textcolor{keywordflow}{if}(rightPressed && val != 1) val++;
+00926         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
+00927 
+00928         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00929         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00930 
+00931         \textcolor{keywordflow}{if}(val)\{
+00932             strcpy(motorstr, \textcolor{stringliteral}{"Edit Name"});
+00933         \} \textcolor{keywordflow}{else} \{
+00934             strcpy(motorstr, \textcolor{stringliteral}{"Edit Motors"});
+00935         \}
+00936 
+00937         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00938         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00939         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00940             strcat(str, \textcolor{stringliteral}{" "});
+00941         \}
+00942         strcat(str, motorstr);
+00943         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00944             strcat(str, \textcolor{stringliteral}{" "});
+00945         \}
+00946 
+00947         lcdSetText(lcdport, 1, str);
 00948 
-00949         lcdSetText(lcdport, 1, str);
-00950 
-00951         done = centerPressed;
-00952         \textcolor{keywordflow}{if}(val == 0)\{
-00953             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"|      SEL     >"});
-00954         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
-00955             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     |"});
-00956         \}
-00957         delay(20);
-00958     \} \textcolor{keywordflow}{while}(!done);
-00959     \textcolor{keywordflow}{if}(val)\{
-00960         \hyperlink{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}{typeString}(groups[mtr].name);
-00961     \} \textcolor{keywordflow}{else} \{
-00962         \hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{selectMotorGroupMembers}(groups[mtr].motor);
-00963     \}
-00964 \}
-00965 
-\hypertarget{lcddiag_8c_source.tex_l00972}{}\hyperlink{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}{00972} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}{delMotorGroup}(\textcolor{keywordtype}{int} mtr)\{
-00973     \textcolor{keywordflow}{if}(mtr == -1) \textcolor{keywordflow}{return};
-00974     \textcolor{keywordtype}{int} val = 0;
-00975     FILE *lcdport = \hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT};
-00976     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-00977     \textcolor{keywordflow}{do} \{
-00978         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-00979         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-00980         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-00981 
-00982         \textcolor{keywordflow}{if}(rightPressed && val != 1) val++;
-00983         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
-00984 
-00985         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-00986         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
-00987 
-00988         \textcolor{keywordflow}{if}(val)\{
-00989             strcpy(motorstr, \textcolor{stringliteral}{"Delete Forever"});
-00990         \} \textcolor{keywordflow}{else} \{
-00991             strcpy(motorstr, \textcolor{stringliteral}{"Cancel Delete"});
-00992         \}
-00993 
-00994         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
-00995         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-00996         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-00997             strcat(str, \textcolor{stringliteral}{" "});
-00998         \}
-00999         strcat(str, motorstr);
-01000         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01001             strcat(str, \textcolor{stringliteral}{" "});
-01002         \}
+00949         done = centerPressed;
+00950         \textcolor{keywordflow}{if}(val == 0)\{
+00951             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"|      SEL     >"});
+00952         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
+00953             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     |"});
+00954         \}
+00955         delay(20);
+00956     \} \textcolor{keywordflow}{while}(!done);
+00957     \textcolor{keywordflow}{if}(val)\{
+00958         \hyperlink{lcddiag_8c_a17fe3ffc769a6d02c5226b3bfb79f28f}{typeString}(groups[mtr].name);
+00959     \} \textcolor{keywordflow}{else} \{
+00960         \hyperlink{lcddiag_8c_a72f3f96c95c24f67103b2eb30995dccb}{selectMotorGroupMembers}(groups[mtr].motor);
+00961     \}
+00962 \}
+00963 
+\hypertarget{lcddiag_8c_source.tex_l00970}{}\hyperlink{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}{00970} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}{delMotorGroup}(\textcolor{keywordtype}{int} mtr)\{
+00971     \textcolor{keywordflow}{if}(mtr == -1) \textcolor{keywordflow}{return};
+00972     \textcolor{keywordtype}{int} val = 0;
+00973     FILE *lcdport = \hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT};
+00974     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+00975     \textcolor{keywordflow}{do} \{
+00976         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+00977         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+00978         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+00979 
+00980         \textcolor{keywordflow}{if}(rightPressed && val != 1) val++;
+00981         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
+00982 
+00983         \textcolor{keywordtype}{char} motorstr[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+00984         memset(motorstr, 0, \textcolor{keyword}{sizeof}(motorstr));
+00985 
+00986         \textcolor{keywordflow}{if}(val)\{
+00987             strcpy(motorstr, \textcolor{stringliteral}{"Delete Forever"});
+00988         \} \textcolor{keywordflow}{else} \{
+00989             strcpy(motorstr, \textcolor{stringliteral}{"Cancel Delete"});
+00990         \}
+00991 
+00992         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(motorstr))/2;
+00993         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+00994         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00995             strcat(str, \textcolor{stringliteral}{" "});
+00996         \}
+00997         strcat(str, motorstr);
+00998         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+00999             strcat(str, \textcolor{stringliteral}{" "});
+01000         \}
+01001 
+01002         lcdSetText(lcdport, 1, str);
 01003 
-01004         lcdSetText(lcdport, 1, str);
-01005 
-01006         done = centerPressed;
-01007         \textcolor{keywordflow}{if}(val == 0)\{
-01008             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"|      SEL     >"});
-01009         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
-01010             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     |"});
-01011         \}
-01012         delay(20);
-01013     \} \textcolor{keywordflow}{while}(!done);
-01014     \textcolor{keywordflow}{if}(val)\{
-01015         memset(&groups[mtr], 0, \textcolor{keyword}{sizeof}(groups[mtr]));
-01016         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = mtr; i < \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups} - 1; i++)\{
-01017             memcpy(&groups[i], &groups[i+1], \textcolor{keyword}{sizeof}(groups[i]));
-01018         \}
-01019         numgroups--;
-01020     \}
-01021 \}
-01022 
-\hypertarget{lcddiag_8c_source.tex_l01029}{}\hyperlink{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}{01029} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}{runMotorGroupMgmt}(FILE *lcdport)\{
-01030     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
-01031     \textcolor{keywordtype}{int} val = 0;
-01032     \textcolor{keywordflow}{do} \{
-01033         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
-01034         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
-01035         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
-01036 
-01037         \textcolor{keywordflow}{if}(rightPressed && val != 3) val++;
-01038         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == 3) val = 0;
-01039         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
-01040         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == 0) val = 3;
-01041 
-01042         \textcolor{keywordflow}{switch}(val)\{
-01043             \textcolor{keywordflow}{case} 0: lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Add Motor Group"}); \textcolor{keywordflow}{break};
-01044             \textcolor{keywordflow}{case} 1: lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Edit Motor Group"}); \textcolor{keywordflow}{break};
-01045             \textcolor{keywordflow}{case} 2: lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Del Motor Group"}); \textcolor{keywordflow}{break};
-01046             \textcolor{keywordflow}{case} 3: lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Cancel Grp. Mgmt"}); \textcolor{keywordflow}{break};
-01047         \}
-01048         done = centerPressed;
-01049         \textcolor{keywordflow}{if}(val == 0)\{
+01004         done = centerPressed;
+01005         \textcolor{keywordflow}{if}(val == 0)\{
+01006             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"|      SEL     >"});
+01007         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(val == 1) \{
+01008             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     |"});
+01009         \}
+01010         delay(20);
+01011     \} \textcolor{keywordflow}{while}(!done);
+01012     \textcolor{keywordflow}{if}(val)\{
+01013         memset(&groups[mtr], 0, \textcolor{keyword}{sizeof}(groups[mtr]));
+01014         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = mtr; i < \hyperlink{lcddiag_8c_a205f1cedec1664555276e0a71a1c87d8}{numgroups} - 1; i++)\{
+01015             memcpy(&groups[i], &groups[i+1], \textcolor{keyword}{sizeof}(groups[i]));
+01016         \}
+01017         numgroups--;
+01018     \}
+01019 \}
+01020 
+\hypertarget{lcddiag_8c_source.tex_l01027}{}\hyperlink{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}{01027} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}{runMotorGroupMgmt}(FILE *lcdport)\{
+01028     \textcolor{keywordtype}{bool} done = \textcolor{keyword}{false};
+01029     \textcolor{keywordtype}{int} val = 0;
+01030     \textcolor{keywordflow}{do} \{
+01031         \textcolor{keywordtype}{bool} centerPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_CENTER);
+01032         \textcolor{keywordtype}{bool} leftPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_LEFT);
+01033         \textcolor{keywordtype}{bool} rightPressed = \hyperlink{lcddiag_8h_a74e4c744db49f9b7b645095575e152ad}{lcdButtonPressed}(LCD\_BTN\_RIGHT);
+01034 
+01035         \textcolor{keywordflow}{if}(rightPressed && val != 3) val++;
+01036         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rightPressed && val == 3) val = 0;
+01037         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val != 0) val--;
+01038         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(leftPressed && val == 0) val = 3;
+01039 
+01040         \textcolor{keywordflow}{switch}(val)\{
+01041             \textcolor{keywordflow}{case} 0: lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Add Motor Group"}); \textcolor{keywordflow}{break};
+01042             \textcolor{keywordflow}{case} 1: lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Edit Motor Group"}); \textcolor{keywordflow}{break};
+01043             \textcolor{keywordflow}{case} 2: lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Del Motor Group"}); \textcolor{keywordflow}{break};
+01044             \textcolor{keywordflow}{case} 3: lcdSetText(lcdport, 1, \textcolor{stringliteral}{"Cancel Grp. Mgmt"}); \textcolor{keywordflow}{break};
+01045         \}
+01046         done = centerPressed;
+01047         \textcolor{keywordflow}{if}(val == 0)\{
+01048             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
+01049         \} \textcolor{keywordflow}{else} \{
 01050             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
-01051         \} \textcolor{keywordflow}{else} \{
-01052             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2, \textcolor{stringliteral}{"<      SEL     >"});
-01053         \}
-01054         delay(20);
-01055     \} \textcolor{keywordflow}{while}(!done);
-01056     \textcolor{keywordflow}{switch}(val)\{
-01057         \textcolor{keywordflow}{case} 0: \hyperlink{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}{addMotorGroup}(); \textcolor{keywordflow}{break};
-01058         \textcolor{keywordflow}{case} 1: \hyperlink{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}{editMotorGroup}(\hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{selectMotorGroup}(lcdport)); \textcolor{keywordflow}{break};
-01059         \textcolor{keywordflow}{case} 2: \hyperlink{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}{delMotorGroup}(\hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{selectMotorGroup}(lcdport)); \textcolor{keywordflow}{break};
-01060         \textcolor{keywordflow}{case} 3: \textcolor{keywordflow}{break};
-01061     \}
-01062 \}
-01063 
-\hypertarget{lcddiag_8c_source.tex_l01070}{}\hyperlink{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}{01070} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}{runConnection}(FILE *lcdport)\{
-01071     \textcolor{keywordflow}{do} \{
-01072         \textcolor{keywordtype}{char} strjoy1[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01073         \textcolor{keywordtype}{char} strjoy2[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01074         \textcolor{keywordflow}{if}(isJoystickConnected(1))\{
-01075             strcat(strjoy1, \textcolor{stringliteral}{"J1: Connected"});
-01076         \} \textcolor{keywordflow}{else} \{
-01077             strcat(strjoy1, \textcolor{stringliteral}{"J1: Disconnected"});
-01078         \}
-01079         \textcolor{keywordflow}{if}(isJoystickConnected(2))\{
-01080             strcat(strjoy2, \textcolor{stringliteral}{"J2: Connected"});
-01081         \} \textcolor{keywordflow}{else} \{
-01082             strcat(strjoy2, \textcolor{stringliteral}{"J2: Disconnected"});
-01083         \}
-01084 
-01085         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy1))/2;
-01086         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01087         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01088             strcat(str, \textcolor{stringliteral}{" "});
-01089         \}
-01090         strcat(str, strjoy1);
-01091         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01092             strcat(str, \textcolor{stringliteral}{" "});
-01093         \}
+01051         \}
+01052         delay(20);
+01053     \} \textcolor{keywordflow}{while}(!done);
+01054     \textcolor{keywordflow}{switch}(val)\{
+01055         \textcolor{keywordflow}{case} 0: \hyperlink{lcddiag_8c_a9cffea5742f16bfef41b3dcf6d66cd7d}{addMotorGroup}(); \textcolor{keywordflow}{break};
+01056         \textcolor{keywordflow}{case} 1: \hyperlink{lcddiag_8c_a8e26ee136d643c9e069d89be0e6b019e}{editMotorGroup}(\hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{selectMotorGroup}(lcdport)); \textcolor{keywordflow}{break};
+01057         \textcolor{keywordflow}{case} 2: \hyperlink{lcddiag_8c_ac1782b34157c340fc8ae576a55d7d067}{delMotorGroup}(\hyperlink{lcddiag_8c_a45205137e2aea6d387568cabe3072002}{selectMotorGroup}(lcdport)); \textcolor{keywordflow}{break};
+01058         \textcolor{keywordflow}{case} 3: \textcolor{keywordflow}{break};
+01059     \}
+01060 \}
+01061 
+\hypertarget{lcddiag_8c_source.tex_l01068}{}\hyperlink{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}{01068} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}{runConnection}(FILE *lcdport)\{
+01069     \textcolor{keywordflow}{do} \{
+01070         \textcolor{keywordtype}{char} strjoy1[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01071         \textcolor{keywordtype}{char} strjoy2[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01072         \textcolor{keywordflow}{if}(isJoystickConnected(1))\{
+01073             strcat(strjoy1, \textcolor{stringliteral}{"J1: Connected"});
+01074         \} \textcolor{keywordflow}{else} \{
+01075             strcat(strjoy1, \textcolor{stringliteral}{"J1: Disconnected"});
+01076         \}
+01077         \textcolor{keywordflow}{if}(isJoystickConnected(2))\{
+01078             strcat(strjoy2, \textcolor{stringliteral}{"J2: Connected"});
+01079         \} \textcolor{keywordflow}{else} \{
+01080             strcat(strjoy2, \textcolor{stringliteral}{"J2: Disconnected"});
+01081         \}
+01082 
+01083         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy1))/2;
+01084         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01085         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01086             strcat(str, \textcolor{stringliteral}{" "});
+01087         \}
+01088         strcat(str, strjoy1);
+01089         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01090             strcat(str, \textcolor{stringliteral}{" "});
+01091         \}
+01092 
+01093         lcdSetText(lcdport, 1, str);
 01094 
-01095         lcdSetText(lcdport, 1, str);
-01096 
-01097         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy2))/2;
-01098         strcpy(str, \textcolor{stringliteral}{""});
-01099         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01100             strcat(str, \textcolor{stringliteral}{" "});
-01101         \}
-01102         strcat(str, strjoy2);
-01103         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01104             strcat(str, \textcolor{stringliteral}{" "});
-01105         \}
+01095         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy2))/2;
+01096         strcpy(str, \textcolor{stringliteral}{""});
+01097         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01098             strcat(str, \textcolor{stringliteral}{" "});
+01099         \}
+01100         strcat(str, strjoy2);
+01101         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01102             strcat(str, \textcolor{stringliteral}{" "});
+01103         \}
+01104 
+01105         lcdSetText(lcdport, 2, str);
 01106 
-01107         lcdSetText(lcdport, 2, str);
-01108 
-01109         delay(20);
-01110     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
-01111 \}
-01112 
-\hypertarget{lcddiag_8c_source.tex_l01119}{}\hyperlink{lcddiag_8c_a7154650020a551de49d976659df81a9d}{01119} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a7154650020a551de49d976659df81a9d}{runRobot}(FILE *lcdport)\{
-01120     \textcolor{keywordflow}{do} \{
-01121         \textcolor{keywordtype}{char} strjoy1[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01122         \textcolor{keywordtype}{char} strjoy2[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01123         \textcolor{keywordflow}{if}(isOnline())\{
-01124             strcat(strjoy1, \textcolor{stringliteral}{"Competition Mode"});
-01125         \} \textcolor{keywordflow}{else} \{
-01126             strcat(strjoy1, \textcolor{stringliteral}{"Practice Mode"});
-01127         \}
-01128         \textcolor{comment}{/*if(isEnabled())\{}
-01129 \textcolor{comment}{            strcat(strjoy2, "Robot Enabled");}
-01130 \textcolor{comment}{        \} else \{}
-01131 \textcolor{comment}{            strcat(strjoy2, "Robot Disabled");}
-01132 \textcolor{comment}{        \}*/}
-01133         sprintf(strjoy2, \textcolor{stringliteral}{"Angle: %d"}, gyroGet(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro}));
-01134 
-01135         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy1))/2;
-01136         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01137         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01138             strcat(str, \textcolor{stringliteral}{" "});
-01139         \}
-01140         strcat(str, strjoy1);
-01141         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01142             strcat(str, \textcolor{stringliteral}{" "});
-01143         \}
+01107         delay(20);
+01108     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
+01109 \}
+01110 
+\hypertarget{lcddiag_8c_source.tex_l01117}{}\hyperlink{lcddiag_8c_a7154650020a551de49d976659df81a9d}{01117} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a7154650020a551de49d976659df81a9d}{runRobot}(FILE *lcdport)\{
+01118     \textcolor{keywordflow}{do} \{
+01119         \textcolor{keywordtype}{char} strjoy1[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01120         \textcolor{keywordtype}{char} strjoy2[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01121         \textcolor{keywordflow}{if}(isOnline())\{
+01122             strcat(strjoy1, \textcolor{stringliteral}{"Competition Mode"});
+01123         \} \textcolor{keywordflow}{else} \{
+01124             strcat(strjoy1, \textcolor{stringliteral}{"Practice Mode"});
+01125         \}
+01126         \textcolor{comment}{/*if(isEnabled())\{}
+01127 \textcolor{comment}{            strcat(strjoy2, "Robot Enabled");}
+01128 \textcolor{comment}{        \} else \{}
+01129 \textcolor{comment}{            strcat(strjoy2, "Robot Disabled");}
+01130 \textcolor{comment}{        \}*/}
+01131         sprintf(strjoy2, \textcolor{stringliteral}{"Angle: %d"}, gyroGet(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro}));
+01132 
+01133         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy1))/2;
+01134         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01135         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01136             strcat(str, \textcolor{stringliteral}{" "});
+01137         \}
+01138         strcat(str, strjoy1);
+01139         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01140             strcat(str, \textcolor{stringliteral}{" "});
+01141         \}
+01142 
+01143         lcdSetText(lcdport, 1, str);
 01144 
-01145         lcdSetText(lcdport, 1, str);
-01146 
-01147         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy2))/2;
-01148         strcpy(str, \textcolor{stringliteral}{""});
-01149         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01150             strcat(str, \textcolor{stringliteral}{" "});
-01151         \}
-01152         strcat(str, strjoy2);
-01153         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01154             strcat(str, \textcolor{stringliteral}{" "});
-01155         \}
+01145         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy2))/2;
+01146         strcpy(str, \textcolor{stringliteral}{""});
+01147         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01148             strcat(str, \textcolor{stringliteral}{" "});
+01149         \}
+01150         strcat(str, strjoy2);
+01151         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01152             strcat(str, \textcolor{stringliteral}{" "});
+01153         \}
+01154 
+01155         lcdSetText(lcdport, 2, str);
 01156 
-01157         lcdSetText(lcdport, 2, str);
-01158 
-01159         delay(20);
-01160     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
-01161 \}
-01162 
-\hypertarget{lcddiag_8c_source.tex_l01170}{}\hyperlink{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}{01170} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}{runAuton}(FILE *lcdport)\{
-01171     \textcolor{keywordflow}{do} \{
-01172         \textcolor{keywordtype}{char} strjoy1[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01173         \textcolor{keywordtype}{char} strjoy2[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01174         \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == -1)\{
-01175             strcat(strjoy1, \textcolor{stringliteral}{"No Auton Loaded"});
-01176         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == 0)\{
-01177             strcat(strjoy1, \textcolor{stringliteral}{"Empty Auton"});
-01178         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
-01179             strcat(strjoy1, \textcolor{stringliteral}{"Prog. Skills"});
-01180         \} \textcolor{keywordflow}{else} \{
-01181             FILE* autonFile;
-01182             \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
-01183             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"a%d"}, \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded});
-01184             autonFile = fopen(filename, \textcolor{stringliteral}{"r"});
-01185             \textcolor{keywordtype}{char} name[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
-01186             memset(name, 0, \textcolor{keyword}{sizeof}(name));
-01187             fread(name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(name) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
-01188             strcpy(strjoy1, name);
-01189             fclose(autonFile);
-01190         \}
-01191         \textcolor{keywordflow}{if}(isOnline())\{
-01192             strcat(strjoy2, \textcolor{stringliteral}{"Recorder Off"});
-01193         \} \textcolor{keywordflow}{else} \{
-01194             strcat(strjoy2, \textcolor{stringliteral}{"Recorder On"});
-01195         \}
-01196 
-01197         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy1))/2;
-01198         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01199         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01200             strcat(str, \textcolor{stringliteral}{" "});
-01201         \}
-01202         strcat(str, strjoy1);
-01203         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01204             strcat(str, \textcolor{stringliteral}{" "});
-01205         \}
+01157         delay(20);
+01158     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
+01159 \}
+01160 
+\hypertarget{lcddiag_8c_source.tex_l01168}{}\hyperlink{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}{01168} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}{runAuton}(FILE *lcdport)\{
+01169     \textcolor{keywordflow}{do} \{
+01170         \textcolor{keywordtype}{char} strjoy1[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01171         \textcolor{keywordtype}{char} strjoy2[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01172         \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == -1)\{
+01173             strcat(strjoy1, \textcolor{stringliteral}{"No Auton Loaded"});
+01174         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == 0)\{
+01175             strcat(strjoy1, \textcolor{stringliteral}{"Empty Auton"});
+01176         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded} == \hyperlink{autonrecorder_8h_a5173a11a545cb4020fdd139552dc15c1}{MAX\_AUTON\_SLOTS} + 1)\{
+01177             strcat(strjoy1, \textcolor{stringliteral}{"Prog. Skills"});
+01178         \} \textcolor{keywordflow}{else} \{
+01179             FILE* autonFile;
+01180             \textcolor{keywordtype}{char} filename[\hyperlink{autonrecorder_8h_a9411d1482daa18dd8221c30db7fc6e4e}{AUTON\_FILENAME\_MAX\_LENGTH}];
+01181             snprintf(filename, \textcolor{keyword}{sizeof}(filename)/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{stringliteral}{"a%d"}, \hyperlink{autonrecorder_8c_a4e72d907ee74449b71b5e20943f4217e}{autonLoaded});
+01182             autonFile = fopen(filename, \textcolor{stringliteral}{"r"});
+01183             \textcolor{keywordtype}{char} name[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1];
+01184             memset(name, 0, \textcolor{keyword}{sizeof}(name));
+01185             fread(name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), \textcolor{keyword}{sizeof}(name) / \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}), autonFile);
+01186             strcpy(strjoy1, name);
+01187             fclose(autonFile);
+01188         \}
+01189         \textcolor{keywordflow}{if}(isOnline())\{
+01190             strcat(strjoy2, \textcolor{stringliteral}{"Recorder Off"});
+01191         \} \textcolor{keywordflow}{else} \{
+01192             strcat(strjoy2, \textcolor{stringliteral}{"Recorder On"});
+01193         \}
+01194 
+01195         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy1))/2;
+01196         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01197         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01198             strcat(str, \textcolor{stringliteral}{" "});
+01199         \}
+01200         strcat(str, strjoy1);
+01201         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01202             strcat(str, \textcolor{stringliteral}{" "});
+01203         \}
+01204 
+01205         lcdSetText(lcdport, 1, str);
 01206 
-01207         lcdSetText(lcdport, 1, str);
-01208 
-01209         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy2))/2;
-01210         strcpy(str, \textcolor{stringliteral}{""});
-01211         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01212             strcat(str, \textcolor{stringliteral}{" "});
-01213         \}
-01214         strcat(str, strjoy2);
-01215         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01216             strcat(str, \textcolor{stringliteral}{" "});
-01217         \}
+01207         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy2))/2;
+01208         strcpy(str, \textcolor{stringliteral}{""});
+01209         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01210             strcat(str, \textcolor{stringliteral}{" "});
+01211         \}
+01212         strcat(str, strjoy2);
+01213         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01214             strcat(str, \textcolor{stringliteral}{" "});
+01215         \}
+01216 
+01217         lcdSetText(lcdport, 2, str);
 01218 
-01219         lcdSetText(lcdport, 2, str);
-01220 
-01221         delay(20);
-01222     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
-01223 \}
-01224 
-\hypertarget{lcddiag_8c_source.tex_l01235}{}\hyperlink{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}{01235} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}{runCredits}(FILE *lcdport)\{
-01236     \textcolor{keywordflow}{do} \{
-01237         \textcolor{keywordtype}{char} strjoy1[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01238         \textcolor{keywordtype}{char} strjoy2[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01239         strcat(strjoy1, \textcolor{stringliteral}{"Thanks Team 750W"});
-01240         strcat(strjoy2, \textcolor{stringliteral}{"Akram Sandhu"});
-01241 
-01242         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy1))/2;
-01243         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
-01244         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01245             strcat(str, \textcolor{stringliteral}{" "});
-01246         \}
-01247         strcat(str, strjoy1);
-01248         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01249             strcat(str, \textcolor{stringliteral}{" "});
-01250         \}
+01219         delay(20);
+01220     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
+01221 \}
+01222 
+\hypertarget{lcddiag_8c_source.tex_l01233}{}\hyperlink{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}{01233} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}{runCredits}(FILE *lcdport)\{
+01234     \textcolor{keywordflow}{do} \{
+01235         \textcolor{keywordtype}{char} strjoy1[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01236         \textcolor{keywordtype}{char} strjoy2[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01237         strcat(strjoy1, \textcolor{stringliteral}{"Thanks Team 750W"});
+01238         strcat(strjoy2, \textcolor{stringliteral}{"Akram Sandhu"});
+01239 
+01240         \textcolor{keywordtype}{int} spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy1))/2;
+01241         \textcolor{keywordtype}{char} str[\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH}+1] = \textcolor{stringliteral}{""};
+01242         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01243             strcat(str, \textcolor{stringliteral}{" "});
+01244         \}
+01245         strcat(str, strjoy1);
+01246         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01247             strcat(str, \textcolor{stringliteral}{" "});
+01248         \}
+01249 
+01250         lcdSetText(lcdport, 1, str);
 01251 
-01252         lcdSetText(lcdport, 1, str);
-01253 
-01254         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy2))/2;
-01255         strcpy(str, \textcolor{stringliteral}{""});
-01256         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01257             strcat(str, \textcolor{stringliteral}{" "});
-01258         \}
-01259         strcat(str, strjoy2);
-01260         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
-01261             strcat(str, \textcolor{stringliteral}{" "});
-01262         \}
+01252         spaces = (\hyperlink{lcdmsg_8h_abe4c4b70fc6f44ae3680e5b2c68cdd00}{LCD\_MESSAGE\_MAX\_LENGTH} - strlen(strjoy2))/2;
+01253         strcpy(str, \textcolor{stringliteral}{""});
+01254         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01255             strcat(str, \textcolor{stringliteral}{" "});
+01256         \}
+01257         strcat(str, strjoy2);
+01258         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < spaces; i++)\{
+01259             strcat(str, \textcolor{stringliteral}{" "});
+01260         \}
+01261 
+01262         lcdSetText(lcdport, 2, str);
 01263 
-01264         lcdSetText(lcdport, 2, str);
-01265 
-01266         delay(20);
-01267     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
-01268 \}
-01269 
-\hypertarget{lcddiag_8c_source.tex_l01278}{}\hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{01278} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{doMenuChoice}(\textcolor{keywordtype}{int} choice)\{
-01279     \textcolor{keywordflow}{switch}(choice)\{
-01280         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a9d4f4fbdfdddf2f8c7ab8d8c363059a9}{MENU\_SCREENSAVER}: \hyperlink{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}{runScreensaver}(
+01264         delay(20);
+01265     \} \textcolor{keywordflow}{while}(!\hyperlink{lcddiag_8h_a0592813f995bfeeadb9bee923833ed35}{lcdAnyButtonPressed}());
+01266 \}
+01267 
+\hypertarget{lcddiag_8c_source.tex_l01276}{}\hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{01276} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{doMenuChoice}(\textcolor{keywordtype}{int} choice)\{
+01277     \textcolor{keywordflow}{switch}(choice)\{
+01278         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a9d4f4fbdfdddf2f8c7ab8d8c363059a9}{MENU\_SCREENSAVER}: \hyperlink{lcddiag_8c_a26920e40538bd7b86a0453f2629991d0}{runScreensaver}(
       \hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
-01281         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_afda057112a42ae99d3a7ebceb6f146d2}{MENU\_BATTERY}: \hyperlink{lcddiag_8c_a9a604d967527579e547780271290500f}{runBattery}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
-01282         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_ae6fe324cd9273893eee9eb0d5769e4f0}{MENU\_MOTOR}: \hyperlink{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}{runMotor}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
-01283         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a167e3569f77429ebc3565f22e6efeed5}{MENU\_MOTOR\_MGMT}: \hyperlink{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}{runMotorGroupMgmt}(
+01279         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_afda057112a42ae99d3a7ebceb6f146d2}{MENU\_BATTERY}: \hyperlink{lcddiag_8c_a9a604d967527579e547780271290500f}{runBattery}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
+01280         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_ae6fe324cd9273893eee9eb0d5769e4f0}{MENU\_MOTOR}: \hyperlink{lcddiag_8c_a3391c1825bcf4987f3fad9f42a9c1f0d}{runMotor}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
+01281         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a167e3569f77429ebc3565f22e6efeed5}{MENU\_MOTOR\_MGMT}: \hyperlink{lcddiag_8c_a9c8ce3f638a12bc9a264dd447be96a6d}{runMotorGroupMgmt}(
       \hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
-01284         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a587cce72d772563eadcb99ecf9ea7501}{MENU\_CONNECTION}: \hyperlink{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}{runConnection}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
-01285         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a8cc6a725ad9992def546ea6adac06d23}{MENU\_ROBOT}: \hyperlink{lcddiag_8c_a7154650020a551de49d976659df81a9d}{runRobot}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
-01286         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a014f70d5953c92a6d1cd06b94c6dcbee}{MENU\_AUTON}: \hyperlink{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}{runAuton}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
-01287         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a51157531331641e407b380e4345b4b65}{MENU\_BACKLIGHT}: lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, !
+01282         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a587cce72d772563eadcb99ecf9ea7501}{MENU\_CONNECTION}: \hyperlink{lcddiag_8c_ae830c338f6de302a9719b9e7829d9897}{runConnection}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
+01283         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a8cc6a725ad9992def546ea6adac06d23}{MENU\_ROBOT}: \hyperlink{lcddiag_8c_a7154650020a551de49d976659df81a9d}{runRobot}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
+01284         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a014f70d5953c92a6d1cd06b94c6dcbee}{MENU\_AUTON}: \hyperlink{lcddiag_8c_a6ef180c90194ad9d2d4f6cde9a535fdb}{runAuton}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
+01285         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a51157531331641e407b380e4345b4b65}{MENU\_BACKLIGHT}: lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, !
       \hyperlink{lcddiag_8c_a8ba67e368b4d0422ad0c1fe6695040ac}{backlight}); \hyperlink{lcddiag_8c_a8ba67e368b4d0422ad0c1fe6695040ac}{backlight} = !\hyperlink{lcddiag_8c_a8ba67e368b4d0422ad0c1fe6695040ac}{backlight}; \textcolor{keywordflow}{break};
-01288         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a887014df198bd0c4a6ae8610d000a1f3}{MENU\_CREDITS}: \hyperlink{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}{runCredits}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
-01289     \}
-01290 \}
-01291 
-\hypertarget{lcddiag_8c_source.tex_l01300}{}\hyperlink{lcddiag_8h_af7a16cd7a10c542f5bfe3e4ad292c34d}{01300} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_af7a16cd7a10c542f5bfe3e4ad292c34d}{formatLCDDisplay}(\textcolor{keywordtype}{void} *ignore)\{
-01301     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \hyperlink{lcddiag_8c_a8ba67e368b4d0422ad0c1fe6695040ac}{backlight});
-01302     \hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{doMenuChoice}(\hyperlink{lcddiag_8h_a9d4f4fbdfdddf2f8c7ab8d8c363059a9}{MENU\_SCREENSAVER});
-01303     \textcolor{keywordflow}{while}(\textcolor{keyword}{true})\{
-01304         \hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{doMenuChoice}(\hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{selectMenu}());
-01305     \}
-01306 \}
-01307 
+01286         \textcolor{keywordflow}{case} \hyperlink{lcddiag_8h_a887014df198bd0c4a6ae8610d000a1f3}{MENU\_CREDITS}: \hyperlink{lcddiag_8c_a636890926de259e3f0869b8f4c4789c3}{runCredits}(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}); \textcolor{keywordflow}{break};
+01287     \}
+01288 \}
+01289 
+\hypertarget{lcddiag_8c_source.tex_l01298}{}\hyperlink{lcddiag_8h_af7a16cd7a10c542f5bfe3e4ad292c34d}{01298} \textcolor{keywordtype}{void} \hyperlink{lcddiag_8c_af7a16cd7a10c542f5bfe3e4ad292c34d}{formatLCDDisplay}(\textcolor{keywordtype}{void} *ignore)\{
+01299     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \hyperlink{lcddiag_8c_a8ba67e368b4d0422ad0c1fe6695040ac}{backlight});
+01300     \hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{doMenuChoice}(\hyperlink{lcddiag_8h_a9d4f4fbdfdddf2f8c7ab8d8c363059a9}{MENU\_SCREENSAVER});
+01301     \textcolor{keywordflow}{while}(\textcolor{keyword}{true})\{
+01302         \hyperlink{lcddiag_8c_a668a59e2aa24df3a86222962ad9b4ad2}{doMenuChoice}(\hyperlink{lcddiag_8c_a1d2702d6508950416e4c927cc1ca18b3}{selectMenu}());
+01303     \}
+01304 \}
+01305 
 \end{DoxyCode}

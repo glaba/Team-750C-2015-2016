@@ -11,5 +11,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "main.h", "main_8h.html", "main_8h" ],
     [ "motors.h", "motors_8h.html", "motors_8h" ],
     [ "opcontrol.h", "opcontrol_8h.html", "opcontrol_8h" ],
+    [ "robot.h", "robot_8h.html", "robot_8h" ],
     [ "sensors.h", "sensors_8h.html", "sensors_8h" ]
 ];

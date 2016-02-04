@@ -60,13 +60,13 @@ inline void changeGear(int gear){
  * Defines motor ports for the left side of the drivetrain.
  */
 #define LEFT_MOTOR_TOP 2
-#define LEFT_MOTOR_BOT 6
+#define LEFT_MOTOR_BOT 5
 
 /**
  * Defines motor ports for the right side of the drivetrain.
  */
-#define RIGHT_MOTOR_TOP 4
-#define RIGHT_MOTOR_BOT 5
+#define RIGHT_MOTOR_TOP 3
+#define RIGHT_MOTOR_BOT 4
 
 /** 
  * Moves the robot by setting the drive motor values.
@@ -86,11 +86,9 @@ inline void move(int spd, int turn){
  */
 #define SHOOTER_HAS_THREE_MOTORS
 
-#define NAUTILUS_SHOOTER_MOTOR_LEFT 3
+#define NAUTILUS_SHOOTER_MOTOR_LEFT 6
 #define NAUTILUS_SHOOTER_MOTOR_RIGHT 7
-#ifdef SHOOTER_HAS_THREE_MOTORS
-#define NAUTILUS_SHOOTER_MOTOR_CENTER 10
-#endif
+#define NAUTILUS_SHOOTER_MOTOR_CENTER 8
 
 /** 
  * Shoots balls from the shooter mechanism by setting the shooter motor values.
@@ -98,17 +96,15 @@ inline void move(int spd, int turn){
  * @param spd the speed to set the shooter motors
  */
 inline void shoot(int spd){
-    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, spd);
-    motorSet(NAUTILUS_SHOOTER_MOTOR_RIGHT, -spd);
-#ifdef SHOOTER_HAS_THREE_MOTORS
-    motorSet(NAUTILUS_SHOOTER_MOTOR_CENTER, -spd);
-#endif /* SHOOTER_HAS_THREE_MOTORS */
+    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, -spd);
+    motorSet(NAUTILUS_SHOOTER_MOTOR_RIGHT, spd);
+    motorSet(NAUTILUS_SHOOTER_MOTOR_CENTER, spd);
 }
 
 /**
  * Defines motor ports for the intake mechanism.
  */
-#define INTAKE_ROLLER_MOTOR 8
+#define INTAKE_ROLLER_MOTOR 10
 
 /** 
  * Intakes balls using the intake mechanism by setting the intake motor values.
@@ -119,13 +115,17 @@ inline void intake(int spd){
     motorSet(INTAKE_ROLLER_MOTOR, spd);
 }
 
+#define ROBOT_HAS_LIFT_DEPLOY_MOTOR 1
+
+#ifdef ROBOT_HAS_LIFT_DEPLOY_MOTOR
 #define LIFT_DEPLOY 9
 
 inline void deploy(int spd){
     motorSet(LIFT_DEPLOY, spd);
 }
+#endif
 
-#ifndef SHOOTER_HAS_THREE_MOTORS
+#ifndef ROBOT_HAS_LIFT_DEPLOY_MOTOR
 /**
  * Defines motor ports for the shooter angle adjustment motor.
  */

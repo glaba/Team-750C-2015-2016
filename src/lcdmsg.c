@@ -57,6 +57,7 @@ char* lcdmsg[] = {
     "Staples Bands",
     "New Nautilus",
     "Nauty Gears",
+    "New 'n' Nauty",
     "TURBO GEARS",
     "itoa() Sucks"
 };

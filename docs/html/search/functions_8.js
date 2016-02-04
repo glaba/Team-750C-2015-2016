@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['operatorcontrol',['operatorControl',['../opcontrol_8c.html#ac71a94af413917f27d108e95c4d6f6a7',1,'operatorControl():&#160;opcontrol.c'],['../main_8h.html#ac71a94af413917f27d108e95c4d6f6a7',1,'operatorControl():&#160;opcontrol.c']]]
+  ['move',['move',['../motors_8h.html#ae918d6900bfd9ad920597db4f3ff138f',1,'motors.h']]],
+  ['moverobot',['moveRobot',['../opcontrol_8c.html#ad3b45c5807c039d0ce28bb0da06f0014',1,'moveRobot():&#160;opcontrol.c'],['../opcontrol_8h.html#ad3b45c5807c039d0ce28bb0da06f0014',1,'moveRobot():&#160;opcontrol.c']]]
 ];

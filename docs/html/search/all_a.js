@@ -20,5 +20,6 @@ var searchData=
   ['leftenc',['leftenc',['../sensors_8c.html#a48ead63071a2b65b87a166928a5a5c08',1,'leftenc():&#160;sensors.c'],['../sensors_8h.html#a48ead63071a2b65b87a166928a5a5c08',1,'leftenc():&#160;sensors.c']]],
   ['lift_5fdeploy',['LIFT_DEPLOY',['../motors_8h.html#a9e703840acb5657339f59982914dffb7',1,'motors.h']]],
   ['loadauton',['loadAuton',['../autonrecorder_8c.html#af6d130061f44459f9b3c629123e78f6e',1,'loadAuton():&#160;autonrecorder.c'],['../autonrecorder_8h.html#af6d130061f44459f9b3c629123e78f6e',1,'loadAuton():&#160;autonrecorder.c']]],
-  ['loadgroups',['loadGroups',['../lcddiag_8c.html#a98f03692fe38505e9b0231122b976c0e',1,'lcddiag.c']]]
+  ['loadgroups',['loadGroups',['../lcddiag_8c.html#a98f03692fe38505e9b0231122b976c0e',1,'lcddiag.c']]],
+  ['lturn',['lturn',['../sensors_8c.html#a6c61a5584d9cf1eaac994e0fb9f6b61c',1,'lturn(int bodydegs):&#160;sensors.c'],['../sensors_8h.html#a6c61a5584d9cf1eaac994e0fb9f6b61c',1,'lturn(int bodydegs):&#160;sensors.c']]]
 ];

@@ -11,6 +11,7 @@ var motors_8h =
     [ "NAUTILUS_SHOOTER_MOTOR_RIGHT", "motors_8h.html#a3fa3054b1d74b733800c7b9252362334", null ],
     [ "RIGHT_MOTOR_BOT", "motors_8h.html#a85c904d091f71ba7fc53a446524b6c61", null ],
     [ "RIGHT_MOTOR_TOP", "motors_8h.html#a306c5923dd0328c4bfc09255de9d124c", null ],
+    [ "ROBOT_HAS_LIFT_DEPLOY_MOTOR", "motors_8h.html#a1764b7462fb0a7e34cc39a48f15422ca", null ],
     [ "SHOOTER_HAS_THREE_MOTORS", "motors_8h.html#a7f78a80833903fca930b13a1f2ab6bd5", null ],
     [ "TRANSMISSION_MOTOR", "motors_8h.html#a7d8ac8902b66bb442bb27f9899aef13e", null ],
     [ "changeGear", "motors_8h.html#a997340e460b7870c53c9a119c017b0cc", null ],
