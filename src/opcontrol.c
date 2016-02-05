@@ -152,8 +152,25 @@ void moveRobot(){
  */
 void operatorControl() {
     lcdSetBacklight(LCD_PORT, true);
+    bool speakerPlay = false;
+    bool speakerButtonPressed = false;
+    speakerTask = NULL;
     while (true) {
         if(isOnline() || progSkills == 0){
+            if(joystickGetDigital(1, 8, JOY_UP) || joystickGetDigital(1, 8, JOY_DOWN)) {
+                if(!speakerButtonPressed) {
+                    speakerPlay = !speakerPlay;
+                    speakerButtonPressed = true;
+                }
+            } else {
+                speakerButtonPressed = false;
+            }
+            if(speakerPlay){
+                if(speakerTask == NULL){
+                    speakerTask = taskCreate(playSpeaker, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
+                    speakerPlay = false;
+                }
+            } 
             if(lcdDiagTask == NULL){
                 lcdDiagTask = taskCreate(formatLCDDisplay, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
             } else if(taskGetState(lcdDiagTask) == TASK_SUSPENDED){

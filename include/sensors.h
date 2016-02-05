@@ -143,7 +143,7 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines gyroscope target angle for the opposite corner net.
  */
-#define GYRO_NET_TARGET 0
+#define GYRO_NET_TARGET 0 
 
 /**
  * Defines the proportional error-correction term for the gyroscope alignment velocity control loop.
@@ -158,7 +158,7 @@ extern Gyro gyro;
 /**
  * Defines the port for the limit switch that is triggered when the shooter fires.
  */
-#define SHOOTER_LIMIT 5
+#define SHOOTER_LIMIT 10
 
 /**
  * Defines the port for the ultrasonic echo wire (orange).
@@ -174,6 +174,30 @@ extern Gyro gyro;
  * Object representing the ultrasonic sensor.
  */
 extern Ultrasonic sonar;
+
+#define SONG_COUNT 15
+
+/** 
+ * Master list of all songs.
+ */
+extern char* songs[];
+
+TaskHandle speakerTask;
+
+/** 
+ * Plays a song over the speaker.
+ * This task plays a random song from the array of songs.
+ *
+ * @param ignore does nothing - required by task definition
+ */
+void playSpeaker(void *ignore);
+
+/** 
+ * Returns a random song from the master list.
+ * 
+ * @return a pointer to the song
+ */
+char* randsong();
 
 #endif
 

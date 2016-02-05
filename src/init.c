@@ -73,6 +73,7 @@ void initialize() {
     lcdSetText(LCD_PORT, 1, "Init-ing gyro...");
     gyro = gyroInit(GYRO_PORT, GYRO_SENSITIVITY);
     sonar = ultrasonicInit(ULTRASONIC_ECHO_PORT, ULTRASONIC_PING_PORT);
+    speakerInit();
     delay(1100);
     gyroReset(gyro);
     lcdSetText(LCD_PORT, 1, "Init-ed gyro!");
