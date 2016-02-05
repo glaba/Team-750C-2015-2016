@@ -645,7 +645,7 @@
     \subitem {rturn}, \hyperpage{94}
     \subitem {sonar}, \hyperpage{95}
     \subitem {songs}, \hyperpage{95}
-    \subitem {speaker\+Task}, \hyperpage{95}
+    \subitem {speaker\+Task}, \hyperpage{96}
   \item {sensors.\+h}
     \subitem {B\+A\+T\+T\+\_\+\+B\+K\+UP}, \hyperpage{44}
     \subitem {B\+A\+T\+T\+\_\+\+M\+A\+IN}, \hyperpage{44}
@@ -710,7 +710,7 @@
     \subitem {opcontrol.\+c}, \hyperpage{90}
     \subitem {opcontrol.\+h}, \hyperpage{40}
   \item {speaker\+Task}
-    \subitem {sensors.\+c}, \hyperpage{95}
+    \subitem {sensors.\+c}, \hyperpage{96}
     \subitem {sensors.\+h}, \hyperpage{49}
   \item {SQ}
     \subitem {macros.\+h}, \hyperpage{29}

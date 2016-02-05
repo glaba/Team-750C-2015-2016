@@ -99,19 +99,26 @@
       ,g5,a5,4b.5,c,4b5,a5,g5,1a5,4b5,4a5,2g5,a5,b5,e5,4b5,2a5,g5,a5,4b.5,e,d,b5,4g5,2a5,b5,e,2g,f#,g,a,4g,2e,d,e,4f#.,g,4f#,e,d,1e"},
 00103     \textcolor{stringliteral}{"
       Jeopardy:d=4,o=6,b=125:c,f,c,f5,c,f,2c,c,f,c,f,a.,8g,8f,8e,8d,8c#,c,f,c,f5,c,f,2c,f.,8d,c,a#5,a5,g5,f5,
-      p,d#,g#,d#,g#5,d#,g#,2d#,d#,g#,d#,g#,c.7,8a#,8g#,8g,8f,8e,d#,g#,d#,g#5,d#,g#,2d#,g#.,8f,d#,c#,c,p,a#5,p,g#.5,d#,g#"}
-00104 \};
-00105 
-\hypertarget{sensors_8c_source.tex_l00111}{}\hyperlink{sensors_8h_ac268bd7cd4a7f4825e597fb81dfd82f5}{00111} \textcolor{keywordtype}{char}* \hyperlink{sensors_8c_ac268bd7cd4a7f4825e597fb81dfd82f5}{randsong}() \{
-00112     \textcolor{keywordtype}{int} index = rand() % \hyperlink{sensors_8h_ac3e33f0dc086adda988b210eacf86312}{SONG\_COUNT};
-00113     \textcolor{keywordflow}{return} \hyperlink{sensors_8c_ad0bf4fe84ad2c452b03494aa89148939}{songs}[index];
-00114 \}
-00115 
-\hypertarget{sensors_8c_source.tex_l00121}{}\hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{00121} TaskHandle \hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{speakerTask};
-00122 
-\hypertarget{sensors_8c_source.tex_l00129}{}\hyperlink{sensors_8h_a44ad7c17f20379371c31ec8ba82ff03e}{00129} \textcolor{keywordtype}{void} \hyperlink{sensors_8c_a44ad7c17f20379371c31ec8ba82ff03e}{playSpeaker}(\textcolor{keywordtype}{void} *ignore)\{
-00130     \textcolor{keywordtype}{char} *rtttl = \hyperlink{sensors_8c_ac268bd7cd4a7f4825e597fb81dfd82f5}{randsong}();
-00131     speakerPlayRtttl(rtttl);
-00132     \hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{speakerTask} = NULL;
-00133 \}
+      p,d#,g#,d#,g#5,d#,g#,2d#,d#,g#,d#,g#,c.7,8a#,8g#,8g,8f,8e,d#,g#,d#,g#5,d#,g#,2d#,g#.,8f,d#,c#,c,p,a#5,p,g#.5,d#,g#"},
+00104     \textcolor{stringliteral}{"MichaelJackson\_Beat\_It:d=4,o=5,b=138:g#7, p, d#6, d6, d#6, d6, c6, d6, d#6, d6, d#6, d6, d#6, d6, c6,
+       d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, c6, d6, d#6, d6, d#6,
+       d6, d#6, d6, c6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, d#6, d6, 16c,
+       16c, 16c, 16c, 1"},
+00105     \textcolor{stringliteral}{"Michael Jackson - Thriller:d=31,o=5,b=112:24b., 15p, 16d.6, p, 24b., 15p, 9e.6, p, 2d.6, 3p, 9d.6, p,
+       16c#.6, 10p, 6b., 3p, 24b., 15p, 16b., p, 49a., 10p, 16a., p, 49g., p, 9g., p, 24e., 15p, 12g., 153, 24a.,
+       15p, 16b., p, 24a., 15p, 16a., p, 24g., 153, 16b., 1"}
+00106 \};
+00107 
+\hypertarget{sensors_8c_source.tex_l00113}{}\hyperlink{sensors_8h_ac268bd7cd4a7f4825e597fb81dfd82f5}{00113} \textcolor{keywordtype}{char}* \hyperlink{sensors_8c_ac268bd7cd4a7f4825e597fb81dfd82f5}{randsong}() \{
+00114     \textcolor{keywordtype}{int} index = rand() % \hyperlink{sensors_8h_ac3e33f0dc086adda988b210eacf86312}{SONG\_COUNT};
+00115     \textcolor{keywordflow}{return} \hyperlink{sensors_8c_ad0bf4fe84ad2c452b03494aa89148939}{songs}[index];
+00116 \}
+00117 
+\hypertarget{sensors_8c_source.tex_l00123}{}\hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{00123} TaskHandle \hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{speakerTask};
+00124 
+\hypertarget{sensors_8c_source.tex_l00131}{}\hyperlink{sensors_8h_a44ad7c17f20379371c31ec8ba82ff03e}{00131} \textcolor{keywordtype}{void} \hyperlink{sensors_8c_a44ad7c17f20379371c31ec8ba82ff03e}{playSpeaker}(\textcolor{keywordtype}{void} *ignore)\{
+00132     \textcolor{keywordtype}{char} *rtttl = \hyperlink{sensors_8c_ac268bd7cd4a7f4825e597fb81dfd82f5}{randsong}();
+00133     speakerPlayRtttl(rtttl);
+00134     \hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{speakerTask} = NULL;
+00135 \}
 \end{DoxyCode}

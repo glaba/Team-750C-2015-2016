@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.16)  4 FEB 2016 20:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.16)  4 FEB 2016 23:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1524,12 +1524,12 @@ g5,a5,4b.5,e,d,b5,4g5,2a5,b5,e,2g,f#,g,a,4g,2e,d,e,4f#.,g,4f#,e,d,1e"[],[]
  []
 
 
-Overfull \hbox (36.1684pt too wide) in paragraph at lines 234--234
+Overfull \hbox (40.3684pt too wide) in paragraph at lines 234--234
 []      \T1/pcr/m/n/7 p,d#,g#,d#,g#5,d#,g#,2d#,d#,g#,d#,g#,c.7,8a#,8g#,8g,8f,8e
-,d#,g#,d#,g#5,d#,g#,2d#,g#.,8f,d#,c#,c,p,a#5,p,g#.5,d#,g#"[][] 
+,d#,g#,d#,g#5,d#,g#,2d#,g#.,8f,d#,c#,c,p,a#5,p,g#.5,d#,g#"[],[] 
  []
 
-[95]) (./sensors_8c_source.tex
+[95]) (./sensors_8c_source.tex [96]
 Overfull \hbox (178.96829pt too wide) in paragraph at lines 71--71
 []      \T1/pcr/m/n/7 Spiderman:d=4,o=6,b=200:c,8d#,g.,p,f#,8d#,c.,p,c,8d#,g,8g
 #,g,f#,8d#,c.,p,f,8g#,c.7,p,a#,8g#,f.,p,c,8d#,g.,p,f#,8d#,c,p,8g#,2g,p,8f#,f#,8
@@ -1543,7 +1543,7 @@ Overfull \hbox (174.7683pt too wide) in paragraph at lines 73--73
 d#,d,d#,2c"[],[] 
  []
 
-[96]
+
 Overfull \hbox (191.56828pt too wide) in paragraph at lines 75--75
 []       \T1/pcr/m/n/7 Countdown:d=16,o=5,b=125:b,a,4b,4e,4p,8p,c6,b,8c6,8b,4a,
 4p,8p,c6,b,4c6,4e,4p,8p,a,g,8a,8g,8f#,8a,4g.,f#,g,4a.,g,a,8b,8a,8g,8f#,4e,4c6,2
@@ -1595,9 +1595,9 @@ g5,a5,4b.5,e,d,b5,4g5,2a5,b5,e,2g,f#,g,a,4g,2e,d,e,4f#.,g,4f#,e,d,1e"[],[]
  []
 
 
-Overfull \hbox (36.1684pt too wide) in paragraph at lines 102--102
+Overfull \hbox (40.3684pt too wide) in paragraph at lines 102--102
 []      \T1/pcr/m/n/7 p,d#,g#,d#,g#5,d#,g#,2d#,d#,g#,d#,g#,c.7,8a#,8g#,8g,8f,8e
-,d#,g#,d#,g#5,d#,g#,2d#,g#.,8f,d#,c#,c,p,a#5,p,g#.5,d#,g#"[][] 
+,d#,g#,d#,g#5,d#,g#,2d#,g#.,8f,d#,c#,c,p,a#5,p,g#.5,d#,g#"[],[] 
  []
 
 ) [97] [98
@@ -1629,7 +1629,7 @@ Here is how much of TeX's memory you used:
  48545 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,16n,92p,3660b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{sensors_8c_source_l00121} has been referenced but
+pdfTeX warning (dest): name{sensors_8c_source_l00123} has been referenced but
  does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{opcontrol_8c_source_l00073} has been referenced but
@@ -1731,13 +1731,13 @@ oes not exist, replaced by a fixed one
 pdfTeX warning (dest): name{sensors_8c_source_l00025} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8c_source_l00111} has been referenced but d
+pdfTeX warning (dest): name{sensors_8c_source_l00113} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{sensors_8h_source_l00109} has been referenced but d
 oes not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{sensors_8c_source_l00129} has been referenced but d
+pdfTeX warning (dest): name{sensors_8c_source_l00131} has been referenced but d
 oes not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{sensors_8c_source_l00040} has been referenced but d
@@ -2193,7 +2193,7 @@ hare/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts
 uhvb8ac.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8ac.pfb></usr/
 share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fon
 ts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (109 pages, 396996 bytes).
+Output written on refman.pdf (109 pages, 397310 bytes).
 PDF statistics:
  4777 PDF objects out of 5155 (max. 8388607)
  4609 compressed objects within 47 object streams
