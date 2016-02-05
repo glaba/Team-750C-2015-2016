@@ -16,6 +16,10 @@ void \hyperlink{sensors_8c_a6c61a5584d9cf1eaac994e0fb9f6b61c}{lturn} (int bodyde
 void \hyperlink{sensors_8c_aac3aa2a1f6d4df8618c2e95a99f69bd5}{go\+Forward} (int inches)
 \item 
 void \hyperlink{sensors_8c_a588c302940f0bd83c1f7f7fef3447171}{go\+Backward} (int inches)
+\item 
+char $\ast$ \hyperlink{sensors_8c_ac268bd7cd4a7f4825e597fb81dfd82f5}{randsong} ()
+\item 
+void \hyperlink{sensors_8c_a44ad7c17f20379371c31ec8ba82ff03e}{play\+Speaker} (void $\ast$ignore)
 \end{DoxyCompactItemize}
 \subsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -27,6 +31,10 @@ Encoder \hyperlink{sensors_8c_a8c853ba918673c4878ab6935c54969e4}{rightenc}
 Gyro \hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro}
 \item 
 Ultrasonic \hyperlink{sensors_8c_a09e334aba0637f228c65c135f428606a}{sonar}
+\item 
+char $\ast$ \hyperlink{sensors_8c_ad0bf4fe84ad2c452b03494aa89148939}{songs} \mbox{[}$\,$\mbox{]}
+\item 
+Task\+Handle \hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{speaker\+Task}
 \end{DoxyCompactItemize}
 
 
@@ -101,6 +109,40 @@ Turns the robot left to a specified angle.
 
 Definition at line \hyperlink{sensors_8c_source_l00040}{40} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
 
+\index{sensors.\+c@{sensors.\+c}!play\+Speaker@{play\+Speaker}}
+\index{play\+Speaker@{play\+Speaker}!sensors.\+c@{sensors.\+c}}
+\paragraph[{\texorpdfstring{play\+Speaker(void $\ast$ignore)}{playSpeaker(void *ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}void play\+Speaker (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ignore}
+\end{DoxyParamCaption}
+)}\hypertarget{sensors_8c_a44ad7c17f20379371c31ec8ba82ff03e}{}\label{sensors_8c_a44ad7c17f20379371c31ec8ba82ff03e}
+Plays a song over the speaker. This task plays a random song from the array of songs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ignore} & does nothing -\/ required by task definition \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{sensors_8c_source_l00129}{129} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
+
+\index{sensors.\+c@{sensors.\+c}!randsong@{randsong}}
+\index{randsong@{randsong}!sensors.\+c@{sensors.\+c}}
+\paragraph[{\texorpdfstring{randsong()}{randsong()}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ randsong (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sensors_8c_ac268bd7cd4a7f4825e597fb81dfd82f5}{}\label{sensors_8c_ac268bd7cd4a7f4825e597fb81dfd82f5}
+Returns a random song from the master list.
+
+\begin{DoxyReturn}{Returns}
+a pointer to the song 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{sensors_8c_source_l00111}{111} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
+
 \index{sensors.\+c@{sensors.\+c}!rturn@{rturn}}
 \index{rturn@{rturn}!sensors.\+c@{sensors.\+c}}
 \paragraph[{\texorpdfstring{rturn(int bodydegs)}{rturn(int bodydegs)}}]{\setlength{\rightskip}{0pt plus 5cm}void rturn (
@@ -149,4 +191,57 @@ Definition at line \hyperlink{sensors_8c_source_l00023}{23} of file \hyperlink{s
 Object representing the ultrasonic sensor. 
 
 Definition at line \hyperlink{sensors_8c_source_l00083}{83} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
+
+\index{sensors.\+c@{sensors.\+c}!songs@{songs}}
+\index{songs@{songs}!sensors.\+c@{sensors.\+c}}
+\paragraph[{\texorpdfstring{songs}{songs}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ songs\mbox{[}$\,$\mbox{]}}\hypertarget{sensors_8c_ad0bf4fe84ad2c452b03494aa89148939}{}\label{sensors_8c_ad0bf4fe84ad2c452b03494aa89148939}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \textcolor{stringliteral}{"Batman:d=8,o=5,b=180:d,d,c#,c#,c,c,c#,c#,d,d,c#,c#,c,c,c#,c#,d,d#,c,c#,c,c,c#,c#,f,p,4f"},
+    \textcolor{stringliteral}{"
+      Spiderman:d=4,o=6,b=200:c,8d#,g.,p,f#,8d#,c.,p,c,8d#,g,8g#,g,f#,8d#,c.,p,f,8g#,c.7,p,a#,8g#,f.,p,c,8d#,g.,p,f#,8d#,c,p,8g#,2g,p,8f#,f#,8d#,f,8d#,2c"},
+    \textcolor{stringliteral}{"Star
+       Wars:d=8,o=6,b=180:f5,f5,f5,2a#5.,2f.,d#,d,c,2a#.,4f.,d#,d,c,2a#.,4f.,d#,d,d#,2c,4p,f5,f5,f5,2a#5.,2f.,d#,d,c,2a#.,4f.,d#,d,c,2a#.,4f.,d#,d,d#,2c"},
+    \textcolor{stringliteral}{"Final
+       Countdown:d=16,o=5,b=125:b,a,4b,4e,4p,8p,c6,b,8c6,8b,4a,4p,8p,c6,b,4c6,4e,4p,8p,a,g,8a,8g,8f#,8a,4g.,f#,g,4a.,g,a,8b,8a,8g,8f#,4e,4c6,2b.,b,c6,b,a,1b"},
+    \textcolor{stringliteral}{"Deep Purple-Smoke on the
+       Water:d=4,o=4,b=112:c,d#,f.,c,d#,8f#,f,p,c,d#,f.,d#,c,2p,8p,c,d#,f.,c,d#,8f#,f,p,c,d#,f.,d#,c"},
+    \textcolor{stringliteral}{"Ghost Busters:d=8,o=5,b=145:16c6,32p,16c6,e6,c6,d6,a#,2p,32c6,32p,32c6,32p,c6,a#,c6"},
+    \textcolor{stringliteral}{"Fresh Prince Of Bel Air Theme:d=4,o=5,b=112:16a, 16p, 16a, 8p, 8a, 32d7, 32d#7, 16e7, 8p, 8e7, 8p,
+       32c7, 32c#7, 8d7, 16d#7, 16d7, 16p, 16c7, 16d6, 16p, 16c6, 16p, 8b, 8p, 16a, 16p, 16a, 8p, 8a6, 32d7, 32d#7,
+       16e7, 8p, 8e7, 8p, 32c7, 32c#7, 8d7, 16d#7, 16d7, 16p, 16c7, 16a, 16p, 16e6, 16p, 16a, 8p, 32b, 32c6, 32b,
+       32c6, 32b, 32c6, 32b, 32c6, 32b, 32c6, 32b, 32c6, 32b, 32c6, 32b, 32c6, 32b, 32c6, 32b, 32c6, 32b, 32c6, 32b,
+       32c6"},
+    \textcolor{stringliteral}{"Funky Town:d=8,o=4,b=125:c6,c6,a#5,c6,p,g5,p,g5,c6,f6,e6,c6,2p,c6,c6,a#5,c6,p,g5,p,g5,c6,f6,e6,c6"},
+    \textcolor{stringliteral}{"
+      Macarena:d=8,o=5,b=180:f,f,f,4f,f,f,f,f,f,f,f,a,c,c,4f,f,f,4f,f,f,f,f,f,f,d,c,4p,4f,f,f,4f,f,f,f,f,f,f,f,a,4p,2c.6,4a,c6,a,f,4p,2p"},
+    \textcolor{stringliteral}{"Mission
+       Impossible:d=16,o=5,b=100:32d,32d#,32d,32d#,32d,32d#,32d,32d#,32d,32d,32d#,32e,32f,32f#,32g,g,8
+      p,g,8p,a#,p,c6,p,g,8p,g,8p,f,p,f#,p,g,8p,g,8p,a#,p,c6,p,g,8p,g,8p,f,p,f#,p,a#,g,2d,32p,a#,g,2c#,32p,a#,g,2c,p,a#4,c"},
+    \textcolor{stringliteral}{"USA National
+       Anthem:d=8,o=5,b=120:e.,d,4c,4e,4g,4c6.,p,e6.,d6,4c6,4e,4f#,4g.,p,4g,4e6.,d6,4c6,2b,a,4b,c6.,16p,4c6,4g,4e,32p,4c"},
+    \textcolor{stringliteral}{"
+      Bond:d=4,o=5,b=80:32p,16c#6,32d#6,32d#6,16d#6,8d#6,16c#6,16c#6,16c#6,16c#6,32e6,32e6,16e6,8e6,16d#6,16d
+      #6,16d#6,16c#6,32d#6,32d#6,16d#6,8d#6,16c#6,16c#6,16c#6,16c#6,32e6,32e6,16e6,8e6,16d#6,16d6,16c#6,16c#7,c.7,16g#6,16f#6,g#.6"},
+    \textcolor{stringliteral}{"
+      GoodBad:d=4,o=5,b=56:32p,32a#,32d#6,32a#,32d#6,8a#.,16f#.,16g#.,d#,32a#,32d#6,32a#,32d#6,8a#.,16f#.,16g#.,c#6,32a#,32d#6,32a#,32d#6,8a#.,16f#.,32f.,32d#.,c#,32a#,32d#6,32a#,32d#6,8a#.,16g#.,d#"},
+    \textcolor{stringliteral}{"
+      MetalGear:d=8,o=6,b=125:4e5,4d5,2c5,d5,e5,a4,4e5,2d5,c5,d5,4e.5,a5,g5,e5,4c5,2d5,e5,a5,2c,b5,c,d,4c,2a5
+      ,g5,a5,4b.5,c,4b5,a5,g5,1a5,4b5,4a5,2g5,a5,b5,e5,4b5,2a5,g5,a5,4b.5,e,d,b5,4g5,2a5,b5,e,2g,f#,g,a,4g,2e,d,e,4f#.,g,4f#,e,d,1e"},
+    \textcolor{stringliteral}{"
+      Jeopardy:d=4,o=6,b=125:c,f,c,f5,c,f,2c,c,f,c,f,a.,8g,8f,8e,8d,8c#,c,f,c,f5,c,f,2c,f.,8d,c,a#5,a5,g5,f5,
+      p,d#,g#,d#,g#5,d#,g#,2d#,d#,g#,d#,g#,c.7,8a#,8g#,8g,8f,8e,d#,g#,d#,g#5,d#,g#,2d#,g#.,8f,d#,c#,c,p,a#5,p,g#.5,d#,g#"}
+\}
+\end{DoxyCode}
+Master list of all songs. 
+
+Definition at line \hyperlink{sensors_8c_source_l00088}{88} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
+
+\index{sensors.\+c@{sensors.\+c}!speaker\+Task@{speaker\+Task}}
+\index{speaker\+Task@{speaker\+Task}!sensors.\+c@{sensors.\+c}}
+\paragraph[{\texorpdfstring{speaker\+Task}{speakerTask}}]{\setlength{\rightskip}{0pt plus 5cm}Task\+Handle speaker\+Task}\hypertarget{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{}\label{sensors_8c_a29754c0d165c3e366278bf93ee231e35}
+Object representing the speaker song task. The speaker song task runs in a separate thread from the operator control code. This prevents it from blocking the driving code from executing. 
+
+Definition at line \hyperlink{sensors_8c_source_l00121}{121} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
 

@@ -56,13 +56,13 @@
 00137 
 \hypertarget{sensors_8h_source.tex_l00141}{}\hyperlink{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}{00141} \textcolor{preprocessor}{#define GYRO\_SENSITIVITY 0}
 00142 
-\hypertarget{sensors_8h_source.tex_l00146}{}\hyperlink{sensors_8h_a0bbc24e22c825c0cb35cc0a5a769d8f0}{00146} \textcolor{preprocessor}{#define GYRO\_NET\_TARGET 0}
+\hypertarget{sensors_8h_source.tex_l00146}{}\hyperlink{sensors_8h_a0bbc24e22c825c0cb35cc0a5a769d8f0}{00146} \textcolor{preprocessor}{#define GYRO\_NET\_TARGET 0 }
 00147 
 \hypertarget{sensors_8h_source.tex_l00151}{}\hyperlink{sensors_8h_a5caef30fe7ef36e6f497db8bf9fd9c67}{00151} \textcolor{preprocessor}{#define GYRO\_P 10}
 00152 
 00156 \textcolor{keyword}{extern} Gyro \hyperlink{sensors_8h_ad2d059cd4baeedd5fbead13085953eed}{gyro};
 00157 
-\hypertarget{sensors_8h_source.tex_l00161}{}\hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{00161} \textcolor{preprocessor}{#define SHOOTER\_LIMIT 5}
+\hypertarget{sensors_8h_source.tex_l00161}{}\hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{00161} \textcolor{preprocessor}{#define SHOOTER\_LIMIT 10}
 00162 
 \hypertarget{sensors_8h_source.tex_l00166}{}\hyperlink{sensors_8h_ac6e827f0a9c2f52b4d935274daad778a}{00166} \textcolor{preprocessor}{#define ULTRASONIC\_ECHO\_PORT 11}
 00167 
@@ -70,6 +70,16 @@
 00172 
 00176 \textcolor{keyword}{extern} Ultrasonic \hyperlink{sensors_8h_a09e334aba0637f228c65c135f428606a}{sonar};
 00177 
-00178 \textcolor{preprocessor}{#endif}
-00179 
+\hypertarget{sensors_8h_source.tex_l00181}{}\hyperlink{sensors_8h_ac3e33f0dc086adda988b210eacf86312}{00181} \textcolor{preprocessor}{#define SONG\_COUNT 15}
+00182 
+00186 \textcolor{keyword}{extern} \textcolor{keywordtype}{char}* \hyperlink{sensors_8h_ad0bf4fe84ad2c452b03494aa89148939}{songs}[];
+00187 
+\hypertarget{sensors_8h_source.tex_l00193}{}\hyperlink{sensors_8h_a29754c0d165c3e366278bf93ee231e35}{00193} TaskHandle \hyperlink{sensors_8h_a29754c0d165c3e366278bf93ee231e35}{speakerTask};
+00194 
+00201 \textcolor{keywordtype}{void} \hyperlink{sensors_8h_a44ad7c17f20379371c31ec8ba82ff03e}{playSpeaker}(\textcolor{keywordtype}{void} *ignore);
+00202 
+00208 \textcolor{keywordtype}{char}* \hyperlink{sensors_8h_ac268bd7cd4a7f4825e597fb81dfd82f5}{randsong}();
+00209 
+00210 \textcolor{preprocessor}{#endif}
+00211 
 \end{DoxyCode}

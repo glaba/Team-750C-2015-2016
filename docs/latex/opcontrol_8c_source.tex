@@ -76,42 +76,60 @@
 00135 
 \hypertarget{opcontrol_8c_source.tex_l00153}{}\hyperlink{main_8h_ac71a94af413917f27d108e95c4d6f6a7}{00153} \textcolor{keywordtype}{void} \hyperlink{opcontrol_8c_ac71a94af413917f27d108e95c4d6f6a7}{operatorControl}() \{
 00154     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
-00155     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{
-00156         \textcolor{keywordflow}{if}(isOnline() || \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} == 0)\{
-00157             \textcolor{keywordflow}{if}(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask} == NULL)\{
-00158                 \hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask} = taskCreate(\hyperlink{lcddiag_8c_af7a16cd7a10c542f5bfe3e4ad292c34d}{formatLCDDisplay}, 
+00155     \textcolor{keywordtype}{bool} speakerPlay = \textcolor{keyword}{false};
+00156     \textcolor{keywordtype}{bool} speakerButtonPressed = \textcolor{keyword}{false};
+00157     \hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{speakerTask} = NULL;
+00158     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{
+00159         \textcolor{keywordflow}{if}(isOnline() || \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} == 0)\{
+00160             \textcolor{keywordflow}{if}(joystickGetDigital(1, 8, JOY\_UP) || joystickGetDigital(1, 8, JOY\_DOWN)) \{
+00161                 \textcolor{keywordflow}{if}(!speakerButtonPressed) \{
+00162                     speakerPlay = !speakerPlay;
+00163                     speakerButtonPressed = \textcolor{keyword}{true};
+00164                 \}
+00165             \} \textcolor{keywordflow}{else} \{
+00166                 speakerButtonPressed = \textcolor{keyword}{false};
+00167             \}
+00168             \textcolor{keywordflow}{if}(speakerPlay)\{
+00169                 \textcolor{keywordflow}{if}(\hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{speakerTask} == NULL)\{
+00170                     \hyperlink{sensors_8c_a29754c0d165c3e366278bf93ee231e35}{speakerTask} = taskCreate(\hyperlink{sensors_8c_a44ad7c17f20379371c31ec8ba82ff03e}{playSpeaker}, TASK\_DEFAULT\_STACK\_SIZE, 
+      NULL, TASK\_PRIORITY\_DEFAULT);
+00171                     speakerPlay = \textcolor{keyword}{false};
+00172                 \}
+00173             \} 
+00174             \textcolor{keywordflow}{if}(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask} == NULL)\{
+00175                 \hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask} = taskCreate(\hyperlink{lcddiag_8c_af7a16cd7a10c542f5bfe3e4ad292c34d}{formatLCDDisplay}, 
       TASK\_DEFAULT\_STACK\_SIZE, NULL, TASK\_PRIORITY\_DEFAULT);
-00159             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(taskGetState(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask}) == TASK\_SUSPENDED)\{
-00160                 taskResume(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask});
-00161             \}
-00162             \textcolor{keywordflow}{if}(!\hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl})\{
-00163                 \hyperlink{opcontrol_8c_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}{recordJoyInfo}();
-00164                 \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_RIGHT) && !isOnline()) \{
-00165                     taskSuspend(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask});
-00166                     \hyperlink{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}();
-00167                     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
-00168                     \hyperlink{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}();
-00169                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_LEFT) && !isOnline()) \{
-00170                     taskSuspend(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask});
-00171                     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
-00172                     \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
-00173                     \hyperlink{autonrecorder_8c_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playbackAuton}();
-00174                 \}
-00175                 \hyperlink{opcontrol_8c_ad3b45c5807c039d0ce28bb0da06f0014}{moveRobot}();
-00176             \}
-00177         \} \textcolor{keywordflow}{else} \{
-00178             motorStopAll();
-00179             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Press 7R"});
-00180             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2,   \textcolor{stringliteral}{"Last Skills: %d"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
-00181             \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_RIGHT) && !isOnline()) \{
-00182                 \hyperlink{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}();
-00183                 \hyperlink{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}();
-00184             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(joystickGetDigital(1, 7, JOY\_UP) && !isOnline()) \{
-00185                 \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} = 0;
-00186             \}
-00187         \}
-00188         delay(20);
-00189     \}
-00190 \}
-00191 
+00176             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(taskGetState(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask}) == TASK\_SUSPENDED)\{
+00177                 taskResume(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask});
+00178             \}
+00179             \textcolor{keywordflow}{if}(!\hyperlink{lcddiag_8c_a0f0b335cd078d025d6fb720eb3bf6437}{disableOpControl})\{
+00180                 \hyperlink{opcontrol_8c_a7e408f7d4d3cf1d5a4f6c9f1bae6e770}{recordJoyInfo}();
+00181                 \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_RIGHT) && !isOnline()) \{
+00182                     taskSuspend(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask});
+00183                     \hyperlink{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}();
+00184                     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
+00185                     \hyperlink{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}();
+00186                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_LEFT) && !isOnline()) \{
+00187                     taskSuspend(\hyperlink{lcddiag_8c_a2a17fd7ddf1721b3a9d9b2a3d728c365}{lcdDiagTask});
+00188                     lcdSetBacklight(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, \textcolor{keyword}{true});
+00189                     \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
+00190                     \hyperlink{autonrecorder_8c_ae592a73a6bd9b2adcaa58a8ee82daaa0}{playbackAuton}();
+00191                 \}
+00192                 \hyperlink{opcontrol_8c_ad3b45c5807c039d0ce28bb0da06f0014}{moveRobot}();
+00193             \}
+00194         \} \textcolor{keywordflow}{else} \{
+00195             motorStopAll();
+00196             lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Press 7R"});
+00197             lcdPrint(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 2,   \textcolor{stringliteral}{"Last Skills: %d"}, \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills});
+00198             \textcolor{keywordflow}{if} (joystickGetDigital(1, 7, JOY\_RIGHT) && !isOnline()) \{
+00199                 \hyperlink{autonrecorder_8c_a1611f78b8c904848dcc98ae4b0b5b22b}{recordAuton}();
+00200                 \hyperlink{autonrecorder_8c_ae6b758086a3b984c6705e12859eed2cc}{saveAuton}();
+00201             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(joystickGetDigital(1, 7, JOY\_UP) && !isOnline()) \{
+00202                 \hyperlink{autonrecorder_8c_aa2eda471576bdbaf33835a71da9bc616}{progSkills} = 0;
+00203             \}
+00204         \}
+00205         delay(20);
+00206     \}
+00207 \}
+00208 
 \end{DoxyCode}

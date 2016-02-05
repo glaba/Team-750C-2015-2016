@@ -1,6 +1,7 @@
 var searchData=
 [
   ['randlcdmsg',['randlcdmsg',['../lcdmsg_8c.html#aabe33dfb797df5997c5e03078591aa81',1,'randlcdmsg(FILE *lcdport, int line):&#160;lcdmsg.c'],['../lcdmsg_8h.html#aabe33dfb797df5997c5e03078591aa81',1,'randlcdmsg(FILE *lcdport, int line):&#160;lcdmsg.c']]],
+  ['randsong',['randsong',['../sensors_8c.html#ac268bd7cd4a7f4825e597fb81dfd82f5',1,'randsong():&#160;sensors.c'],['../sensors_8h.html#ac268bd7cd4a7f4825e597fb81dfd82f5',1,'randsong():&#160;sensors.c']]],
   ['recordauton',['recordAuton',['../autonrecorder_8c.html#a1611f78b8c904848dcc98ae4b0b5b22b',1,'recordAuton():&#160;autonrecorder.c'],['../autonrecorder_8h.html#a1611f78b8c904848dcc98ae4b0b5b22b',1,'recordAuton():&#160;autonrecorder.c']]],
   ['recordjoyinfo',['recordJoyInfo',['../opcontrol_8c.html#a7e408f7d4d3cf1d5a4f6c9f1bae6e770',1,'recordJoyInfo():&#160;opcontrol.c'],['../opcontrol_8h.html#a7e408f7d4d3cf1d5a4f6c9f1bae6e770',1,'recordJoyInfo():&#160;opcontrol.c']]],
   ['rturn',['rturn',['../sensors_8c.html#ad701efe604d40c13910416224d3dd9e3',1,'rturn(int bodydegs):&#160;sensors.c'],['../sensors_8h.html#ad701efe604d40c13910416224d3dd9e3',1,'rturn(int bodydegs):&#160;sensors.c']]],

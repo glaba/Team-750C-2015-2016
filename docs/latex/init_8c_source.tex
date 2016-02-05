@@ -45,14 +45,15 @@
 00074     \hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro} = gyroInit(\hyperlink{sensors_8h_a51d281e7676749d34aab3f8ba6fab960}{GYRO\_PORT}, \hyperlink{sensors_8h_a6e58fcea626847c9734cdc19eb93a6c5}{GYRO\_SENSITIVITY});
 00075     \hyperlink{sensors_8c_a09e334aba0637f228c65c135f428606a}{sonar} = ultrasonicInit(\hyperlink{sensors_8h_ac6e827f0a9c2f52b4d935274daad778a}{ULTRASONIC\_ECHO\_PORT}, 
       \hyperlink{sensors_8h_a97be84893513dc7afb5c4c26b7bdd074}{ULTRASONIC\_PING\_PORT});
-00076     delay(1100);
-00077     gyroReset(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro});
-00078     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ed gyro!"});
-00079     \hyperlink{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}();
-00080     \hyperlink{lcddiag_8c_ad290df3e273598f9f10fe34c257e4084}{initGroups}();
-00081     \textcolor{keywordflow}{if}(isOnline())\{
-00082         \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
-00083     \}
-00084 \}
-00085 
+00076     speakerInit();
+00077     delay(1100);
+00078     gyroReset(\hyperlink{sensors_8c_ad2d059cd4baeedd5fbead13085953eed}{gyro});
+00079     lcdSetText(\hyperlink{lcdmsg_8h_abcf42bd88b3c36193f301ca25b033875}{LCD\_PORT}, 1, \textcolor{stringliteral}{"Init-ed gyro!"});
+00080     \hyperlink{autonrecorder_8c_acd89c8b2c622ae271c5d63d7fb8fa5f6}{initAutonRecorder}();
+00081     \hyperlink{lcddiag_8c_ad290df3e273598f9f10fe34c257e4084}{initGroups}();
+00082     \textcolor{keywordflow}{if}(isOnline())\{
+00083         \hyperlink{autonrecorder_8c_af6d130061f44459f9b3c629123e78f6e}{loadAuton}();
+00084     \}
+00085 \}
+00086 
 \end{DoxyCode}

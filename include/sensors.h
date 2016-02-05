@@ -175,6 +175,9 @@ extern Gyro gyro;
  */
 extern Ultrasonic sonar;
 
+/**
+ * Defines the amount of songs in the master list.
+ */
 #define SONG_COUNT 15
 
 /** 
@@ -182,6 +185,11 @@ extern Ultrasonic sonar;
  */
 extern char* songs[];
 
+/**
+ * Object representing the speaker song task.
+ * The speaker song task runs in a separate thread from the operator control code.
+ * This prevents it from blocking the driving code from executing.
+ */
 TaskHandle speakerTask;
 
 /** 

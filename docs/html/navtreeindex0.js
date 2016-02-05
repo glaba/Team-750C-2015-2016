@@ -248,6 +248,6 @@ var NAVTREEINDEX0 =
 "robot_8h.html#ac82b3d02a4f4ff550895e0cb11b96219":[1,0,0,11,1],
 "robot_8h_source.html":[1,0,0,11],
 "sensors_8c.html":[1,0,1,8],
-"sensors_8c.html#a09e334aba0637f228c65c135f428606a":[1,0,1,8,7],
-"sensors_8c.html#a48ead63071a2b65b87a166928a5a5c08":[1,0,1,8,5]
+"sensors_8c.html#a09e334aba0637f228c65c135f428606a":[1,0,1,8,9],
+"sensors_8c.html#a29754c0d165c3e366278bf93ee231e35":[1,0,1,8,11]
 };

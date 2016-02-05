@@ -113,6 +113,11 @@ char* randsong() {
     return songs[index];
 }
 
+/**
+ * Object representing the speaker song task.
+ * The speaker song task runs in a separate thread from the operator control code.
+ * This prevents it from blocking the driving code from executing.
+ */
 TaskHandle speakerTask;
 
 /** 

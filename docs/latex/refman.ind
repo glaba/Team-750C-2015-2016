@@ -15,25 +15,25 @@
   \item {abs}
     \subitem {macros.\+h}, \hyperpage{26}
   \item {add\+Motor\+Group}
-    \subitem {lcddiag.\+c}, \hyperpage{62}
+    \subitem {lcddiag.\+c}, \hyperpage{63}
   \item {auto.\+c}
-    \subitem {autonomous}, \hyperpage{50}
+    \subitem {autonomous}, \hyperpage{51}
   \item {auton\+Loaded}
-    \subitem {autonrecorder.\+c}, \hyperpage{52}
+    \subitem {autonrecorder.\+c}, \hyperpage{53}
     \subitem {autonrecorder.\+h}, \hyperpage{9}
   \item {autonomous}
-    \subitem {auto.\+c}, \hyperpage{50}
+    \subitem {auto.\+c}, \hyperpage{51}
     \subitem {main.\+h}, \hyperpage{32}
   \item {autonrecorder.\+c}
-    \subitem {auton\+Loaded}, \hyperpage{52}
-    \subitem {init\+Auton\+Recorder}, \hyperpage{51}
-    \subitem {load\+Auton}, \hyperpage{51}
-    \subitem {playback\+Auton}, \hyperpage{51}
-    \subitem {prog\+Skills}, \hyperpage{52}
-    \subitem {record\+Auton}, \hyperpage{51}
-    \subitem {save\+Auton}, \hyperpage{52}
-    \subitem {select\+Auton}, \hyperpage{52}
-    \subitem {states}, \hyperpage{52}
+    \subitem {auton\+Loaded}, \hyperpage{53}
+    \subitem {init\+Auton\+Recorder}, \hyperpage{52}
+    \subitem {load\+Auton}, \hyperpage{52}
+    \subitem {playback\+Auton}, \hyperpage{52}
+    \subitem {prog\+Skills}, \hyperpage{53}
+    \subitem {record\+Auton}, \hyperpage{53}
+    \subitem {save\+Auton}, \hyperpage{53}
+    \subitem {select\+Auton}, \hyperpage{53}
+    \subitem {states}, \hyperpage{53}
   \item {autonrecorder.\+h}
     \subitem {A\+U\+T\+O\+N\+\_\+\+B\+U\+T\+T\+ON}, \hyperpage{7}
     \subitem {A\+U\+T\+O\+N\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+TH}, 
@@ -57,7 +57,7 @@
     \subitem {save\+Auton}, \hyperpage{8}
     \subitem {states}, \hyperpage{9}
   \item {autonroutines.\+c}
-    \subitem {run\+Hard\+Coded\+Programming\+Skills}, \hyperpage{57}
+    \subitem {run\+Hard\+Coded\+Programming\+Skills}, \hyperpage{58}
   \item {autonroutines.\+h}
     \subitem {C\+L\+O\+S\+E\+\_\+\+G\+O\+A\+L\+\_\+\+A\+N\+G\+LE}, 
 		\hyperpage{11}
@@ -74,7 +74,7 @@
   \item {B\+A\+T\+T\+\_\+\+P\+E\+XP}
     \subitem {sensors.\+h}, \hyperpage{44}
   \item {backlight}
-    \subitem {lcddiag.\+c}, \hyperpage{69}
+    \subitem {lcddiag.\+c}, \hyperpage{70}
   \item {bit\+Clear}
     \subitem {bitwise.\+h}, \hyperpage{12}
   \item {bit\+Read}
@@ -126,31 +126,31 @@
   \item {degrees}
     \subitem {macros.\+h}, \hyperpage{27}
   \item {del\+Motor\+Group}
-    \subitem {lcddiag.\+c}, \hyperpage{62}
+    \subitem {lcddiag.\+c}, \hyperpage{63}
   \item {dep}
     \subitem {joy\+State}, \hyperpage{4}
-    \subitem {opcontrol.\+c}, \hyperpage{89}
+    \subitem {opcontrol.\+c}, \hyperpage{90}
     \subitem {opcontrol.\+h}, \hyperpage{40}
   \item {deploy}
     \subitem {motors.\+h}, \hyperpage{37}
   \item {disable\+Op\+Control}
-    \subitem {lcddiag.\+c}, \hyperpage{69}
+    \subitem {lcddiag.\+c}, \hyperpage{70}
     \subitem {lcddiag.\+h}, \hyperpage{21}
   \item {do\+Menu\+Choice}
-    \subitem {lcddiag.\+c}, \hyperpage{62}
+    \subitem {lcddiag.\+c}, \hyperpage{63}
 
   \indexspace
 
   \item {edit\+Motor\+Group}
-    \subitem {lcddiag.\+c}, \hyperpage{63}
+    \subitem {lcddiag.\+c}, \hyperpage{64}
 
   \indexspace
 
   \item {format\+L\+C\+D\+Display}
-    \subitem {lcddiag.\+c}, \hyperpage{63}
+    \subitem {lcddiag.\+c}, \hyperpage{64}
     \subitem {lcddiag.\+h}, \hyperpage{20}
   \item {format\+Menu\+Name\+Center}
-    \subitem {lcddiag.\+c}, \hyperpage{63}
+    \subitem {lcddiag.\+c}, \hyperpage{64}
   \item {friendly.\+h}
     \subitem {P\+R\+E\+S\+S\+ED}, \hyperpage{16}
     \subitem {R\+E\+L\+E\+A\+S\+ED}, \hyperpage{16}
@@ -166,23 +166,23 @@
   \item {G\+Y\+R\+O\+\_\+\+N\+E\+T\+\_\+\+T\+A\+R\+G\+ET}
     \subitem {sensors.\+h}, \hyperpage{44}
   \item {G\+Y\+R\+O\+\_\+\+P\+O\+RT}
-    \subitem {sensors.\+h}, \hyperpage{44}
+    \subitem {sensors.\+h}, \hyperpage{45}
   \item {G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}
-    \subitem {sensors.\+h}, \hyperpage{44}
+    \subitem {sensors.\+h}, \hyperpage{45}
   \item {G\+Y\+R\+O\+\_\+P}
-    \subitem {sensors.\+h}, \hyperpage{44}
+    \subitem {sensors.\+h}, \hyperpage{45}
   \item {go\+Backward}
-    \subitem {sensors.\+c}, \hyperpage{92}
+    \subitem {sensors.\+c}, \hyperpage{93}
     \subitem {sensors.\+h}, \hyperpage{46}
   \item {go\+Forward}
-    \subitem {sensors.\+c}, \hyperpage{92}
-    \subitem {sensors.\+h}, \hyperpage{46}
-  \item {groups}
-    \subitem {lcddiag.\+c}, \hyperpage{69}
-    \subitem {lcddiag.\+h}, \hyperpage{22}
-  \item {gyro}
     \subitem {sensors.\+c}, \hyperpage{93}
     \subitem {sensors.\+h}, \hyperpage{47}
+  \item {groups}
+    \subitem {lcddiag.\+c}, \hyperpage{70}
+    \subitem {lcddiag.\+h}, \hyperpage{22}
+  \item {gyro}
+    \subitem {sensors.\+c}, \hyperpage{94}
+    \subitem {sensors.\+h}, \hyperpage{48}
 
   \indexspace
 
@@ -205,27 +205,27 @@
   \item {include/motors.\+h}, \hyperpage{34}, \hyperpage{38}
   \item {include/opcontrol.\+h}, \hyperpage{39}, \hyperpage{41}
   \item {include/robot.\+h}, \hyperpage{41, 42}
-  \item {include/sensors.\+h}, \hyperpage{42}, \hyperpage{48}
+  \item {include/sensors.\+h}, \hyperpage{42}, \hyperpage{49}
   \item {init.\+c}
-    \subitem {initialize}, \hyperpage{59}
-    \subitem {initialize\+IO}, \hyperpage{59}
+    \subitem {initialize}, \hyperpage{60}
+    \subitem {initialize\+IO}, \hyperpage{60}
   \item {init\+Auton\+Recorder}
-    \subitem {autonrecorder.\+c}, \hyperpage{51}
+    \subitem {autonrecorder.\+c}, \hyperpage{52}
     \subitem {autonrecorder.\+h}, \hyperpage{8}
   \item {init\+Groups}
-    \subitem {lcddiag.\+c}, \hyperpage{64}
+    \subitem {lcddiag.\+c}, \hyperpage{65}
     \subitem {lcddiag.\+h}, \hyperpage{20}
   \item {initialize}
-    \subitem {init.\+c}, \hyperpage{59}
+    \subitem {init.\+c}, \hyperpage{60}
     \subitem {main.\+h}, \hyperpage{32}
   \item {initialize\+IO}
-    \subitem {init.\+c}, \hyperpage{59}
+    \subitem {init.\+c}, \hyperpage{60}
     \subitem {main.\+h}, \hyperpage{32}
   \item {intake}
     \subitem {motors.\+h}, \hyperpage{37}
   \item {intk}
     \subitem {joy\+State}, \hyperpage{4}
-    \subitem {opcontrol.\+c}, \hyperpage{89}
+    \subitem {opcontrol.\+c}, \hyperpage{90}
     \subitem {opcontrol.\+h}, \hyperpage{40}
 
   \indexspace
@@ -268,41 +268,41 @@
   \item {lcd\+Button\+Pressed}
     \subitem {lcddiag.\+h}, \hyperpage{21}
   \item {lcd\+Diag\+Task}
-    \subitem {lcddiag.\+c}, \hyperpage{69}
+    \subitem {lcddiag.\+c}, \hyperpage{70}
     \subitem {lcddiag.\+h}, \hyperpage{22}
   \item {lcddiag.\+c}
-    \subitem {add\+Motor\+Group}, \hyperpage{62}
-    \subitem {backlight}, \hyperpage{69}
-    \subitem {del\+Motor\+Group}, \hyperpage{62}
-    \subitem {disable\+Op\+Control}, \hyperpage{69}
-    \subitem {do\+Menu\+Choice}, \hyperpage{62}
-    \subitem {edit\+Motor\+Group}, \hyperpage{63}
-    \subitem {format\+L\+C\+D\+Display}, \hyperpage{63}
-    \subitem {format\+Menu\+Name\+Center}, \hyperpage{63}
-    \subitem {groups}, \hyperpage{69}
-    \subitem {init\+Groups}, \hyperpage{64}
-    \subitem {lcd\+Diag\+Task}, \hyperpage{69}
-    \subitem {load\+Groups}, \hyperpage{64}
-    \subitem {menu\+Choices}, \hyperpage{69}
-    \subitem {numgroups}, \hyperpage{69}
-    \subitem {run\+Auton}, \hyperpage{64}
-    \subitem {run\+Battery}, \hyperpage{64}
-    \subitem {run\+Connection}, \hyperpage{64}
-    \subitem {run\+Credits}, \hyperpage{64}
-    \subitem {run\+Group\+Motor}, \hyperpage{65}
-    \subitem {run\+Indiv\+Motor}, \hyperpage{65}
-    \subitem {run\+Motor}, \hyperpage{65}
-    \subitem {run\+Motor\+Group\+Mgmt}, \hyperpage{66}
-    \subitem {run\+Robot}, \hyperpage{66}
-    \subitem {run\+Screensaver}, \hyperpage{66}
-    \subitem {save\+Groups}, \hyperpage{66}
-    \subitem {select\+Menu}, \hyperpage{66}
-    \subitem {select\+Motor}, \hyperpage{67}
-    \subitem {select\+Motor\+Group}, \hyperpage{67}
-    \subitem {select\+Motor\+Group\+Members}, \hyperpage{67}
-    \subitem {select\+Spd}, \hyperpage{68}
-    \subitem {select\+Spd\+Group}, \hyperpage{68}
-    \subitem {type\+String}, \hyperpage{68}
+    \subitem {add\+Motor\+Group}, \hyperpage{63}
+    \subitem {backlight}, \hyperpage{70}
+    \subitem {del\+Motor\+Group}, \hyperpage{63}
+    \subitem {disable\+Op\+Control}, \hyperpage{70}
+    \subitem {do\+Menu\+Choice}, \hyperpage{63}
+    \subitem {edit\+Motor\+Group}, \hyperpage{64}
+    \subitem {format\+L\+C\+D\+Display}, \hyperpage{64}
+    \subitem {format\+Menu\+Name\+Center}, \hyperpage{64}
+    \subitem {groups}, \hyperpage{70}
+    \subitem {init\+Groups}, \hyperpage{65}
+    \subitem {lcd\+Diag\+Task}, \hyperpage{70}
+    \subitem {load\+Groups}, \hyperpage{65}
+    \subitem {menu\+Choices}, \hyperpage{70}
+    \subitem {numgroups}, \hyperpage{70}
+    \subitem {run\+Auton}, \hyperpage{65}
+    \subitem {run\+Battery}, \hyperpage{65}
+    \subitem {run\+Connection}, \hyperpage{65}
+    \subitem {run\+Credits}, \hyperpage{65}
+    \subitem {run\+Group\+Motor}, \hyperpage{66}
+    \subitem {run\+Indiv\+Motor}, \hyperpage{66}
+    \subitem {run\+Motor}, \hyperpage{66}
+    \subitem {run\+Motor\+Group\+Mgmt}, \hyperpage{67}
+    \subitem {run\+Robot}, \hyperpage{67}
+    \subitem {run\+Screensaver}, \hyperpage{67}
+    \subitem {save\+Groups}, \hyperpage{67}
+    \subitem {select\+Menu}, \hyperpage{67}
+    \subitem {select\+Motor}, \hyperpage{68}
+    \subitem {select\+Motor\+Group}, \hyperpage{68}
+    \subitem {select\+Motor\+Group\+Members}, \hyperpage{68}
+    \subitem {select\+Spd}, \hyperpage{69}
+    \subitem {select\+Spd\+Group}, \hyperpage{69}
+    \subitem {type\+String}, \hyperpage{69}
   \item {lcddiag.\+h}
     \subitem {disable\+Op\+Control}, \hyperpage{21}
     \subitem {format\+L\+C\+D\+Display}, \hyperpage{20}
@@ -331,12 +331,12 @@
     \subitem {numgroups}, \hyperpage{22}
     \subitem {type\+String}, \hyperpage{21}
   \item {lcdmsg}
-    \subitem {lcdmsg.\+c}, \hyperpage{84}
+    \subitem {lcdmsg.\+c}, \hyperpage{85}
     \subitem {lcdmsg.\+h}, \hyperpage{25}
   \item {lcdmsg.\+c}
-    \subitem {lcdmsg}, \hyperpage{84}
-    \subitem {randlcdmsg}, \hyperpage{84}
-    \subitem {screensaver}, \hyperpage{84}
+    \subitem {lcdmsg}, \hyperpage{85}
+    \subitem {randlcdmsg}, \hyperpage{85}
+    \subitem {screensaver}, \hyperpage{85}
   \item {lcdmsg.\+h}
     \subitem {L\+C\+D\+\_\+750\+C\+\_\+\+T\+I\+T\+LE}, \hyperpage{24}
     \subitem {L\+C\+D\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+C\+O\+U\+NT}, 
@@ -348,16 +348,16 @@
     \subitem {randlcdmsg}, \hyperpage{24}
     \subitem {screensaver}, \hyperpage{25}
   \item {leftenc}
-    \subitem {sensors.\+c}, \hyperpage{93}
-    \subitem {sensors.\+h}, \hyperpage{47}
+    \subitem {sensors.\+c}, \hyperpage{95}
+    \subitem {sensors.\+h}, \hyperpage{48}
   \item {load\+Auton}
-    \subitem {autonrecorder.\+c}, \hyperpage{51}
+    \subitem {autonrecorder.\+c}, \hyperpage{52}
     \subitem {autonrecorder.\+h}, \hyperpage{8}
   \item {load\+Groups}
-    \subitem {lcddiag.\+c}, \hyperpage{64}
+    \subitem {lcddiag.\+c}, \hyperpage{65}
   \item {lturn}
-    \subitem {sensors.\+c}, \hyperpage{92}
-    \subitem {sensors.\+h}, \hyperpage{46}
+    \subitem {sensors.\+c}, \hyperpage{94}
+    \subitem {sensors.\+h}, \hyperpage{47}
 
   \indexspace
 
@@ -414,7 +414,7 @@
   \item {max}
     \subitem {macros.\+h}, \hyperpage{27}
   \item {menu\+Choices}
-    \subitem {lcddiag.\+c}, \hyperpage{69}
+    \subitem {lcddiag.\+c}, \hyperpage{70}
     \subitem {lcddiag.\+h}, \hyperpage{22}
   \item {min}
     \subitem {macros.\+h}, \hyperpage{28}
@@ -425,7 +425,7 @@
     \subitem {motor}, \hyperpage{5}
     \subitem {name}, \hyperpage{5}
   \item {motors.\+c}
-    \subitem {transmission\+Set\+Pos}, \hyperpage{86}
+    \subitem {transmission\+Set\+Pos}, \hyperpage{87}
   \item {motors.\+h}
     \subitem {change\+Gear}, \hyperpage{36}
     \subitem {deploy}, \hyperpage{37}
@@ -462,7 +462,7 @@
   \item {move}
     \subitem {motors.\+h}, \hyperpage{37}
   \item {move\+Robot}
-    \subitem {opcontrol.\+c}, \hyperpage{88}
+    \subitem {opcontrol.\+c}, \hyperpage{89}
     \subitem {opcontrol.\+h}, \hyperpage{40}
 
   \indexspace
@@ -478,22 +478,22 @@
   \item {name}
     \subitem {Motor\+Group}, \hyperpage{5}
   \item {numgroups}
-    \subitem {lcddiag.\+c}, \hyperpage{69}
+    \subitem {lcddiag.\+c}, \hyperpage{70}
     \subitem {lcddiag.\+h}, \hyperpage{22}
 
   \indexspace
 
   \item {opcontrol.\+c}
-    \subitem {dep}, \hyperpage{89}
-    \subitem {intk}, \hyperpage{89}
-    \subitem {move\+Robot}, \hyperpage{88}
-    \subitem {operator\+Control}, \hyperpage{88}
-    \subitem {record\+Joy\+Info}, \hyperpage{88}
-    \subitem {sht}, \hyperpage{89}
-    \subitem {spd}, \hyperpage{89}
-    \subitem {target\+Net}, \hyperpage{88}
-    \subitem {trans}, \hyperpage{89}
-    \subitem {turn}, \hyperpage{89}
+    \subitem {dep}, \hyperpage{90}
+    \subitem {intk}, \hyperpage{90}
+    \subitem {move\+Robot}, \hyperpage{89}
+    \subitem {operator\+Control}, \hyperpage{89}
+    \subitem {record\+Joy\+Info}, \hyperpage{89}
+    \subitem {sht}, \hyperpage{90}
+    \subitem {spd}, \hyperpage{90}
+    \subitem {target\+Net}, \hyperpage{89}
+    \subitem {trans}, \hyperpage{90}
+    \subitem {turn}, \hyperpage{90}
   \item {opcontrol.\+h}
     \subitem {dep}, \hyperpage{40}
     \subitem {intk}, \hyperpage{40}
@@ -505,7 +505,7 @@
     \subitem {turn}, \hyperpage{40}
   \item {operator\+Control}
     \subitem {main.\+h}, \hyperpage{33}
-    \subitem {opcontrol.\+c}, \hyperpage{88}
+    \subitem {opcontrol.\+c}, \hyperpage{89}
 
   \indexspace
 
@@ -519,13 +519,16 @@
     \subitem {autonrecorder.\+h}, \hyperpage{7}
   \item {PI}
     \subitem {constants.\+h}, \hyperpage{14}
+  \item {play\+Speaker}
+    \subitem {sensors.\+c}, \hyperpage{94}
+    \subitem {sensors.\+h}, \hyperpage{47}
   \item {playback\+Auton}
-    \subitem {autonrecorder.\+c}, \hyperpage{51}
+    \subitem {autonrecorder.\+c}, \hyperpage{52}
     \subitem {autonrecorder.\+h}, \hyperpage{8}
   \item {power\+Level\+Expander}
     \subitem {sensors.\+h}, \hyperpage{47}
   \item {prog\+Skills}
-    \subitem {autonrecorder.\+c}, \hyperpage{52}
+    \subitem {autonrecorder.\+c}, \hyperpage{53}
     \subitem {autonrecorder.\+h}, \hyperpage{9}
 
   \indexspace
@@ -535,9 +538,9 @@
   \item {R\+E\+L\+E\+A\+S\+ED}
     \subitem {friendly.\+h}, \hyperpage{16}
   \item {R\+I\+G\+H\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT}
-    \subitem {sensors.\+h}, \hyperpage{45}
+    \subitem {sensors.\+h}, \hyperpage{46}
   \item {R\+I\+G\+H\+T\+\_\+\+E\+N\+C\+\_\+\+T\+OP}
-    \subitem {sensors.\+h}, \hyperpage{45}
+    \subitem {sensors.\+h}, \hyperpage{46}
   \item {R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+OT}
     \subitem {motors.\+h}, \hyperpage{36}
   \item {R\+I\+G\+H\+T\+\_\+\+M\+O\+T\+O\+R\+\_\+\+T\+OP}
@@ -551,17 +554,20 @@
   \item {radians}
     \subitem {macros.\+h}, \hyperpage{28}
   \item {randlcdmsg}
-    \subitem {lcdmsg.\+c}, \hyperpage{84}
+    \subitem {lcdmsg.\+c}, \hyperpage{85}
     \subitem {lcdmsg.\+h}, \hyperpage{24}
+  \item {randsong}
+    \subitem {sensors.\+c}, \hyperpage{94}
+    \subitem {sensors.\+h}, \hyperpage{47}
   \item {record\+Auton}
-    \subitem {autonrecorder.\+c}, \hyperpage{51}
+    \subitem {autonrecorder.\+c}, \hyperpage{53}
     \subitem {autonrecorder.\+h}, \hyperpage{8}
   \item {record\+Joy\+Info}
-    \subitem {opcontrol.\+c}, \hyperpage{88}
+    \subitem {opcontrol.\+c}, \hyperpage{89}
     \subitem {opcontrol.\+h}, \hyperpage{40}
   \item {rightenc}
-    \subitem {sensors.\+c}, \hyperpage{93}
-    \subitem {sensors.\+h}, \hyperpage{47}
+    \subitem {sensors.\+c}, \hyperpage{95}
+    \subitem {sensors.\+h}, \hyperpage{48}
   \item {robot.\+h}
     \subitem {D\+R\+I\+V\+E\+\_\+\+D\+IA}, \hyperpage{42}
     \subitem {D\+R\+I\+V\+E\+\_\+\+G\+E\+A\+R\+R\+A\+T\+IO}, 
@@ -571,69 +577,75 @@
   \item {round}
     \subitem {macros.\+h}, \hyperpage{29}
   \item {rturn}
-    \subitem {sensors.\+c}, \hyperpage{93}
-    \subitem {sensors.\+h}, \hyperpage{47}
+    \subitem {sensors.\+c}, \hyperpage{94}
+    \subitem {sensors.\+h}, \hyperpage{48}
   \item {run\+Auton}
-    \subitem {lcddiag.\+c}, \hyperpage{64}
-  \item {run\+Battery}
-    \subitem {lcddiag.\+c}, \hyperpage{64}
-  \item {run\+Connection}
-    \subitem {lcddiag.\+c}, \hyperpage{64}
-  \item {run\+Credits}
-    \subitem {lcddiag.\+c}, \hyperpage{64}
-  \item {run\+Group\+Motor}
     \subitem {lcddiag.\+c}, \hyperpage{65}
+  \item {run\+Battery}
+    \subitem {lcddiag.\+c}, \hyperpage{65}
+  \item {run\+Connection}
+    \subitem {lcddiag.\+c}, \hyperpage{65}
+  \item {run\+Credits}
+    \subitem {lcddiag.\+c}, \hyperpage{65}
+  \item {run\+Group\+Motor}
+    \subitem {lcddiag.\+c}, \hyperpage{66}
   \item {run\+Hard\+Coded\+Programming\+Skills}
-    \subitem {autonroutines.\+c}, \hyperpage{57}
+    \subitem {autonroutines.\+c}, \hyperpage{58}
     \subitem {autonroutines.\+h}, \hyperpage{11}
   \item {run\+Indiv\+Motor}
-    \subitem {lcddiag.\+c}, \hyperpage{65}
+    \subitem {lcddiag.\+c}, \hyperpage{66}
   \item {run\+Motor}
-    \subitem {lcddiag.\+c}, \hyperpage{65}
+    \subitem {lcddiag.\+c}, \hyperpage{66}
   \item {run\+Motor\+Group\+Mgmt}
-    \subitem {lcddiag.\+c}, \hyperpage{66}
+    \subitem {lcddiag.\+c}, \hyperpage{67}
   \item {run\+Robot}
-    \subitem {lcddiag.\+c}, \hyperpage{66}
+    \subitem {lcddiag.\+c}, \hyperpage{67}
   \item {run\+Screensaver}
-    \subitem {lcddiag.\+c}, \hyperpage{66}
+    \subitem {lcddiag.\+c}, \hyperpage{67}
 
   \indexspace
 
   \item {S\+H\+O\+O\+T\+E\+R\+\_\+\+H\+A\+S\+\_\+\+T\+H\+R\+E\+E\+\_\+\+M\+O\+T\+O\+RS}
     \subitem {motors.\+h}, \hyperpage{36}
   \item {S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}
-    \subitem {sensors.\+h}, \hyperpage{45}
+    \subitem {sensors.\+h}, \hyperpage{46}
+  \item {S\+O\+N\+G\+\_\+\+C\+O\+U\+NT}
+    \subitem {sensors.\+h}, \hyperpage{46}
   \item {save\+Auton}
-    \subitem {autonrecorder.\+c}, \hyperpage{52}
+    \subitem {autonrecorder.\+c}, \hyperpage{53}
     \subitem {autonrecorder.\+h}, \hyperpage{8}
   \item {save\+Groups}
-    \subitem {lcddiag.\+c}, \hyperpage{66}
+    \subitem {lcddiag.\+c}, \hyperpage{67}
   \item {screensaver}
-    \subitem {lcdmsg.\+c}, \hyperpage{84}
+    \subitem {lcdmsg.\+c}, \hyperpage{85}
     \subitem {lcdmsg.\+h}, \hyperpage{25}
   \item {select\+Auton}
-    \subitem {autonrecorder.\+c}, \hyperpage{52}
+    \subitem {autonrecorder.\+c}, \hyperpage{53}
   \item {select\+Menu}
-    \subitem {lcddiag.\+c}, \hyperpage{66}
+    \subitem {lcddiag.\+c}, \hyperpage{67}
   \item {select\+Motor}
-    \subitem {lcddiag.\+c}, \hyperpage{67}
+    \subitem {lcddiag.\+c}, \hyperpage{68}
   \item {select\+Motor\+Group}
-    \subitem {lcddiag.\+c}, \hyperpage{67}
+    \subitem {lcddiag.\+c}, \hyperpage{68}
   \item {select\+Motor\+Group\+Members}
-    \subitem {lcddiag.\+c}, \hyperpage{67}
+    \subitem {lcddiag.\+c}, \hyperpage{68}
   \item {select\+Spd}
-    \subitem {lcddiag.\+c}, \hyperpage{68}
+    \subitem {lcddiag.\+c}, \hyperpage{69}
   \item {select\+Spd\+Group}
-    \subitem {lcddiag.\+c}, \hyperpage{68}
+    \subitem {lcddiag.\+c}, \hyperpage{69}
   \item {sensors.\+c}
-    \subitem {go\+Backward}, \hyperpage{92}
-    \subitem {go\+Forward}, \hyperpage{92}
-    \subitem {gyro}, \hyperpage{93}
-    \subitem {leftenc}, \hyperpage{93}
-    \subitem {lturn}, \hyperpage{92}
-    \subitem {rightenc}, \hyperpage{93}
-    \subitem {rturn}, \hyperpage{93}
-    \subitem {sonar}, \hyperpage{93}
+    \subitem {go\+Backward}, \hyperpage{93}
+    \subitem {go\+Forward}, \hyperpage{93}
+    \subitem {gyro}, \hyperpage{94}
+    \subitem {leftenc}, \hyperpage{95}
+    \subitem {lturn}, \hyperpage{94}
+    \subitem {play\+Speaker}, \hyperpage{94}
+    \subitem {randsong}, \hyperpage{94}
+    \subitem {rightenc}, \hyperpage{95}
+    \subitem {rturn}, \hyperpage{94}
+    \subitem {sonar}, \hyperpage{95}
+    \subitem {songs}, \hyperpage{95}
+    \subitem {speaker\+Task}, \hyperpage{95}
   \item {sensors.\+h}
     \subitem {B\+A\+T\+T\+\_\+\+B\+K\+UP}, \hyperpage{44}
     \subitem {B\+A\+T\+T\+\_\+\+M\+A\+IN}, \hyperpage{44}
@@ -643,33 +655,38 @@
     \subitem {G\+E\+A\+R\+\_\+\+L\+I\+FT}, \hyperpage{44}
     \subitem {G\+Y\+R\+O\+\_\+\+N\+E\+T\+\_\+\+T\+A\+R\+G\+ET}, 
 		\hyperpage{44}
-    \subitem {G\+Y\+R\+O\+\_\+\+P\+O\+RT}, \hyperpage{44}
+    \subitem {G\+Y\+R\+O\+\_\+\+P\+O\+RT}, \hyperpage{45}
     \subitem {G\+Y\+R\+O\+\_\+\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}, 
-		\hyperpage{44}
-    \subitem {G\+Y\+R\+O\+\_\+P}, \hyperpage{44}
+		\hyperpage{45}
+    \subitem {G\+Y\+R\+O\+\_\+P}, \hyperpage{45}
     \subitem {go\+Backward}, \hyperpage{46}
-    \subitem {go\+Forward}, \hyperpage{46}
-    \subitem {gyro}, \hyperpage{47}
+    \subitem {go\+Forward}, \hyperpage{47}
+    \subitem {gyro}, \hyperpage{48}
     \subitem {L\+E\+F\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT}, \hyperpage{45}
     \subitem {L\+E\+F\+T\+\_\+\+E\+N\+C\+\_\+\+T\+OP}, \hyperpage{45}
-    \subitem {leftenc}, \hyperpage{47}
-    \subitem {lturn}, \hyperpage{46}
+    \subitem {leftenc}, \hyperpage{48}
+    \subitem {lturn}, \hyperpage{47}
     \subitem {N\+U\+M\+\_\+\+B\+A\+T\+TS}, \hyperpage{45}
     \subitem {P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+S\+T\+A\+T\+US}, 
 		\hyperpage{45}
     \subitem {P\+O\+W\+E\+R\+\_\+\+E\+X\+P\+A\+N\+D\+E\+R\+\_\+\+V\+O\+L\+T\+A\+G\+E\+\_\+\+D\+I\+V\+I\+S\+OR}, 
 		\hyperpage{45}
+    \subitem {play\+Speaker}, \hyperpage{47}
     \subitem {power\+Level\+Expander}, \hyperpage{47}
     \subitem {R\+I\+G\+H\+T\+\_\+\+E\+N\+C\+\_\+\+B\+OT}, 
-		\hyperpage{45}
+		\hyperpage{46}
     \subitem {R\+I\+G\+H\+T\+\_\+\+E\+N\+C\+\_\+\+T\+OP}, 
-		\hyperpage{45}
-    \subitem {rightenc}, \hyperpage{47}
-    \subitem {rturn}, \hyperpage{47}
-    \subitem {S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}, \hyperpage{45}
+		\hyperpage{46}
+    \subitem {randsong}, \hyperpage{47}
+    \subitem {rightenc}, \hyperpage{48}
+    \subitem {rturn}, \hyperpage{48}
+    \subitem {S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}, \hyperpage{46}
+    \subitem {S\+O\+N\+G\+\_\+\+C\+O\+U\+NT}, \hyperpage{46}
     \subitem {sonar}, \hyperpage{48}
+    \subitem {songs}, \hyperpage{48}
+    \subitem {speaker\+Task}, \hyperpage{49}
     \subitem {T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT}, 
-		\hyperpage{45}
+		\hyperpage{46}
     \subitem {U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT}, 
 		\hyperpage{46}
     \subitem {U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT}, 
@@ -678,32 +695,38 @@
     \subitem {motors.\+h}, \hyperpage{37}
   \item {sht}
     \subitem {joy\+State}, \hyperpage{4}
-    \subitem {opcontrol.\+c}, \hyperpage{89}
+    \subitem {opcontrol.\+c}, \hyperpage{90}
     \subitem {opcontrol.\+h}, \hyperpage{40}
   \item {sign}
     \subitem {macros.\+h}, \hyperpage{29}
   \item {sonar}
-    \subitem {sensors.\+c}, \hyperpage{93}
+    \subitem {sensors.\+c}, \hyperpage{95}
+    \subitem {sensors.\+h}, \hyperpage{48}
+  \item {songs}
+    \subitem {sensors.\+c}, \hyperpage{95}
     \subitem {sensors.\+h}, \hyperpage{48}
   \item {spd}
     \subitem {joy\+State}, \hyperpage{4}
-    \subitem {opcontrol.\+c}, \hyperpage{89}
+    \subitem {opcontrol.\+c}, \hyperpage{90}
     \subitem {opcontrol.\+h}, \hyperpage{40}
+  \item {speaker\+Task}
+    \subitem {sensors.\+c}, \hyperpage{95}
+    \subitem {sensors.\+h}, \hyperpage{49}
   \item {SQ}
     \subitem {macros.\+h}, \hyperpage{29}
   \item {sq}
     \subitem {macros.\+h}, \hyperpage{29}
-  \item {src/auto.\+c}, \hyperpage{49, 50}
-  \item {src/autonrecorder.\+c}, \hyperpage{50}, \hyperpage{53}
-  \item {src/autonroutines.\+c}, \hyperpage{57, 58}
-  \item {src/init.\+c}, \hyperpage{58}, \hyperpage{60}
-  \item {src/lcddiag.\+c}, \hyperpage{61}, \hyperpage{70}
-  \item {src/lcdmsg.\+c}, \hyperpage{83}, \hyperpage{85}
-  \item {src/motors.\+c}, \hyperpage{86}
-  \item {src/opcontrol.\+c}, \hyperpage{87}, \hyperpage{90}
-  \item {src/sensors.\+c}, \hyperpage{91}, \hyperpage{94}
+  \item {src/auto.\+c}, \hyperpage{50, 51}
+  \item {src/autonrecorder.\+c}, \hyperpage{52}, \hyperpage{54}
+  \item {src/autonroutines.\+c}, \hyperpage{58, 59}
+  \item {src/init.\+c}, \hyperpage{59}, \hyperpage{61}
+  \item {src/lcddiag.\+c}, \hyperpage{62}, \hyperpage{71}
+  \item {src/lcdmsg.\+c}, \hyperpage{84}, \hyperpage{86}
+  \item {src/motors.\+c}, \hyperpage{87}
+  \item {src/opcontrol.\+c}, \hyperpage{88}, \hyperpage{91}
+  \item {src/sensors.\+c}, \hyperpage{92}, \hyperpage{96}
   \item {states}
-    \subitem {autonrecorder.\+c}, \hyperpage{52}
+    \subitem {autonrecorder.\+c}, \hyperpage{53}
     \subitem {autonrecorder.\+h}, \hyperpage{9}
 
   \indexspace
@@ -713,26 +736,26 @@
   \item {T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+M\+O\+T\+OR}
     \subitem {motors.\+h}, \hyperpage{36}
   \item {T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT}
-    \subitem {sensors.\+h}, \hyperpage{45}
+    \subitem {sensors.\+h}, \hyperpage{46}
   \item {T\+W\+O\+\_\+\+PI}
     \subitem {constants.\+h}, \hyperpage{15}
   \item {target\+Net}
-    \subitem {opcontrol.\+c}, \hyperpage{88}
+    \subitem {opcontrol.\+c}, \hyperpage{89}
   \item {trans}
     \subitem {joy\+State}, \hyperpage{4}
-    \subitem {opcontrol.\+c}, \hyperpage{89}
+    \subitem {opcontrol.\+c}, \hyperpage{90}
     \subitem {opcontrol.\+h}, \hyperpage{40}
   \item {transmission}
     \subitem {motors.\+h}, \hyperpage{37}
   \item {transmission\+Set\+Pos}
-    \subitem {motors.\+c}, \hyperpage{86}
+    \subitem {motors.\+c}, \hyperpage{87}
     \subitem {motors.\+h}, \hyperpage{38}
   \item {turn}
     \subitem {joy\+State}, \hyperpage{4}
-    \subitem {opcontrol.\+c}, \hyperpage{89}
+    \subitem {opcontrol.\+c}, \hyperpage{90}
     \subitem {opcontrol.\+h}, \hyperpage{40}
   \item {type\+String}
-    \subitem {lcddiag.\+c}, \hyperpage{68}
+    \subitem {lcddiag.\+c}, \hyperpage{69}
     \subitem {lcddiag.\+h}, \hyperpage{21}
 
   \indexspace

@@ -42,11 +42,13 @@ File for important sensor declarations and functions.
 \item 
 \#define \hyperlink{sensors_8h_a5caef30fe7ef36e6f497db8bf9fd9c67}{G\+Y\+R\+O\+\_\+P}~10
 \item 
-\#define \hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}~5
+\#define \hyperlink{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}~10
 \item 
 \#define \hyperlink{sensors_8h_ac6e827f0a9c2f52b4d935274daad778a}{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+E\+C\+H\+O\+\_\+\+P\+O\+RT}~11
 \item 
 \#define \hyperlink{sensors_8h_a97be84893513dc7afb5c4c26b7bdd074}{U\+L\+T\+R\+A\+S\+O\+N\+I\+C\+\_\+\+P\+I\+N\+G\+\_\+\+P\+O\+RT}~12
+\item 
+\#define \hyperlink{sensors_8h_ac3e33f0dc086adda988b210eacf86312}{S\+O\+N\+G\+\_\+\+C\+O\+U\+NT}~15
 \end{DoxyCompactItemize}
 \subsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -62,6 +64,10 @@ void \hyperlink{sensors_8h_aac3aa2a1f6d4df8618c2e95a99f69bd5}{go\+Forward} (int 
 void \hyperlink{sensors_8h_a588c302940f0bd83c1f7f7fef3447171}{go\+Backward} (int inches)
 \item 
 unsigned int \hyperlink{sensors_8h_af8de9fe9eba1282f34dce42deebffc93}{power\+Level\+Expander} ()
+\item 
+void \hyperlink{sensors_8h_a44ad7c17f20379371c31ec8ba82ff03e}{play\+Speaker} (void $\ast$ignore)
+\item 
+char $\ast$ \hyperlink{sensors_8h_ac268bd7cd4a7f4825e597fb81dfd82f5}{randsong} ()
 \end{DoxyCompactItemize}
 \subsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -73,6 +79,10 @@ Encoder \hyperlink{sensors_8h_a8c853ba918673c4878ab6935c54969e4}{rightenc}
 Gyro \hyperlink{sensors_8h_ad2d059cd4baeedd5fbead13085953eed}{gyro}
 \item 
 Ultrasonic \hyperlink{sensors_8h_a09e334aba0637f228c65c135f428606a}{sonar}
+\item 
+char $\ast$ \hyperlink{sensors_8h_ad0bf4fe84ad2c452b03494aa89148939}{songs} \mbox{[}$\,$\mbox{]}
+\item 
+Task\+Handle \hyperlink{sensors_8h_a29754c0d165c3e366278bf93ee231e35}{speaker\+Task}
 \end{DoxyCompactItemize}
 
 
@@ -207,10 +217,17 @@ Definition at line \hyperlink{sensors_8h_source_l00032}{32} of file \hyperlink{s
 
 \index{sensors.\+h@{sensors.\+h}!S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT@{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}}
 \index{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT@{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}!sensors.\+h@{sensors.\+h}}
-\paragraph[{\texorpdfstring{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}{SHOOTER_LIMIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT~5}\hypertarget{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{}\label{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}
+\paragraph[{\texorpdfstring{S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT}{SHOOTER_LIMIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+H\+O\+O\+T\+E\+R\+\_\+\+L\+I\+M\+IT~10}\hypertarget{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}{}\label{sensors_8h_a354b5ed50c08708ba703ca9e9121a0cf}
 Defines the port for the limit switch that is triggered when the shooter fires. 
 
 Definition at line \hyperlink{sensors_8h_source_l00161}{161} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+
+\index{sensors.\+h@{sensors.\+h}!S\+O\+N\+G\+\_\+\+C\+O\+U\+NT@{S\+O\+N\+G\+\_\+\+C\+O\+U\+NT}}
+\index{S\+O\+N\+G\+\_\+\+C\+O\+U\+NT@{S\+O\+N\+G\+\_\+\+C\+O\+U\+NT}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{S\+O\+N\+G\+\_\+\+C\+O\+U\+NT}{SONG_COUNT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+O\+N\+G\+\_\+\+C\+O\+U\+NT~15}\hypertarget{sensors_8h_ac3e33f0dc086adda988b210eacf86312}{}\label{sensors_8h_ac3e33f0dc086adda988b210eacf86312}
+Defines the amount of songs in the master list. 
+
+Definition at line \hyperlink{sensors_8h_source_l00181}{181} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
 \index{sensors.\+h@{sensors.\+h}!T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT@{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT}}
 \index{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT@{T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N\+\_\+\+P\+OT}!sensors.\+h@{sensors.\+h}}
@@ -301,6 +318,24 @@ Turns the robot left to a specified angle.
 
 Definition at line \hyperlink{sensors_8c_source_l00040}{40} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
 
+\index{sensors.\+h@{sensors.\+h}!play\+Speaker@{play\+Speaker}}
+\index{play\+Speaker@{play\+Speaker}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{play\+Speaker(void $\ast$ignore)}{playSpeaker(void *ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}void play\+Speaker (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ignore}
+\end{DoxyParamCaption}
+)}\hypertarget{sensors_8h_a44ad7c17f20379371c31ec8ba82ff03e}{}\label{sensors_8h_a44ad7c17f20379371c31ec8ba82ff03e}
+Plays a song over the speaker. This task plays a random song from the array of songs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ignore} & does nothing -\/ required by task definition \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{sensors_8c_source_l00129}{129} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
+
 \index{sensors.\+h@{sensors.\+h}!power\+Level\+Expander@{power\+Level\+Expander}}
 \index{power\+Level\+Expander@{power\+Level\+Expander}!sensors.\+h@{sensors.\+h}}
 \paragraph[{\texorpdfstring{power\+Level\+Expander()}{powerLevelExpander()}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int power\+Level\+Expander (
@@ -316,6 +351,22 @@ the power expander battery voltage, in millivolts
 
 
 Definition at line \hyperlink{sensors_8h_source_l00109}{109} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
+
+\index{sensors.\+h@{sensors.\+h}!randsong@{randsong}}
+\index{randsong@{randsong}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{randsong()}{randsong()}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ randsong (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sensors_8h_ac268bd7cd4a7f4825e597fb81dfd82f5}{}\label{sensors_8h_ac268bd7cd4a7f4825e597fb81dfd82f5}
+Returns a random song from the master list.
+
+\begin{DoxyReturn}{Returns}
+a pointer to the song 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{sensors_8c_source_l00111}{111} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
 
 \index{sensors.\+h@{sensors.\+h}!rturn@{rturn}}
 \index{rturn@{rturn}!sensors.\+h@{sensors.\+h}}
@@ -365,4 +416,18 @@ Definition at line \hyperlink{sensors_8c_source_l00023}{23} of file \hyperlink{s
 Object representing the ultrasonic sensor. 
 
 Definition at line \hyperlink{sensors_8c_source_l00083}{83} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
+
+\index{sensors.\+h@{sensors.\+h}!songs@{songs}}
+\index{songs@{songs}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{songs}{songs}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ songs\mbox{[}$\,$\mbox{]}}\hypertarget{sensors_8h_ad0bf4fe84ad2c452b03494aa89148939}{}\label{sensors_8h_ad0bf4fe84ad2c452b03494aa89148939}
+Master list of all songs. 
+
+Definition at line \hyperlink{sensors_8c_source_l00088}{88} of file \hyperlink{sensors_8c_source}{sensors.\+c}.
+
+\index{sensors.\+h@{sensors.\+h}!speaker\+Task@{speaker\+Task}}
+\index{speaker\+Task@{speaker\+Task}!sensors.\+h@{sensors.\+h}}
+\paragraph[{\texorpdfstring{speaker\+Task}{speakerTask}}]{\setlength{\rightskip}{0pt plus 5cm}Task\+Handle speaker\+Task}\hypertarget{sensors_8h_a29754c0d165c3e366278bf93ee231e35}{}\label{sensors_8h_a29754c0d165c3e366278bf93ee231e35}
+Object representing the speaker song task. The speaker song task runs in a separate thread from the operator control code. This prevents it from blocking the driving code from executing. 
+
+Definition at line \hyperlink{sensors_8h_source_l00193}{193} of file \hyperlink{sensors_8h_source}{sensors.\+h}.
 
