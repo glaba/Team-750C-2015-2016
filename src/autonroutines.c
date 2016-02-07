@@ -25,7 +25,7 @@ void runHardCodedProgrammingSkills() {
 
     while (gyroGet(gyro) % ROTATION_DEG != -90 - CLOSE_GOAL_ANGLE /* turning right */) {
         int error = (-90 - CLOSE_GOAL_ANGLE) - gyroGet(gyro) % ROTATION_DEG;
-        move(0, error * GYRO_P);
+        move(0, error * GYRO_KP);
     }
     while (ultrasonicGet(sonar) < DISTANCE_TO_OTHER_SIDE - 30) {
         move(127, 0);
@@ -35,7 +35,7 @@ void runHardCodedProgrammingSkills() {
     }
     while (gyroGet(gyro) % ROTATION_DEG != -2*CLOSE_GOAL_ANGLE /* turning left */) {
         int error = (-2*CLOSE_GOAL_ANGLE) - gyroGet(gyro) % ROTATION_DEG;
-        move(0, error * GYRO_P);
+        move(0, error * GYRO_KP);
     }
 
     numShots = 0;

@@ -148,7 +148,9 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines the proportional error-correction term for the gyroscope alignment velocity control loop.
  */
-#define GYRO_P 10
+#define GYRO_KP 10
+#define GYRO_KI 0.1
+#define GYRO_KD -2
 
 /**
  * Object representing the gyroscope.
@@ -178,7 +180,7 @@ extern Ultrasonic sonar;
 /**
  * Defines the amount of songs in the master list.
  */
-#define SONG_COUNT 17
+#define SONG_COUNT 25
 
 /** 
  * Master list of all songs.

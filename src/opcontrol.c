@@ -64,6 +64,9 @@ int trans;
  */
 int dep;
 
+int previous_error = 0;
+int integral = 0;
+
 /** 
  * Faces the robot towards the desired gyroscope angle by turning it.
  * This function implements a simple PID control loop in order to correct for error.
@@ -71,8 +74,11 @@ int dep;
  * @param target the desired robot angle
  */
 void targetNet(int target){
-    int error = gyroGet(gyro) % ROTATION_DEG - target;
-    turn = error * GYRO_P;
+    int error = -1 * (target - (gyroGet(gyro) % ROTATION_DEG));
+    integral += error * 20;
+    int derivative = (error-previous_error)/20;
+    turn = error * GYRO_KP + integral * GYRO_KI + derivative * GYRO_KD;
+    previous_error = error;
 }
 
 /**
@@ -84,12 +90,18 @@ void recordJoyInfo(){
     sht = 0;
     intk = 0;
     trans = 0;
-    if(joystickGetDigital(1, 6, JOY_UP) || joystickGetDigital(2, 6, JOY_UP)){
-        sht = 127;
-    } else if(joystickGetDigital(1, 6, JOY_DOWN) || joystickGetDigital(2, 6, JOY_DOWN)){
-        sht = -127;
+    if(abs(joystickGetAnalog(2, 3))<10 && abs(joystickGetAnalog(2, 2))<10){
+        if(joystickGetDigital(1, 6, JOY_UP) || joystickGetDigital(2, 6, JOY_UP)){
+            sht = 127;
+        } else if(joystickGetDigital(1, 6, JOY_DOWN) || joystickGetDigital(2, 6, JOY_DOWN)){
+            sht = -127;
+        } else {
+            sht = 0;
+        }
+    } else if(abs(joystickGetAnalog(2, 3))<10){
+        sht = joystickGetAnalog(2, 2);
     } else {
-        sht = 0;
+        sht = joystickGetAnalog(2, 3);
     }
     if(joystickGetDigital(1, 5, JOY_UP) || joystickGetDigital(2, 5, JOY_UP)){
         intk = 127;
@@ -157,7 +169,7 @@ void operatorControl() {
     speakerTask = NULL;
     while (true) {
         if(isOnline() || progSkills == 0){
-            if(joystickGetDigital(1, 8, JOY_UP) || joystickGetDigital(1, 8, JOY_DOWN)) {
+            if(joystickGetDigital(1, 8, JOY_UP) || joystickGetDigital(1, 8, JOY_DOWN) || joystickGetDigital(2, 8, JOY_UP) || joystickGetDigital(2, 8, JOY_DOWN)) {
                 if(!speakerButtonPressed) {
                     speakerPlay = !speakerPlay;
                     speakerButtonPressed = true;
