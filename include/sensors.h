@@ -133,7 +133,7 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines the port for the gyroscope.
  */
-#define GYRO_PORT 4
+#define GYRO_PORT 4 
 
 /**
  * Defines the gyroscope sensitivity. A value of zero represents the default sensitivity.
@@ -149,8 +149,8 @@ inline unsigned int powerLevelExpander(){
  * Defines the proportional error-correction term for the gyroscope alignment velocity control loop.
  */
 #define GYRO_KP 10
-#define GYRO_KI 0.1
-#define GYRO_KD -2
+#define GYRO_KI 0
+#define GYRO_KD 8000
 
 /**
  * Object representing the gyroscope.

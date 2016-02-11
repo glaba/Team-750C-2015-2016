@@ -64,8 +64,9 @@ int trans;
  */
 int dep;
 
-int previous_error = 0;
-int integral = 0;
+float previous_error = 0;
+float integral = 0;
+float derivative = 0;
 
 /** 
  * Faces the robot towards the desired gyroscope angle by turning it.
@@ -74,9 +75,10 @@ int integral = 0;
  * @param target the desired robot angle
  */
 void targetNet(int target){
-    int error = -1 * (target - (gyroGet(gyro) % ROTATION_DEG));
+    float error = -1 * (target - (gyroGet(gyro) % ROTATION_DEG));
     integral += error * 20;
-    int derivative = (error-previous_error)/20;
+    derivative = (error-previous_error)/100.0;
+    printf("P: %f\tI: %f\tD: %f\n", error, integral, derivative);
     turn = error * GYRO_KP + integral * GYRO_KI + derivative * GYRO_KD;
     previous_error = error;
 }
@@ -131,6 +133,13 @@ void recordJoyInfo(){
         targetNet(GYRO_NET_TARGET);
     } else if(joystickGetDigital(1, 7, JOY_UP)){
         gyroReset(gyro);
+        integral = 0;
+    }
+
+    if(!joystickGetDigital(1, 7, JOY_DOWN)){
+        integral = 0;
+        previous_error = 0;
+        derivative = 0;
     }
 }
 
