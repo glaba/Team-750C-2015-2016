@@ -39,6 +39,13 @@ inline void transmission(int spd){
     motorSet(TRANSMISSION_MOTOR, spd);
 }
 
+/**
+ * Moves the drive straight
+ *
+ * @param direction the direction to move (either forwards or backwards, which corresponds to 1 and -1)
+ */
+void moveStraight(int direction);
+
 /** 
  * Sets the position of the transmission.
  * 

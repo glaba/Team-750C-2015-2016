@@ -146,11 +146,18 @@ inline unsigned int powerLevelExpander(){
 #define GYRO_NET_TARGET 0 
 
 /**
- * Defines the proportional error-correction term for the gyroscope alignment velocity control loop.
+ * Defines the PID error-correction terms for the gyroscope alignment velocity control loop.
  */
 #define GYRO_KP 10
 #define GYRO_KI 0
 #define GYRO_KD 8000
+
+/**
+ * Defines the PID error-correction terms for the encoder alignment control loop.
+ */
+#define ENCODER_KP 0
+#define ENCODER_KI 0
+#define ENCODER_KD 0
 
 /**
  * Object representing the gyroscope.

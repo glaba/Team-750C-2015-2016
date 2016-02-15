@@ -11,6 +11,25 @@
 
 #include "main.h"
 
+int sumEncoderError;
+int previousEncoderError;
+
+/**
+ * Moves the drive straight
+ *
+ * @param direction the direction to move (either forwards or backwards, which corresponds to 1 and -1)
+ */
+void moveStraight(int direction) {
+    int right = encoderGet(rightenc);
+    int left = encoderGet(leftenc);
+    int error = right - left;
+    
+    sumEncoderError += error;
+
+    move(127, ENCODER_KP * error + ENCODER_KI * sumEncoderError - ENCODER_KD * (error - previousEncoderError));
+    previousEncoderError = error;
+}
+
 /** 
  * Sets the position of the transmission.
  * 
