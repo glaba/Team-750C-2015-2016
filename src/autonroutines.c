@@ -31,13 +31,15 @@ void runHardCodedProgrammingSkills() {
         move(0, error * GYRO_KP + integral * GYRO_KI + derivative * GYRO_KD);
         prev_error = error;
     }
+    move(0, 0);
     gyroReset(gyro);
-    while (ultrasonicGet(sonar) < DISTANCE_TO_OTHER_SIDE - 30) {
+    while (ultrasonicGet(sonar) > (DISTANCE_TO_OTHER_SIDE + 30)) {
         move(127, 0);
     }
-    while (ultrasonicGet(sonar) < DISTANCE_TO_OTHER_SIDE) {
+    while (ultrasonicGet(sonar) > DISTANCE_TO_OTHER_SIDE) {
         move(64, 0);
     }
+    move(0, 0);
     integral = 0;
     prev_error = 0;
     while (gyroGet(gyro) % ROTATION_DEG != 90 /* turning left */) {
@@ -47,6 +49,7 @@ void runHardCodedProgrammingSkills() {
         move(0, error * GYRO_KP + integral * GYRO_KI + derivative * GYRO_KD);
         prev_error = error;
     }
+    move(0, 0);
 
     /*numShots = 0;*/
     shoot(127);

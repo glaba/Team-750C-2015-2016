@@ -16,7 +16,7 @@
 /**
  * Distance that the robot must travel to reach the other tile to shoot preloads.
  */
-#define DISTANCE_TO_OTHER_SIDE 100
+#define DISTANCE_TO_OTHER_SIDE 26.162
 
 /**
  * Runs a pre-written programming skills routine using sensors rather than the autonomous recorder.

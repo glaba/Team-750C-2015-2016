@@ -92,15 +92,19 @@ void recordJoyInfo(){
     sht = 0;
     intk = 0;
     trans = 0;
-    if(abs(joystickGetAnalog(2, 3))<10 && abs(joystickGetAnalog(2, 2))<10){
+    if(abs(joystickGetAnalog(2, 3))<30 && abs(joystickGetAnalog(2, 2))<30){
         if(joystickGetDigital(1, 6, JOY_UP) || joystickGetDigital(2, 6, JOY_UP)){
             sht = 127;
         } else if(joystickGetDigital(1, 6, JOY_DOWN) || joystickGetDigital(2, 6, JOY_DOWN)){
             sht = -127;
+        } else if(joystickGetDigital(2, 7, JOY_UP)){
+            sht = 60;
+        } else if(joystickGetDigital(2, 7, JOY_DOWN)){
+            sht = -60;
         } else {
             sht = 0;
         }
-    } else if(abs(joystickGetAnalog(2, 3))<10){
+    } else if(abs(joystickGetAnalog(2, 3))<30){
         sht = joystickGetAnalog(2, 2);
     } else {
         sht = joystickGetAnalog(2, 3);
@@ -133,10 +137,6 @@ void recordJoyInfo(){
         targetNet(GYRO_NET_TARGET);
     } else if(joystickGetDigital(1, 7, JOY_UP)){
         gyroReset(gyro);
-        integral = 0;
-    }
-
-    if(!joystickGetDigital(1, 7, JOY_DOWN)){
         integral = 0;
         previous_error = 0;
         derivative = 0;
