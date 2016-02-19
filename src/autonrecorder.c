@@ -239,7 +239,7 @@ void loadAuton() {
             autonLoaded = MAX_AUTON_SLOTS + 1;
         } else if (autonSlot == MAX_AUTON_SLOTS + 2) {
             printf("Performing hard-coded programming skills.\n");
-            lcdSetText(LCD_PORT, 1, "Loading skills...");
+            lcdSetText(LCD_PORT, 1, "Loaded skills!");
             lcdPrint(LCD_PORT,   2, "Hardcoded Skills");
             autonLoaded = MAX_AUTON_SLOTS + 2;
             return;

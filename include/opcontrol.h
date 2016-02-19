@@ -48,5 +48,14 @@ void recordJoyInfo();
  */
 void moveRobot();
 
+/** 
+ * Faces the robot towards the desired gyroscope angle by turning it.
+ * This function implements a simple PID control loop in order to correct for error.
+ * 
+ * @param target the desired robot angle
+ * @return the drive turning speed value
+ */
+int targetNet(int target);
+
 #endif
 

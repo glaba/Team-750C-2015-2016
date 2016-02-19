@@ -148,9 +148,9 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines the PID error-correction terms for the gyroscope alignment velocity control loop.
  */
-#define GYRO_KP 10
+#define GYRO_KP 9
 #define GYRO_KI 0
-#define GYRO_KD 8000
+#define GYRO_KD 7900
 
 /**
  * Defines the PID error-correction terms for the encoder alignment control loop.

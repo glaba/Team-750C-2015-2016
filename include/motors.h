@@ -66,13 +66,13 @@ inline void changeGear(int gear){
 /**
  * Defines motor ports for the left side of the drivetrain.
  */
-#define LEFT_MOTOR_TOP 2
+#define LEFT_MOTOR_TOP 3
 #define LEFT_MOTOR_BOT 5
 
 /**
  * Defines motor ports for the right side of the drivetrain.
  */
-#define RIGHT_MOTOR_TOP 3
+#define RIGHT_MOTOR_TOP 2
 #define RIGHT_MOTOR_BOT 4
 
 /** 
@@ -82,7 +82,7 @@ inline void changeGear(int gear){
  * @param turn the turning speed value
  */
 inline void move(int spd, int turn){
-    motorSet(LEFT_MOTOR_TOP, spd + turn);
+    motorSet(LEFT_MOTOR_TOP, -spd - turn);
     motorSet(LEFT_MOTOR_BOT, spd + turn);
     motorSet(RIGHT_MOTOR_TOP, -spd + turn);
     motorSet(RIGHT_MOTOR_BOT, -spd + turn);

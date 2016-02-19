@@ -73,14 +73,16 @@ float derivative = 0;
  * This function implements a simple PID control loop in order to correct for error.
  * 
  * @param target the desired robot angle
+ * @return the drive turning speed value
  */
-void targetNet(int target){
+int targetNet(int target){
     float error = -1 * (target - (gyroGet(gyro) % ROTATION_DEG));
     integral += error * 20;
     derivative = (error-previous_error)/100.0;
     printf("P: %f\tI: %f\tD: %f\n", error, integral, derivative);
     turn = error * GYRO_KP + integral * GYRO_KI + derivative * GYRO_KD;
     previous_error = error;
+    return turn;
 }
 
 /**
@@ -97,10 +99,12 @@ void recordJoyInfo(){
             sht = 127;
         } else if(joystickGetDigital(1, 6, JOY_DOWN) || joystickGetDigital(2, 6, JOY_DOWN)){
             sht = -127;
-        } else if(joystickGetDigital(2, 7, JOY_UP)){
-            sht = 60;
+        } else if(joystickGetDigital(2, 7, JOY_LEFT)){
+            sht = 70;
         } else if(joystickGetDigital(2, 7, JOY_DOWN)){
             sht = -60;
+        } else if(joystickGetDigital(2, 7, JOY_RIGHT)){
+            sht = -50;
         } else {
             sht = 0;
         }

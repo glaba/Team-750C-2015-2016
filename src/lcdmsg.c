@@ -59,6 +59,8 @@ char* lcdmsg[] = {
     "Nauty Gears",
     "New 'n' Nauty",
     "TURBO GEARS",
+    "Google+ Level",
+    "D Ball",
     "itoa() Sucks"
 };
 

@@ -11,7 +11,7 @@
 /**
  * Angle that the robot must be from the vertical to shoot into the close goal while still being able to turn without hitting the wall.
  */
-#define CLOSE_GOAL_ANGLE 15
+#define CLOSE_GOAL_ANGLE 5
 
 /**
  * Distance that the robot must travel to reach the other tile to shoot preloads.
