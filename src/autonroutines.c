@@ -9,31 +9,34 @@
 /**
  * Runs a programming skills routine using sensors rather than the autonomous recorder.
  * Starts in the left side of the field shooting into the closer goal.
+ * After shooting into the left net, it turns and goes to the other side of the field.
+ * It turns to the face the other net to shoot the final set of match loads.
  */
 void runHardCodedProgrammingSkills() {
-    int numShots = 0;
+    lcdSetText(LCD_PORT, 1, "Hardcoded Skills");
+    /*int numShots = 0;
     bool shooterLimitPressed = UNPRESSED;
     shoot(-127);
-    lcdSetText(LCD_PORT, 1, "Hardcoded Skills");
-    /*while (numShots < 32) {*/
-        /*if (shooterLimitPressed == PRESSED && digitalRead(SHOOTER_LIMIT) == UNPRESSED) {*/
-            /*numShots++;*/
-        /*}*/
-        /*shooterLimitPressed = digitalRead(SHOOTER_LIMIT);*/
-        /*lcdPrint(LCD_PORT, 2, "Shot: %d", numShots);*/
-        /*if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {*/
-            /*printf("Skills manually cancelled.\n");*/
-            /*lcdSetText(LCD_PORT, 1, "Cancelled skills.");*/
-            /*lcdSetText(LCD_PORT, 2, "");*/
-            /*motorStopAll();*/
-            /*return;*/
-        /*}*/
-        /*delay(20);*/
-    /*}*/
+    while (numShots < 32) {
+        if (shooterLimitPressed == PRESSED && digitalRead(SHOOTER_LIMIT) == UNPRESSED) {
+            numShots++;
+        }
+        shooterLimitPressed = digitalRead(SHOOTER_LIMIT);
+        lcdPrint(LCD_PORT, 2, "Shot: %d", numShots);
+        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+            printf("Skills manually cancelled.\n");
+            lcdSetText(LCD_PORT, 1, "Cancelled skills.");
+            lcdSetText(LCD_PORT, 2, "");
+            motorStopAll();
+            return;
+        }
+        delay(20);
+    }*/
     shoot(0);
-    gyroReset(gyro);
+    resetGyroVariables();
     int prev_ang = gyroGet(gyro);
     bool done = false;
+    int timeout = 0;
     while (!done) { //turn right
         printf("Curr: %d\tPrev: %d\tTarg: %d\n", (gyroGet(gyro) % ROTATION_DEG), prev_ang, (-90-CLOSE_GOAL_ANGLE));
         move(0, targetNet(-90-CLOSE_GOAL_ANGLE));
@@ -47,26 +50,33 @@ void runHardCodedProgrammingSkills() {
             motorStopAll();
             return;
         }
-        if(abs((gyroGet(gyro) % ROTATION_DEG) - (-90-CLOSE_GOAL_ANGLE))<=1 && prev_ang == gyroGet(gyro)){
+        if(abs((gyroGet(gyro) % ROTATION_DEG) - (-90-CLOSE_GOAL_ANGLE))<=1 && prev_ang == gyroGet(gyro)) {
             done = true;
+        } else if(prev_ang == gyroGet(gyro)) {
+            timeout += 20;
+        } else {
+            timeout = 0;
         }
         prev_ang = gyroGet(gyro);
         delay(20);
+        if(timeout >= 1000) {
+            done = true;
+        }
     }
     move(0, 0);
-    gyroReset(gyro);
-    /*while(true){*/
-        /*printf("Dist: %d\n", ultrasonicGet(sonar));*/
-        /*lcdPrint(LCD_PORT, 2, "Dist: %d", ultrasonicGet(sonar));*/
-        /*if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {*/
-            /*printf("Skills manually cancelled.\n");*/
-            /*lcdSetText(LCD_PORT, 1, "Cancelled skills.");*/
-            /*lcdSetText(LCD_PORT, 2, "");*/
-            /*motorStopAll();*/
-            /*return;*/
-        /*}*/
-        /*delay(20);*/
-    /*}*/
+    resetGyroVariables();
+    /*while(true){
+        printf("Dist: %d\n", ultrasonicGet(sonar));
+        lcdPrint(LCD_PORT, 2, "Dist: %d", ultrasonicGet(sonar));
+        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+            printf("Skills manually cancelled.\n");
+            lcdSetText(LCD_PORT, 1, "Cancelled skills.");
+            lcdSetText(LCD_PORT, 2, "");
+            motorStopAll();
+            return;
+        }
+        delay(20);
+    }*/
     while (ultrasonicGet(sonar) > (DISTANCE_TO_OTHER_SIDE + 30) || ultrasonicGet(sonar) == 0) {
         move(127, 0);
         if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
@@ -90,26 +100,38 @@ void runHardCodedProgrammingSkills() {
         delay(20);
     }
     move(0, 0);
-    /*integral = 0;*/
-    /*prev_error = 0;*/
-    /*while (gyroGet(gyro) % ROTATION_DEG != 90 [> turning left <]) {*/
-        /*float error = 90 - gyroGet(gyro) % ROTATION_DEG;*/
-        /*integral += error * 20;*/
-        /*derivative = (error-prev_error)/20;*/
-        /*move(0, error * GYRO_KP + integral * GYRO_KI + derivative * GYRO_KD);*/
-        /*prev_error = error;*/
-        /*lcdPrint(LCD_PORT, 2, "Angle: %d", gyroGet(gyro));*/
-        /*if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {*/
-            /*printf("Skills manually cancelled.\n");*/
-            /*lcdSetText(LCD_PORT, 1, "Cancelled skills.");*/
-            /*lcdSetText(LCD_PORT, 2, "");*/
-            /*motorStopAll();*/
-            /*return;*/
-        /*}*/
-        /*delay(20);*/
-    /*}*/
+    resetGyroVariables();
+    prev_ang = gyroGet(gyro);
+    done = false;
+    timeout = 0;
+    while (!done) { //turn left
+        printf("Curr: %d\tPrev: %d\tTarg: %d\n", (gyroGet(gyro) % ROTATION_DEG), prev_ang, 90);
+        move(0, targetNet(90));
+        printf("Turn: %d\n", constrain(turn, -127, 127));
+        printf("----------------------------------\n");
+        lcdPrint(LCD_PORT, 2, "Angle: %d", (gyroGet(gyro) % ROTATION_DEG));
+        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+            printf("Skills manually cancelled.\n");
+            lcdSetText(LCD_PORT, 1, "Cancelled skills.");
+            lcdSetText(LCD_PORT, 2, "");
+            motorStopAll();
+            return;
+        }
+        if(abs((gyroGet(gyro) % ROTATION_DEG) - 90)<=1 && prev_ang == gyroGet(gyro)) {
+            done = true;
+        } else if(prev_ang == gyroGet(gyro)) {
+            timeout += 20;
+        } else {
+            timeout = 0;
+        }
+        prev_ang = gyroGet(gyro);
+        delay(20);
+        if(timeout >= 1000) {
+            done = true;
+        }
+    }
     move(0, 0);
-
+    resetGyroVariables();
     /*numShots = 0;*/
     shoot(127);
     delay(20);
@@ -128,13 +150,13 @@ void runHardCodedProgrammingSkills() {
         }
         delay(20);
     }
-    /*while (numShots <= 32) {*/
-        /*if (shooterLimitPressed == PRESSED && digitalRead(SHOOTER_LIMIT) == UNPRESSED) {*/
-            /*numShots++;*/
-        /*}*/
-        /*shooterLimitPressed = digitalRead(SHOOTER_LIMIT);*/
-        /*delay(20);*/
-    /*}*/
-    /*shoot(0);*/
+    /*while (numShots <= 32) {
+        if (shooterLimitPressed == PRESSED && digitalRead(SHOOTER_LIMIT) == UNPRESSED) {
+            numShots++;
+        }
+        shooterLimitPressed = digitalRead(SHOOTER_LIMIT);
+        delay(20);
+    }
+    shoot(0);*/
 }
 

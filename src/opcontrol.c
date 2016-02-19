@@ -85,6 +85,16 @@ int targetNet(int target){
     return turn;
 }
 
+/** 
+ * Resets the gyroscope PID variables so it can be used a second time.
+ */
+void resetGyroVariables(){
+    gyroReset(gyro);
+    integral = 0;
+    derivative = 0;
+    previous_error = 0;
+}
+
 /**
  * Populates the motor state variables based on the joystick's current values.
  */
@@ -140,10 +150,7 @@ void recordJoyInfo(){
     if(joystickGetDigital(1, 7, JOY_DOWN)){
         targetNet(GYRO_NET_TARGET);
     } else if(joystickGetDigital(1, 7, JOY_UP)){
-        gyroReset(gyro);
-        integral = 0;
-        previous_error = 0;
-        derivative = 0;
+        resetGyroVariables();
     }
 }
 

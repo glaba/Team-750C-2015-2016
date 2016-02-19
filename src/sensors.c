@@ -22,6 +22,11 @@ Encoder leftenc;
  */
 Encoder rightenc;
 
+/** 
+ * Turns the robot right to a specified angle.
+ * 
+ * @param bodydegs the amount of degrees to turn the robot
+ */
 void rturn(int bodydegs) {
 	clearDriveEncoders();
 	float turndeg;
@@ -37,6 +42,11 @@ void rturn(int bodydegs) {
 	clearDriveEncoders();
 }
 
+/** 
+ * Turns the robot left to a specified angle.
+ * 
+ * @param bodydegs the amount of degrees to turn the robot
+ */
 void lturn(int bodydegs) {
 	clearDriveEncoders();
 	float turndeg;
@@ -52,6 +62,11 @@ void lturn(int bodydegs) {
 	clearDriveEncoders();
 }
 
+/** 
+ * Moves the robot forward a specified distance.
+ * 
+ * @param inches the amount of inches to move forward
+ */
 void goForward(int inches) {
 	int deg;
 	float encperinch;
@@ -68,6 +83,11 @@ void goForward(int inches) {
 	clearDriveEncoders();
 }
 
+/** 
+ * Moves the robot backward a specified distance.
+ * 
+ * @param inches the amount of inches to move forward
+ */
 void goBackward(int inches) {
 	goForward(-inches);
 }

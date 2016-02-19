@@ -57,5 +57,10 @@ void moveRobot();
  */
 int targetNet(int target);
 
+/** 
+ * Resets the gyroscope PID variables so it can be used a second time.
+ */
+void resetGyroVariables();
+
 #endif
 
