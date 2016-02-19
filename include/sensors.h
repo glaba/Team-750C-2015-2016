@@ -187,7 +187,7 @@ extern Ultrasonic sonar;
 /**
  * Defines the amount of songs in the master list.
  */
-#define SONG_COUNT 25
+#define SONG_COUNT 26
 
 /** 
  * Master list of all songs.
