@@ -45,6 +45,8 @@ inline void clearDriveEncoders(){
     encoderReset(rightenc);
 }
 
+void resetEncoderVariables();
+
 /** 
  * Turns the robot left to a specified angle.
  * 
@@ -148,7 +150,7 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines the proportional error-correction term for the gyroscope alignment velocity control loop.
  */
-#define GYRO_KP 9
+#define GYRO_KP 6
 
 /**
  * Defines the integral (accumulated) error-correction term for the gyroscope alignment velocity control loop.
@@ -158,12 +160,12 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines the derivative (change) error-correction term for the gyroscope alignment velocity control loop.
  */
-#define GYRO_KD 7900
+#define GYRO_KD /*7050*/ 3825
 
 /**
  * Defines the proportional error-correction term for the encoder alignment control loop.
  */
-#define ENCODER_KP 0
+#define ENCODER_KP 6
 
 /**
  * Defines the integral (accumulated) error-correction term for the encoder alignment control loop.

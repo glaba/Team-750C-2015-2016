@@ -65,8 +65,8 @@ void initialize() {
     }
     srand(seed);
     pinMode(SHOOTER_LIMIT, INPUT);
-    leftenc = encoderInit(LEFT_ENC_TOP, LEFT_ENC_BOT, false);
-    rightenc = encoderInit(RIGHT_ENC_TOP, RIGHT_ENC_BOT, false);
+    leftenc = encoderInit(LEFT_ENC_TOP, LEFT_ENC_BOT, true);
+    rightenc = encoderInit(RIGHT_ENC_TOP, RIGHT_ENC_BOT, true);
     lcdInit(LCD_PORT);
     lcdClear(LCD_PORT);
     lcdSetBacklight(LCD_PORT, true);

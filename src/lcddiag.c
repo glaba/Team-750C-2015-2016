@@ -1118,16 +1118,17 @@ void runRobot(FILE *lcdport){
     do {
         char strjoy1[LCD_MESSAGE_MAX_LENGTH+1] = "";
         char strjoy2[LCD_MESSAGE_MAX_LENGTH+1] = "";
-        if(isOnline()){
+        /*if(isOnline()){
             strcat(strjoy1, "Competition Mode");
         } else {
             strcat(strjoy1, "Practice Mode");
-        }
+        }*/
         /*if(isEnabled()){
             strcat(strjoy2, "Robot Enabled");
         } else {
             strcat(strjoy2, "Robot Disabled");
         }*/
+        snprintf(strjoy1, LCD_MESSAGE_MAX_LENGTH+1, "L: %d, R: %d", encoderGet(leftenc), encoderGet(rightenc));
         sprintf(strjoy2, "Angle: %d", gyroGet(gyro));
 
         int spaces = (LCD_MESSAGE_MAX_LENGTH - strlen(strjoy1))/2;

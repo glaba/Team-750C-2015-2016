@@ -88,6 +88,19 @@ inline void move(int spd, int turn){
     motorSet(RIGHT_MOTOR_BOT, -spd + turn);
 }
 
+/** 
+ * Moves the robot by setting the drive motor values by side.
+ * 
+ * @param l the left motor speed
+ * @param r the right motor speed
+ */
+inline void move_lr(int l, int r){
+    motorSet(LEFT_MOTOR_TOP, -l);
+    motorSet(LEFT_MOTOR_BOT, l);
+    motorSet(RIGHT_MOTOR_TOP, -r);
+    motorSet(RIGHT_MOTOR_BOT, -r);
+}
+
 /**
  * Defines motor ports for the nautilus gear shooting mechanism.
  */

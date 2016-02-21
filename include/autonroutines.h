@@ -14,9 +14,14 @@
 #define CLOSE_GOAL_ANGLE 5
 
 /**
+ * Angle that the robot must be from the vertical to shoot into the goal on the opposite side of the field while still being able to turn without hitting the wall.
+ */
+#define FAR_GOAL_ANGLE 1
+
+/**
  * Distance that the robot must travel to reach the other tile to shoot preloads.
  */
-#define DISTANCE_TO_OTHER_SIDE 26.162
+#define DISTANCE_TO_OTHER_SIDE 50
 
 /**
  * Runs a pre-written programming skills routine using sensors rather than the autonomous recorder.

@@ -14,7 +14,7 @@
  */
 void runHardCodedProgrammingSkills() {
     lcdSetText(LCD_PORT, 1, "Hardcoded Skills");
-    /*int numShots = 0;
+    int numShots = 0;
     bool shooterLimitPressed = UNPRESSED;
     shoot(-127);
     while (numShots < 32) {
@@ -23,7 +23,7 @@ void runHardCodedProgrammingSkills() {
         }
         shooterLimitPressed = digitalRead(SHOOTER_LIMIT);
         lcdPrint(LCD_PORT, 2, "Shot: %d", numShots);
-        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+        if (joystickGetDigital(1, 7, JOY_UP)) {
             printf("Skills manually cancelled.\n");
             lcdSetText(LCD_PORT, 1, "Cancelled skills.");
             lcdSetText(LCD_PORT, 2, "");
@@ -31,7 +31,7 @@ void runHardCodedProgrammingSkills() {
             return;
         }
         delay(20);
-    }*/
+    }
     shoot(0);
     resetGyroVariables();
     int prev_ang = gyroGet(gyro);
@@ -43,7 +43,7 @@ void runHardCodedProgrammingSkills() {
         printf("Turn: %d\n", constrain(turn, -127, 127));
         printf("----------------------------------\n");
         lcdPrint(LCD_PORT, 2, "Angle: %d", (gyroGet(gyro) % ROTATION_DEG));
-        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+        if (joystickGetDigital(1, 7, JOY_UP)) {
             printf("Skills manually cancelled.\n");
             lcdSetText(LCD_PORT, 1, "Cancelled skills.");
             lcdSetText(LCD_PORT, 2, "");
@@ -64,60 +64,56 @@ void runHardCodedProgrammingSkills() {
         }
     }
     move(0, 0);
+    delay(200);
     resetGyroVariables();
-    /*while(true){
-        printf("Dist: %d\n", ultrasonicGet(sonar));
-        lcdPrint(LCD_PORT, 2, "Dist: %d", ultrasonicGet(sonar));
-        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+    int forwspd = 0;
+    resetEncoderVariables();
+    while (ultrasonicGet(sonar) > (DISTANCE_TO_OTHER_SIDE + 50) || ultrasonicGet(sonar) == 0) {
+        moveStraight(constrain(forwspd, -127, 127));
+        printf("Fast Dist: %d\n", ultrasonicGet(sonar));
+        if (joystickGetDigital(1, 7, JOY_UP)) {
             printf("Skills manually cancelled.\n");
             lcdSetText(LCD_PORT, 1, "Cancelled skills.");
             lcdSetText(LCD_PORT, 2, "");
             motorStopAll();
             return;
         }
-        delay(20);
-    }*/
-    while (ultrasonicGet(sonar) > (DISTANCE_TO_OTHER_SIDE + 30) || ultrasonicGet(sonar) == 0) {
-        move(127, 0);
-        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
-            printf("Skills manually cancelled.\n");
-            lcdSetText(LCD_PORT, 1, "Cancelled skills.");
-            lcdSetText(LCD_PORT, 2, "");
-            motorStopAll();
-            return;
-        }
+        forwspd += 5;
         delay(20);
     }
-    while (ultrasonicGet(sonar) > DISTANCE_TO_OTHER_SIDE) {
-        move(64, 0);
-        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+    while (ultrasonicGet(sonar) > DISTANCE_TO_OTHER_SIDE || ultrasonicGet(sonar) == 0) {
+        moveStraight(constrain(forwspd, 64, 127));
+        printf("Slow Dist: %d\n", ultrasonicGet(sonar));
+        if (joystickGetDigital(1, 7, JOY_UP)) {
             printf("Skills manually cancelled.\n");
             lcdSetText(LCD_PORT, 1, "Cancelled skills.");
             lcdSetText(LCD_PORT, 2, "");
             motorStopAll();
             return;
         }
+        forwspd -= 20;
         delay(20);
     }
     move(0, 0);
+    delay(200);
     resetGyroVariables();
     prev_ang = gyroGet(gyro);
     done = false;
     timeout = 0;
     while (!done) { //turn left
-        printf("Curr: %d\tPrev: %d\tTarg: %d\n", (gyroGet(gyro) % ROTATION_DEG), prev_ang, 90);
-        move(0, targetNet(90));
+        printf("Curr: %d\tPrev: %d\tTarg: %d\n", (gyroGet(gyro) % ROTATION_DEG), prev_ang, 90+FAR_GOAL_ANGLE);
+        move(0, targetNet(90+FAR_GOAL_ANGLE));
         printf("Turn: %d\n", constrain(turn, -127, 127));
         printf("----------------------------------\n");
         lcdPrint(LCD_PORT, 2, "Angle: %d", (gyroGet(gyro) % ROTATION_DEG));
-        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+        if (joystickGetDigital(1, 7, JOY_UP)) {
             printf("Skills manually cancelled.\n");
             lcdSetText(LCD_PORT, 1, "Cancelled skills.");
             lcdSetText(LCD_PORT, 2, "");
             motorStopAll();
             return;
         }
-        if(abs((gyroGet(gyro) % ROTATION_DEG) - 90)<=1 && prev_ang == gyroGet(gyro)) {
+        if(abs((gyroGet(gyro) % ROTATION_DEG) - (90+FAR_GOAL_ANGLE))<=1 && prev_ang == gyroGet(gyro)) {
             done = true;
         } else if(prev_ang == gyroGet(gyro)) {
             timeout += 20;
@@ -132,16 +128,15 @@ void runHardCodedProgrammingSkills() {
     }
     move(0, 0);
     resetGyroVariables();
-    /*numShots = 0;*/
     shoot(127);
     delay(20);
     shoot(0);
-    /*shooterLimitPressed = UNPRESSED;*/
     taskCreate(playSpeaker, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
-    //shoot(-127);
+    delay(200);
+    shoot(-127);
     lcdSetText(LCD_PORT, 2, "Final Shots");
     while (true) {
-        if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+        if (joystickGetDigital(1, 7, JOY_UP)) {
             printf("Skills manually cancelled.\n");
             lcdSetText(LCD_PORT, 1, "Cancelled skills.");
             lcdSetText(LCD_PORT, 2, "");
@@ -150,13 +145,5 @@ void runHardCodedProgrammingSkills() {
         }
         delay(20);
     }
-    /*while (numShots <= 32) {
-        if (shooterLimitPressed == PRESSED && digitalRead(SHOOTER_LIMIT) == UNPRESSED) {
-            numShots++;
-        }
-        shooterLimitPressed = digitalRead(SHOOTER_LIMIT);
-        delay(20);
-    }
-    shoot(0);*/
 }
 

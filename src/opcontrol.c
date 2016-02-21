@@ -187,6 +187,9 @@ void operatorControl() {
     bool speakerPlay = false;
     bool speakerButtonPressed = false;
     speakerTask = NULL;
+    if(autonLoaded == MAX_AUTON_SLOTS + 2){
+        playbackAuton();
+    }
     while (true) {
         if(isOnline() || progSkills == 0){
             if(joystickGetDigital(1, 8, JOY_UP) || joystickGetDigital(1, 8, JOY_DOWN) || joystickGetDigital(2, 8, JOY_UP) || joystickGetDigital(2, 8, JOY_DOWN)) {

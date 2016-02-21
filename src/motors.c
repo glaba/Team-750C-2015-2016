@@ -11,23 +11,33 @@
 
 #include "main.h"
 
-int sumEncoderError;
-int previousEncoderError;
+float enc_integral = 0;
+float enc_derivative = 0;
+float enc_previous_error = 0;
 
 /**
- * Moves the drive straight
+ * Moves the drive straight by using the encoders to make a PID correction loop.
  *
- * @param direction the direction to move (either forwards or backwards, which corresponds to 1 and -1)
+ * @param speed the speed to move forward at
  */
-void moveStraight(int direction) {
-    int right = encoderGet(rightenc);
-    int left = encoderGet(leftenc);
-    int error = right - left;
-    
-    sumEncoderError += error;
+void moveStraight(int speed) {
+    speed = constrain(speed, -110, 110);
 
-    move(127, ENCODER_KP * error + ENCODER_KI * sumEncoderError - ENCODER_KD * (error - previousEncoderError));
-    previousEncoderError = error;
+    float error = encoderGet(rightenc) - encoderGet(leftenc);
+
+    enc_integral += error * 20;
+    enc_derivative = (error-enc_previous_error)/20.0;
+
+    move_lr(speed, (int)((float)speed - ((float)speed)/((float)110.0) * (float)(ENCODER_KP * error + ENCODER_KI * enc_integral - ENCODER_KD * enc_derivative)));
+    
+    enc_previous_error = error;
+}
+
+void resetEncoderVariables(){
+    clearDriveEncoders();
+    enc_integral = 0;
+    enc_derivative = 0;
+    enc_previous_error = 0;
 }
 
 /** 
