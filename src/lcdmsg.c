@@ -61,6 +61,11 @@ char* lcdmsg[] = {
     "TURBO GEARS",
     "Google+ Level",
     "D Ball",
+    "Crusty Champs",
+    "Team 750W",
+    "Team 4610Z",
+    "Jake Fischman",
+    "Stack It Up",
     "itoa() Sucks"
 };
 
