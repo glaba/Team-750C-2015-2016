@@ -66,6 +66,8 @@ char* lcdmsg[] = {
     "Team 4610Z",
     "Jake Fischman",
     "Stack It Up",
+    "New Jersey",
+    "Wicked Crusty",
     "itoa() Sucks"
 };
 
