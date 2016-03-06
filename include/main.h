@@ -52,6 +52,11 @@
 #include <string.h>
 
 /**
+ * C standard math function header. 
+ */
+#include <math.h>
+
+/**
  * PROS main API header.
  */
 #include <API.h>
@@ -77,6 +82,11 @@
 #include <bitwise.h>
 
 /**
+* Robot physical constant definitions and function declarations.
+*/
+#include <robot.h>
+
+/**
  * Sensor definitions and function declarations.
  */
 #include <sensors.h>
@@ -87,9 +97,9 @@
 #include <motors.h>
 
 /**
- * Robot physical constant definitions and function declarations.
+ * Field positioning system definitions and function declarations.
  */
-#include <robot.h>
+#include <fieldpos.h>
 
 /**
  * LCD definitions and function declarations.

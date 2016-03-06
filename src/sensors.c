@@ -22,6 +22,11 @@ Encoder leftenc;
  */
 Encoder rightenc;
 
+/**
+ * Object representing the encoder on the horizontal wheel.
+ */
+Encoder horizontalenc;
+
 /** 
  * Turns the robot right to a specified angle.
  * 

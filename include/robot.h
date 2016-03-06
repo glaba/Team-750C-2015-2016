@@ -17,7 +17,7 @@
 /**
  * Defines the diameter of the robot's wheels, in inches.
  */
-#define DRIVE_DIA 3
+#define DRIVE_DIA 4
 
 /**
  * Defines the drive's gear ratio.

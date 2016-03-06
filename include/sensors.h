@@ -37,12 +37,24 @@ extern Encoder leftenc;
  */
 extern Encoder rightenc;
 
+/**
+ * Defines the encoder ports for the horizontal wheel.
+ */
+#define HORIZONTAL_ENC_TOP -1
+#define HORIZONTAL_ENC_BOT -1
+
+/**
+ * Object representing the encoder on the horizontal wheel. 
+ */
+extern Encoder horizontalenc;
+
 /** 
  * Clears the drive encoders by resetting their value to zero.
  */
 inline void clearDriveEncoders(){
     encoderReset(leftenc);
     encoderReset(rightenc);
+    encoderReset(horizontalenc);
 }
 
 void resetEncoderVariables();
@@ -178,6 +190,11 @@ inline unsigned int powerLevelExpander(){
 #define ENCODER_KD 0
 
 /**
+ * Defines the number of inches per each encoder tick. 
+ */
+#define INCHES_PER_ENC_TICK ((DRIVE_DIA * MATH_PI) / 360.0)
+
+/**
  * Object representing the gyroscope.
  */
 extern Gyro gyro;
@@ -201,6 +218,16 @@ extern Gyro gyro;
  * Object representing the ultrasonic sensor.
  */
 extern Ultrasonic sonar;
+
+/**
+ * Defines the port that the line tracker is plugged into. 
+ */
+#define LINE_TRACKER_PORT -1
+
+/**
+ * Defines the threshold line tracker value for a white line. 
+ */
+#define LINE_THRESHOLD -1
 
 /**
  * Defines the amount of songs in the master list.

@@ -65,8 +65,10 @@ void initialize() {
     }
     srand(seed);
     pinMode(SHOOTER_LIMIT, INPUT);
+    pinMode(LINE_TRACKER_PORT, INPUT_ANALOG);
     leftenc = encoderInit(LEFT_ENC_TOP, LEFT_ENC_BOT, true);
     rightenc = encoderInit(RIGHT_ENC_TOP, RIGHT_ENC_BOT, true);
+    horizontalenc = encoderInit(HORIZONTAL_ENC_TOP, HORIZONTAL_ENC_BOT, true);
     lcdInit(LCD_PORT);
     lcdClear(LCD_PORT);
     lcdSetBacklight(LCD_PORT, true);
@@ -76,6 +78,7 @@ void initialize() {
     speakerInit();
     delay(1100);
     gyroReset(gyro);
+    resetPosition(ROBOT_START_POSITION_X, ROBOT_START_POSITION_Y);
     lcdSetText(LCD_PORT, 1, "Init-ed gyro!");
     initAutonRecorder();
     initGroups();
