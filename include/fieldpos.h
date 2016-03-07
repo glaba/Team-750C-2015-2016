@@ -19,19 +19,42 @@
 #define ROBOT_START_ANGLE 90
 
 /**
- * Coordinates of each of the white lines on the field (Index 0: Start X, Index 1: Start Y, Index 2: End X, Index 3: End Y)
+ * @brief Representation of a point.
  */
-extern const int LINE_COORDS[8][4];
+typedef struct point {
+	/**
+	 * X-coordinate
+	 */
+	double x;
+	/**
+	 * Y-coordinate
+	 */
+	double y;
+} point;
 
 /**
- * X-coordinate of the robot's position.
+ * @brief Representation of a line segment, which is made up of a start point and an end point.
  */
-extern double xPosition;
+typedef struct lineSegment {
+	/**
+	 * The first point in the line segment.
+	 */
+	point p1;
+	/**
+	 * The final point in the line segment. 
+	 */
+	point p2;
+} lineSegment;
 
 /**
- * Y-coordinate of the robot's position.
+ * Coordinates of each of the white lines on the field.
  */
-extern double yPosition;
+extern const lineSegment LINE_COORDS[8];
+
+/**
+ * The robot's position.
+ */
+extern point position;
 
 /**
  * Updates the robot's estimate of its position based on sensor input.
