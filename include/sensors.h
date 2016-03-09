@@ -192,7 +192,7 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines the number of inches per each encoder tick. 
  */
-#define INCHES_PER_ENC_TICK ((DRIVE_DIA * MATH_PI) / 360.0)
+#define INCHES_PER_ENC_TICK ((DRIVE_DIA * MATH_PI * DRIVE_GEARRATIO) / 360.0)
 
 /**
  * Object representing the gyroscope.
