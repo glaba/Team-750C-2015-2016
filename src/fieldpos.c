@@ -42,27 +42,21 @@ void updatePosition() {
 		double lowestY = -1; // the coordinate of the closest distance
 		for (int i = 0; i < 8; i++) {
 			const lineSegment line = LINE_COORDS[i];
+			
 			double dist;
-			//check if the point of intersection with the line is actually on the line segment
-			//if the angle from each of the ends to the point is acute, then this is true (dot product)
-			double angle1 = (position.x - line.p1.x) * (line.p2.x - line.p1.x) + (position.y - line.p1.y) * (line.p2.y - line.p1.y);
-			double angle2 = (position.x - line.p2.x) * (line.p1.x - line.p2.x) + (position.y - line.p2.y) * (line.p1.y - line.p2.y);
-			angle1 /= (sqrt((double)(pow(position.x-line.p1.x,2)+pow(position.y-line.p1.y,2)))*sqrt((double)(pow(line.p2.x-line.p1.x,2)+pow(line.p2.y-line.p1.y,2))));
-			angle2 /= (sqrt((double)(pow(position.x-line.p2.x,2)+pow(position.y-line.p2.y,2)))*sqrt((double)(pow(line.p2.x-line.p1.x,2)+pow(line.p2.y-line.p1.y,2))));
-			angle1 = acos(angle1);
-			angle2 = acos(angle2);
-			if (angle1 > MATH_PI / 2) {
+			double r = (position.x-line.p1.x)*(line.p2.x-line.p1.x) + (position.y-line.p1.y)*(line.p2.y-line.p1.y);
+			r /= (line.p2.x*line.p2.x+line.p2.y*line.p2.y+line.p1.x*line.p1.x+line.p1.y*line.p1.y-2*line.p1.x*line.p2.x-2*line.p1.y*line.p2.y);
+
+			if (r < 0) {
 				dist = sqrt((double)(pow(position.x-line.p1.x,2)+pow(position.y-line.p1.y,2)));
 				lowestX = line.p1.x;
 				lowestY = line.p1.y;
-			} else if (angle2 > MATH_PI / 2) {
+			} else if (r > 1) {
 				dist = sqrt((double)(pow(position.x-line.p2.x,2)+pow(position.y-line.p2.y,2)));
 				lowestX = line.p2.x;
 				lowestY = line.p2.y;
 			} else {
 				dist = ((double) abs((line.p2.y-line.p1.y)*position.x-(line.p2.x-line.p1.x)*position.y+line.p2.x*line.p1.y-line.p2.y*line.p1.x)) / sqrt((double)(pow(line.p2.y-line.p1.y,2)+pow(line.p2.x-line.p1.y,2)));
-				double r = (position.x-line.p1.x)*(line.p2.x-line.p1.x) + (position.y-line.p1.y)*(line.p2.y-line.p1.y);
-				r /= (line.p2.x*line.p2.x+line.p2.y*line.p2.y+line.p1.x*line.p1.x+line.p1.y*line.p1.y-2*line.p1.x*line.p2.x-2*line.p1.y*line.p2.y);
 				lowestX = line.p1.x+r*(line.p2.x-line.p1.x);
 				lowestY = line.p1.y+r*(line.p2.y-line.p1.y);
 			}
