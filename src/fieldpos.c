@@ -27,11 +27,11 @@ const lineSegment LINE_COORDS[8] = {{.p1 = {.x = 0, .y = 48}, .p2 = {.x = 48, .y
  * Updates the robot's estimate of its position based on sensor input.
  */
 void updatePosition() {
-	double gyroValue = (double)(gyroGet(gyro) % ROTATION_DEG * MATH_PI / 180.0);
+	double gyroValue = (double)((gyroGet(gyro) % ROTATION_DEG) * MATH_PI / 180.0);
 	double gyroVectorX = cos(gyroValue);
 	double gyroVectorY = sin(gyroValue);
-	double dr = (double) (0.5 * (INCHES_PER_ENC_TICK * encoderGet(leftenc) + INCHES_PER_ENC_TICK * encoderGet(rightenc)));
-	double dh = (double) (INCHES_PER_ENC_TICK * encoderGet(horizontalenc));
+	double dr = (double) (0.5 * (INCHES_PER_ENC_TICK * (double) encoderGet(leftenc) + INCHES_PER_ENC_TICK * (double) encoderGet(rightenc)));
+	double dh = (double) (INCHES_PER_ENC_TICK * (double) encoderGet(horizontalenc));
 	
 	position.x += dr * gyroVectorX + dh * cos(gyroValue + MATH_PI / 2);
 	position.y += dr * gyroVectorY + dh * sin(gyroValue + MATH_PI / 2);
@@ -69,6 +69,7 @@ void updatePosition() {
 		position.x = lowestX;
 		position.y = lowestY;
 	}
+    clearDriveEncoders();
 }
 
 /**
@@ -81,3 +82,4 @@ void resetPosition(double x, double y) {
 	position.x = x;
 	position.y = y;
 }
+
