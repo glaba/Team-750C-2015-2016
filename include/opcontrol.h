@@ -29,9 +29,9 @@ extern int sht;
 extern int intk;
 
 /**
- * Speed of the transmission motor.
+ * Speed of the strafing motor.
  */
-extern int trans;
+extern int strafe;
 
 /**
  * Speed of the lift deployment motor.

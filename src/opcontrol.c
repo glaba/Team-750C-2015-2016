@@ -55,9 +55,9 @@ int sht;
 int intk;
 
 /**
- * Speed of the transmission motors.
+ * Speed of the strafing motor.
  */
-int trans;
+int strafe;
 
 /**
  * Speed of the lift deployment motor.
@@ -101,9 +101,9 @@ void resetGyroVariables(){
 void recordJoyInfo(){
     spd = joystickGetAnalog(1, 3);
     turn = joystickGetAnalog(1, 1);
+    strafe = joystickGetAnalog(1, 4);
     sht = 0;
     intk = 0;
-    trans = 0;
     if(abs(joystickGetAnalog(2, 3))<30 && abs(joystickGetAnalog(2, 2))<30){
         if(joystickGetDigital(1, 6, JOY_UP) || joystickGetDigital(2, 6, JOY_UP)){
             sht = 127;
@@ -130,15 +130,6 @@ void recordJoyInfo(){
     } else {
         intk = 0;
     }
-    if(joystickGetDigital(1, 8, JOY_LEFT)){
-        trans = 80;
-        /*changeGear(GEAR_LIFT);*/
-    } else if(joystickGetDigital(1, 8, JOY_RIGHT)){
-        trans = -80;
-        /*changeGear(GEAR_DRIVE);*/
-    } else {
-        trans = 0;
-    }
     if(joystickGetDigital(1, 8, JOY_UP) || joystickGetDigital(2, 8, JOY_UP)){
         dep = 127;
     } else if(joystickGetDigital(1, 8, JOY_DOWN) || joystickGetDigital(2, 8, JOY_DOWN)){
@@ -158,10 +149,9 @@ void recordJoyInfo(){
  * Moves the robot based on the motor state variables.
  */
 void moveRobot(){
-    move(spd, turn);
+    move(spd, turn, strafe);
     shoot(sht);
     intake(intk);
-    transmission(trans);
     deploy(dep);
 }
 

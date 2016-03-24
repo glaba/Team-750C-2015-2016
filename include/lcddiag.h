@@ -178,7 +178,7 @@ extern bool disableOpControl;
 
 /**
  * Initializes the motor groups array to contain the standard set of groups.
- * This includes: Left Drive, Right Drive, Full Drive, Nautilus Shooter, Intake, and Transmission.
+ * This includes: Left Drive, Right Drive, Full Drive, Nautilus Shooter, Intake, and Strafe Motor.
  */
 void initGroups();
 

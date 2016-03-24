@@ -39,7 +39,7 @@ void runHardCodedProgrammingSkills() {
     int timeout = 0;
     while (!done) { //turn right
         printf("Curr: %d\tPrev: %d\tTarg: %d\n", (gyroGet(gyro) % ROTATION_DEG), prev_ang, (-90-CLOSE_GOAL_ANGLE));
-        move(0, targetNet(-90-CLOSE_GOAL_ANGLE));
+        move(0, targetNet(-90-CLOSE_GOAL_ANGLE), 0);
         printf("Turn: %d\n", constrain(turn, -127, 127));
         printf("----------------------------------\n");
         lcdPrint(LCD_PORT, 2, "Angle: %d", (gyroGet(gyro) % ROTATION_DEG));
@@ -63,7 +63,7 @@ void runHardCodedProgrammingSkills() {
             done = true;
         }
     }
-    move(0, 0);
+    move(0, 0, 0);
     delay(200);
     resetGyroVariables();
     int forwspd = 0;
@@ -94,7 +94,7 @@ void runHardCodedProgrammingSkills() {
         forwspd -= 20;
         delay(20);
     }
-    move(0, 0);
+    move(0, 0, 0);
     delay(200);
     resetGyroVariables();
     prev_ang = gyroGet(gyro);
@@ -102,7 +102,7 @@ void runHardCodedProgrammingSkills() {
     timeout = 0;
     while (!done) { //turn left
         printf("Curr: %d\tPrev: %d\tTarg: %d\n", (gyroGet(gyro) % ROTATION_DEG), prev_ang, 90+FAR_GOAL_ANGLE);
-        move(0, targetNet(90+FAR_GOAL_ANGLE));
+        move(0, targetNet(90+FAR_GOAL_ANGLE), 0);
         printf("Turn: %d\n", constrain(turn, -127, 127));
         printf("----------------------------------\n");
         lcdPrint(LCD_PORT, 2, "Angle: %d", (gyroGet(gyro) % ROTATION_DEG));
@@ -126,7 +126,7 @@ void runHardCodedProgrammingSkills() {
             done = true;
         }
     }
-    move(0, 0);
+    move(0, 0, 0);
     resetGyroVariables();
     shoot(127);
     delay(20);

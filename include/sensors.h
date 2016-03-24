@@ -88,21 +88,6 @@ void goForward(int inches);
 void goBackward(int inches);
 
 /**
- * Defines the transmission potentiometer for position determination.
- */
-#define TRANSMISSION_POT 2
-
-/**
- * Defines potentiometer values for drive gearing.
- */
-#define GEAR_DRIVE 1860
-
-/**
- * Defines potentiometer values for lift gearing.
- */
-#define GEAR_LIFT 4095
-
-/**
  * Defines power expander status port.
  * This is used to get the power expander battery voltage.
  */

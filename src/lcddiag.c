@@ -225,12 +225,12 @@ void loadGroups(){
 
 /**
  * Initializes the motor groups array to contain the standard set of groups.
- * This includes: Left Drive, Right Drive, Full Drive, Nautilus Shooter, Intake, and Transmission.
+ * This includes: Left Drive, Right Drive, Full Drive, Nautilus Shooter, Intake, and Strafe Motor.
  */
 void initGroups(){
     FILE* group = fopen("grp", "r");
     if(group == NULL){
-        numgroups = 6; //LDRIVE, RDRIVE, DRIVE, SHOOT, INTK, TRANS 
+        numgroups = 6; //LDRIVE, RDRIVE, DRIVE, SHOOT, INTK, STRAFE 
         groups = (MotorGroup*) malloc(sizeof(MotorGroup) * numgroups);
         if(groups == NULL){
             return;
@@ -263,8 +263,8 @@ void initGroups(){
         groups[4].motor[INTAKE_ROLLER_MOTOR] = true;
         strcpy(groups[4].name, "Intake");
 
-        groups[5].motor[TRANSMISSION_MOTOR] = true;
-        strcpy(groups[5].name, "Transmission");
+        groups[5].motor[STRAFE_MOTOR] = true;
+        strcpy(groups[5].name, "Strafe Motor");
 
         //saveGroups();
     } else {

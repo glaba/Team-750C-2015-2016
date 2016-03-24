@@ -86,9 +86,9 @@ typedef struct joyState {
     signed char intk;
 
     /**
-    * Speed of the transmission motor.
+    * Speed of the strafing motor.
     */
-    signed char trans;
+    signed char strafe;
 
     /**
     * Speed of the lift deployment motor.

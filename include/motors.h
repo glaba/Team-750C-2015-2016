@@ -26,42 +26,13 @@
 #define MOTOR_MIN -127
 
 /**
- * Defines motor port for the transmission to change between driving and lifting
- */
-#define TRANSMISSION_MOTOR 1
-
-/** 
- * Runs the transmission motor by setting the motor value.
- * 
- * @param spd the speed to run the transmission motor
- */
-inline void transmission(int spd){
-    motorSet(TRANSMISSION_MOTOR, spd);
-}
-
-/**
  * Moves the drive straight
  *
  * @param direction the direction to move (either forwards or backwards, which corresponds to 1 and -1)
  */
 void moveStraight(int direction);
 
-/** 
- * Sets the position of the transmission.
- * 
- * @param pos the position to set the transmission to.
- */
-void transmissionSetPos(void *pos);
-
-/** 
- * Changes the gear of the transmission to either driving or lifting.
- * Runs a task in a separate thread to change the gear.
- * 
- * @param gear the gear to change to
- */
-inline void changeGear(int gear){
-    taskCreate(transmissionSetPos, TASK_DEFAULT_STACK_SIZE, (void *) (intptr_t) gear, TASK_PRIORITY_DEFAULT);
-}
+#define STRAFE_MOTOR 1
 
 /**
  * Defines motor ports for the left side of the drivetrain.
@@ -81,11 +52,12 @@ inline void changeGear(int gear){
  * @param spd the forward/backward speed value
  * @param turn the turning speed value
  */
-inline void move(int spd, int turn){
+inline void move(int spd, int turn, int strafe){
     motorSet(LEFT_MOTOR_TOP, -spd - turn);
     motorSet(LEFT_MOTOR_BOT, spd + turn);
     motorSet(RIGHT_MOTOR_TOP, -spd + turn);
     motorSet(RIGHT_MOTOR_BOT, -spd + turn);
+    motorSet(STRAFE_MOTOR, strafe);
 }
 
 /** 
@@ -159,7 +131,7 @@ inline void deploy(int spd){
 inline void adjust(int spd){
     motorSet(SHOOTER_ANGLE_MOTOR, spd);
 }
-#endif /* SHOOTER_HAS_THREE_MOTORS */
+#endif /* ROBOT_HAS_LIFT_DEPLOY_MOTOR */
 
 #endif
 

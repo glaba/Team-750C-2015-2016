@@ -39,11 +39,11 @@ void rturn(int bodydegs) {
 	turndeg = encdegperbodydeg * bodydegs;
 
 	while(abs(encoderGet(rightenc)) < abs(turndeg)) {
-		move(0, MOTOR_MAX);
+		move(0, MOTOR_MAX, 0);
         delay(20);
 	}
 
-	move(0, 0);
+	move(0, 0, 0);
 	clearDriveEncoders();
 }
 
@@ -59,11 +59,11 @@ void lturn(int bodydegs) {
 	turndeg = encdegperbodydeg * bodydegs;
 
 	while(abs(encoderGet(leftenc)) < abs(turndeg)) {
-		move(0, -MOTOR_MAX);
+		move(0, -MOTOR_MAX, 0);
         delay(20);
 	}
 
-	move(0, 0);
+	move(0, 0, 0);
 	clearDriveEncoders();
 }
 
@@ -81,10 +81,10 @@ void goForward(int inches) {
 	clearDriveEncoders();
 	while(abs(encoderGet(rightenc)) <  abs(deg))
 	{
-		move(sign(inches) * 127, 0);
+		move(sign(inches) * 127, 0, 0);
 		delay(20);
 	}
-	move(0,0);
+	move(0, 0, 0);
 	clearDriveEncoders();
 }
 

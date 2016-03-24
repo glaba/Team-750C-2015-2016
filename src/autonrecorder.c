@@ -109,7 +109,7 @@ void recordAuton() {
         states[i].turn = turn;
         states[i].sht = sht;
         states[i].intk = intk;
-        states[i].trans = trans;
+        states[i].strafe = strafe;
         states[i].dep = dep;
         if (joystickGetDigital(1, 7, JOY_UP)) {
             printf("Autonomous recording manually cancelled.\n");
@@ -186,7 +186,7 @@ void saveAuton() {
     }
     for (int i = 0; i < AUTON_TIME * JOY_POLL_FREQ; i++) {
         printf("Recording state %d to file %s...\n", i, filename);
-        signed char write[6] = {states[i].spd, states[i].turn, states[i].sht, states[i].intk, states[i].trans,
+        signed char write[6] = {states[i].spd, states[i].turn, states[i].sht, states[i].intk, states[i].strafe,
                                 states[i].dep};
         fwrite(write, sizeof(char), sizeof(write) / sizeof(char), autonFile);
         delay(10);
@@ -293,7 +293,7 @@ void loadAuton() {
         states[i].turn = (signed char) read[1];
         states[i].sht = (signed char) read[2];
         states[i].intk = (signed char) read[3];
-        states[i].trans = (signed char) read[4];
+        states[i].strafe = (signed char) read[4];
         states[i].dep = (signed char) read[5];
         delay(10);
     }
@@ -346,7 +346,7 @@ void playbackAuton() { //must load autonomous first!
             turn = states[i].turn;
             sht = states[i].sht;
             intk = states[i].intk;
-            trans = states[i].trans;
+            strafe = states[i].strafe;
             dep = states[i].dep;
             if (joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
                 printf("Playback manually cancelled.\n");
@@ -364,7 +364,7 @@ void playbackAuton() { //must load autonomous first!
                 states[i].turn = (signed char) read[1];
                 states[i].sht = (signed char) read[2];
                 states[i].intk = (signed char) read[3];
-                states[i].trans = (signed char) read[4];
+                states[i].strafe = (signed char) read[4];
                 states[i].dep = (signed char) read[5];
             }
             delay(1000 / JOY_POLL_FREQ);
