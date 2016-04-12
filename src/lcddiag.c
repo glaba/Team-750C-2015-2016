@@ -230,7 +230,7 @@ void loadGroups(){
 void initGroups(){
     FILE* group = fopen("grp", "r");
     if(group == NULL){
-        numgroups = 6; //LDRIVE, RDRIVE, DRIVE, SHOOT, INTK, STRAFE 
+        numgroups = 8; //LDRIVE, RDRIVE, STRAFE, DRIVE, SHOOT, INTK, LIFT, ANGLE
         groups = (MotorGroup*) malloc(sizeof(MotorGroup) * numgroups);
         if(groups == NULL){
             return;
@@ -241,30 +241,34 @@ void initGroups(){
                 groups[i].motor[j] = false;
             }
         }
-        groups[0].motor[LEFT_MOTOR_TOP] = true;
-        groups[0].motor[LEFT_MOTOR_BOT] = true;
+        groups[0].motor[LEFT_MOTOR] = true;
         strcpy(groups[0].name, "Left Drive");
 
-        groups[1].motor[RIGHT_MOTOR_TOP] = true;
-        groups[1].motor[RIGHT_MOTOR_BOT] = true;
+        groups[1].motor[RIGHT_MOTOR] = true;
         strcpy(groups[1].name, "Right Drive");
 
-        groups[2].motor[LEFT_MOTOR_TOP] = true;
-        groups[2].motor[LEFT_MOTOR_BOT] = true;
-        groups[2].motor[RIGHT_MOTOR_TOP] = true;
-        groups[2].motor[RIGHT_MOTOR_BOT] = true;
-        strcpy(groups[2].name, "Full Drive");
+        groups[2].motor[STRAFE_MOTOR] = true;
+        strcpy(groups[2].name, "Strafe Motor");
 
-        groups[3].motor[NAUTILUS_SHOOTER_MOTOR_LEFT] = true;
-        groups[3].motor[NAUTILUS_SHOOTER_MOTOR_RIGHT] = true;
-        groups[3].motor[NAUTILUS_SHOOTER_MOTOR_CENTER] = true;
-        strcpy(groups[3].name, "Nautilus Shooter");
+        groups[3].motor[LEFT_MOTOR] = true;
+        groups[3].motor[RIGHT_MOTOR] = true;
+        groups[3].motor[STRAFE_MOTOR] = true;
+        strcpy(groups[3].name, "Full Drive");
 
-        groups[4].motor[INTAKE_ROLLER_MOTOR] = true;
-        strcpy(groups[4].name, "Intake");
+        groups[4].motor[NAUTILUS_SHOOTER_MOTOR_LEFT] = true;
+        groups[4].motor[NAUTILUS_SHOOTER_MOTOR_RIGHT] = true;
+        groups[4].motor[NAUTILUS_SHOOTER_MOTOR_CENTER] = true;
+        strcpy(groups[4].name, "Nautilus Shooter");
 
-        groups[5].motor[STRAFE_MOTOR] = true;
-        strcpy(groups[5].name, "Strafe Motor");
+        groups[5].motor[INTAKE_ROLLER_MOTOR] = true;
+        strcpy(groups[5].name, "Intake");
+
+        groups[6].motor[LIFT_MOTOR_LEFT] = true;
+        groups[6].motor[LIFT_MOTOR_RIGHT] = true;
+        strcpy(groups[6].name, "Lift");
+
+        groups[7].motor[SHOOTER_ANGLE_MOTOR] = true;
+        strcpy(groups[7].name, "Angle Changer");
 
         //saveGroups();
     } else {

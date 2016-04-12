@@ -157,7 +157,7 @@ inline unsigned int powerLevelExpander(){
 /**
  * Defines the derivative (change) error-correction term for the gyroscope alignment velocity control loop.
  */
-#define GYRO_KD /*7050*/ 3825
+#define GYRO_KD 3825
 
 /**
  * Defines the proportional error-correction term for the encoder alignment control loop.

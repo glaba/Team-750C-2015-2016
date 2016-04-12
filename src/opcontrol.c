@@ -60,9 +60,14 @@ int intk;
 int strafe;
 
 /**
- * Speed of the lift deployment motor.
+ * Speed of the angle change motor.
  */
-int dep;
+int ang;
+
+/**
+ * Speed of the lift motors.
+ */
+int lift;
 
 float previous_error = 0;
 float integral = 0;
@@ -131,17 +136,25 @@ void recordJoyInfo(){
         intk = 0;
     }
     if(joystickGetDigital(1, 8, JOY_UP) || joystickGetDigital(2, 8, JOY_UP)){
-        dep = 127;
+        ang = 127;
     } else if(joystickGetDigital(1, 8, JOY_DOWN) || joystickGetDigital(2, 8, JOY_DOWN)){
-        dep = -127;
+        ang = -127;
     } else {
-        dep = 0;
+        ang = 0;
     }
 
-    if(joystickGetDigital(1, 7, JOY_DOWN)){
+    if(joystickGetDigital(1, 7, JOY_LEFT)){
         targetNet(GYRO_NET_TARGET);
-    } else if(joystickGetDigital(1, 7, JOY_UP)){
+    } else if(joystickGetDigital(1, 7, JOY_RIGHT)){
         resetGyroVariables();
+    }
+
+    if(joystickGetDigital(1, 7, JOY_UP)){
+        lift = 127;
+    } else if(joystickGetDigital(1, 7, JOY_DOWN)){
+        lift = -127;
+    } else {
+        lift = 0;
     }
 }
 
@@ -152,7 +165,8 @@ void moveRobot(){
     move(spd, turn, strafe);
     shoot(sht);
     intake(intk);
-    deploy(dep);
+    adjust(ang);
+    lift_raw(lift);
 }
 
 /**
@@ -182,7 +196,7 @@ void operatorControl() {
     }
     while (true) {
         if(isOnline() || progSkills == 0){
-            if(joystickGetDigital(1, 8, JOY_UP) || joystickGetDigital(1, 8, JOY_DOWN) || joystickGetDigital(2, 8, JOY_UP) || joystickGetDigital(2, 8, JOY_DOWN)) {
+            if(joystickGetDigital(2, 7, JOY_UP) || joystickGetDigital(2, 7, JOY_DOWN) || joystickGetDigital(2, 7, JOY_LEFT) || joystickGetDigital(2, 7, JOY_RIGHT)) {
                 if(!speakerButtonPressed) {
                     speakerPlay = !speakerPlay;
                     speakerButtonPressed = true;

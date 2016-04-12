@@ -32,19 +32,18 @@
  */
 void moveStraight(int direction);
 
-#define STRAFE_MOTOR 1
 
 /**
  * Defines motor ports for the left side of the drivetrain.
  */
-#define LEFT_MOTOR_TOP 3
-#define LEFT_MOTOR_BOT 5
+#define LEFT_MOTOR 2
 
 /**
  * Defines motor ports for the right side of the drivetrain.
  */
-#define RIGHT_MOTOR_TOP 2
-#define RIGHT_MOTOR_BOT 4
+#define RIGHT_MOTOR 3
+
+#define STRAFE_MOTOR 4
 
 /** 
  * Moves the robot by setting the drive motor values.
@@ -53,10 +52,8 @@ void moveStraight(int direction);
  * @param turn the turning speed value
  */
 inline void move(int spd, int turn, int strafe){
-    motorSet(LEFT_MOTOR_TOP, -spd - turn);
-    motorSet(LEFT_MOTOR_BOT, spd + turn);
-    motorSet(RIGHT_MOTOR_TOP, -spd + turn);
-    motorSet(RIGHT_MOTOR_BOT, -spd + turn);
+    motorSet(LEFT_MOTOR, -spd + turn);
+    motorSet(RIGHT_MOTOR, -spd - turn);
     motorSet(STRAFE_MOTOR, strafe);
 }
 
@@ -67,10 +64,8 @@ inline void move(int spd, int turn, int strafe){
  * @param r the right motor speed
  */
 inline void move_lr(int l, int r){
-    motorSet(LEFT_MOTOR_TOP, -l);
-    motorSet(LEFT_MOTOR_BOT, l);
-    motorSet(RIGHT_MOTOR_TOP, -r);
-    motorSet(RIGHT_MOTOR_BOT, -r);
+    motorSet(LEFT_MOTOR, l);
+    motorSet(RIGHT_MOTOR, r);
 }
 
 /**
@@ -88,15 +83,15 @@ inline void move_lr(int l, int r){
  * @param spd the speed to set the shooter motors
  */
 inline void shoot(int spd){
-    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, -spd);
+    motorSet(NAUTILUS_SHOOTER_MOTOR_LEFT, spd);
     motorSet(NAUTILUS_SHOOTER_MOTOR_RIGHT, spd);
-    motorSet(NAUTILUS_SHOOTER_MOTOR_CENTER, spd);
+    motorSet(NAUTILUS_SHOOTER_MOTOR_CENTER, -spd);
 }
 
 /**
  * Defines motor ports for the intake mechanism.
  */
-#define INTAKE_ROLLER_MOTOR 10
+#define INTAKE_ROLLER_MOTOR 5
 
 /** 
  * Intakes balls using the intake mechanism by setting the intake motor values.
@@ -104,24 +99,13 @@ inline void shoot(int spd){
  * @param spd the speed to set the intake motors
  */
 inline void intake(int spd){
-    motorSet(INTAKE_ROLLER_MOTOR, spd);
+    motorSet(INTAKE_ROLLER_MOTOR, -spd);
 }
 
-#define ROBOT_HAS_LIFT_DEPLOY_MOTOR 1
-
-#ifdef ROBOT_HAS_LIFT_DEPLOY_MOTOR
-#define LIFT_DEPLOY 9
-
-inline void deploy(int spd){
-    motorSet(LIFT_DEPLOY, spd);
-}
-#endif
-
-#ifndef ROBOT_HAS_LIFT_DEPLOY_MOTOR
 /**
  * Defines motor ports for the shooter angle adjustment motor.
  */
-#define SHOOTER_ANGLE_MOTOR 10
+#define SHOOTER_ANGLE_MOTOR 9
 
 /** 
  * Adjusts the shooter's angle by setting the motor.
@@ -129,9 +113,16 @@ inline void deploy(int spd){
  * @param spd the speed to set the angle adjustment motor
  */
 inline void adjust(int spd){
-    motorSet(SHOOTER_ANGLE_MOTOR, spd);
+    motorSet(SHOOTER_ANGLE_MOTOR, -spd);
 }
-#endif /* ROBOT_HAS_LIFT_DEPLOY_MOTOR */
+
+#define LIFT_MOTOR_LEFT 10
+#define LIFT_MOTOR_RIGHT 1
+
+inline void lift_raw(int spd){
+    motorSet(LIFT_MOTOR_LEFT, spd);
+    motorSet(LIFT_MOTOR_RIGHT, -spd);
+}
 
 #endif
 

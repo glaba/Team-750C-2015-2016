@@ -91,9 +91,14 @@ typedef struct joyState {
     signed char strafe;
 
     /**
-    * Speed of the lift deployment motor.
+    * Speed of the angle change motor.
     */
-    signed char dep;
+    signed char ang;
+
+    /**
+     * Speed of the lift motors.
+     */
+    signed char lift;
 } joyState;
 
 /**

@@ -34,9 +34,14 @@ extern int intk;
 extern int strafe;
 
 /**
- * Speed of the lift deployment motor.
+ * Speed of the angle change motor.
  */
-extern int dep;
+extern int ang;
+
+/**
+ * Speed of the lift motors.
+ */
+extern int lift;
 
 /**
  * Populates the motor state variables based on the joystick's current values.
