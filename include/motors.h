@@ -26,7 +26,9 @@
 #define MOTOR_MIN -127
 
 /**
- * Moves the drive straight
+ * Moves the drive straight.
+ *
+ * Uses the encoders to make a PID control loop, keeping the drive straight.
  *
  * @param direction the direction to move (either forwards or backwards, which corresponds to 1 and -1)
  */
@@ -43,6 +45,9 @@ void moveStraight(int direction);
  */
 #define RIGHT_MOTOR 3
 
+/**
+ * Defines motor port for the strafing motor of the drivetrain.
+ */
 #define STRAFE_MOTOR 4
 
 /** 
@@ -69,12 +74,25 @@ inline void move_lr(int l, int r){
 }
 
 /**
- * Defines motor ports for the nautilus gear shooting mechanism.
+ * Defines the motor configuration of the nautilus shooter.
+ *
+ * Represents the fact that the nautilus shooter has three motors.
  */
 #define SHOOTER_HAS_THREE_MOTORS
 
+/**
+ * Defines the motor port for the left nautilus gear motor.
+ */
 #define NAUTILUS_SHOOTER_MOTOR_LEFT 6
+
+/**
+ * Defines the motor port for the right nautilus gear motor.
+ */
 #define NAUTILUS_SHOOTER_MOTOR_RIGHT 7
+
+/**
+ * Defines the motor port for the center nautilus gear motor.
+ */
 #define NAUTILUS_SHOOTER_MOTOR_CENTER 8
 
 /** 
@@ -108,7 +126,7 @@ inline void intake(int spd){
 #define SHOOTER_ANGLE_MOTOR 9
 
 /** 
- * Adjusts the shooter's angle by setting the motor.
+ * Adjusts the shooter's angle by setting the angle change motor speed.
  * 
  * @param spd the speed to set the angle adjustment motor
  */
@@ -116,9 +134,21 @@ inline void adjust(int spd){
     motorSet(SHOOTER_ANGLE_MOTOR, -spd);
 }
 
+/**
+ * Defines motor ports for the left side of the lift.
+ */
 #define LIFT_MOTOR_LEFT 10
+
+/**
+ * Defines motor ports for the right side of the lift.
+ */
 #define LIFT_MOTOR_RIGHT 1
 
+/**
+ * Sets the speed of the lift motors.
+ *
+ * @param spd the speed to set the lift motors to
+ */
 inline void lift_raw(int spd){
     motorSet(LIFT_MOTOR_LEFT, spd);
     motorSet(LIFT_MOTOR_RIGHT, -spd);

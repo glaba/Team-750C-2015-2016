@@ -16,9 +16,13 @@
 #define SENSORS_H_
 
 /**
- * Defines the encoder ports on the left side of the drivetrain.
+ * Defines the top encoder port on the left side of the drivetrain.
  */
 #define LEFT_ENC_TOP 1
+
+/**
+ * Defines the bottom encoder port on the left side of the drivetrain.
+ */
 #define LEFT_ENC_BOT 2
 
 /** 
@@ -27,9 +31,13 @@
 extern Encoder leftenc;
 
 /**
- * Defines the encoder ports on the right side of the drivetrain.
+ * Defines the top encoder port on the right side of the drivetrain.
  */
 #define RIGHT_ENC_TOP 3
+
+/**
+ * Defines the bottom encoder port on the right side of the drivetrain.
+ */
 #define RIGHT_ENC_BOT 4
 
 /** 
@@ -38,9 +46,13 @@ extern Encoder leftenc;
 extern Encoder rightenc;
 
 /**
- * Defines the encoder ports for the horizontal wheel.
+ * Defines the top encoder port for the horizontal wheel.
  */
 #define HORIZONTAL_ENC_TOP -1
+
+/**
+ * Defines the bottom encoder port for the horizontal wheel.
+ */
 #define HORIZONTAL_ENC_BOT -1
 
 /**
@@ -57,6 +69,9 @@ inline void clearDriveEncoders(){
     encoderReset(horizontalenc);
 }
 
+/**
+ * Resets the PID control loop variables for the drivetrain.
+ */
 void resetEncoderVariables();
 
 /** 

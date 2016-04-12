@@ -196,7 +196,7 @@ void operatorControl() {
     }
     while (true) {
         if(isOnline() || progSkills == 0){
-            if(joystickGetDigital(2, 7, JOY_UP) || joystickGetDigital(2, 7, JOY_DOWN) || joystickGetDigital(2, 7, JOY_LEFT) || joystickGetDigital(2, 7, JOY_RIGHT)) {
+            if(joystickGetDigital(2, 7, JOY_UP)) {
                 if(!speakerButtonPressed) {
                     speakerPlay = !speakerPlay;
                     speakerButtonPressed = true;
