@@ -23,7 +23,7 @@
 /**
  * Defines the amount of LCD messages in the master list.
  */
-#define LCD_MESSAGE_COUNT 57
+#define LCD_MESSAGE_COUNT 61
 
 /**
  * Defines the max length for LCD messages.

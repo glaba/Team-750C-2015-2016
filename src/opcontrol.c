@@ -73,6 +73,8 @@ float previous_error = 0;
 float integral = 0;
 float derivative = 0;
 
+bool shooterLimitPressed = UNPRESSED;
+
 /** 
  * Faces the robot towards the desired gyroscope angle by turning it.
  * This function implements a simple PID control loop in order to correct for error.
@@ -116,10 +118,19 @@ void recordJoyInfo(){
             sht = -127;
         } else if(joystickGetDigital(2, 7, JOY_LEFT)){
             sht = 70;
-        } else if(joystickGetDigital(2, 7, JOY_DOWN)){
-            sht = -60;
-        } else if(joystickGetDigital(2, 7, JOY_RIGHT)){
-            sht = -50;
+        } else if(joystickGetDigital(2, 7, JOY_DOWN)){ //low distance shooting
+            if(shooterLimitPressed == PRESSED && digitalRead(SHOOTER_LIMIT) == UNPRESSED) {
+                sht = -25; //holding in place speed
+            } else {
+                sht = -127;
+            }
+            shooterLimitPressed = digitalRead(SHOOTER_LIMIT);
+        } else if(joystickGetDigital(2, 7, JOY_RIGHT)){ //full distance shooting
+            if(digitalRead(SHOOTER_LIMIT) == PRESSED){
+                sht = -25; //holding in place speed
+            } else {
+                sht = -127;
+            }
         } else {
             sht = 0;
         }
@@ -143,10 +154,12 @@ void recordJoyInfo(){
         ang = 0;
     }
 
-    if(joystickGetDigital(1, 7, JOY_LEFT)){
-        targetNet(GYRO_NET_TARGET);
-    } else if(joystickGetDigital(1, 7, JOY_RIGHT)){
-        resetGyroVariables();
+    if(isOnline()){
+        if(joystickGetDigital(2, 8, JOY_LEFT)){
+            targetNet(GYRO_NET_TARGET);
+        } else if(joystickGetDigital(2, 8, JOY_RIGHT)){
+            resetGyroVariables();
+        }
     }
 
     if(joystickGetDigital(1, 7, JOY_UP)){

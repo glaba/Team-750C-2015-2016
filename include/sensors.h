@@ -200,9 +200,9 @@ inline unsigned int powerLevelExpander(){
 extern Gyro gyro;
 
 /**
- * Defines the port for the limit switch that is triggered when the shooter fires.
+ * Defines the port for the limit switch that is triggered when the shooter is in the full field loading configuration.
  */
-#define SHOOTER_LIMIT 10
+#define SHOOTER_LIMIT 8
 
 /**
  * Defines the port for the ultrasonic echo wire (orange).
