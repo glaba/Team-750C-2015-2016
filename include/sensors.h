@@ -16,6 +16,11 @@
 #define SENSORS_H_
 
 /**
+ * Defines the value that unknown ports are set to (if the value is UNDEFINED_PORT, ignore its input)
+ */
+#define UNDEFINED_PORT -1
+
+/**
  * Defines the top encoder port on the left side of the drivetrain.
  */
 #define LEFT_ENC_TOP 1
@@ -230,10 +235,20 @@ extern Ultrasonic sonar;
 #define LINE_THRESHOLD -1
 
 /**
+ * Defines the button port that will detect balls in the bottom of intake
+ */
+#define INTAKE_BUTTON 7
+
+/**
+ * Defines the threshold value for the line tracker that defines whether or not a ball is within the intake
+ */
+#define BALL_THRESHOLD -1
+
+/**
  * Defines the amount of songs in the master list.
  */
 #define SONG_COUNT 26
-
+ 
 /** 
  * Master list of all songs.
  */

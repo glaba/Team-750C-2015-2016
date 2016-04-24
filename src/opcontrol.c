@@ -65,15 +65,20 @@ int strafe;
 int ang;
 
 /**
- * Speed of the lift motors.
+ * Speed of the right lift motor.
  */
-int lift;
+int liftR;
+
+/**
+ * Speed of the left lift motor.
+ */
+int liftL;
 
 float previous_error = 0;
 float integral = 0;
 float derivative = 0;
 
-bool shooterLimitPressed = UNPRESSED;
+bool fieldLoadingThresholdReached = false;
 
 /** 
  * Faces the robot towards the desired gyroscope angle by turning it.
@@ -106,6 +111,7 @@ void resetGyroVariables(){
  * Populates the motor state variables based on the joystick's current values.
  */
 void recordJoyInfo(){
+    printf("%d\n", analogRead(AUTON_POT));
     spd = joystickGetAnalog(1, 3);
     turn = joystickGetAnalog(1, 1);
     strafe = joystickGetAnalog(1, 4);
@@ -117,14 +123,16 @@ void recordJoyInfo(){
         } else if(joystickGetDigital(1, 6, JOY_DOWN) || joystickGetDigital(2, 6, JOY_DOWN)){
             sht = -127;
         } else if(joystickGetDigital(2, 7, JOY_LEFT)){
-            sht = 70;
+            //sht = 70;
         } else if(joystickGetDigital(2, 7, JOY_DOWN)){ //low distance shooting
-            if(shooterLimitPressed == PRESSED && digitalRead(SHOOTER_LIMIT) == UNPRESSED) {
+            if (digitalRead(SHOOTER_LIMIT) == PRESSED) {
+                fieldLoadingThresholdReached = true;
+            }
+            if(fieldLoadingThresholdReached && digitalRead(SHOOTER_LIMIT) == UNPRESSED) {
                 sht = -25; //holding in place speed
             } else {
                 sht = -127;
             }
-            shooterLimitPressed = digitalRead(SHOOTER_LIMIT);
         } else if(joystickGetDigital(2, 7, JOY_RIGHT)){ //full distance shooting
             if(digitalRead(SHOOTER_LIMIT) == PRESSED){
                 sht = -25; //holding in place speed
@@ -134,15 +142,31 @@ void recordJoyInfo(){
         } else {
             sht = 0;
         }
+        if (!joystickGetDigital(2, 7, JOY_DOWN)) {
+            fieldLoadingThresholdReached = false;
+        }
     } else if(abs(joystickGetAnalog(2, 3))<30){
         sht = joystickGetAnalog(2, 2);
     } else {
         sht = joystickGetAnalog(2, 3);
     }
+    // Outtake
     if(joystickGetDigital(1, 5, JOY_UP) || joystickGetDigital(2, 5, JOY_UP)){
-        intk = 127;
+        if (INTAKE_BUTTON != UNDEFINED_PORT) {
+            if (digitalRead(INTAKE_BUTTON) == UNPRESSED) {
+                intk = 127;
+            } else if (joystickGetDigital(2, 7, JOY_LEFT)) {
+                intk = 127;
+            } else { 
+                intk = 0;
+            }
+        } else {
+            intk = 127;
+        }
+    // Intake
     } else if(joystickGetDigital(1, 5, JOY_DOWN) || joystickGetDigital(2, 5, JOY_DOWN)){
         intk = -127;
+    // Shut off intake
     } else {
         intk = 0;
     }
@@ -163,11 +187,30 @@ void recordJoyInfo(){
     }
 
     if(joystickGetDigital(1, 7, JOY_UP)){
-        lift = 127;
+        if (joystickGetDigital(1, 8, JOY_RIGHT)) {
+            liftR = 127;
+            liftL = 0;
+        } else if (joystickGetDigital(1, 8, JOY_LEFT)) {
+            liftL = 127;
+            liftR = 0;
+        } else {
+            liftL = 127;
+            liftR = 127;
+        }
     } else if(joystickGetDigital(1, 7, JOY_DOWN)){
-        lift = -127;
+        if (joystickGetDigital(1, 8, JOY_RIGHT)) {
+            liftR = -127;
+            liftL = 0;
+        } else if (joystickGetDigital(1, 8, JOY_LEFT)) {
+            liftL = -127;
+            liftR = 0;
+        } else {
+            liftL = -127;
+            liftR = -127;
+        }
     } else {
-        lift = 0;
+        liftR = 0;
+        liftL = 0;
     }
 }
 
@@ -179,7 +222,7 @@ void moveRobot(){
     shoot(sht);
     intake(intk);
     adjust(ang);
-    lift_raw(lift);
+    lift_raw(liftL, liftR);
 }
 
 /**
@@ -230,12 +273,12 @@ void operatorControl() {
             }
             if(!disableOpControl){
                 recordJoyInfo();
-                if (joystickGetDigital(1, 7, JOY_RIGHT) && !isOnline()) {
+                if (joystickGetDigital(1, 7, JOY_RIGHT) && !joystickGetDigital(1, 7, JOY_UP) && !joystickGetDigital(1, 7, JOY_DOWN) && !isOnline()) {
                     taskSuspend(lcdDiagTask);
                     recordAuton();
                     lcdSetBacklight(LCD_PORT, true);
                     saveAuton();
-                } else if (joystickGetDigital(1, 7, JOY_LEFT) && !isOnline()) {
+                } else if (joystickGetDigital(1, 7, JOY_LEFT) && !joystickGetDigital(1, 7, JOY_UP) && !joystickGetDigital(1, 7, JOY_DOWN) && !isOnline()) {
                     taskSuspend(lcdDiagTask);
                     lcdSetBacklight(LCD_PORT, true);
                     loadAuton();
@@ -247,10 +290,10 @@ void operatorControl() {
             motorStopAll();
             lcdSetText(LCD_PORT, 1, "Press 7R");
             lcdPrint(LCD_PORT, 2,   "Last Skills: %d", progSkills);
-            if (joystickGetDigital(1, 7, JOY_RIGHT) && !isOnline()) {
+            if (joystickGetDigital(1, 7, JOY_RIGHT) && !joystickGetDigital(1, 7, JOY_UP) && !joystickGetDigital(1, 7, JOY_DOWN) && !isOnline()) {
                 recordAuton();
                 saveAuton();
-            } else if(joystickGetDigital(1, 7, JOY_UP) && !isOnline()) {
+            } else if(joystickGetDigital(1, 7, JOY_UP) && !joystickGetDigital(1, 7, JOY_UP) && !joystickGetDigital(1, 7, JOY_DOWN) && !isOnline()) {
                 progSkills = 0;
             }
         }

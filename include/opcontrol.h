@@ -39,9 +39,14 @@ extern int strafe;
 extern int ang;
 
 /**
- * Speed of the lift motors.
+ * Speed of the right lift motor.
  */
-extern int lift;
+extern int liftR;
+
+/**
+ * Speed of the left lift motor.
+ */
+extern int liftL;
 
 /**
  * Populates the motor state variables based on the joystick's current values.

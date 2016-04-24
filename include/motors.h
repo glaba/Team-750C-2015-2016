@@ -149,9 +149,9 @@ inline void adjust(int spd){
  *
  * @param spd the speed to set the lift motors to
  */
-inline void lift_raw(int spd){
-    motorSet(LIFT_MOTOR_LEFT, spd);
-    motorSet(LIFT_MOTOR_RIGHT, -spd);
+inline void lift_raw(int left, int right){
+    motorSet(LIFT_MOTOR_LEFT, left);
+    motorSet(LIFT_MOTOR_RIGHT, -right);
 }
 
 #endif

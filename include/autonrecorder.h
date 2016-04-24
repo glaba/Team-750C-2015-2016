@@ -56,7 +56,7 @@
 /**
  * Upper limit of the autonomous routine selector potentiometer.
  */
-#define AUTON_POT_HIGH 4095
+#define AUTON_POT_HIGH 440 //4095
 
 /**
  * @brief Representation of the operator controller's instructions at a point in time.
@@ -96,9 +96,14 @@ typedef struct joyState {
     signed char ang;
 
     /**
-     * Speed of the lift motors.
+     * Speed of the left lift motor.
      */
-    signed char lift;
+    signed char liftL;
+
+    /**
+     * Speed of the right lift motor.
+     */
+    signed char liftR;
 } joyState;
 
 /**
